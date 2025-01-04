@@ -1,3 +1,6 @@
+:root{
+    font-family: "Roboto", system-ui, Avenir, Helvetica, Arial, sans-serif;
+}
 body{
     margin: 40px;
     background-color: #f3f4f8;
@@ -12,6 +15,7 @@ body{
     height: 180px;
     background-color: white;
     border-radius: 5px;;
+    position:relative;
     
 }
 .cartItem h3{
@@ -37,9 +41,10 @@ body{
     margin-top: 3px;
 }
 .total{
-    float: right;
-    margin-top: -40px;
-    margin-right: 20px;
+
+    margin-top: -160px;
+    margin-left: 775px;
+    position: absolute;
 }
 .price{
     font-weight: bolder;
