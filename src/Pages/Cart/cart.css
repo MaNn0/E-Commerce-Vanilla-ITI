@@ -57,10 +57,10 @@ body{
     border: solid rgb(219, 218, 218);
     width: 35%;
     float: right;
-    height: 294px;
     margin-top: -200px;
     padding-left: 30px;
     padding-right: 30px;
+    padding-bottom: 20px;
 }
 .checkoutButton{
     width: 100%;
@@ -74,4 +74,19 @@ body{
 .orderSummary h2 span{
     color:grey;
     font-size: large;
+}
+.subTotal{
+    font-weight: lighter;
+}
+.shippingFee{
+    font-weight: lighter;
+}
+
+.subTotal span{
+    float: right
+}
+.shippingFee span{
+    float: right;
+    font-weight: bold;
+    color: rgb(18, 149, 18)
 }
