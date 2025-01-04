@@ -5,6 +5,7 @@ import { setupCounter } from "./counter.js";
 
 document.querySelector("#app").innerHTML = `
   <i class="fa-brands fa-facebook"></i>
+  <i class="fa-brands fa-facebook"></i>
 `;
 
 setupCounter(document.querySelector("#counter"));
