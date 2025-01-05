@@ -2,22 +2,160 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <!--Links -->
-    <!-- <link
-      href="./node_modules/bootstrap/dist/css/bootstrap.min.css"
-      rel="stylesheet"
-      integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
-      crossorigin="anonymous"
-    /> -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Vite App</title>
   </head>
+
   <body>
-    <h1>hello</h1>
-    <!-- <script
-      type="module"
-      src="./node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"
-    ></script> -->
+    <section id="profile"></section>
+    <nav class="navbar navbar-light">
+      <div class="container">
+        <div class="right">
+          <a class="navbar-brand" href="#">
+            <i class="fa-brands fa-slack"></i>
+          </a>
+          <span class="navbar-brand mb-0 h1">| Navbar</span>
+        </div>
+
+        <form class="d-flex searchForm">
+          <input
+            class="searchInput form-control me-2"
+            type="search"
+            placeholder="Search"
+            aria-label="Search"
+          />
+          <button class="btn searchIcon" type="submit">
+            <i class="fa-solid fa-magnifying-glass"></i>
+          </button>
+        </form>
+        <div class="iconLinks">
+          <a href="../../../index.html">
+            <i class="fa-solid fa-cart-shopping"></i
+          ></a>
+          <span> | </span>
+          <a href="../../../index.html"> <i class="fa-solid fa-house"></i></a>
+        </div>
+      </div>
+    </nav>
+    <!-- side Bar Starts Here -->
+    <div class="sideBar">
+      <div class="top">
+        <div class="logo">
+          <i class="fas fa-home"></i>
+          <span class="navItem">Logo</span>
+        </div>
+        <i class="fas fa-bars" id="btn"></i>
+      </div>
+      <!-- side Bar user (Image) -->
+      <div class="user">
+        <img
+          src="../../../public/Images/1331316.png"
+          alt="User"
+          class="userImg"
+        />
+        <p class="bold navItem">Mano little PIPE</p>
+      </div>
+      <!-- side Bar List -->
+
+      <ul>
+        <!-- side Bar Content (List) -->
+
+        <li>
+          <a href="#">
+            <i class="fas fa-home"></i>
+            <span class="navItem">Home</span>
+          </a>
+          <span class="toolTip">Home</span>
+        </li>
+        <!-- side Bar Content (List) -->
+        <li>
+          <a href="#">
+            <i class="fas fa-info-circle"></i>
+            <span class="navItem">About</span>
+          </a>
+          <span class="toolTip">About</span>
+        </li>
+        <!-- side Bar Content (List) -->
+        <li>
+          <a href="#">
+            <i class="fas fa-cogs"></i>
+            <span class="navItem">Services</span>
+          </a>
+          <span class="toolTip">Services</span>
+        </li>
+        <!-- side Bar Content (List) -->
+        <li>
+          <a href="#">
+            <i class="fas fa-envelope"></i>
+            <span class="navItem">Contact</span>
+          </a>
+          <span class="toolTip">Contact</span>
+        </li>
+      </ul>
+    </div>
+    <!-- profile Content TO edit -->
+    <section class="main-content">
+      <div class="profileContent container">
+        <h1 class="mx-auto">Profile Information</h1>
+        <p>This is the main content area.</p>
+        <form class="row g-3">
+          <div class="col-md-6">
+            <label for="inputEmail4" class="form-label">Email</label>
+            <input type="email" class="form-control" id="inputEmail4" />
+          </div>
+          <div class="col-md-6">
+            <label for="inputPassword4" class="form-label">Password</label>
+            <input type="password" class="form-control" id="inputPassword4" />
+          </div>
+          <div class="col-12">
+            <label for="inputAddress" class="form-label">Address</label>
+            <input
+              type="text"
+              class="form-control"
+              id="inputAddress"
+              placeholder="1234 Main St"
+            />
+          </div>
+          <div class="col-12">
+            <label for="inputAddress2" class="form-label">Address 2</label>
+            <input
+              type="text"
+              class="form-control"
+              id="inputAddress2"
+              placeholder="Apartment, studio, or floor"
+            />
+          </div>
+          <div class="col-md-6">
+            <label for="inputCity" class="form-label">City</label>
+            <input type="text" class="form-control" id="inputCity" />
+          </div>
+          <div class="col-md-4">
+            <label for="inputState" class="form-label">State</label>
+            <select id="inputState" class="form-select">
+              <option selected>Choose...</option>
+              <option>...</option>
+            </select>
+          </div>
+          <div class="col-md-2">
+            <label for="inputZip" class="form-label">Zip</label>
+            <input type="text" class="form-control" id="inputZip" />
+          </div>
+          <div class="col-12">
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" id="gridCheck" />
+              <label class="form-check-label" for="gridCheck">
+                Check me out
+              </label>
+            </div>
+          </div>
+          <div class="col-12">
+            <button type="submit" class="btn btn-primary">Sign in</button>
+          </div>
+        </form>
+      </div>
+    </section>
+    <!-- side Bar Ends HEre Booooys SUUUUUUUUUUUUUUUUUUUUUUUUUI -->
+    <section class="main-content"></section>
     <script type="module" src="./profile.js"></script>
   </body>
 </html>
