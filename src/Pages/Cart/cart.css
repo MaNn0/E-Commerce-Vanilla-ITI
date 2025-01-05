@@ -1,0 +1,94 @@
+:root{
+    font-family: "Roboto", system-ui, Avenir, Helvetica, Arial, sans-serif;
+}
+body{
+    margin: 40px;
+    background-color: #f3f4f8;
+}
+.titleCount{
+    color: grey;
+    font-size: large;
+}
+.cartItem{
+    border: solid;
+    width: 60%;
+    height: 180px;
+    background-color: white;
+    border-radius: 5px;;
+    position:relative;
+    
+}
+.cartItem h3{
+    margin-left: 130px;
+    margin-top:-150px
+}
+.removeButton{
+    margin-top: 80px;
+    margin-left: 775px;
+    width: 35px;
+    height: 34px;
+    border-radius: 5px;
+}
+.itemCount label{
+    font-size: larger;
+}
+.itemCount select{
+    font-size: larger;
+}
+
+
+.removeButton img{
+    margin-top: 3px;
+}
+.total{
+
+    margin-top: -160px;
+    margin-left: 775px;
+    position: absolute;
+}
+.price{
+    font-weight: bolder;
+    font-size:150%
+}
+.itemCount{
+    float: right;
+    margin-right: 20px;
+    margin-top: 87px;
+}
+.orderSummary{
+    border: solid rgb(219, 218, 218);
+    width: 35%;
+    float: right;
+    margin-top: -200px;
+    padding-left: 30px;
+    padding-right: 30px;
+    padding-bottom: 20px;
+}
+.checkoutButton{
+    width: 100%;
+    height: 60px;
+    text-transform: uppercase;
+    border-radius: 5px;
+    color: white;
+    background-color: blue;
+    font-size: larger;
+}
+.orderSummary h2 span{
+    color:grey;
+    font-size: large;
+}
+.subTotal{
+    font-weight: lighter;
+}
+.shippingFee{
+    font-weight: lighter;
+}
+
+.subTotal span{
+    float: right
+}
+.shippingFee span{
+    float: right;
+    font-weight: bold;
+    color: rgb(18, 149, 18)
+}

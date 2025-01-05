@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <!--Links -->
+    <!-- <link
+      href="./node_modules/bootstrap/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
+      crossorigin="anonymous"
+    /> -->
+    <link rel="stylesheet" href="cart.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vite App</title>
+</head>
+
+<body>
+    <h1>cart page, navbar, ..</h1>
+    <h1>Cart <span class="titleCount">(1 item)</span> </h1>
+    <div class="cartContainer">
+        <div class="cartItem">
+            <img src="fdas" height="164px" width="120px">
+            <h3>item name</h3>
+            <button class="removeButton"><img src="./images/trash-solid.svg" width="20px" height="20px"></button>
+            <div class="total">
+                <span class="currency">EGP</span><span class="price">124.00</span>
+            </div>
+            <div class="itemCount">
+                <label for="qty">Qty </label>
+                <select name="qty" id="qty">
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                </select>
+            </div>
+        </div>
+    </div>
+    <div class="orderSummary">
+        <h2>Order Summary</h2>
+        <h3 class="subTotal">Subtotal (1 item) <span>EGP 149.00</span></h3> 
+        <h3 class="shippingFee">Shipping Fee <span>FREE</span></h3> 
+        <hr>
+        <h2>Total <span>(Inclusive of VAT)</span></h2>
+        <h2 class="totalPrice">EGP 149.00</h2>
+        <button class="checkoutButton">Checkout</button>
+
+    </div>
+    <!-- <script
+      type="module"
+      src="./node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"
+    ></script> -->
+    <script type="module" src="./profile.js"></script>
+</body>
+
+</html>
