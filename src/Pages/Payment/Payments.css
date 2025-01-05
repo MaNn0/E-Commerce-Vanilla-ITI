@@ -1,0 +1,92 @@
+/* Payments.css */
+
+/* General Styles */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f5f5f5;
+  }
+  
+  .container {
+    max-width: 1200px;
+  }
+  
+  /* Shipping Address */
+  .card {
+    border: 1px solid #dee2e6;
+    border-radius: 0.5rem;
+    background-color: #fff;
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+  }
+  
+  .card-title {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: 1.5rem;
+  }
+  
+  .form-group {
+    margin-bottom: 1.5rem;
+  }
+  
+  .input-group-append .btn {
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+  }
+  
+  /* Your Order */
+  .card-subtitle {
+    font-size: 1rem;
+    font-weight: 500;
+    color: #6c757d;
+  }
+  
+  .card-text {
+    font-size: 1rem;
+  }
+  
+  .text-success {
+    color: #28a745 !important;
+  }
+  
+  /* Payment */
+  .badge {
+    font-size: 0.75rem;
+    font-weight: 400;
+    padding: 0.25rem 0.5rem;
+    margin-left: 0.5rem;
+    background-color: #6c757d;
+    color: #fff;
+  }
+  
+  /* Modal */
+  .modal-title {
+    font-size: 1.5rem;
+    font-weight: 600;
+  }
+  
+  .form-label {
+    font-size: 1rem;
+    font-weight: 500;
+  }
+  
+  .form-control {
+    font-size: 1rem;
+    padding: 0.75rem 1rem;
+  }
+  
+  .modal-footer .btn {
+    font-size: 1rem;
+    padding: 0.75rem 1.5rem;
+  }
+  
+  /* Order Summary */
+  .alert {
+    font-size: 1rem;
+    padding: 0.75rem 1.5rem;
+  }
+  
+  .btn-primary {
+    font-size: 1rem;
+    padding: 0.75rem 1.5rem;
+  }
+  

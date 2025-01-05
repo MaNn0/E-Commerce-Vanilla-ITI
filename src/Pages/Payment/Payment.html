@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="Payments.css">
+  <title>Document</title>
+</head>
+
+<body>
+
+  <div class="container my-5">
+    <div class="row">
+      <!-- Shipping Address -->
+      <div class="col-md-6">
+        <h2 class="card-title">Shipping Address</h2>
+        <div class="card border">
+          <div class="card-body">
+            <div class="form-group">
+              <label for="address">Address</label>
+              <div class="input-group">
+                <input type="text" class="form-control" id="address" placeholder="Enter your address">
+                <div class="input-group-append">
+                  <button class="btn btn-outline-secondary" type="button" id="add-address-btn">Add Address</button>
+                </div>
+              </div>
+            </div>
+            <div class="form-group">
+              <div class="form-check">
+                <input class="form-check-input" type="radio" name="address-option" id="defaultADD" checked>
+                <label class="form-check-label" for="defaultADD">
+                  Use My Default Address
+                </label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" type="radio" name="address-option" id="newADD">
+                <label class="form-check-label" for="newADD">
+                  Add New Address
+                </label>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Order Summary -->
+      <div class="col-md-6">
+        <h2 class="card-title">Order Summary</h2>
+        <div class="card">
+          <div class="card-body">
+            <div class="row">
+              <div class="col-md-6">
+                <h5>Order Details</h5>
+                <div class="row">
+                  <div class="col-6">Subtotal</div>
+                  <div class="col-6 text-end">EGP 00</div>
+                </div>
+                <div class="row">
+                  <div class="col-6">Shipping Fee</div>
+                  <div class="col-6 text-end text-success"> EGP 00 </div>
+                </div>
+                <div class="row">
+                  <div class="col-6"><b> Total </b>(incl. VAT)</div>
+                  <div class="col-6 text-end"> <b> EGP 00 </b></div>
+                </div>
+              </div>
+              <div class="col-md-6 text-end">
+                <div class="alert alert-danger" role="alert">
+                  error or warning
+                </div>
+                <button class="btn btn-primary"> PLACE ORDER </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Your Order -->
+  <div class="container my-5">
+    <h2>Your Order</h2>
+    <div class="card">
+      <div class="card-body">
+        <div class="row">
+          <div class="col-md-8">
+            <h5 class="card-title">Shipment (number of items)</h5>
+            <div class="row">
+              <div class="col-md-4">
+                <img src="" alt="ProductImg" class="img-fluid">
+              </div>
+              <div class="col-md-4">
+                <h6 class="card-subtitle mb-2 text-muted">Product Name </h6>
+                <p class="card-text">Table</p>
+              </div>
+              <div class="col-md-4">
+                <h6 class="card-subtitle mb-2 text-muted">Product Price </h6>
+                <p class="card-text">500 EGP</p>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-4">
+                <img src="" alt="ProductImg" class="img-fluid">
+              </div>
+              <div class="col-md-4">
+                <h6 class="card-subtitle mb-2 text-muted">Product Name </h6>
+                <p class="card-text">Table</p>
+              </div>
+              <div class="col-md-4">
+                <h6 class="card-subtitle mb-2 text-muted">Product Price </h6>
+                <p class="card-text">500 EGP</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4 text-end">
+            <p class="card-text text-success">Estimated Time</p>
+            <p class="card-text"> Thuse Day 12/12/1999</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Payment -->
+  <div class="container my-5">
+    <div class="row"><div class="col-md-6">
+      <h2 class="card-title">Payment</h2>
+      <div class="col-md-6">
+        <div class="card">
+          <div class="card-body">
+            <div class="form-group">
+              <div class="form-check">
+                <input class="form-check-input" type="radio" name="paymentOption" id="debitCreditCard">
+                <label class="form-check-label" for="debitCreditCard">
+                  Debit/Credit Card
+                </label>
+              </div>
+            </div>
+            <div class="form-group">
+              <div class="form-check">
+                <input class="form-check-input" type="radio" name="paymentOption" id="cashOnDelivery">
+                <label class="form-check-label" for="cashOnDelivery">
+                  Cash On Delivery
+                  <span class="badge badge-secondary">Extra charges may be applied</span>
+                </label>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal -->
+  <div class="modal fade" id="paymentModal" tabindex="-1" aria-labelledby="paymentModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="paymentModalLabel">Payment Details</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form>
+            <div class="mb-3">
+              <label for="cardNumber" class="form-label">Card Number</label>
+              <input type="text" class="form-control" id="cardNumber" placeholder="0000 0000 0000 0000">
+            </div>
+            <div class="row mb-3">
+              <div class="col">
+                <label for="expiryDate" class="form-label">Expiry Date</label>
+                <input type="text" class="form-control" id="expiryDate" placeholder="MM/YY">
+              </div>
+              <div class="col">
+                <label for="cvv" class="form-label">CVV</label>
+                <input type="text" class="form-control" id="cvv" placeholder="123">
+              </div>
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+          <button type="button" class="btn btn-primary">Save</button>
+        </div>
+      </div>
+    </div>
+  </div>
+<!-- Error Modal -->
+<div class="modal fade" id="errorModal" tabindex="-1" aria-labelledby="errorModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="errorModalLabel">Error</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <p id="errorMessage">Please fill all the required fields and select an option where necessary.</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+  <script type="module" src="../../../node_modules/bootstrap/dist/js/bootstrap.bundle.min.js">
+  </script>
+  <script type="module" src="./Payment.js"></script>
+
+</body>
+
+</html>
