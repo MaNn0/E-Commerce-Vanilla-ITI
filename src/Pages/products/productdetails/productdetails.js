@@ -2,7 +2,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.min.js";
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import "./productdetails.css";
-import { fetchedData } from "../product";
+import { fetchedData } from "../products";
 // http://localhost:5174/src/Pages/products/productdetails/productdetails.html?id=1
 const urlParams = new URLSearchParams(window.location.search);
 const productdetails = fetchedData;
