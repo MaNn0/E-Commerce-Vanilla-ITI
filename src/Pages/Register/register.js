@@ -1,3 +1,5 @@
+import "@fortawesome/fontawesome-free/css/all.min.css";
+
 const switchBtnLogin = document.querySelector(".switchBtnLogin");
 const switchBtnRegister = document.querySelector(".switchBtnRegister");
 const hideLogin = document.querySelector("#toggleHideLogin");

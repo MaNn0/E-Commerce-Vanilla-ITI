@@ -38,3 +38,7 @@ a {
 .carousel-width {
   height: 500px !important;
 }
+
+.iconLinks {
+  justify-content: flex-end;
+}

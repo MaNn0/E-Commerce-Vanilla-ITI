@@ -11,35 +11,90 @@
     <title>E-Commerce</title>
   </head>
   <body>
-    <div class="container-fluid">
-      <section>
-        <!-- Navbar -->
-        <nav class="navbar navbar-expand-lg bg-body-tertiary">
-          <a class="navbar-brand" href="#">Brand</a>
-          <button
-            class="navbar-toggler"
-            type="button"
-            data-bs-toggle="collapse"
-            data-bs-target="#navbarNav"
-            aria-controls="navbarNav"
-            aria-expanded="false"
-            aria-label="Toggle navigation"
-          >
-            <span class="navbar-toggler-icon"></span>
+    <!-- <nav class="px-5 navbar navbar-expand-lg bg-body-tertiary">
+      <a class="navbar-brand" href="#">Brand</a>
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#navbarNav"
+        aria-controls="navbarNav"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav me-auto">
+          <li class="nav-item">
+            <a class="nav-link active" href="#">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" href="./src/Pages/Profile/Profile.html">Profile</a>
+          </li>              
+          <li class="nav-item">
+            <a class="nav-link active" href="#">Store</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" href="#">Categories</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" href="./src/Pages/Cart/cart.html">Cart 🛒</a>
+          </li>
+        </ul>
+        <form class="d-flex">
+          <input
+            class="form-control me-2"
+            type="search"
+            placeholder="Search"
+            aria-label="Search"
+          />
+          <button class="btn btn-outline-success" type="submit">
+            Search
           </button>
+          <a href="./src//Pages/Register/register.html">
+            <button  class="btn btn-outline-success ms-2" type="button">
+              Signup
+            </button>
+          </a>
+        </form>
+      </div>
+    </nav> -->
+<!--New-->
+<nav class="navbar navbar-expand-lg bg-body-tertiary">
+  <div class="container-fluid">
+   <div class="left">
+     <span class="navbar-brand mb-0 h1">Khaled's Store |</span>
+          <!-- <a class="navbar-brand" href="#">
+            <i class="fa-brands fa-slack"></i>
+          </a> -->
+
+        </div>
           <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav me-auto">
-              <li class="nav-item">
-                <a class="nav-link active" href="#">Home</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#">Link</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link">cart</a>
-              </li>
-            </ul>
-            <form class="d-flex">
+      <ul class="navbar-nav">
+        <!-- <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="#"><i class="fa-solid fa-house"></i>Home</a>
+        </li> -->
+        <li class="nav-item">
+          <a class="nav-link" href="./src/Pages/Profile/Profile.html"><i class="fa-regular fa-user"></i>Profile</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="./src/Pages/Cart/cart.html"><i class="fa-solid fa-cart-shopping"></i>Cart</a>
+        </li>
+      <!-- <li class="nav-item">
+          <a class="nav-link" href=""><i class="fa-solid fa-bag-shopping"></i>Cart</a>
+        </li> -->
+           <li class="nav-item">
+          <a class="nav-link" href="./src/Pages/Payment/Payment.html"><i class="fa-solid fa-credit-card"></i>Payment</a>
+        </li>
+      </ul>
+    </div>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    
+    <div class="iconLinks collapse navbar-collapse" id="navbarNav">
+                 <form class="d-flex">
               <input
                 class="form-control me-2"
                 type="search"
@@ -55,9 +110,14 @@
                 </button>
               </a>
             </form>
-          </div>
-        </nav>
-
+    </div>
+  </div>
+</nav>
+    <div class="container-fluid">
+      <section>
+        <!-- Navbar -->
+       
+        
         <!-- <div
           class="my-4 d-flex align-content-start justify-content-between flex-wrap"
         >
