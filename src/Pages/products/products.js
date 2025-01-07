@@ -42,6 +42,7 @@ document.querySelector(".products").innerHTML = dataToMap
     </div>`;
   })
   .join("");
+
 document.querySelector(".products").addEventListener("click", function (event) {
   if (event.target.classList.contains("btnCart")) {
     const productId = event.target.getAttribute("productData");
@@ -62,4 +63,17 @@ document.querySelector(".products").addEventListener("click", function (event) {
     console.log("Product Data:", product);
     console.log("Updated Products:", updatedProducts);
   }
+});
+
+const categorySelected = document.querySelector(".form-select");
+const uniqueCategories = fetchedData.filter(
+  (product, index, array) =>
+    index === array.findIndex((p) => p.category === product.category)
+);
+
+uniqueCategories.forEach((product) => {
+  const option = document.createElement("option");
+  option.setAttribute("value", product.category);
+  option.textContent = product.category;
+  categorySelected.appendChild(option);
 });
