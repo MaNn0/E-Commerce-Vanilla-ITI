@@ -50,7 +50,6 @@ document.querySelector(".products").addEventListener("click", function (event) {
     const product = fetchedData.find((p) => p.id == productId);
     const existingProducts = JSON.parse(localStorage.getItem("products")) || [];
 
-
     const productIndex = existingProducts.findIndex((p) => p.id === productId);
     if (productIndex !== -1) {
       existingProducts[productIndex].quantity += 1;
@@ -65,15 +64,15 @@ document.querySelector(".products").addEventListener("click", function (event) {
   }
 });
 
-const categorySelected = document.querySelector(".form-select");
-const uniqueCategories = fetchedData.filter(
-  (product, index, array) =>
-    index === array.findIndex((p) => p.category === product.category)
-);
+// const categorySelected = document.querySelector(".form-select");
+// const uniqueCategories = fetchedData.filter(
+//   (product, index, array) =>
+//     index === array.findIndex((p) => p.category === product.category)
+// );
 
-uniqueCategories.forEach((product) => {
-  const option = document.createElement("option");
-  option.setAttribute("value", product.category);
-  option.textContent = product.category;
-  categorySelected.appendChild(option);
-});
+// uniqueCategories.forEach((product) => {
+//   const option = document.createElement("option");
+//   option.setAttribute("value", product.category);
+//   option.textContent = product.category;
+//   categorySelected.appendChild(option);
+// });

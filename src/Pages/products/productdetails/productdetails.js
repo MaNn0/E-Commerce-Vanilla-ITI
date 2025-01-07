@@ -51,5 +51,4 @@ document.querySelector(".products").innerHTML = dataToMap.length
       `;
       })
       .join("")
-  : "<h1>404 Not Found</h1>";
-22;
+  : `<h1>404 Not Found</h1>`;
