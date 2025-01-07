@@ -8,6 +8,8 @@
   font-weight: 400;
 }
 
+
+
 h1,
 h2,
 h3,
@@ -17,21 +19,22 @@ h6 {
   font-family: "Roboto", system-ui, Avenir, Helvetica, Arial, sans-serif;
   color: var(--c1) !important;
 }
+
 p,
 a {
   color: var(--c2);
 }
+
 .container-fluid {
   width: 90%;
 }
+
 .slide {
   width: 80%;
   margin: auto;
 }
 
-/* #Category{
-  
-} */
+
 .carousel-width {
   height: 500px !important;
 }

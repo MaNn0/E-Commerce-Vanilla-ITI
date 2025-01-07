@@ -1,0 +1,68 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-image: url('/public/Images/mainBG.png');
+    /* background-size: cover; */
+    background-position: center;
+}
+
+.hide {
+    display: none;
+}
+
+.loginForm {
+    width: 100%;
+    max-width: 1200px;
+    height: 726px;
+    padding: 200px 0;
+    /* text-align: center; */
+    /* display: flex; */
+    /* flex-direction: column;
+    align-items: center;
+    justify-content: center; */
+}
+
+/* 
+.registerForm {
+    display: flex;
+    align-items: center;
+} */
+
+img {
+    width: 100%;
+    height: 700px;
+    object-fit: contain;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 10;
+}
+
+/* Hide class that applies fade-out effect */
+.hide {
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.5s ease, visibility 0.5s ease;
+}
+
+/* Add fade-in effect for showing elements */
+.show {
+    opacity: 1;
+    visibility: visible;
+    transition: opacity 0.5s ease, visibility 0.5s ease;
+}
+
+/* Add button animations */
+/* .switchBtnLogin,
+.switchBtnRegister {
+    transition: transform 0.3s ease-in-out;
+}
+
+.switchBtnLogin:hover,
+.switchBtnRegister:hover {
+    transform: scale(1.1);
+} */

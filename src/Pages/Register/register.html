@@ -13,107 +13,140 @@
 <!-- src/Pages/Register/register.html -->
 
 <body>
-    <div class="container-fluid d-flex justify-content-between p-5 my-5 border border-primary" style="height:800px;">
-        <img style="width:50%; height: 100%;" src="../../../public/Images/sydney.jpeg" alt="">
-        <div class="position-relative">
-            <!-- <div class="position-absolute top-0 start-0"></div> -->
-            <button style="top: 90%; left: -500px;" type="button" class="btn switchBtn btn-danger position-absolute">Login</button>
-          </div>
+    <div class="w-100">
+        <nav class=" px-5 navbar navbar-expand-lg bg-body-tertiary">
+            <a class="navbar-brand" href="#">Brand</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="/index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Link</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link">cart</a>
+                    </li>
+                </ul>
+                </a>
+                </form>
+            </div>
+        </nav>
 
-        <div class="w-50 d-flex align-items-center px-5 ">
-            <form class="row g-3">
-                <div class="col-md-6">
-                    <label for="name" class="form-label">name</label>
-                    <input type="name" class="form-control" id="name">
+    </div>
+    <div class="container-fluid d-flex justify-content-between align-items-center p-5 my-5 border border-primary shadow bg-light"
+        style="height: 800px;">
+
+        <!-- Login Section -->
+        <div class="d-flex flex-column align-items-center position-relative " style="width: 50%; height: 100%;">
+            <!-- Image with highest z-index -->
+            <div id="toggleHideLogin">
+
+                <img src="/Images/Login.jpg" alt="Login">
+                <button type="button" class="btn switchBtnLogin btn-danger mt-3"
+                    style="position: relative; top:620px ; z-index: 10;">
+                    Already Have An Account?
+                </button>
+            </div>
+
+            <div class="w-75 mt-4">
+
+            <form class="loginForm">
+                <div class="mb-3">
+                    <label for="exampleInputEmail1" class="form-label">Email address</label>
+                    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                    <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
                 </div>
-                <div class="col-md-6 email">
-                    <label for="email" class="form-label">email</label>
-                    <input type="email" class="form-control" id="email">
+                <div class="mb-3">
+                    <label for="exampleInputPassword1" class="form-label">Password</label>
+                    <input type="password" class="form-control" id="exampleInputPassword1">
                 </div>
-                <div class="col-md-6">
-                    <label for="passowrd" class="form-label">passowrd</label>
-                    <input type="passowrd" class="form-control" id="passowrd">
-                </div>
-                <div class="col-md-6">
-                    <label for="re-write_password" class="form-label">re-write_password</label>
-                    <input type="re-write_password" class="form-control" id="re-write _password">
-                </div>
-                <div class="col-12">
-                    <label for="inputAddress" class="form-label">Address</label>
-                    <input type="text" class="form-control" id="inputAddress" placeholder="1234 Main St">
-                  </div>
-                  <div class="col-12">
-                    <label for="inputAddress2" class="form-label">Address 2</label>
-                    <input type="text" class="form-control" id="inputAddress2" placeholder="Apartment, studio, or floor">
-                  </div>
-                  <div class="col-md-6">
-                    <label for="inputCity" class="form-label">City</label>
-                    <input type="text" class="form-control" id="inputCity">
-                  </div>
-                  <div class="col-md-4">
-                    <label for="inputState" class="form-label">State</label>
-                    <select id="inputState" class="form-select">
-                      <option selected>Choose...</option>
-                      <option>...</option>
-                    </select>
-                  </div>
-                
-                <div class="my-3 col-md-6 ">
+                <div class="mb-3 form-check">
                     <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                    <label class="form-check-label" for="exampleCheck1">Remember me</label>
-                </div>                
-                <div class="col-12">
-                        <button type="submit" class="btn btn-primary">Signup</button>
+                    <label class="form-check-label" for="exampleCheck1">Check me out</label>
                 </div>
+                <button type="submit" class="btn btn-primary w-100">Submit</button>
             </form>
         </div>
-    </div>
-    <!-- <form class="row g-3">
-        <div class="col-md-4">
-            <label for="validationDefault01" class="form-label">First name</label>
-            <input type="text" class="form-control" id="validationDefault01" value="Mark" required>
+
+            <!-- Button and text with lower z-index -->
+            <!--  <p style="position: relative; z-index: 1;">
+                Lorem ipsum dolor, sit amet consectetur adipisicing elit. Suscipit, id officiis cum dolore voluptate neque? 
+                Maxime enim nobis, repudiandae minima aliquam sint aperiam, impedit dolor rerum, cumque quas. Corporis, impedit.
+            </p> -->
         </div>
-        <div class="col-md-4">
-            <label for="validationDefault02" class="form-label">Last name</label>
-            <input type="text" class="form-control" id="validationDefault02" value="Otto" required>
-        </div>
-        <div class="col-md-4">
-            <label for="validationDefaultUsername" class="form-label">Username</label>
-            <div class="input-group">
-                <span class="input-group-text" id="inputGroupPrepend2">@</span>
-                <input type="text" class="form-control" id="validationDefaultUsername"
-                    aria-describedby="inputGroupPrepend2" required>
+
+
+        <!-- Register Section -->
+
+            <div class="d-flex flex-column align-items-center position-relative" style="width: 50%; height: 100%;">
+                <!-- Image with highest z-index -->
+                <div id="toggleHideRegister" class="hide">
+
+                    <img src="/Images/register.jpg" alt="Login">
+                    <button type="button" class="btn switchBtnRegister btn-danger mt-3"
+                        style="position: relative; top:620px ; z-index: 10;">
+                        Don't Have An Account?
+                    </button>
+                </div>
+
+                <!-- <img style="z-index: 1;" src="/Images/Register.svg" alt="Register" style="width: 100%; height: auto; object-fit: contain;"> -->
+                <div class="w-75 mt-4">
+                    <form class="row g-3" style="padding: 80px 0;">
+                        <div class="col-md-6">
+                            <label for="name" class="form-label">Name</label>
+                            <input type="text" class="form-control" id="name">
+                        </div>
+                        <div class="col-md-6">
+                            <label for="email" class="form-label">Email</label>
+                            <input type="email" class="form-control" id="email">
+                        </div>
+                        <div class="col-md-6">
+                            <label for="password" class="form-label">Password</label>
+                            <input type="password" class="form-control" id="password">
+                        </div>
+                        <div class="col-md-6">
+                            <label for="repassword" class="form-label">Re-enter Password</label>
+                            <input type="password" class="form-control" id="repassword">
+                        </div>
+                        <div class="col-12">
+                            <label for="inputAddress" class="form-label">Address</label>
+                            <input type="text" class="form-control" id="inputAddress" placeholder="1234 Main St">
+                        </div>
+                        <div class="col-12">
+                            <label for="inputAddress2" class="form-label">Address 2</label>
+                            <input type="text" class="form-control" id="inputAddress2"
+                                placeholder="Apartment, studio, or floor">
+                        </div>
+                        <div class="col-md-6">
+                            <label for="inputCity" class="form-label">City</label>
+                            <input type="text" class="form-control" id="inputCity">
+                        </div>
+                        <div class="col-md-4">
+                            <label for="inputState" class="form-label">State</label>
+                            <select id="inputState" class="form-select">
+                                <option selected>Choose...</option>
+                                <option>...</option>
+                            </select>
+                        </div>
+                        <div class="col-12 my-3">
+                            <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                            <label class="form-check-label" for="exampleCheck1">Remember me</label>
+                        </div>
+                        <div class="col-12">
+                            <button type="submit" class="btn btn-primary w-100">Signup</button>
+                        </div>
+                    </form>
+                </div>
             </div>
-        </div>
-        <div class="col-md-6">
-            <label for="validationDefault03" class="form-label">City</label>
-            <input type="text" class="form-control" id="validationDefault03" required>
-        </div>
-        <div class="col-md-3">
-            <label for="validationDefault04" class="form-label">State</label>
-            <select class="form-select" id="validationDefault04" required>
-                <option selected disabled value="">Choose...</option>
-                <option>...</option>
-            </select>
-        </div>
-        <div class="col-md-3">
-            <label for="validationDefault05" class="form-label">Zip</label>
-            <input type="text" class="form-control" id="validationDefault05" required>
-        </div>
-        <div class="col-12">
-            <div class="form-check">
-                <input class="form-check-input" type="checkbox" value="" id="invalidCheck2" required>
-                <label class="form-check-label" for="invalidCheck2">
-                    Agree to terms and conditions
-                </label>
-            </div>
-        </div>
-        <div class="col-12">
-            <button class="btn btn-primary" type="submit">Submit form</button>
-        </div>
-    </form> -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    <script type="module" src="./register.js"></script>
+
+
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+        <script type="module" src="./register.js"></script>
 </body>
 
 </html>
