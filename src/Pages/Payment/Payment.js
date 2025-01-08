@@ -22,8 +22,9 @@ const debitCreditCardInput = document.getElementById('debitCreditCard');
 const cashOnDeliveryInput = document.getElementById('cashOnDelivery');
 const shippingFeeElement = document.querySelector(".text-success"); //  shipping fee
 
-const paymentModal = new bootstrap.Modal(document.getElementById('paymentModal'));
 
+const paymentModals = new bootstrap.Modal(document.getElementById('paymentModals')); //for payment modal 
+paymentModals.show(); // show modal
 // update shipping fee
 function updateShippingFee() {
   if (debitCreditCardInput.checked) {
@@ -37,7 +38,7 @@ function updateShippingFee() {
 // for radio button chaanges
 debitCreditCardInput.addEventListener('change', () => {
   if (debitCreditCardInput.checked) {
-    paymentModal.show(); // show modal
+    paymentModals.show(); // show modal
   }
   updateShippingFee(); });
 

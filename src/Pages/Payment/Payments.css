@@ -1,92 +1,227 @@
-/* Payments.css */
 
-/* General Styles */
-body {
-    font-family: Arial, sans-serif;
-    background-color: #f5f5f5;
-  }
-  
-  .container {
-    max-width: 1200px;
-  }
-  
-  /* Shipping Address */
-  .card {
-    border: 1px solid #dee2e6;
-    border-radius: 0.5rem;
-    background-color: #fff;
-    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
-  }
-  
-  .card-title {
-    font-size: 1.5rem;
-    font-weight: 600;
-    margin-bottom: 1.5rem;
-  }
-  
-  .form-group {
-    margin-bottom: 1.5rem;
-  }
-  
-  .input-group-append .btn {
-    border-top-left-radius: 0;
-    border-bottom-left-radius: 0;
-  }
-  
-  /* Your Order */
-  .card-subtitle {
-    font-size: 1rem;
-    font-weight: 500;
-    color: #6c757d;
-  }
-  
-  .card-text {
-    font-size: 1rem;
-  }
-  
-  .text-success {
-    color: #28a745 !important;
-  }
-  
-  /* Payment */
-  .badge {
-    font-size: 0.75rem;
-    font-weight: 400;
-    padding: 0.25rem 0.5rem;
-    margin-left: 0.5rem;
-    background-color: #6c757d;
-    color: #fff;
-  }
-  
-  /* Modal */
-  .modal-title {
-    font-size: 1.5rem;
-    font-weight: 600;
-  }
-  
-  .form-label {
-    font-size: 1rem;
-    font-weight: 500;
-  }
-  
-  .form-control {
-    font-size: 1rem;
-    padding: 0.75rem 1rem;
-  }
-  
-  .modal-footer .btn {
-    font-size: 1rem;
-    padding: 0.75rem 1.5rem;
-  }
-  
-  /* Order Summary */
-  .alert {
-    font-size: 1rem;
-    padding: 0.75rem 1.5rem;
-  }
-  
-  .btn-primary {
-    font-size: 1rem;
-    padding: 0.75rem 1.5rem;
-  }
-  
+#paymentModals .modal-header {
+    background-color: #1344cc; /* Vibrant background color */
+    color: #fff; /* White text for contrast */
+    border-bottom: 2px solid #d2cece; /* Subtle divider */
+    padding: 15px 20px; /* Additional padding */
+}
+#paymentModals .modal-content {
+    max-width: 90%; /* Ensure the modal expands for larger content */
+    margin: 0 auto;
+}
+
+#paymentModals .modal-body {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: space-between;
+    
+}
+
+#paymentModals .card-info {
+    background:#d2cece;
+    border-radius: 15px;
+    padding: 20px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    width: 300px;/* Adjusted for better spacing */
+    height: 300px;
+}
+
+#paymentModals .card-input {
+    border: none;
+    border-bottom: 1px solid #ccc;
+    border-radius: 0;
+    padding: 10px;
+    font-size: 16px;
+}
+
+#paymentModals .card-info h5 {
+    font-weight: bold;
+    font-size: 18px;
+}
+
+#paymentModals .card-info p {
+    font-size: 14px;
+    
+    margin-bottom: 20px;
+    
+}
+
+#paymentModals .card-info .d-flex img {
+    width: 40px;
+    height: auto;
+}
+
+#paymentModals .form-container {
+    width: 50%; 
+    min-width: 300px;
+    background-image: url("imgs/bg_payment.avif");
+    
+}
+
+#paymentModals .form-control,
+#paymentModals .form-select {
+    border-radius: 50px;
+    padding: 10px 20px;
+    border-bottom: 1px solid #1344cc;
+}
+
+#paymentModals .row .form-control {
+    margin-bottom: 10px;
+}
+
+
+
+#paymentModals .modal-footer .btn-primary {
+    background-color: #1344cc; /* Vibrant primary button color */
+    border: none;
+    padding: 10px 20px;
+    border-radius: 50px;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+#paymentModals .modal-footer .btn-primary:hover {
+    background-color: #082277; /* Darker shade on hover */
+    transform: scale(1.05); /* Slight zoom effect */
+}
+
+/* Add transition for input fields on focus */
+#paymentModals .form-control:focus,
+#paymentModals .form-select:focus,
+#paymentModals .card-input:focus {
+    transform: scale(1.05); /* Slight zoom effect */
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out; /* Smooth scaling */
+    box-shadow: 0 0 8px rgba(19, 68, 204, 0.3); /* Optional glow effect */
+    outline: none; /* Remove default focus outline */
+}
+
+/* Ensure the scaling applies only when typing */
+#paymentModals .form-control,
+#paymentModals .form-select,
+#paymentModals .card-input {
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out; /* Prepare for scaling */
+}
+
+
+/* Blur the background when the modal is open */
+.modal-backdrop {
+    backdrop-filter: blur(5px); /* Adjust blur intensity */
+    background-color: rgba(0, 0, 0, 0.3); /* Slightly darken the background */
+}
+
+/* Ensure the blur applies smoothly */
+.modal.fade.show {
+    backdrop-filter: blur(5px);
+    transition: backdrop-filter 0.3s ease-in-out;
+}
+
+/* Add custom styles for error message */
+.container .modal-body #errorMessage {
+    font-size: 16px;
+    color: red;
+    font-weight: bold;
+}
+
+
+
+
+
+
+/* Container Styling */
+.container {
+    background-color: #f9f9f9; /* Light gray background for the whole container */
+    border-radius: 10px; /* Rounded corners for a smooth look */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Light shadow for depth */
+    padding: 30px; /* Increase padding inside the container */
+    background-image: url("imgs/main\ bg.png");
+ 
+}
+
+/* Header Styling */
+.container .card-title {
+    font-weight: bold;
+    font-size: 24px;
+    color: #1b28e4; /* Vibrant blue color for headers */
+    margin-bottom: 15px; /* Additional margin for separation */
+}
+
+/* Row Spacing for Shipping Address and Order Summary */
+.container .row {
+    margin-bottom: 20px; /* Space between sections */
+}
+
+/* Style the Card Border */
+.container .card {
+    border-radius: 15px; /* Rounded corners for the cards */
+    border: 3px solid #0df0f8 !important; /* Light border around cards */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Soft shadow effect */
+    background-color: rgb(129, 169, 177);
+}
+
+/* Form Input Styling */
+.container .form-control,
+.container .form-select {
+    border-radius: 50px; /* Rounded inputs */
+    padding: 12px 20px; /* Comfortable padding */
+    border: 1px solid #ccc; /* Border color for inputs */
+    transition: border-color 0.3s ease-in-out; /* Smooth transition on focus */
+}
+
+.container .form-control:focus,
+.container .form-select:focus {
+    border-color: #1344cc; /* Highlight with blue on focus */
+    box-shadow: 0 0 6px rgba(19, 68, 204, 0.3); /* Subtle glow effect */
+}
+
+/* Form Check (Radio Buttons) */
+.container .form-check-label {
+    font-size: 16px; /* Slightly larger text for readability */
+}
+
+.container .form-check-input {
+    margin-right: 10px; /* Extra space between radio button and label */
+}
+
+
+
+/* Add hover effect for buttons inside container */
+.container .btn:hover {
+    transform: scale(1.05); /* Slight zoom effect */
+    background-color: #082277; /* Darker shade for buttons */
+}
+
+/* Style the "Place Order" button */
+.container .btn-primary {
+    background-color: #1344cc;
+    padding: 12px 25px;
+    border-radius: 50px;
+}
+
+/* Spacing between items in "Your Order" section */
+.container .your-order .col-md-4 {
+    margin-bottom: 15px;
+}
+
+/* Style for Estimated Time in Your Order section */
+.container .text-success {
+    font-weight: bold;
+    color: green;
+}
+
+
+/* add address button  */
+.input-group {
+    display: flex;
+    align-items: center;
+    gap: 10px; /* Adjust spacing between input and button */
+}
+
+.input-group .form-control {
+    flex-grow: 1; /* Make input field take available width */
+}
+
+
+h3.card-title {
+    color: black !important ; 
+}
+
