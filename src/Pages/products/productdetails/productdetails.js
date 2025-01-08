@@ -7,7 +7,7 @@ document.addEventListener("DOMContentLoaded", async () => {
   const productid = urlParams.get("id"); // id
   console.log("🚀 ~ productid:", productid);
 
-  // Fetch data
+  // Fetch data import { fetchData } from "../products";
   const fetchedData = await fetchData();
 
   // Filter product by ID

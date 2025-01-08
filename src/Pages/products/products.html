@@ -84,10 +84,31 @@
     </nav>
     <!DOCTYPE html>
 
-    <select class="form-select" aria-label="Default select example">
+    <select
+      class="form-select productCategory"
+      aria-label="Default select example"
+    >
       <option value="">All Categories</option>
     </select>
-
+    <select
+      class="form-select productBrand"
+      aria-label="Default select example"
+    >
+      <option value="">All Brands</option>
+    </select>
+    <select
+      class="form-select sortProductByPrice"
+      aria-label="Default select example"
+    >
+      <option value="">Sort Price</option>
+      <option value="ascending">Low to High</option>
+      <option value="descending">High to Low</option>
+    </select>
+    <select class="form-select sortProduct" aria-label="Default select example">
+      <option value="">Sort Name</option>
+      <option value="A-Z">A-Z</option>
+      <option value="Z-A">Z-A</option>
+    </select>
     <section class="container">
       <div class="row products mt-5"></div>
     </section>

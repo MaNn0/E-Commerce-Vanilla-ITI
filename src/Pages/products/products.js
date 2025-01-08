@@ -35,15 +35,13 @@ const renderProducts = (data, container) => {
 };
 
 // Add product to cart
-//Local Storage set we get
+// Local Storage set we get
+// brg3o mn string le object local storage msh bt2ra object [object object]
+// add al product al new + old by Spread Operator
 const addToCart = (productId, products) => {
   const product = products.find((p) => p.id == productId);
 
-  //brg3o mn string le object local storage msh bt2ra object [object object]
-
   const existingProducts = JSON.parse(localStorage.getItem("products")) || [];
-
-  //add al product al new + old by Spread Operator
 
   const productIndex = existingProducts.findIndex((p) => p.id === productId);
   if (productIndex !== -1) {
@@ -60,26 +58,31 @@ const addToCart = (productId, products) => {
 // Initialize the app
 // So i can put a validation an law al current Page hya .form-select 3shan error an lma agyb al fetch bysh7l al model kolo
 // fe .form-select  bt3ml error 3mlt rap le kol haga
-
 const initializeApp = async () => {
   const fetchedData = await fetchData();
   const productsContainer = document.querySelector(".products");
-  const categorySelect = document.querySelector(".form-select");
+  const categorySelect = document.querySelector(".productCategory");
+  const brandSelect = document.querySelector(".productBrand");
+  const sortSelectByPrice = document.querySelector(".sortProductByPrice");
+  const sortSelectByTitle = document.querySelector(".sortProduct");
 
   // Check if required elements exist
-  //3shan kan bygyly Error ano msh Loaded or msh mwgood SomeHow
-
-  if (!productsContainer || !categorySelect) {
+  // 3shan kan bygyly Error ano msh Loaded or msh mwgood SomeHow
+  if (
+    !productsContainer ||
+    !categorySelect ||
+    !brandSelect ||
+    !sortSelectByPrice ||
+    !sortSelectByTitle
+  ) {
     console.error("Required DOM elements not found.");
     return;
   }
 
   // Render all products initially
-
   renderProducts(fetchedData, productsContainer);
 
   // Add event listener for cart buttons
-
   productsContainer.addEventListener("click", (event) => {
     if (event.target.classList.contains("btnCart")) {
       const productId = event.target.getAttribute("productData");
@@ -98,24 +101,78 @@ const initializeApp = async () => {
     categorySelect.appendChild(option);
   });
 
-  // Filter products by category
-  // if Category ==
-  categorySelect.addEventListener("change", (event) => {
-    const selectedCategory = event.target.value;
-    const filteredProducts = selectedCategory
+  // Populate brand dropdown
+  const uniqueBrands = [
+    ...new Set(fetchedData.map((product) => product.brand)),
+  ];
+  uniqueBrands.forEach((brand) => {
+    const option = document.createElement("option");
+    option.value = brand;
+    option.textContent = brand;
+    brandSelect.appendChild(option);
+  });
+
+  // Handle filtering and sorting
+  const updateProducts = () => {
+    const selectedCategory = categorySelect.value;
+    const selectedBrand = brandSelect.value;
+    const sortPrice = sortSelectByPrice.value;
+    const sortTitle = sortSelectByTitle.value;
+
+    // Step 1: Filter products by category
+    let filteredProducts = selectedCategory
       ? fetchedData.filter((product) => product.category === selectedCategory)
       : fetchedData;
-    renderProducts(filteredProducts, productsContainer);
-  });
+
+    // Step 2: Filter products by brand
+    filteredProducts = selectedBrand
+      ? filteredProducts.filter((product) => product.brand === selectedBrand)
+      : filteredProducts;
+
+    // Step 3: Sort products by price
+    let sortedProductsByPrice;
+    if (sortPrice === "ascending") {
+      sortedProductsByPrice = [...filteredProducts].sort(
+        (a, b) => a.price - b.price
+      );
+    } else if (sortPrice === "descending") {
+      sortedProductsByPrice = [...filteredProducts].sort(
+        (a, b) => b.price - a.price
+      );
+    } else {
+      sortedProductsByPrice = filteredProducts; // No sorting
+    }
+
+    // Step 4: Sort products by title
+    let sortedProductsByTitle;
+    if (sortTitle === "A-Z") {
+      sortedProductsByTitle = [...sortedProductsByPrice].sort((a, b) =>
+        a.title.localeCompare(b.title)
+      );
+    } else if (sortTitle === "Z-A") {
+      sortedProductsByTitle = [...sortedProductsByPrice].sort((a, b) =>
+        b.title.localeCompare(a.title)
+      );
+    } else {
+      sortedProductsByTitle = sortedProductsByPrice; // No sorting
+    }
+
+    // Step 5: Render the sorted and filtered products
+    renderProducts(sortedProductsByTitle, productsContainer);
+  };
+
+  // Add event listeners for filtering and sorting
+  categorySelect.addEventListener("change", updateProducts);
+  brandSelect.addEventListener("change", updateProducts);
+  sortSelectByPrice.addEventListener("change", updateProducts);
+  sortSelectByTitle.addEventListener("change", updateProducts);
 };
 
 // Check if the current page is the products page
 // 3shan law m3mltsh keda bygyly .selectform Not found 3shan ana bgyb al data bta3t al product mn al export fa al model bysht8l
 const currentPath = window.location.pathname;
-
 if (currentPath === "/src/Pages/products/products.html") {
   // Initialize the app after the DOM is loaded
   // 3shan bygyly Bug ano msh byt3mlo Load ref:=>https://developer.mozilla.org/en-US/docs/Web/API/Document/DOMContentLoaded_event
-
   document.addEventListener("DOMContentLoaded", initializeApp);
 }
