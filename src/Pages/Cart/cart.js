@@ -9,6 +9,10 @@ const updateQuantity = () => {
     (acc, product) => acc + product.price * product.quantity,
     0
   );
+  document.querySelector(".checkoutButton").addEventListener("click", (event) => {
+    localStorage.setItem("totalPrice", JSON.stringify(totalPrice));
+    window.location.href='../Payment/Payment.html';
+  });
   document.querySelector(
     ".titleCount"
   ).innerHTML = `${products.length} item(s)`;
@@ -20,10 +24,9 @@ const updateQuantity = () => {
   document.querySelector(".totalPrice").innerHTML = `${totalPrice
     .toString()
     .replace(/\B(?=(\d{3})+(?!\d))/g, ",")} EGP`;
-  document.querySelector(".allItems").innerHTML = products
+  document.querySelector(".allItems").innerHTML = products.length > 0 ? products
     .map((product, index) => {
       return `
-           
           <div class="cartItem">
 
           <div class="imageContainer">
@@ -49,7 +52,7 @@ const updateQuantity = () => {
         </div>
 `;
     })
-    .join("");
+    .join("") : "<h3>No items in cart.</h3>";
 };
 
 document.querySelector(".allItems").addEventListener("click", (event) => {
@@ -69,9 +72,8 @@ document.querySelector(".allItems").addEventListener("click", (event) => {
     else{
         localStorage.setItem("products", JSON.stringify(products));
     }
-    
-
     updateQuantity();
   }
 });
+
 updateQuantity();
