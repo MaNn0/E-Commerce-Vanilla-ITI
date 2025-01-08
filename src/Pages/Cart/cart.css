@@ -58,11 +58,15 @@ body {
     font-size: large;
 }
 
-.subTotal {
+.subTotal{
+    font-weight: lighter;
+    font-size: large;
+    
+}
+.discount{
     font-weight: lighter;
     font-size: large;
 }
-
 .shippingFee {
     font-weight: lighter;
     font-size: large;

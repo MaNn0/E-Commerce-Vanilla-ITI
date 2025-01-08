@@ -37,7 +37,7 @@ const updateQuantity = () => {
           <div class="total d-flex flex-row-reverse mx-2">
             <span class="currency">EGP</span><span class="price">${product.price}</span>
           </div>
-
+        
 
           <div class="itemCount mx-2">
             Qty:
