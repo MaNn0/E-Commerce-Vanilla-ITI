@@ -2,15 +2,19 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.min.js";
 
 const products = JSON.parse(localStorage.getItem("products"));
-console.log("🚀 ~ Product:", products);
 
 const updateQuantity = () => {
   let totalPrice = products.reduce(
     (acc, product) => acc + product.price * product.quantity,
     0
   );
+  let discount = products.reduce(
+    (acc, product) => product.discount? acc + product.discount * product.quantity : acc + 0,
+    0
+  );
   document.querySelector(".checkoutButton").addEventListener("click", (event) => {
     localStorage.setItem("totalPrice", JSON.stringify(totalPrice));
+    localStorage.setItem("discount", JSON.stringify(discount));
     window.location.href='../Payment/Payment.html';
   });
   document.querySelector(

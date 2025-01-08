@@ -2,181 +2,249 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
-    <link rel="stylesheet" href="./register.css">
-    <link rel="stylesheet" href="../../style.css">
-    <title>E-Commerce</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="./register.css">
+  <link rel="stylesheet" href="../../style.css">
+
+
+  <title>E-Commerce</title>
 </head>
 
 <!-- src/Pages/Register/register.html -->
 
 <body>
-    <div class="w-100">
-        <nav class="navbar navbar-expand-lg bg-body-tertiary">
-            <div class="container-fluid">
-             <div class="left">
-               <span class="navbar-brand mb-0 h1">Khaled's Store |</span>
-                    <!-- <a class="navbar-brand" href="#">
+  <div class="w-100">
+    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+      <div class="container-fluid">
+        <div class="left">
+          <span class="navbar-brand mb-0 h1">Khaled's Store |</span>
+          <!-- <a class="navbar-brand" href="#">
                       <i class="fa-brands fa-slack"></i>
                     </a> -->
-          
-                  </div>
-                    <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav">
-                  <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="../../../index.html"><i class="fa-solid fa-house"></i>Home</a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link" href="./src/Pages/Profile/Profile.html"><i class="fa-regular fa-user"></i>Profile</a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link" href="./src/Pages/Cart/cart.html"><i class="fa-solid fa-cart-shopping"></i>Cart</a>
-                  </li>
-                <!-- <li class="nav-item">
+        </div>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav">
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="../../../index.html"><i
+                  class="fa-solid fa-house"></i>Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="./src/Pages/Profile/Profile.html"><i class="fa-regular fa-user"></i>Profile</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="./src/Pages/Cart/cart.html"><i class="fa-solid fa-cart-shopping"></i>Cart</a>
+            </li>
+            <!-- <li class="nav-item">
                     <a class="nav-link" href=""><i class="fa-solid fa-bag-shopping"></i>Cart</a>
                   </li> -->
-                     <li class="nav-item">
-                    <a class="nav-link" href="./src/Pages/Payment/Payment.html"><i class="fa-solid fa-credit-card"></i>Payment</a>
-                  </li>
-                </ul>
-              </div>
-              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-              </button>
-              
-              <div class="iconLinks collapse navbar-collapse" id="navbarNav">
-                           <form class="d-flex">
-                        <input
-                          class="form-control me-2"
-                          type="search"
-                          placeholder="Search"
-                          aria-label="Search"
-                        />
-                        <button class="btn btn-outline-success" type="submit">
-                          Search
-                        </button>
-                        <a href="./src//Pages/Register/register.html">
-                          <button  class="btn btn-outline-success ms-2" type="button">
-                            Signup
-                          </button>
-                        </a>
-                      </form>
-              </div>
-            </div>
-          </nav>
-
-    </div>
-    <div class="container-fluid d-flex justify-content-between align-items-center p-5 my-5 border border-primary shadow bg-light"
-        style="height: 800px;">
-
-        <!-- Login Section -->
-        <div class="d-flex flex-column align-items-center position-relative " style="width: 50%; height: 100%;">
-            <!-- Image with highest z-index -->
-            <div id="toggleHideLogin">
-
-                <img src="/Images/Login.jpg" alt="Login">
-                <button type="button" class="btn switchBtnLogin btn-danger mt-3"
-                    style="position: relative; top:620px ; z-index: 10;">
-                    Already Have An Account?
-                </button>
-            </div>
-
-            <div class="w-75 mt-4">
-
-            <form class="loginForm">
-                <div class="mb-3">
-                    <label for="exampleInputEmail1" class="form-label">Email address</label>
-                    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
-                    <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
-                </div>
-                <div class="mb-3">
-                    <label for="exampleInputPassword1" class="form-label">Password</label>
-                    <input type="password" class="form-control" id="exampleInputPassword1">
-                </div>
-                <div class="mb-3 form-check">
-                    <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                    <label class="form-check-label" for="exampleCheck1">Check me out</label>
-                </div>
-                <button type="submit" class="btn btn-primary w-100">Submit</button>
-            </form>
+            <li class="nav-item">
+              <a class="nav-link" href="./src/Pages/Payment/Payment.html"><i
+                  class="fa-solid fa-credit-card"></i>Payment</a>
+            </li>
+          </ul>
         </div>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+          aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
 
-            <!-- Button and text with lower z-index -->
-            <!--  <p style="position: relative; z-index: 1;">
+        <div class="iconLinks collapse navbar-collapse" id="navbarNav">
+          <form class="d-flex">
+            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
+            <button class="btn btn-outline-success" type="submit">
+              Search
+            </button>
+            <a href="./src//Pages/Register/register.html">
+              <button class="btn btn-outline-success ms-2" type="button">
+                Signup
+              </button>
+            </a>
+          </form>
+        </div>
+      </div>
+    </nav>
+
+  </div>
+  <div
+    class="container-fluid d-flex justify-content-between align-items-center p-5 my-5 border border-primary shadow bg-light"
+    style="height: 800px;">
+
+    <!-- Login Section -->
+    <div class="d-flex flex-column align-items-center position-relative " style="width: 50%; height: 100%;">
+      <!-- Image with highest z-index -->
+      <div id="toggleHideLogin">
+
+        <img src="/Images/Login.jpg" alt="Login">
+        <button type="button" class="btn switchBtnLogin btn-danger mt-3"
+          style="position: relative; top:620px ; z-index: 10;">
+          Already Have An Account?
+        </button>
+      </div>
+
+      <div class="w-75 mt-4">
+
+        <form class="loginForm">
+          <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label">Email address</label>
+            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+            <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+          </div>
+          <div class="mb-3">
+            <label for="exampleInputPassword1" class="form-label">Password</label>
+            <input type="password" class="form-control" id="exampleInputPassword1">
+          </div>
+          <div class="mb-3 form-check">
+            <input type="checkbox" class="form-check-input" id="exampleCheck1">
+            <label class="form-check-label" for="exampleCheck1">Check me out</label>
+          </div>
+          <button type="submit" class="btn btn-primary w-100">Submit</button>
+        </form>
+      </div>
+
+      <!-- Button and text with lower z-index -->
+      <!--  <p style="position: relative; z-index: 1;">
                 Lorem ipsum dolor, sit amet consectetur adipisicing elit. Suscipit, id officiis cum dolore voluptate neque? 
                 Maxime enim nobis, repudiandae minima aliquam sint aperiam, impedit dolor rerum, cumque quas. Corporis, impedit.
             </p> -->
-        </div>
+    </div>
 
 
-        <!-- Register Section -->
+    <!-- Register Section -->
 
-            <div class="d-flex flex-column align-items-center position-relative" style="width: 50%; height: 100%;">
-                <!-- Image with highest z-index -->
-                <div id="toggleHideRegister" class="hide">
+    <div class="d-flex flex-column align-items-center position-relative" style="width: 50%; height: 100%;">
+      <!-- Image with highest z-index -->
+      <div id="toggleHideRegister" class="hide">
 
-                    <img src="/Images/register.jpg" alt="Login">
-                    <button type="button" class="btn switchBtnRegister btn-danger mt-3"
-                        style="position: relative; top:620px ; z-index: 10;">
-                        Don't Have An Account?
-                    </button>
-                </div>
+        <img src="/Images/register.jpg" alt="Login">
+        <button type="button" class="btn switchBtnRegister btn-danger mt-3"
+          style="position: relative; top:620px ; z-index: 10;">
+          Don't Have An Account?
+        </button>
+      </div>
 
-                <!-- <img style="z-index: 1;" src="/Images/Register.svg" alt="Register" style="width: 100%; height: auto; object-fit: contain;"> -->
-                <div class="w-75 mt-4">
-                    <form class="row g-3" style="padding: 80px 0;">
-                        <div class="col-md-6">
-                            <label for="name" class="form-label">Name</label>
-                            <input type="text" class="form-control" id="name">
-                        </div>
-                        <div class="col-md-6">
-                            <label for="email" class="form-label">Email</label>
-                            <input type="email" class="form-control" id="email">
-                        </div>
-                        <div class="col-md-6">
-                            <label for="password" class="form-label">Password</label>
-                            <input type="password" class="form-control" id="password">
-                        </div>
-                        <div class="col-md-6">
-                            <label for="repassword" class="form-label">Re-enter Password</label>
-                            <input type="password" class="form-control" id="repassword">
-                        </div>
-                        <div class="col-12">
-                            <label for="inputAddress" class="form-label">Address</label>
-                            <input type="text" class="form-control" id="inputAddress" placeholder="1234 Main St">
-                        </div>
-                        <div class="col-12">
-                            <label for="inputAddress2" class="form-label">Address 2</label>
-                            <input type="text" class="form-control" id="inputAddress2"
-                                placeholder="Apartment, studio, or floor">
-                        </div>
-                        <div class="col-md-6">
-                            <label for="inputCity" class="form-label">City</label>
-                            <input type="text" class="form-control" id="inputCity">
-                        </div>
-                        <div class="col-md-4">
-                            <label for="inputState" class="form-label">State</label>
-                            <select id="inputState" class="form-select">
-                                <option selected>Choose...</option>
-                                <option>...</option>
-                            </select>
-                        </div>
-                        <div class="col-12 my-3">
-                            <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                            <label class="form-check-label" for="exampleCheck1">Remember me</label>
-                        </div>
-                        <div class="col-12">
-                            <button type="submit" class="btn btn-primary w-100">Signup</button>
-                        </div>
-                    </form>
-                </div>
+      <!-- <img style="z-index: 1;" src="/Images/Register.svg" alt="Register" style="width: 100%; height: auto; object-fit: contain;"> -->
+      <div class="w-75 mt-4">
+        <form class="row g-3 signup" style="padding: 80px 0;">
+          <div class="col-md-6">
+            <label for="name" class="form-label">First Name</label>
+            <input name="name" type="text" class="form-control" id="name">
+            <div class="form-text nameError text-danger d-none" id="basic-addon4">Required</div>
+          </div>
+          <div class="col-md-6">
+            <label for="name" class="form-label">Last Name</label>
+            <input name="name" type="text" class="form-control" id="name2">
+            <div class="form-text name2Error text-danger d-none" id="basic-addon4">Required</div>
+          </div>
+
+          <!-- {formError.userNameError &&
+            <div className='form-text text-danger'>
+                {formError.userNameError}
             </div>
+        } -->
+          <div class="col-md-12">
+            <label for="email" class="form-label">Email</label>
+            <input type="text" class="form-control" id="email">
+            <div class="form-text emailError text-danger" id="basic-addon4"></div>
+          </div>
+          <div class="col-md-6">
+            <label for="password" class="form-label">Password</label>
+            <input type="password" class="form-control" id="password">
+            <div class="form-text passwordError text-danger " id="basic-addon4">
+            </div>
+          </div>
+          <div class="col-md-6">
+            <label for="repassword" class="form-label">Re-enter Password</label>
+            <input type="password" class="form-control" id="repassword">
+            <div class="form-text repasswordError text-danger" id="basic-addon4"></div>
+          </div>
+          <div class="col-6">
+            <label for="inputAddress" class="form-label">Address</label>
+            <input type="text" class="form-control" id="inputAddress" placeholder="1234 Main St">
+            <div class="form-text addressError text-danger " id="basic-addon4"></div>
+          </div>
+          <div class="col-6">
+            <label for="inputAddress" class="form-label">Address 2 (optional)</label>
+            <input type="text" class="form-control" id="inputAddress" placeholder="1234 Main St">
+          </div>
+          <div class="col-md-12">
+            <label for="inputCity" class="form-label">City</label>
+            <input type="text" class="form-control" id="inputCity">
+            <div class="form-text cityError text-danger " id="basic-addon4"></div>
+          </div>
+          <!-- <div class="col-12 my-3">
+            <input type="checkbox" class="form-check-input" id="exampleCheck1">
+            <label class="form-check-label" for="exampleCheck1">Remember me</label>
+          </div> -->
+          <div class="col-12">
+            <button type="submit" class="btn btn-primary w-100">Signup</button>
+          </div>
+        </form>
+      </div>
+    </div>
+    <button id="showModalButton" class="d-none" data-bs-toggle="modal" data-bs-target="#exampleModalToggle"></button>
+
+    <div class="modal fade" id="exampleModalToggle" tabindex="-1" aria-hidden="true"
+      aria-labelledby="exampleModalToggleLabel">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalToggleLabel">Your OTP has been sent to your email.</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <div class="mb-3">
+              <label for="exampleFormControlInput1" class="form-label">Enter OTP</label>
+              <input type="text" class="form-control" id="otpInput" style="text-transform: uppercase;">
+              <div class="form-text otpError text-danger" id="basic-addon4"></div>
+            </div>
+          </div>
+
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary check">Check for OTP</button>
+            <button class="btn btn-success disabled verify" data-bs-target="#exampleModalToggle2"
+              data-bs-toggle="modal">Verify</button>
+
+            <!-- <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Close</button> -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <button id="showModalButton2" class="d-none" data-bs-toggle="modal" data-bs-target="#exampleModalToggle2"></button>
+  <div class="modal fade" id="exampleModalToggle2" aria-hidden="true" aria-labelledby="exampleModalToggleLabel2"
+    tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5 welcome" id="exampleModalToggleLabel2"></h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          Account Has Been Created Successfully 🎉
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
 
 
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-        <script type="module" src="./register.js"></script>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script type="module" src="./register.js"></script>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js">
+  </script>
+  <script type="text/javascript">
+    (function () {
+      emailjs.init({
+        publicKey: "WjCc9czE-m-fAKXHX",
+      });
+    })();
+  </script>
+
 </body>
 
 </html>

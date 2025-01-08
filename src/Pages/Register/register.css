@@ -55,14 +55,3 @@ img {
     visibility: visible;
     transition: opacity 0.5s ease, visibility 0.5s ease;
 }
-
-/* Add button animations */
-/* .switchBtnLogin,
-.switchBtnRegister {
-    transition: transform 0.3s ease-in-out;
-}
-
-.switchBtnLogin:hover,
-.switchBtnRegister:hover {
-    transform: scale(1.1);
-} */
