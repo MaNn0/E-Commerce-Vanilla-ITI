@@ -12,6 +12,10 @@ const updateQuantity = () => {
     (acc, product) => product.discount? acc + product.discount * product.quantity : acc + 0,
     0
   );
+  let quantity = products.reduce(
+    (acc, product) =>  acc + product.quantity ,
+    0
+  );
   document.querySelector(".checkoutButton").addEventListener("click", (event) => {
     localStorage.setItem("totalPrice", JSON.stringify(totalPrice));
     localStorage.setItem("discount", JSON.stringify(discount));
@@ -19,9 +23,9 @@ const updateQuantity = () => {
   });
   document.querySelector(
     ".titleCount"
-  ).innerHTML = `${products.length} item(s)`;
+  ).innerHTML = `${quantity} item(s)`;
   document.querySelector(".subTotal").innerHTML = `Subtotal: ${
-    products.length
+    quantity
   } item(s) <span>EGP ${totalPrice
     .toString()
     .replace(/\B(?=(\d{3})+(?!\d))/g, ",")}</span>`;
