@@ -48,8 +48,17 @@ document.querySelector(".products").addEventListener("click", function (event) {
     console.log("Product ID:", productId);
     const product = fetchedData.find((p) => p.id == productId);
     const existingProducts = JSON.parse(localStorage.getItem("products")) || [];
-    const updatedProducts = [...existingProducts, product];
-    localStorage.setItem("products", JSON.stringify(updatedProducts));
+
+
+    const productIndex = existingProducts.findIndex((p) => p.id === productId);
+    if (productIndex !== -1) {
+      existingProducts[productIndex].quantity += 1;
+    } else {
+      product.quantity = 1;
+      existingProducts.push(product);
+    }
+
+    localStorage.setItem("products", JSON.stringify(existingProducts));
     console.log("Product Data:", product);
     console.log("Updated Products:", updatedProducts);
   }

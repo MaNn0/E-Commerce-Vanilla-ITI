@@ -4,41 +4,74 @@ import "bootstrap/dist/js/bootstrap.bundle.min.js";
 const products = JSON.parse(localStorage.getItem("products"));
 console.log("🚀 ~ Product:", products);
 
-document.querySelector(".cartItem").innerHTML = products.map((product) => {
-  return `
-  <h1>Cart <span class="titleCount">${products.length}</span> </h1>
-        <div class="row">
-           <div class="allItems col-7 mt-4">
-                 <div class="cartItem">
+const updateQuantity = () => {
+  let totalPrice = products.reduce(
+    (acc, product) => acc + product.price * product.quantity,
+    0
+  );
+  document.querySelector(
+    ".titleCount"
+  ).innerHTML = `${products.length} item(s)`;
+  document.querySelector(".subTotal").innerHTML = `Subtotal: ${
+    products.length
+  } item(s) <span>EGP ${totalPrice
+    .toString()
+    .replace(/\B(?=(\d{3})+(?!\d))/g, ",")}</span>`;
+  document.querySelector(".totalPrice").innerHTML = `${totalPrice
+    .toString()
+    .replace(/\B(?=(\d{3})+(?!\d))/g, ",")} EGP`;
+  document.querySelector(".allItems").innerHTML = products
+    .map((product, index) => {
+      return `
+           
+          <div class="cartItem">
 
-                     <div class="imageContainer">
-                         <img class="image" src=${product.image} height="164px" width="120px">
-                    </div>
+          <div class="imageContainer">
+            <img class="image" src="${product.image}" height="164px" width="140px">
+          </div>
 
-                    <div class="itemName">
-                        <h4>item name</h4>
-                    </div>
+          <div class="itemName">
+            <span>${product.title}</span>
+          </div>
 
-                 <div class="total d-flex flex-row-reverse mx-2">
-                        <span class="currency">EGP</span><span class="price">124.00</span>
-                    </div>
+          <div class="total d-flex flex-row-reverse mx-2">
+            <span class="currency">EGP</span><span class="price">${product.price}</span>
+          </div>
 
-                     <div class="buttonContainer">
-                         <button class="removeButton"><img src="./images/trash-solid.svg" width="20px"
-                                 height="20px"></button>
-                    </div>
 
-                     <div class="itemCount mx-2">
-                        <label for="qty">Qty </label>
-                         <select name="qty" id="qty">
-                            <option value="1">1</option>
-                            <option value="2">2</option>
-                           <option value="3">3</option>
-                             <option value="4">4</option>
-                         </select>
-                     </div>
+          <div class="itemCount mx-2">
+            Qty:
+            <button class="qtyButton" index=${index} data-action="decrement">-</button>
+            <span>${product.quantity}</span>
+            <button class="qtyButton" index=${index} data-action="increment">+</button>
+          </div>
 
-                </div>
-             </div>
+        </div>
 `;
+    })
+    .join("");
+};
+
+document.querySelector(".allItems").addEventListener("click", (event) => {
+  if (event.target.classList.contains("qtyButton")) {
+    const action = event.target.getAttribute("data-action");
+    const index = event.target.getAttribute("index");
+
+    if (action === "increment") {
+      products[index].quantity += 1;
+    } else if (action === "decrement") {
+      products[index].quantity -= 1;
+    }
+    if(products[index].quantity === 0){
+        products.splice(index, 1);
+        localStorage.setItem("products", JSON.stringify(products));
+    }
+    else{
+        localStorage.setItem("products", JSON.stringify(products));
+    }
+    
+
+    updateQuantity();
+  }
 });
+updateQuantity();
