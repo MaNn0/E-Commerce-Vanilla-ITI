@@ -76,6 +76,7 @@ body {
 .subTotal span {
     float: right;
     font-size: large;
+    text-decoration: line-through;
 
 }
 
@@ -128,3 +129,6 @@ body {
     border-radius: 5px;
 }
 
+.discount span{
+    float: right;
+}

@@ -9,32 +9,39 @@ const updateQuantity = () => {
     0
   );
   let discount = products.reduce(
-    (acc, product) => product.discount? acc + product.discount * product.quantity : acc + 0,
+    (acc, product) =>
+      product.discount ? acc + product.discount * product.quantity : acc + 0,
     0
   );
-  let quantity = products.reduce(
-    (acc, product) =>  acc + product.quantity ,
-    0
-  );
-  document.querySelector(".checkoutButton").addEventListener("click", (event) => {
-    localStorage.setItem("totalPrice", JSON.stringify(totalPrice));
-    localStorage.setItem("discount", JSON.stringify(discount));
-    window.location.href='../Payment/Payment.html';
-  });
+  let quantity = products.reduce((acc, product) => acc + product.quantity, 0);
+  document
+    .querySelector(".checkoutButton")
+    .addEventListener("click", (event) => {
+      localStorage.setItem("totalPrice", JSON.stringify(totalPrice - discount));
+      window.location.href = "../Payment/Payment.html";
+    });
+  document.querySelector(".titleCount").innerHTML = `${quantity} item(s)`;
   document.querySelector(
-    ".titleCount"
-  ).innerHTML = `${quantity} item(s)`;
-  document.querySelector(".subTotal").innerHTML = `Subtotal: ${
-    quantity
-  } item(s) <span>EGP ${totalPrice
+    ".subTotal"
+  ).innerHTML = `Subtotal: ${quantity} item(s) <span>EGP ${totalPrice
     .toString()
     .replace(/\B(?=(\d{3})+(?!\d))/g, ",")}</span>`;
-  document.querySelector(".totalPrice").innerHTML = `${totalPrice
+
+    document.querySelector(
+      ".discount"
+    ).innerHTML = `Discount <span>EGP ${totalPrice - discount
+      .toString()
+      .replace(/\B(?=(\d{3})+(?!\d))/g, ",")}</span>`;
+
+
+  document.querySelector(".totalPrice").innerHTML = `${totalPrice - discount
     .toString()
     .replace(/\B(?=(\d{3})+(?!\d))/g, ",")} EGP`;
-  document.querySelector(".allItems").innerHTML = products.length > 0 ? products
-    .map((product, index) => {
-      return `
+  document.querySelector(".allItems").innerHTML =
+    products.length > 0
+      ? products
+          .map((product, index) => {
+            return `
           <div class="cartItem">
 
           <div class="imageContainer">
@@ -49,7 +56,6 @@ const updateQuantity = () => {
             <span class="currency">EGP</span><span class="price">${product.price}</span>
           </div>
         
-
           <div class="itemCount mx-2">
             Qty:
             <button class="qtyButton" index=${index} data-action="decrement">-</button>
@@ -59,8 +65,9 @@ const updateQuantity = () => {
 
         </div>
 `;
-    })
-    .join("") : "<h3>No items in cart.</h3>";
+          })
+          .join("")
+      : "<h3>No items in cart.</h3>";
 };
 
 document.querySelector(".allItems").addEventListener("click", (event) => {
@@ -73,12 +80,11 @@ document.querySelector(".allItems").addEventListener("click", (event) => {
     } else if (action === "decrement") {
       products[index].quantity -= 1;
     }
-    if(products[index].quantity === 0){
-        products.splice(index, 1);
-        localStorage.setItem("products", JSON.stringify(products));
-    }
-    else{
-        localStorage.setItem("products", JSON.stringify(products));
+    if (products[index].quantity === 0) {
+      products.splice(index, 1);
+      localStorage.setItem("products", JSON.stringify(products));
+    } else {
+      localStorage.setItem("products", JSON.stringify(products));
     }
     updateQuantity();
   }
