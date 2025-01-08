@@ -17,32 +17,6 @@ defaultAddInput.addEventListener('change', toggleAddressButton);
 newAddInput.addEventListener('change', toggleAddressButton);
 toggleAddressButton();
 
-// shipping fee 
-const debitCreditCardInput = document.getElementById('debitCreditCard');
-const cashOnDeliveryInput = document.getElementById('cashOnDelivery');
-const shippingFeeElement = document.querySelector(".text-success"); //  shipping fee
-
-
-const paymentModals = new bootstrap.Modal(document.getElementById('paymentModals')); //for payment modal 
-paymentModals.show(); // show modal
-// update shipping fee
-function updateShippingFee() {
-  if (debitCreditCardInput.checked) {
-    shippingFeeElement.textContent = "Free Shipping"; // Free 
-  } else if (cashOnDeliveryInput.checked) {
-    shippingFeeElement.textContent = "EGP 50.00"; // EGP 50 ya f2eeeeeer
-  }
-}
-
-
-// for radio button chaanges
-debitCreditCardInput.addEventListener('change', () => {
-  if (debitCreditCardInput.checked) {
-    paymentModals.show(); // show modal
-  }
-  updateShippingFee(); });
-
-cashOnDeliveryInput.addEventListener('change', updateShippingFee);
 
 //place order button
 document.querySelector(".btn-primary").addEventListener("click", function () {
@@ -62,3 +36,56 @@ document.querySelector(".btn-primary").addEventListener("click", function () {
     alert("Order Placed ");
   }
 });
+
+
+
+
+
+
+// Get the products from localStorage
+const products = JSON.parse(localStorage.getItem("products")) || [];
+
+// Calculate the subtotal
+const subtotal = products.reduce((acc, product) => acc + product.price, 0);
+
+// Update the Subtotal in the DOM
+document.getElementById("subtotal").textContent = `EGP ${subtotal}`;
+
+// Optionally, calculate the total if a shipping fee is added
+const shippingFee = 50; // Example shipping fee
+
+
+
+// shipping fee 
+const debitCreditCardInput = document.getElementById('debitCreditCard');
+const cashOnDeliveryInput = document.getElementById('cashOnDelivery');
+const shippingFeeElement = document.querySelector(".text-success"); //  shipping fee
+
+
+const paymentModals = new bootstrap.Modal(document.getElementById('paymentModals')); //for payment modal 
+paymentModals.show(); // show modal
+
+// update shipping fee
+function updateShippingFee() {
+  if (debitCreditCardInput.checked) {
+    shippingFeeElement.textContent = "Free Shipping"; // Free 
+  } else if (cashOnDeliveryInput.checked) {
+    shippingFeeElement.textContent = `EGP ${shippingFee}`; // EGP 50 ya f2eeeeeer
+  }
+}
+
+
+// for radio button chaanges
+debitCreditCardInput.addEventListener('change', () => {
+  if (debitCreditCardInput.checked) {
+    paymentModals.show(); // show modal
+  }
+  updateShippingFee(); });
+
+cashOnDeliveryInput.addEventListener('change', updateShippingFee);
+
+
+// Update the Total in the DOM
+const total = subtotal + shippingFee;
+document.getElementById("total").textContent = `EGP ${total}`;
+
