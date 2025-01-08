@@ -38,42 +38,59 @@ document.querySelector(".btn-primary").addEventListener("click", function () {
 });
 
 
-
-
-
-
 // Get the products from localStorage
 const products = JSON.parse(localStorage.getItem("products")) || [];
-
+console.log("🚀 ~ Product:", products);
 // Calculate the subtotal
-const subtotal = products.reduce((acc, product) => acc + product.price, 0);
+// acc >> accumulator , 0 initial value  return the acc 
+const subtotal = products.reduce((acc, product) => acc + product.price*product.quantity, 0) ;
 
-// Update the Subtotal in the DOM
-document.getElementById("subtotal").textContent = `EGP ${subtotal}`;
-
-// Optionally, calculate the total if a shipping fee is added
-const shippingFee = 50; // Example shipping fee
-
-
+// Calculate total VAT (12% of each product's price)
+const vat = products.reduce((acc, product) => acc + product.price * 0.12*product.quantity, 0);
 
 // shipping fee 
-const debitCreditCardInput = document.getElementById('debitCreditCard');
-const cashOnDeliveryInput = document.getElementById('cashOnDelivery');
-const shippingFeeElement = document.querySelector(".text-success"); //  shipping fee
+const shippingFee = 50;
+var FinaleFee = shippingFee+vat
 
+// Update the Subtotal in the DOM
+const debitCreditCardInputs = document.getElementById('debitCreditCard');
+const cashOnDeliveryInputs = document.getElementById('cashOnDelivery');
 
-const paymentModals = new bootstrap.Modal(document.getElementById('paymentModals')); //for payment modal 
-paymentModals.show(); // show modal
+if(subtotal==0)
+  {
+    document.getElementById("subtotal").textContent = `Please Add Some Items To Cart`;
+    debitCreditCardInputs.disabled = true; //disable radio button
+    cashOnDeliveryInputs.disabled = true;
+  }
+  else { document.getElementById("subtotal").textContent = `EGP ${subtotal}`}
+  
+  const debitCreditCardInput = document.getElementById('debitCreditCard');
+  const cashOnDeliveryInput = document.getElementById('cashOnDelivery');
+  const shippingFeeElement = document.querySelector(".text-success"); //  shipping fee
+  
+  const paymentModals = new bootstrap.Modal(document.getElementById('paymentModals')); //for payment modal 
+  paymentModals.show(); // show modal
+  
+  //round the values 
+  const total=   Math.round(((subtotal+vat)+ Number.EPSILON) * 100) / 100;
+  const total_vac=   Math.round(((subtotal+FinaleFee)+ Number.EPSILON) * 100) / 100;
 
-// update shipping fee
+  // update shipping fee
 function updateShippingFee() {
+  //if credit card checked
   if (debitCreditCardInput.checked) {
-    shippingFeeElement.textContent = "Free Shipping"; // Free 
+    shippingFeeElement.textContent = "Free Shipping"; // shipping fee element
+
+    document.getElementById("total").textContent = `EGP ${total}`; // >>>>>>>>>>>>>  Update the total in the DOM
+
+//if on cash checked
   } else if (cashOnDeliveryInput.checked) {
-    shippingFeeElement.textContent = `EGP ${shippingFee}`; // EGP 50 ya f2eeeeeer
+    shippingFeeElement.textContent = `EGP +${shippingFee}`; // shipping fee element
+    ;
+    // Update the total in the DOM
+    document.getElementById("total").textContent = `EGP ${total_vac}`; // >>>>>>>>>>>>>  Update the total in the DOM
   }
 }
-
 
 // for radio button chaanges
 debitCreditCardInput.addEventListener('change', () => {
@@ -85,7 +102,46 @@ debitCreditCardInput.addEventListener('change', () => {
 cashOnDeliveryInput.addEventListener('change', updateShippingFee);
 
 
-// Update the Total in the DOM
-const total = subtotal + shippingFee;
-document.getElementById("total").textContent = `EGP ${total}`;
+// Get the container where the order items will be displayed in "Your Order" section
+const orderContainer = document.querySelector('.your-order-section .order-container'); // Targeting the row inside the unique section
 
+// Clear existing content in the container (optional)
+orderContainer.innerHTML = '';
+
+// Loop through the products array and create HTML elements for each product
+ //change md for sizing line 104
+ // Check if there are products in the array
+if (products.length === 0) {
+  // If no products, display the "No items" message
+  orderContainer.innerHTML = `
+    <div class="col-12">
+      <p>No Items To Pay for, Please Check Your Cart</p>
+    </div>
+  `;
+}
+else {
+products.forEach(product => {
+  const productRow = `
+    <div class="row mb-4">
+      <div class="col-md-1">
+        <img src="${product.image}" alt="Product Image" class="img-fluid">
+      </div>
+      <div class="col-md-6">
+        <h6 class="card-subtitle mb-2 text-muted">Product Name</h6>
+        <p class="card-text">${product.title}</p>
+      </div>
+      <div class="col-md-2">
+        <h6 class="card-subtitle mb-2 text-muted">Product Price</h6>
+        <p class="card-text">${product.price} EGP</p>
+      </div>
+      <div class="col-md-2">
+        <h6 class="card-subtitle mb-2 text-muted">Count</h6>
+        <p class="card-text">${product.quantity}</p>
+      </div>
+    </div>
+  `;
+
+  // Append the new product row to the "Your Order" container
+  orderContainer.innerHTML += productRow;
+});
+}
