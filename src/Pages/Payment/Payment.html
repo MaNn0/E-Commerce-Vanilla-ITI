@@ -36,8 +36,8 @@
         aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
-      <div class="iconLinks collapse navbar-collapse" id="navbarNav">
-        <form class="d-flex">
+      <div class="iconLinks collapse navbar-collapse d-flex justify-content-end" id="navbarNav">
+        <form class="d-flex ">
           <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
           <button class="btn btn-outline-success" type="submit">Search</button>
           <a href="/src/Pages/Register/register.html">
@@ -85,111 +85,40 @@
 
       <!-- Order Summary Section -->
       <div class="col-md-6">
-        <h2 class="card-title my-2">Order Summary</h2>
+        <h2 class="card-title mb-3">Order Summary</h2> <!-- Reduced margin bottom -->
         <div class="card">
-          <div class="card-body">
-            <div class="row">
-              <div class="col-md-6">
-                <h5>Order Details</h5>
-                <div class="row">
-                  <div class="col-6">Subtotal</div>
-                  <div class="col-6 text-end" id="subtotal">EGP 00</div>
-                </div>
-                <div class="row">
-                  <div class="col-6">Shipping Fee</div>
-                  <div class="col-6 text-end text-success">EGP 00</div>
-                </div>
-                <div class="row">
-                  <div class="col-6"><b>Total</b></div>
-                  <div class="col-6 text-end"><b id="total">EGP 00</b></div>
-                </div>
-              </div>
-              <div class="col-md-6 text-end">
-                <div class="alert alert-success" role="alert">
-                  error or warning
-                </div>
-                <button class="btn btn-primary">PLACE ORDER</button>
-              </div>
-            </div>
-          </div>
-          <!-- Your Order Section -->
-          <div class="row ">
-            <h2 class="card-title my-2">Your Order</h2>
-            <div class="card">
-              <div class="card-body">
-                <div class="row">
-                  <div class="col-md-8">
-                    <h3 class="card-title">Shipment (number of items)</h3>
-                    <div class="row">
-                      <div class="col-md-4">
-                        <img src="" alt="ProductImg" class="img-fluid">
-                      </div>
-                      <div class="col-md-4">
-                        <h6 class="card-subtitle mb-2 text-muted">Product Name </h6>
-                        <p class="card-text">Table</p>
-                      </div>
-                      <div class="col-md-4">
-                        <h6 class="card-subtitle mb-2 text-muted">Product Price </h6>
-                        <p class="card-text">500 EGP</p>
-                      </div>
-                    </div>
-                    <div class="row">
-                      <div class="col-md-4">
-                        <img src="" alt="ProductImg" class="img-fluid">
-                      </div>
-                      <div class="col-md-4">
-                        <h6 class="card-subtitle mb-2 text-muted">Product Name </h6>
-                        <p class="card-text">Table</p>
-                      </div>
-                      <div class="col-md-4">
-                        <h6 class="card-subtitle mb-2 text-muted">Product Price </h6>
-                        <p class="card-text">500 EGP</p>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="col-md-4 text-end">
-                    <p class="card-text text-success">Estimated Time</p>
-                    <p class="card-text"> Thuse Day 12/12/1999</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-6">
-            <h2 class="card-title mb-3">Order Summary</h2> <!-- Reduced margin bottom -->
-            <div class="card">
-              <div class="card-body p-3"> <!-- Reduced padding -->
+          <div class="card-body p-3"> <!-- Reduced padding -->
+            <div class="row mb-2"> <!-- Reduced margin bottom -->
+              <div class="col-md-12">
+                <h5 class="mb-3">Order Details</h5> <!-- Reduced margin bottom -->
                 <div class="row mb-2"> <!-- Reduced margin bottom -->
-                  <div class="col-md-12">
-                    <h5 class="mb-3">Order Details</h5> <!-- Reduced margin bottom -->
-                    <div class="row mb-2"> <!-- Reduced margin bottom -->
-                      <div class="col-6">Subtotal</div>
-                      <div class="col-6 text-end" id="subtotal"> Please Select Payment Method </Select></div>
-                    </div>
-                    <div class="row mb-2"> <!-- Reduced margin bottom -->
-                      <div class="col-6">Shipping Fee</div>
-                      <div class="col-6 text-end text-success">Please Select Payment Method</div>
-                    </div>
-                    <div class="row mb-3"> <!-- Reduced margin bottom -->
-                      <div class="col-6"><b>Total</b> inc.VAT</div>
-                      <div class="col-6 text-end"><b id="total">Please Select Payment Method</b></div>
-                    </div>
-                  </div>
+                  <div class="col-6">Subtotal</div>
+                  <div class="col-6 text-end" id="subtotal"> Please Select Payment Method </Select></div>
                 </div>
-                <!-- footer of order summary  -->
-                <div class="col-md-12  text-center">
-                  <hr class="my-2" /> <!-- Reduced margin on hr -->
-                  <div class="alert alert-success text-start py-2 mb-3 " role="alert">
-                    error or warning
-                  </div>
-                  <button class="btn btn-primary w-50 ">PLACE ORDER</button> <!-- Full width button -->
+                <div class="row mb-2"> <!-- Reduced margin bottom -->
+                  <div class="col-6">Shipping Fee</div>
+                  <div class="col-6 text-end text-success">Please Select Payment Method</div>
+                </div>
+                <div class="row mb-3"> <!-- Reduced margin bottom -->
+                  <div class="col-6"><b>Total</b> inc.VAT</div>
+                  <div class="col-6 text-end"><b id="total">Please Select Payment Method</b></div>
                 </div>
               </div>
             </div>
+            <!-- footer of order summary  -->
+            <div class="col-md-12  text-center">
+              <hr class="my-2" /> <!-- Reduced margin on hr -->
+              <div class="alert alert-success text-start py-2 mb-3 " role="alert">
+                error or warning
+              </div>
+              <button class="btn btn-primary w-50 ">PLACE ORDER</button> <!-- Full width button -->
+            </div>
           </div>
+        </div>
+      </div>
 
 
-          <!-- Your Order Section
+      <!-- Your Order Section
      <div class="here">
     <div class="row ">
       <h2 class="card-title my-2">Your Order</h2>
@@ -235,151 +164,150 @@
     </div>
   </div> -->
 
-          <!-- Your Order Section -->
-          <div class="your-order-section">
-            <div class="row">
-              <h2 class="card-title my-2">Your Order</h2>
-              <div class="card">
-                <div class="card-body">
-                  <div class="d-flex justify-content-between align-items-start">
-                    <h3 class="card-title">Shipment</h3>
-                    <a href="../Cart/cart.html" class="btn btn-primary btn-custom ms-auto btn-sm">View Cart</a>
-                    <!-- Button view cart at the top-right -->
-                  </div>
-                  <div class="row">
-                    <div class="col">
-                      <div class="order-container row"> <!-- product rows -->
-                        <!-- data from js -->
-                      </div>
-                    </div>
-                  </div>
-                </div>
+      <!-- Your Order Section -->
+      <div class="your-order-section">
+        <div class="row">
+          <h2 class="card-title my-2">Your Order</h2>
+          <div class="card">
+            <div class="card-body">
+              <div class="d-flex justify-content-between align-items-start">
+                <h3 class="card-title">Shipment</h3>
+                <a href="../Cart/cart.html" class="btn btn-primary btn-custom ms-auto btn-sm">View Cart</a>
+                <!-- Button view cart at the top-right -->
               </div>
-            </div>
-          </div>
-
-
-          <!-- Payment Section -->
-          <div class="row">
-            <div class="col-md-6 ">
-              <h2 class="card-title my-2">Payment</h2>
-              <div class="card">
-                <div class="card-body">
-                  <div class="form-group">
-                    <div class="form-check">
-                      <input class="form-check-input" type="radio" name="paymentOption" id="debitCreditCard">
-                      <label class="form-check-label" for="debitCreditCard">
-                        Debit/Credit Card
-                      </label>
-                    </div>
+              <div class="row">
+                <div class="col">
+                  <div class="order-container row"> <!-- product rows -->
+                    <!-- data from js -->
                   </div>
-                  <div class="form-group">
-                    <div class="form-check">
-                      <input class="form-check-input" type="radio" name="paymentOption" id="cashOnDelivery">
-                      <label class="form-check-label" for="cashOnDelivery">
-                        Cash On Delivery
-                        <span class="badge badge-secondary">Extra charges may be applied</span>
-                      </label>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Payment Modals Section -->
-          <div class="modal fade" id="paymentModals" tabindex="-1" aria-labelledby="paymentModalLabel"
-            aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered modal-lg">
-              <div class="modal-content">
-                <div class="modal-header">
-                  <h5 class="modal-title" id="paymentModalLabel">Payment Details</h5>
-                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                  <div class="d-flex justify-content-between flex-wrap">
-                    <!-- Card Information Section -->
-                    <div class="card-info">
-                      <h5 class="mb-3">Card information</h5>
-                      <p class="text-muted mb-4">Indicate details of the card from which money will be debited</p>
-                      <div class="mb-3">
-                        <div class="d-flex justify-content-end mb-2">
-                          <img src="imgs/mastercard.png" alt="Visa" class="me-1">
-                          <img src="imgs/visa.png" alt="MasterCard" class="me-1">
-                          <img src="imgs/discover.png" alt="Visa" class="me-1">
-                        </div>
-                        <input type="text" class="form-control card-input" placeholder="0000 0000 0000 0000">
-                      </div>
-                      <div class="d-flex gap-3">
-                        <input type="text" class="form-control card-input" placeholder="MM / YY" style="flex: 1;">
-                        <input type="password" class="form-control card-input" placeholder="CVV" style="flex: 1;">
-                      </div>
-                    </div>
-
-                    <!-- Personal Information Form -->
-                    <div class="container form-container ms-4">
-                      <form>
-                        <div class="mb-3">
-                          <input type="text" class="form-control" placeholder="First name">
-                        </div>
-                        <div class="mb-3">
-                          <input type="text" class="form-control" placeholder="Last name">
-                        </div>
-                        <div class="mb-3">
-                          <select class="form-select">
-                            <option selected>Country</option>
-                            <option value="1">Egypt</option>
-                          </select>
-                        </div>
-                        <div class="row">
-                          <div class="col-6 mb-3">
-                            <input type="text" class="form-control" placeholder="City">
-                          </div>
-                          <div class="col-6 mb-3">
-                            <input type="text" class="form-control" placeholder="Zip code">
-                          </div>
-                        </div>
-                        <div class="mb-3">
-                          <input type="email" class="form-control" placeholder="E-mail">
-                        </div>
-                        <div class="mb-3">
-                          <input type="tel" class="form-control" placeholder="Phone number">
-                        </div>
-                      </form>
-                    </div>
-                  </div>
-                </div>
-                <div class="modal-footer d-flex justify-content-center">
-                  <button type="button" class="btn btn-primary">Save</button>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Error Modal Section -->
-          <div class="modal fade" id="errorModal" tabindex="-1" aria-labelledby="errorModalLabel" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered">
-              <div class="modal-content">
-                <div class="modal-header">
-                  <h5 class="modal-title" id="errorModalLabel">Error</h5>
-                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                  <p id="errorMessage">Please fill all the required fields and select an option where necessary.</p>
-                </div>
-                <div class="modal-footer">
-                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                 </div>
               </div>
             </div>
           </div>
         </div>
+      </div>
+
+
+      <!-- Payment Section -->
+      <div class="row">
+        <div class="col-md-6 ">
+          <h2 class="card-title my-2">Payment</h2>
+          <div class="card">
+            <div class="card-body">
+              <div class="form-group">
+                <div class="form-check">
+                  <input class="form-check-input" type="radio" name="paymentOption" id="debitCreditCard">
+                  <label class="form-check-label" for="debitCreditCard">
+                    Debit/Credit Card
+                  </label>
+                </div>
+              </div>
+              <div class="form-group">
+                <div class="form-check">
+                  <input class="form-check-input" type="radio" name="paymentOption" id="cashOnDelivery">
+                  <label class="form-check-label" for="cashOnDelivery">
+                    Cash On Delivery
+                    <span class="badge badge-secondary">Extra charges may be applied</span>
+                  </label>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Payment Modals Section -->
+      <div class="modal fade" id="paymentModals" tabindex="-1" aria-labelledby="paymentModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="paymentModalLabel">Payment Details</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <div class="d-flex justify-content-between flex-wrap">
+                <!-- Card Information Section -->
+                <div class="card-info">
+                  <h5 class="mb-3">Card information</h5>
+                  <p class="text-muted mb-4">Indicate details of the card from which money will be debited</p>
+                  <div class="mb-3">
+                    <div class="d-flex justify-content-end mb-2">
+                      <img src="imgs/mastercard.png" alt="Visa" class="me-1">
+                      <img src="imgs/visa.png" alt="MasterCard" class="me-1">
+                      <img src="imgs/discover.png" alt="Visa" class="me-1">
+                    </div>
+                    <input type="text" class="form-control card-input" placeholder="0000 0000 0000 0000">
+                  </div>
+                  <div class="d-flex gap-3">
+                    <input type="text" class="form-control card-input" placeholder="MM / YY" style="flex: 1;">
+                    <input type="password" class="form-control card-input" placeholder="CVV" style="flex: 1;">
+                  </div>
+                </div>
+
+                <!-- Personal Information Form -->
+                <div class="container form-container ms-4">
+                  <form>
+                    <div class="mb-3">
+                      <input type="text" class="form-control" placeholder="First name">
+                    </div>
+                    <div class="mb-3">
+                      <input type="text" class="form-control" placeholder="Last name">
+                    </div>
+                    <div class="mb-3">
+                      <select class="form-select">
+                        <option selected>Country</option>
+                        <option value="1">Egypt</option>
+                      </select>
+                    </div>
+                    <div class="row">
+                      <div class="col-6 mb-3">
+                        <input type="text" class="form-control" placeholder="City">
+                      </div>
+                      <div class="col-6 mb-3">
+                        <input type="text" class="form-control" placeholder="Zip code">
+                      </div>
+                    </div>
+                    <div class="mb-3">
+                      <input type="email" class="form-control" placeholder="E-mail">
+                    </div>
+                    <div class="mb-3">
+                      <input type="tel" class="form-control" placeholder="Phone number">
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+            <div class="modal-footer d-flex justify-content-center">
+              <button type="button" class="btn btn-primary">Save</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Error Modal Section -->
+      <div class="modal fade" id="errorModal" tabindex="-1" aria-labelledby="errorModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="errorModalLabel">Error</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <p id="errorMessage">Please fill all the required fields and select an option where necessary.</p>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
 
 
 
-        <script type="module" src="../../../node_modules/bootstrap/dist/js/bootstrap.bundle.min.js">
-        </script>
-        <script type="module" src="./Payment.js"></script>
+    <script type="module" src="../../../node_modules/bootstrap/dist/js/bootstrap.bundle.min.js">
+    </script>
+    <script type="module" src="./Payment.js"></script>
 
 </body>
 
