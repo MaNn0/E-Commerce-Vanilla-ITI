@@ -5,31 +5,31 @@ import "./style.css";
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import { addToCart } from "./Pages/products/products";
 
-(async function () {
-  try {
-    const response = await fetch("http://localhost:3000/products");
-    const data = await response.json();
-    renderClothing(data);
-    renderJewelery(data);
-    renderElectronics(data);
-    renderImg(data);
-    renderGaming(data);
-    renderTv(data);
-    renderMobile(data);
+// (async function () {
+//   try {
+//     const response = await fetch("http://localhost:3000/products");
+//     const data = await response.json();
+//     renderClothing(data);
+//     renderJewelery(data);
+//     renderElectronics(data);
+//     renderImg(data);
+//     renderGaming(data);
+//     renderTv(data);
+//     renderMobile(data);
 
-    // Attach the event listener after data is fetched and buttons are rendered
-    const btnCart = document.querySelectorAll(".btnCart");
-    btnCart.forEach((button) => {
-      button.addEventListener("click", (event) => {
-        const productId = event.target.getAttribute("productData");
-        // Ensure `data` is available when calling `addToCart`
-        addToCart(productId, data);
-      });
-    });
-  } catch (err) {
-    console.error(`Data is not found: ${err}`);
-  }
-})();
+//     // Attach the event listener after data is fetched and buttons are rendered
+//     const btnCart = document.querySelectorAll(".btnCart");
+//     btnCart.forEach((button) => {
+//       button.addEventListener("click", (event) => {
+//         const productId = event.target.getAttribute("productData");
+//         // Ensure `data` is available when calling `addToCart`
+//         addToCart(productId, data);
+//       });
+//     });
+//   } catch (err) {
+//     console.error(`Data is not found: ${err}`);
+//   }
+// })();
 // Get a cookie or sessionStorage value by name
 // Get a cookie or sessionStorage value by name
 function getCookie(name) {
@@ -75,17 +75,49 @@ export const authName = authCookie ? authCookie.name : null;
 export const authData = authCookie ? authCookie.value : null;
 export const authType = authCookie ? authCookie.type : null;
 console.log(authName, authData,authType);
-const urlParams = new URLSearchParams(window.location.href);
+const currentPath =  window.location.pathname;
 const userData=JSON.parse(authData)
 // Check authentication and update UI
-const CheckAuth = (isAuthenticated) => {
-  const userBtn = document.querySelector(".userBtn");
-  if (!userBtn && urlParams=="http://localhost:5173/") {
-    console.error("User button not found!");
-    return false;
-  }
+// const CheckAuth = (isAuthenticated) => {
+//   const userBtn = document.querySelector(".userBtn");
+//   if (!userBtn ) {
+//     console.error("User button not found!");
+//     return false;
+//   }
+// }
 
-  if (isAuthenticated && urlParams=="http://localhost:5173/") {
+
+  const initializeApp = async () =>{
+    const userBtn = document.querySelector(".userBtn");
+    const btnCart = document.querySelectorAll(".btnCart");
+    const logOutBtn = document.querySelector(".logOutBtn");
+    
+    (async function () {
+      try {
+        const response = await fetch("http://localhost:3000/products");
+        const data = await response.json();
+        renderClothing(data);
+        renderJewelery(data);
+        renderElectronics(data);
+        renderImg(data);
+        renderGaming(data);
+        renderTv(data);
+        renderMobile(data);
+    
+        // Attach the event listener after data is fetched and buttons are rendered
+        btnCart.forEach((button) => {
+          button.addEventListener("click", (event) => {
+            const productId = event.target.getAttribute("productData");
+            // Ensure `data` is available when calling `addToCart`
+            addToCart(productId, data);
+          });
+        });
+      } catch (err) {
+        console.error(`Data is not found: ${err}`);
+      }
+    })();
+
+  if (userBtn && currentPath =="/" && userData ) {
     userBtn.innerHTML = `
       <div class="btn-group">
         <button type="button" class="btn ms-2 dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false" >
@@ -101,10 +133,7 @@ const CheckAuth = (isAuthenticated) => {
         </ul>
       </div>
     `;
-
-    // Add event listener for logout
-    const logOutBtn = document.querySelector(".logOutBtn");
-    if (logOutBtn ) {
+    if (logOutBtn) {
       logOutBtn.addEventListener("click", (event) => {
         event.preventDefault();
         deleteCookie("Auth");
@@ -113,6 +142,8 @@ const CheckAuth = (isAuthenticated) => {
     }
     return true;
   } else {
+    console.log(userBtn);
+    
     userBtn.innerHTML = `
       <button class="btn btn-outline-success ms-2" type="button">
         Signup
@@ -122,7 +153,7 @@ const CheckAuth = (isAuthenticated) => {
   }
 };
 
-CheckAuth(authData);
+
 
 function renderClothing(data) {
   const img = document.querySelector(".clothing");
@@ -354,3 +385,11 @@ function renderTv(data) {
     .join("");
   img.innerHTML = product;
 }
+// CheckAuth(authData);
+if (currentPath == "/") {
+  document.addEventListener("DOMContentLoaded", initializeApp);
+}
+else{  console.log(currentPath)
+  console.log("🚀 ~ currentPath:", currentPath)
+
+  ;}
