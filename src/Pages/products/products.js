@@ -36,9 +36,9 @@ const renderProducts = (data, container) => {
           <div class="hiddenBody">
             <h5 class="card-title">${product.title}</h5>
             <a href="/src/Pages/products/productdetails/productdetails.html?id=${product.id}" class="btn btn-primary">View Details</a>
-            <button type="button" class="btn btn-success btnCart" productData=${product.id} aria-label="Add to Cart">
+             <button type="button" class="btn btn-success btnCart" productData=${product.id} aria-label="Add to Cart">
               Add to Cart
-            </button>     
+            </button>  
           </div>
         </div>
       `
