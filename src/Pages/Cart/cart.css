@@ -23,7 +23,7 @@ body {
     background-color: white;
     border-radius: 5px;
     height: 200px;
-
+    padding: 10px;
 }
 
 .removeButton {
@@ -76,7 +76,7 @@ body {
 .subTotal span {
     float: right;
     font-size: large;
-    text-decoration: line-through;
+
 
 }
 
