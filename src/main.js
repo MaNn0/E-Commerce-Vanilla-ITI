@@ -163,7 +163,7 @@ function renderJewelery(data) {
     .slice(0, 5)
     .map((element) => {
       return `
-    <div class="card mx-2 border border-primary shadow-lg p-3 mb-5 bg-body-tertiary rounded" style="width: 18rem;">
+    <div class="card mx-2 productCards border border-primary shadow-lg p-3 mb-3 bg-body-tertiary rounded" style="width: 18rem;">
       <img src="${element.image}" class="card-img-top productCard" alt="${
         element.title
       }">

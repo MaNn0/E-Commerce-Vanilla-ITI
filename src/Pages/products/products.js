@@ -26,22 +26,40 @@ export const fetchData = async () => {
 
 // Render products to the DOM
 const renderProducts = (data, container) => {
+  console.log("🚀 ~ renderProducts ~ data:", data);
   container.innerHTML = data
     .map(
       (product) => `
-        <div class="card productCards" style="width: 18rem;">
-          <img src="${product.image}" class="card-img-top" alt="${product.title}">
+        <div class="card mx-2 productCards mx-auto border border-primary shadow-lg p-3 mb-3 bg-body-tertiary rounded" style="width: 18rem;">
+          <img src="${product.image}" class="card-img-top" alt="${
+        product.title
+      }" style="max-height:250px">
           <div class="card-body visibleBody">
-            <h5 class="card-title">${product.title}</h5>
-            <h5 class="card-title">${product.price} $</h5>
-          </div>
-          <div class="hiddenBody">
-            <h5 class="card-title">${product.title}</h5>
-            <a href="/src/Pages/products/productdetails/productdetails.html?id=${product.id}" class="btn btn-primary">View Details</a>
-            <button type="button" class="btn btn-success btnCart" productData=${product.id} aria-label="Add to Cart">
-              Add to Cart
-            </button>  
-          </div>
+  <h5 class="card-title fs-5 text-center">${product.title}</h5>
+  <div class="d-flex justify-content-between align-items-center">
+    <h3 class="card-title text-danger mb-0">${product.price} $</h3>
+    <h3 class="card-title text-success mb-0">Discount ${
+      product.discount || 0
+    }%</h3>
+  </div>
+</div>
+
+<div class="hiddenBody d-flex flex-column">
+  <h5 class="card-title text-center">${product.title}</h5>
+  <div class="mt-auto d-flex justify-content-end gap-2">
+    <a href="/src/Pages/products/productdetails/productdetails.html?id=${
+      product.id
+    }" class="btn btn-primary">View Details</a>
+    <button type="button" class="btn btn-success btnCart" productData=${
+      product.id
+    } aria-label="Add to Cart">
+      Add to Cart
+    </button>
+  </div>
+</div>
+
+</div>
+
         </div>
       `
     )
