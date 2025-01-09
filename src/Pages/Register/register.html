@@ -126,15 +126,15 @@
 
       <!-- <img style="z-index: 1;" src="/Images/Register.svg" alt="Register" style="width: 100%; height: auto; object-fit: contain;"> -->
       <div class="w-75 mt-4">
-        <form class="row g-3 signup" style="padding: 80px 0;">
+        <form class="row g-3 signup" style="padding: 80px 0;" >
           <div class="col-md-6">
-            <label for="name" class="form-label">First Name</label>
-            <input name="name" type="text" class="form-control" id="name">
+            <label for="firstName" class="form-label">First Name</label>
+            <input name="firstName" type="text" class="form-control" id="name">
             <div class="form-text nameError text-danger d-none" id="basic-addon4">Required</div>
           </div>
           <div class="col-md-6">
-            <label for="name" class="form-label">Last Name</label>
-            <input name="name" type="text" class="form-control" id="name2">
+            <label for="lastName" class="form-label">Last Name</label>
+            <input name="lastName" type="text" class="form-control" id="name2">
             <div class="form-text name2Error text-danger d-none" id="basic-addon4">Required</div>
           </div>
 
@@ -145,32 +145,32 @@
         } -->
           <div class="col-md-12">
             <label for="email" class="form-label">Email</label>
-            <input type="text" class="form-control" id="email">
+            <input  name="email" type="text" class="form-control" id="email">
             <div class="form-text emailError text-danger" id="basic-addon4"></div>
           </div>
           <div class="col-md-6">
             <label for="password" class="form-label">Password</label>
-            <input type="password" class="form-control" id="password">
+            <input name="password" type="password" class="form-control" id="password">
             <div class="form-text passwordError text-danger " id="basic-addon4">
             </div>
           </div>
           <div class="col-md-6">
             <label for="repassword" class="form-label">Re-enter Password</label>
-            <input type="password" class="form-control" id="repassword">
+            <input name="repassword" type="password" class="form-control" id="repassword">
             <div class="form-text repasswordError text-danger" id="basic-addon4"></div>
           </div>
           <div class="col-6">
-            <label for="inputAddress" class="form-label">Address</label>
-            <input type="text" class="form-control" id="inputAddress" placeholder="1234 Main St">
+            <label for="mainAddress" class="form-label">Address</label>
+            <input name="mainAddress" type="text" class="form-control" id="inputAddress" placeholder="1234 Main St">
             <div class="form-text addressError text-danger " id="basic-addon4"></div>
           </div>
           <div class="col-6">
-            <label for="inputAddress" class="form-label">Address 2 (optional)</label>
-            <input type="text" class="form-control" id="inputAddress" placeholder="1234 Main St">
+            <label for="secondaryAddress" class="form-label">Address 2 (optional)</label>
+            <input name="secondaryAddress" type="text" class="form-control" id="inputAddress" placeholder="1234 Main St">
           </div>
           <div class="col-md-12">
-            <label for="inputCity" class="form-label">City</label>
-            <input type="text" class="form-control" id="inputCity">
+            <label for="city" class="form-label">City</label>
+            <input name="city" type="text" class="form-control" id="inputCity">
             <div class="form-text cityError text-danger " id="basic-addon4"></div>
           </div>
           <!-- <div class="col-12 my-3">

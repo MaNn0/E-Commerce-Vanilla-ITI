@@ -3,6 +3,8 @@ const switchBtnRegister = document.querySelector(".switchBtnRegister");
 const hideLogin = document.querySelector("#toggleHideLogin");
 const hideRegister = document.querySelector("#toggleHideRegister");
 
+// We Have to check id and E-mail Uniqness
+
 switchBtnLogin.addEventListener("click", () => {
   hideLogin.classList.add("hide");
   hideLogin.classList.remove("show");
@@ -40,6 +42,41 @@ const addressError = document.querySelector(".addressError");
 const city = document.querySelector("#inputCity");
 const cityError = document.querySelector(".cityError");
 
+//fetch Post
+
+async function postData(data = {}) {
+  try {
+    const url="http://localhost:3000/accounts"
+    // Fetch options
+    const options = {
+      method: 'POST', // Specify the request method
+      headers: {
+        'Content-Type': 'application/json', // Set the content type to JSON
+      },
+      body: JSON.stringify(data), // Convert the data to JSON
+    };
+
+    // Await the fetch call
+    const response = await fetch(url, options);
+
+    // Check if the response is OK (status code 200-299)
+    if (!response.ok) {
+      throw new Error(`HTTP error! Status: ${response.status}`);
+    }
+
+    // Parse the JSON response
+    const result = await response.json();
+
+    // Log the result
+    console.log('Success:', result);
+    return result; // Return the parsed result
+  } catch (error) {
+    // Handle errors
+    console.error('Error:', error);
+  }
+}
+
+//FetchPost Ends
 function showError() {
   let hasErrors = 0;
 
@@ -56,7 +93,7 @@ function showError() {
   // Check email validation
   email.value.length === 0
     ? ((emailError.textContent = "Email can't be empty"), (hasErrors = 1))
-    : !/^[a-zA-Z0-9._%+-]+@gmail\.com$/.test(email.value)
+    : !/^[a-zA-Z0-9.%+-]+@gmail.com$/.test(email.value)
     ? ((emailError.textContent = "Email is invalid / not a gmail address"),
       (hasErrors = 1))
     : (emailError.textContent = "");
@@ -96,12 +133,24 @@ function showError() {
 
 signup.addEventListener("submit", (e) => {
   e.preventDefault();
-  // console.log("hi");
-  // console.log(nameForm.value);
+  const formData = {};
+
+  // Loop through all form elements
+  for (let element of e.target.elements) {
+    if (element.type !== 'submit' && element.name) { // Skip the submit button and elements without a name
+      if (element.value) {
+        console.log(`${element.name} || ${element.value}`);
+        formData[element.name.trim()] = element.value.trim(); // Trim keys and values
+      }
+    }
+  }
+
+  console.log(formData); // Log the formData object
+ 
   let noErrors = showError();
   if (noErrors === 0) {
     sendMail();
-    ``;
+    postData(formData)
   }
 });
 let otp = ""; // global otp to be accessed in another functions

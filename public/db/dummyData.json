@@ -1,5 +1,16 @@
 {
-  "accounts": [],
+  "accounts": [
+    {
+      "id": "770e",
+      "firstName": "Mahmoud",
+      "lastName": "Nasr",
+      "email": "m.nasr266@gmail.com",
+      "password": "Fightsong@6",
+      "repassword": "Fightsong@6",
+      "mainAddress": "4-hussain",
+      "city": "cairo"
+    }
+  ],
   "orders": [],
   "products": [
     {
@@ -618,7 +629,6 @@
       "category": "tv",
       "discount": 9
     },
-
     {
       "id": "51",
       "title": "Fjallraven - Foldsack No. 1 Backpack, Fits 15 Laptops",
@@ -739,7 +749,6 @@
       "color": "gray",
       "discount": 15
     },
-
     {
       "id": "60",
       "title": "SanDisk SSD PLUS 1TB Internal SSD - SATA III 6 Gb/s",
