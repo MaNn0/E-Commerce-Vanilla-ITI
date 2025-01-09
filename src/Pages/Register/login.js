@@ -56,7 +56,7 @@ const userLogin = async (userCredentials) => {
       console.log("User found:", user);
       alert(`You are logged in as ${user.firstName}`);
       setCookie("Auth", user, 1 ,userCredentials.rememberMe); // Set cookie with user data
-      // location.replace("http://localhost:5173")
+      location.replace("http://localhost:5173")
     } else {
       console.log("User not found");
       alert("Invalid email or password");

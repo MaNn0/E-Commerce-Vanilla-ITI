@@ -66,7 +66,9 @@ const authCookie = getCookie("Auth");
 
 // DeleteCookie
 function deleteCookie(name) {
-    sessionStorage.clear();
+  console.log(name);
+  
+  sessionStorage.clear();
   document.cookie = `${name}=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;`;
   
 }
@@ -76,15 +78,11 @@ export const authName = authCookie ? authCookie.name : null;
 export const authData = authCookie ? authCookie.value : null;
 export const authType = authCookie ? authCookie.type : null;
 console.log(authName, authData,authType);
-const currentPath =  window.location.href;
+const currentPath =  window.location.pathname;
 const userData=JSON.parse(authData)
 
 
   const initializeApp = async () =>{
-    const userBtn = document.querySelector(".userBtn");
-    const btnCart = document.querySelectorAll(".btnCart");
-    const logOutBtn = document.querySelector(".logOutBtn");
-    const fetchedData = await fetchData()
     (async function () {
       try {
         const response = await fetch("http://localhost:3000/products");
@@ -109,8 +107,16 @@ const userData=JSON.parse(authData)
         console.error(`Data is not found: ${err}`);
       }
     })();
+    const userBtn = document.querySelector(".userBtn");
+    const btnCart = document.querySelectorAll(".btnCart");
+    
+
+    
+    // const fetchedData = await fetchData()
+    
 
   if (userBtn && currentPath =="/" && userData ) {
+
     userBtn.innerHTML = `
       <div class="btn-group">
         <button type="button" class="btn ms-2 dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false" >
@@ -125,26 +131,29 @@ const userData=JSON.parse(authData)
           <li><a class="dropdown-item logOutBtn" href="./"><i class="fa-solid fa-arrow-right-from-bracket"></i>LogOut</a></li>
         </ul>
       </div>
-    `;
+    `
+    const logOutBtn = document.querySelector(".logOutBtn");
+    console.log("🚀 ~ initializeApp ~ logOutBtn:", logOutBtn)
     if (logOutBtn) {
       logOutBtn.addEventListener("click", (event) => {
         event.preventDefault();
         deleteCookie("Auth");
-        window.location.href = "/src/Pages/Login/login.html"; // Redirect to login page
+        window.location.href = "http://localhost:5173/"; // Redirect to login page
       });
     }
     return true;
   } else {
     console.log(userBtn);
-    
     userBtn.innerHTML = `
-      <button class="btn btn-outline-success ms-2" type="button">
-        Signup
-      </button>
+     <a href="./src/Pages/Register/register.html">
+            <button class="btn btn-outline-light ms-2" type="button">
+              Signup
+            </button>
+          </a>
     `;
     return false;
   }
-};
+
 
 
 
@@ -377,7 +386,7 @@ function renderTv(data) {
     })
     .join("");
   img.innerHTML = product;
-}
+}};
 // CheckAuth(authData);
 if (currentPath == "/") {
   document.addEventListener("DOMContentLoaded", initializeApp);
