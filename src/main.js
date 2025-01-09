@@ -40,7 +40,7 @@ function renderClothing(data) {
         <div class="d-flex">
         <a href="/src/Pages/products/productdetails/productdetails.html?id=${
           element.id
-        }" class="btn mx-2 mt-auto btn-warning">Product Details</a>
+        }"  class="btn mx-2 mt-auto btn-warning">Product Details</a>
         <a href="/src/Pages/products/productdetails/productdetails.html" class="btn mt-auto btn-success">Add to cart</a>
         </div>
       </div>
@@ -69,7 +69,7 @@ function renderJewelery(data) {
         <div class="d-flex">
         <a href="/src/Pages/products/productdetails/productdetails.html?id=${
           element.id
-        }" class="btn mx-2 mt-auto btn-warning">Product Details</a>
+        }"  class="btn mx-2 mt-auto btn-warning">Product Details</a>
         <a href="/src/Pages/products/productdetails/productdetails.html" class="btn mt-auto btn-success">Add to cart</a>
         </div>
       </div>
@@ -98,7 +98,7 @@ function renderElectronics(data) {
         <div class="d-flex">
         <a href="/src/Pages/products/productdetails/productdetails.html?id=${
           element.id
-        }" class="btn mx-2 mt-auto btn-warning">Product Details</a>
+        }"  class="btn mx-2 mt-auto btn-warning">Product Details</a>
         <a href="/src/Pages/products/productdetails/productdetails.html" class="btn mt-auto btn-success">Add to cart</a>
         </div>
       </div>
@@ -127,8 +127,9 @@ function renderMobile(data) {
         <div class="d-flex">
         <a href="/src/Pages/products/productdetails/productdetails.html?id=${
           element.id
-        }" class="btn mx-2 mt-auto btn-warning">Product Details</a>
+        }"  class="btn mx-2 mt-auto btn-warning">Product Details</a>
         <a href="/src/Pages/products/productdetails/productdetails.html" class="btn mt-auto btn-success">Add to cart</a>
+        
         </div>
       </div>
       </div>
@@ -155,7 +156,7 @@ function renderImg(data) {
         <div class="d-flex">
         <a href="/src/Pages/products/productdetails/productdetails.html?id=${
           element.id
-        }" class="btn mx-2 mt-auto btn-warning">Product Details</a>
+        }"  class="btn mx-2 mt-auto btn-warning">Product Details</a>
         <a href="/src/Pages/products/productdetails/productdetails.html" class="btn mt-auto btn-success">Add to cart</a>
         </div>
       </div>
@@ -186,7 +187,7 @@ function renderGaming(data) {
         <div class="d-flex">
         <a href="/src/Pages/products/productdetails/productdetails.html?id=${
           element.id
-        }" class="btn mx-2 mt-auto btn-warning">Product Details</a>
+        }"  class="btn mx-2 mt-auto btn-warning">Product Details</a>
         <a href="/src/Pages/products/productdetails/productdetails.html" class="btn mt-auto btn-success">Add to cart</a>
         </div>
       </div>
@@ -219,7 +220,7 @@ function renderTv(data) {
         <div class="d-flex">
         <a href="/src/Pages/products/productdetails/productdetails.html?id=${
           element.id
-        }" class="btn mx-2 mt-auto btn-warning">Product Details</a>
+        }"  class="btn mx-2 mt-auto btn-warning">Product Details</a>
         <a href="/src/Pages/products/productdetails/productdetails.html" class="btn mt-auto btn-success">Add to cart</a>
         </div>
       </div>
