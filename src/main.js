@@ -5,7 +5,7 @@ import "./style.css";
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import { addToCart } from "./Pages/products/products";
 
-// (async function () {
+// export async function fetchData () {
 //   try {
 //     const response = await fetch("http://localhost:3000/products");
 //     const data = await response.json();
@@ -29,9 +29,10 @@ import { addToCart } from "./Pages/products/products";
 //   } catch (err) {
 //     console.error(`Data is not found: ${err}`);
 //   }
-// })();
+// };
+
 // Get a cookie or sessionStorage value by name
-// Get a cookie or sessionStorage value by name
+
 function getCookie(name) {
   // Check sessionStorage first
   if (sessionStorage.getItem("Auth")) {
@@ -75,23 +76,15 @@ export const authName = authCookie ? authCookie.name : null;
 export const authData = authCookie ? authCookie.value : null;
 export const authType = authCookie ? authCookie.type : null;
 console.log(authName, authData,authType);
-const currentPath =  window.location.pathname;
+const currentPath =  window.location.href;
 const userData=JSON.parse(authData)
-// Check authentication and update UI
-// const CheckAuth = (isAuthenticated) => {
-//   const userBtn = document.querySelector(".userBtn");
-//   if (!userBtn ) {
-//     console.error("User button not found!");
-//     return false;
-//   }
-// }
 
 
   const initializeApp = async () =>{
     const userBtn = document.querySelector(".userBtn");
     const btnCart = document.querySelectorAll(".btnCart");
     const logOutBtn = document.querySelector(".logOutBtn");
-    
+    const fetchedData = await fetchData()
     (async function () {
       try {
         const response = await fetch("http://localhost:3000/products");
@@ -389,7 +382,3 @@ function renderTv(data) {
 if (currentPath == "/") {
   document.addEventListener("DOMContentLoaded", initializeApp);
 }
-else{  console.log(currentPath)
-  console.log("🚀 ~ currentPath:", currentPath)
-
-  ;}
