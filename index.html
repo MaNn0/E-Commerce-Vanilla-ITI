@@ -14,18 +14,30 @@
     <div class="container-fluid">
       <div class="left">
         <span class="navbar-brand mb-0 h1">Khaled's Store |</span>
+        <!-- <a class="navbar-brand" href="#">
+            <i class="fa-brands fa-slack"></i>
+          </a> -->
       </div>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav">
+          <!-- <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="#"><i class="fa-solid fa-house"></i>Home</a>
+        </li> -->
           <li class="nav-item">
             <a class="nav-link" href="./src/Pages/Profile/Profile.html"><i class="fa-regular fa-user"></i>Profile</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="./src/Pages/Cart/cart.html"><i class="fa-solid fa-cart-shopping"></i>Cart</a>
+          </li>
+          <!-- <li class="nav-item">
+        <li class="nav-item">
+          <a class="nav-link" href="src/Pages/Profile/Profile.html"><i class="fa-regular fa-user"></i>Profile</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="src/Pages/Cart/cart.html"><i class="fa-solid fa-cart-shopping"></i>Cart</a>
+        </li>-->
+          <li class="nav-item">
+            <a class="nav-link" href="./src/Pages/Cart/cart.html"><i class="fa-solid fa-bag-shopping"></i>Cart</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="./src/Pages/Payment/Payment.html"><i
@@ -35,29 +47,76 @@
             <a class="nav-link" href="./src/Pages/products/products.html"><i class="fa-solid fa-store"></i>Store</a>
           </li>
         </ul>
-        <form class="d-flex ms-auto">
+      </div>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="iconLinks collapse navbar-collapse" id="navbarNav">
+        <form class="d-flex">
           <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
-          <button class="btn btn-outline-success" type="submit">Search</button>
+          <button class="btn btn-outline-success" type="submit">
+            Search
+          </button>
           <a href="/src/Pages/Register/register.html">
-            <button class="btn btn-outline-success ms-2" type="button">Signup</button>
+            <button class="btn btn-outline-success ms-2" type="button">
+              Signup
+            </button>
           </a>
         </form>
       </div>
     </div>
   </nav>
+  <!-- <li class="nav-item">
+          <a class="nav-link" href="src/Pages/Payment/Payment.html"><i class="fa-solid fa-credit-card"></i>Payment</a>
+        </li>
+      </ul> -->
+  </div>
+  <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
 
+  <div class="iconLinks collapse navbar-collapse" id="navbarNav">
+    <form class="d-flex">
+      <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
+      <button class="btn btn-outline-success" type="submit">
+        Search
+      </button>
+      <a href="src/Pages/Register/register.html">
+        <button class="btn btn-outline-success ms-2" type="button">
+          Signup
+        </button>
+      </a>
+    </form>
+  </div>
+  </div>
+  </nav>
   <div class="container-fluid">
     <section>
+      <!-- Navbar -->
+
+      <!-- <div
+          class="my-4 d-flex align-content-start justify-content-between flex-wrap"
+        >
+          <a class="btn btn-outline-primary">An item</a>
+          <a class="btn btn-outline-primary">A second item</a>
+          <a class="btn btn-outline-primary">A third item</a>
+          <a class="btn btn-outline-primary">A fourth item</a>
+          <a class="btn btn-outline-primary">And a fifth one</a>
+        </div> -->
+
       <!-- Carousel -->
       <div id="carouselExampleAutoplaying" class="carousel slide my-4" data-bs-ride="carousel">
         <div class="carousel-inner">
-          <div class="carousel-item active">
+          <div class="carousel-width carousel-item active">
             <img src="./public/Images/861724.png" class="d-block w-100" alt="Image 1" />
           </div>
-          <div class="carousel-item">
+          <div class="carousel-item carousel-width">
             <img src="./public/Images/1331316.png" class="d-block w-100" alt="Image 2" />
           </div>
-          <div class="carousel-item">
+          <div class="carousel-item carousel-width">
             <img src="./public/Images/1330031.jpeg" class="d-block w-100" alt="Image 3" />
           </div>
         </div>
@@ -70,6 +129,7 @@
           <span class="carousel-control-next-icon"></span>
         </button>
       </div>
+
     </section>
 
     <section id="Categories">
@@ -77,10 +137,13 @@
         <!-- Men's Clothing Section -->
         <div class="accordion-item">
           <h2 class="accordion-header">
-            <button class="accordion-button" type="button" data-bs-toggle="collapse"
-              data-bs-target="#collapseMenClothing" aria-expanded="true" aria-controls="collapseMenClothing">View all
-              Men's Clothing
-            </button>
+            <a href="/src/Pages/products/products.html?category=menClothing">
+
+              <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                data-bs-target="#collapseMenClothing" aria-expanded="true" aria-controls="collapseMenClothing">View all
+                Men's Clothing
+              </button>
+            </a>
           </h2>
           <div id="collapseMenClothing" class="accordion-collapse collapse show">
             <div class="accordion-body">
@@ -93,12 +156,16 @@
         </div>
 
         <!-- Jewelery Section -->
+
         <div class="accordion-item">
           <h2 class="accordion-header">
-            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseJewelery"
-              aria-expanded="true" aria-controls="collapseJewelery">
-              View all Jewelery
-            </button>
+            <a href="/src/Pages/products/products.html?category=jewelery">
+
+              <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                data-bs-target="#collapseJewelery" aria-expanded="true" aria-controls="collapseJewelery">
+                View all Jewelery
+              </button>
+            </a>
           </h2>
           <div id="collapseJewelery" class="accordion-collapse collapse show">
             <div class="accordion-body">
@@ -113,10 +180,12 @@
         <!-- Electronics Section -->
         <div class="accordion-item">
           <h2 class="accordion-header">
-            <button class="accordion-button" type="button" data-bs-toggle="collapse"
-              data-bs-target="#collapseElectronics" aria-expanded="true" aria-controls="collapseElectronics">
-              View all Electronics
-            </button>
+            <a href="/src/Pages/products/products.html?category=electronics">
+              <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                data-bs-target="#collapseElectronics" aria-expanded="true" aria-controls="collapseElectronics">
+                View all Electronics
+              </button>
+            </a>
           </h2>
           <div id="collapseElectronics" class="accordion-collapse collapse show">
             <div class="accordion-body">
@@ -131,10 +200,13 @@
         <!-- Phones Section -->
         <div class="accordion-item">
           <h2 class="accordion-header">
-            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapsePhones"
-              aria-expanded="true" aria-controls="collapsePhones">
-              View all Phones
-            </button>
+            <a href="/src/Pages/products/products.html?category=phones">
+
+              <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapsePhones"
+                aria-expanded="true" aria-controls="collapsePhones">
+                View all Phones
+              </button>
+            </a>
           </h2>
           <div id="collapsePhones" class="accordion-collapse collapse show">
             <div class="accordion-body">
@@ -149,10 +221,13 @@
         <!-- Audio Section -->
         <div class="accordion-item">
           <h2 class="accordion-header">
-            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseAudio"
-              aria-expanded="true" aria-controls="collapseAudio">
-              View all Audio
-            </button>
+            <a href="/src/Pages/products/products.html?category=audio">
+
+              <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseAudio"
+                aria-expanded="true" aria-controls="collapseAudio">
+                View all Audio
+              </button>
+            </a>
           </h2>
           <div id="collapseAudio" class="accordion-collapse collapse show">
             <div class="accordion-body">
@@ -166,10 +241,13 @@
         <!-- Gaming Section -->
         <div class="accordion-item">
           <h2 class="accordion-header">
-            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseGaming"
-              aria-expanded="true" aria-controls="collapseGaming">
-              View all Gaming
-            </button>
+            <a href="/src/Pages/products/products.html?category=gaming">
+
+              <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseGaming"
+                aria-expanded="true" aria-controls="collapseGaming">
+                View all Gaming
+              </button>
+            </a>
           </h2>
           <div id="collapseGaming" class="accordion-collapse collapse show">
             <div class="accordion-body">
@@ -184,10 +262,13 @@
         <!-- TV Section -->
         <div class="accordion-item">
           <h2 class="accordion-header">
-            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTV"
-              aria-expanded="true" aria-controls="collapseTV">
-              View all TV
-            </button>
+            <a href="/src/Pages/products/products.html?category=tv">
+
+              <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTV"
+                aria-expanded="true" aria-controls="collapseTV">
+                View all TV
+              </button>
+            </a>
           </h2>
           <div id="collapseTV" class="accordion-collapse collapse show">
             <div class="accordion-body">
