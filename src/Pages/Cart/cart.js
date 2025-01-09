@@ -22,6 +22,9 @@ const updateQuantity = () => {
   document.querySelector(".subTotal").innerHTML = `Subtotal: ${quantity} item(s) <span>EGP ${totalPrice.toLocaleString()}</span>`;
   document.querySelector(".discount").innerHTML = `Discount <span>EGP ${discount.toLocaleString()}</span>`;
   document.querySelector(".totalPrice").textContent = `${(totalPrice - discount).toLocaleString()} EGP`;
+  if(products.length < 1){
+   document.querySelector(".orderSummary").innerHTML = ''
+  }
 
   // Render cart items
   document.querySelector(".allItems").innerHTML = products.length > 0
