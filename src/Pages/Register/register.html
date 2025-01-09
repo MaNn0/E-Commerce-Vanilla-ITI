@@ -5,6 +5,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
   <link rel="stylesheet" href="./register.css">
   <link rel="stylesheet" href="../../style.css">
 
@@ -16,48 +17,40 @@
 
 <body>
   <div class="w-100">
-    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+    <nav class="navbar  navbar-expand-lg px-5 bg-primary">
       <div class="container-fluid">
         <div class="left">
-          <span class="navbar-brand mb-0 h1">Khaled's Store |</span>
-          <!-- <a class="navbar-brand" href="#">
-                      <i class="fa-brands fa-slack"></i>
-                    </a> -->
-        </div>
-        <div class="collapse navbar-collapse" id="navbarNav">
-          <ul class="navbar-nav">
-            <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="/index.html"><i
-                  class="fa-solid fa-house"></i>Home</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="/src/Pages/Profile/Profile.html"><i class="fa-regular fa-user"></i>Profile</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="/src/Pages/Cart/cart.html"><i class="fa-solid fa-cart-shopping"></i>Cart</a>
-            </li>
-            <!-- <li class="nav-item">
-                    <a class="nav-link" href=""><i class="fa-solid fa-bag-shopping"></i>Cart</a>
-                  </li> -->
-            <li class="nav-item">
-              <a class="nav-link" href="/src/Pages/Payment/Payment.html"><i
-                  class="fa-solid fa-credit-card"></i>Payment</a>
-            </li>
-          </ul>
+          <span class="navbar-brand mb-0 h1 text-white">Khaled's Store |</span>
         </div>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
           aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
-
-        <div class="iconLinks collapse navbar-collapse" id="navbarNav">
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav me-auto">
+            <li class="nav-item">
+              <a class="nav-link text-white" href="../Profile/Profile.html"><i class="fa-regular fa-user"></i>
+                Profile</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link text-white" href="../Cart/cart.html"><i class="fa-solid fa-cart-shopping"></i> Cart</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link text-white" href="../products/products.html"><i class="fa-solid fa-store"></i>
+                Store</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link text-white" href="../Payment/Payment.html"><i class="fa-solid fa-credit-card"></i>
+                Payment</a>
+            </li>
+          </ul>
           <form class="d-flex">
-            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
-            <button class="btn btn-outline-success" type="submit">
+            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" id="searchInput" />
+            <button class="btn btn-outline-light" type="submit">
               Search
             </button>
-            <a href="./src//Pages/Register/register.html">
-              <button class="btn btn-outline-success ms-2" type="button">
+            <a href="./src/Pages/Register/register.html">
+              <button class="btn btn-outline-light ms-2" type="button">
                 Signup
               </button>
             </a>
@@ -88,40 +81,23 @@
           <!-- Email Input -->
           <div class="mb-3">
             <label for="loginEmail" class="form-label">Email address</label>
-            <input
-              type="email" 
-              class="form-control"
-              id="loginEmail"
-              name="loginEmail"
-              aria-describedby="emailHelp"
-              required 
-            />
+            <input type="email" class="form-control" id="loginEmail" name="loginEmail" aria-describedby="emailHelp"
+              required />
             <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
           </div>
-      
+
           <!-- Password Input -->
           <div class="mb-3">
             <label for="loginPassword" class="form-label">Password</label>
-            <input
-              type="password"
-              class="form-control"
-              id="loginPassword"
-              name="loginPassword"
-              required
-            />
+            <input type="password" class="form-control" id="loginPassword" name="loginPassword" required />
           </div>
-      
+
           <!-- Checkbox -->
           <div class="mb-3 form-check">
-            <input
-              type="checkbox"
-              class="form-check-input"
-              id="rememberMe"
-              name="rememberMe" 
-            />
+            <input type="checkbox" class="form-check-input" id="rememberMe" name="rememberMe" />
             <label class="form-check-label" for="rememberMe">Remember me</label>
           </div>
-      
+
           <!-- Submit Button -->
           <button type="submit" class="btn btn-primary w-100 btnLogin">Submit</button>
         </form>
