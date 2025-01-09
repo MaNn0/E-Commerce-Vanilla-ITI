@@ -39,7 +39,7 @@ document.querySelector(".btn-primary").addEventListener("click", function () {
 
 
 // Get the products from localStorage
-const products = JSON.parse(localStorage.getItem("products")) || [];
+const products = JSON.parse(localStorage.getItem("cartProducts")) || [];
 console.log("🚀 ~ Product:", products);
 // Calculate the subtotal
 // acc >> accumulator , 0 initial value  return the acc 
