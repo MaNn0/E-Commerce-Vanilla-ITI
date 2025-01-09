@@ -25,7 +25,7 @@ import "@fortawesome/fontawesome-free/css/all.min.css";
 function renderClothing(data) {
   const img = document.querySelector(".clothing");
   const product = data
-    .filter((element) => element.category === "men's clothing")
+    .filter((element) => element.category === "menClothing")
     .slice(0, 5)
     .map((element) => {
       return `
