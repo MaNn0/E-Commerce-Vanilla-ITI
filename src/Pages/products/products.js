@@ -31,7 +31,7 @@ const renderProducts = (data, container) => {
           <img src="${product.image}" class="card-img-top" alt="${product.title}">
           <div class="card-body visibleBody">
             <h5 class="card-title">${product.title}</h5>
-            <h5 class="card-title">${product.price} LE</h5>
+            <h5 class="card-title">${product.price} $</h5>
           </div>
           <div class="hiddenBody">
             <h5 class="card-title">${product.title}</h5>
@@ -50,7 +50,8 @@ const renderProducts = (data, container) => {
 const addToCart = (productId, products) => {
   const product = products.find((p) => p.id == productId);
 
-  const existingProducts = JSON.parse(localStorage.getItem("cartProducts")) || [];
+  const existingProducts =
+    JSON.parse(localStorage.getItem("cartProducts")) || [];
 
   const productIndex = existingProducts.findIndex((p) => p.id === productId);
   if (productIndex !== -1) {
@@ -97,7 +98,9 @@ const initializeApp = async () => {
   });
 
   // Populate category dropdown
-  const uniqueCategories = [...new Set(fetchedData.map((product) => product.category))];
+  const uniqueCategories = [
+    ...new Set(fetchedData.map((product) => product.category)),
+  ];
   uniqueCategories.forEach((category) => {
     const option = document.createElement("option");
     option.value = category;
@@ -106,7 +109,9 @@ const initializeApp = async () => {
   });
 
   // Populate brand dropdown
-  const uniqueBrands = [...new Set(fetchedData.map((product) => product.brand))];
+  const uniqueBrands = [
+    ...new Set(fetchedData.map((product) => product.brand)),
+  ];
   uniqueBrands.forEach((brand) => {
     const option = document.createElement("option");
     option.value = brand;

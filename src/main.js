@@ -29,7 +29,7 @@ function renderClothing(data) {
     .slice(0, 5)
     .map((element) => {
       return `
-    <div class="card mx-2 border border-primary shadow p-3 mb-5 bg-body-tertiary rounded" style="width: 18rem;">
+    <div class="card mx-2 border border-primary shadow-lg p-3 mb-5 bg-body-tertiary rounded" style="width: 18rem;">
       <img src="${element.image}" class="card-img-top productCard" alt="${
         element.title
       }">
@@ -37,7 +37,12 @@ function renderClothing(data) {
         <h5 class="card-title">${element.title}</h5>
         <p class="card-text text-danger mt-auto">Price: ${element.price}$</p>
         <p class="card-text text-success">Discount ${element.discount || 0}%</p>
-        <a href="#" class="btn mt-auto btn-primary">Go somewhere</a>
+        <div class="d-flex">
+        <a href="/src/Pages/products/productdetails/productdetails.html?id=${
+          element.id
+        }" class="btn mx-2 mt-auto btn-warning">Product Details</a>
+        <a href="/src/Pages/products/productdetails/productdetails.html" class="btn mt-auto btn-success">Add to cart</a>
+        </div>
       </div>
       </div>
       `;
@@ -53,7 +58,7 @@ function renderJewelery(data) {
     .slice(0, 5)
     .map((element) => {
       return `
-    <div class="card mx-2 border border-primary shadow p-3 mb-5 bg-body-tertiary rounded" style="width: 18rem;">
+    <div class="card mx-2 border border-primary shadow-lg p-3 mb-5 bg-body-tertiary rounded" style="width: 18rem;">
       <img src="${element.image}" class="card-img-top productCard" alt="${
         element.title
       }">
@@ -61,7 +66,12 @@ function renderJewelery(data) {
         <h5 class="card-title">${element.title}</h5>
         <p class="card-text text-danger mt-auto">Price: ${element.price}$</p>
         <p class="card-text text-success">Discount ${element.discount || 0}%</p>
-        <a href="#" class="btn mt-auto btn-primary">Go somewhere</a>
+        <div class="d-flex">
+        <a href="/src/Pages/products/productdetails/productdetails.html?id=${
+          element.id
+        }" class="btn mx-2 mt-auto btn-warning">Product Details</a>
+        <a href="/src/Pages/products/productdetails/productdetails.html" class="btn mt-auto btn-success">Add to cart</a>
+        </div>
       </div>
       </div>
       `;
@@ -77,7 +87,7 @@ function renderElectronics(data) {
     .slice(0, 5)
     .map((element) => {
       return `
-    <div class="card mx-2 border border-primary shadow p-3 mb-5 bg-body-tertiary rounded" style="width: 18rem;">
+    <div class="card mx-2 border border-primary shadow-lg p-3 mb-5 bg-body-tertiary rounded" style="width: 18rem;">
       <img src="${element.image}" class="card-img-top productCard" alt="${
         element.title
       }">
@@ -85,7 +95,12 @@ function renderElectronics(data) {
         <h5 class="card-title">${element.title}</h5>
         <p class="card-text text-danger mt-auto">Price: ${element.price}$</p>
         <p class="card-text text-success">Discount ${element.discount || 0}%</p>
-        <a href="#" class="btn mt-auto btn-primary">Go somewhere</a>
+        <div class="d-flex">
+        <a href="/src/Pages/products/productdetails/productdetails.html?id=${
+          element.id
+        }" class="btn mx-2 mt-auto btn-warning">Product Details</a>
+        <a href="/src/Pages/products/productdetails/productdetails.html" class="btn mt-auto btn-success">Add to cart</a>
+        </div>
       </div>
       </div>
       `;
@@ -101,7 +116,7 @@ function renderMobile(data) {
     .slice(0, 5)
     .map((element) => {
       return `
-    <div class="card mx-2 border border-primary shadow p-3 mb-5 bg-body-tertiary rounded" style="width: 18rem;">
+    <div class="card mx-2 border border-primary shadow-lg p-3 mb-5 bg-body-tertiary rounded" style="width: 18rem;">
       <img src="${element.image}" class="card-img-top productCard" alt="${
         element.title
       }">
@@ -109,7 +124,12 @@ function renderMobile(data) {
         <h5 class="card-title">${element.title}</h5>
         <p class="card-text text-danger mt-auto">Price: ${element.price}$</p>
         <p class="card-text text-success">Discount ${element.discount || 0}%</p>
-        <a href="#" class="btn mt-auto btn-primary">Go somewhere</a>
+        <div class="d-flex">
+        <a href="/src/Pages/products/productdetails/productdetails.html?id=${
+          element.id
+        }" class="btn mx-2 mt-auto btn-warning">Product Details</a>
+        <a href="/src/Pages/products/productdetails/productdetails.html" class="btn mt-auto btn-success">Add to cart</a>
+        </div>
       </div>
       </div>
       `;
@@ -124,7 +144,7 @@ function renderImg(data) {
     .slice(0, 5)
     .map((element) => {
       return `
-    <div class="card mx-2 border border-primary shadow p-3 mb-5 bg-body-tertiary rounded" style="width: 18rem;">
+    <div class="card mx-2 border border-primary shadow-lg p-3 mb-5 bg-body-tertiary rounded" style="width: 18rem;">
       <img src="${element.image}" class="card-img-top productCard" alt="${
         element.title
       }">
@@ -132,7 +152,12 @@ function renderImg(data) {
         <h5 class="card-title">${element.title}</h5>
         <p class="card-text text-danger mt-auto">Price: ${element.price}$</p>
         <p class="card-text text-success">Discount ${element.discount || 0}%</p>
-        <a href="#" class="btn mt-auto btn-primary">Go somewhere</a>
+        <div class="d-flex">
+        <a href="/src/Pages/products/productdetails/productdetails.html?id=${
+          element.id
+        }" class="btn mx-2 mt-auto btn-warning">Product Details</a>
+        <a href="/src/Pages/products/productdetails/productdetails.html" class="btn mt-auto btn-success">Add to cart</a>
+        </div>
       </div>
       </div>
       `;
@@ -148,7 +173,7 @@ function renderGaming(data) {
     .slice(0, 5)
     .map((element) => {
       return `
-      <div class="card mx-3 border border-primary shadow p-3 mb-5 bg-body-tertiary rounded" style="width: 18rem;">
+      <div class="card mx-3 border border-primary shadow-lg p-3 mb-5 bg-body-tertiary rounded" style="width: 18rem;">
         <img src="${element.image}" class="card-img-top productCard" alt="${
         element.title
       }">
@@ -158,7 +183,12 @@ function renderGaming(data) {
         <p class="card-text mt-auto text-success">Discount ${
           element.discount || 0
         }%</p>
-        <a href="#" class="btn mt-auto btn-primary">Go somewhere</a>
+        <div class="d-flex">
+        <a href="/src/Pages/products/productdetails/productdetails.html?id=${
+          element.id
+        }" class="btn mx-2 mt-auto btn-warning">Product Details</a>
+        <a href="/src/Pages/products/productdetails/productdetails.html" class="btn mt-auto btn-success">Add to cart</a>
+        </div>
       </div>
       </div>
         `;
@@ -174,7 +204,7 @@ function renderTv(data) {
     .slice(0, 5)
     .map((element) => {
       return `
-      <div class="card mx-3 border border-primary shadow p-3 mb-5 bg-body-tertiary rounded" style="width: 18rem;">
+      <div class="card mx-3 border border-primary shadow-lg p-3 mb-5 bg-body-tertiary rounded" style="width: 18rem;">
         <img src="${element.image}" class="card-img-top productCard" alt="${
         element.title
       }">
@@ -186,7 +216,12 @@ function renderTv(data) {
         <p class="card-text mt-auto text-success">Discount ${
           element.discount || 0
         }%</p>
-        <a href="#" class="btn mt-auto btn-primary">Go somewhere</a>
+        <div class="d-flex">
+        <a href="/src/Pages/products/productdetails/productdetails.html?id=${
+          element.id
+        }" class="btn mx-2 mt-auto btn-warning">Product Details</a>
+        <a href="/src/Pages/products/productdetails/productdetails.html" class="btn mt-auto btn-success">Add to cart</a>
+        </div>
       </div>
       </div>
         `;
