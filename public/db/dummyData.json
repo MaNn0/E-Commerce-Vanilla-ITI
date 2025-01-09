@@ -2,11 +2,31 @@
   "accounts": [
     {
       "id": "770e",
+      "firstName": "Mano",
+      "lastName": "Ebid",
+      "email": "mlolo80013@gmail.com",
+      "password": "mano@6",
+      "repassword": "mano@6",
+      "mainAddress": "4-hussain",
+      "city": "cairo"
+    },
+    {
+      "id": "77dasd0e",
       "firstName": "Mahmoud",
       "lastName": "Nasr",
       "email": "m.nasr266@gmail.com",
       "password": "Fightsong@6",
       "repassword": "Fightsong@6",
+      "mainAddress": "4-hussain",
+      "city": "cairo"
+    },
+    {
+      "id": "77asdasd0e",
+      "firstName": "Mahmoud",
+      "lastName": "Zalabany",
+      "email": "Mahmoudn.zalabany256@gmail.com",
+      "password": "Fightsong@2",
+      "repassword": "Fightsong@2",
       "mainAddress": "4-hussain",
       "city": "cairo"
     }
