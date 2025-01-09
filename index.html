@@ -14,30 +14,18 @@
     <div class="container-fluid">
       <div class="left">
         <span class="navbar-brand mb-0 h1">Khaled's Store |</span>
-        <!-- <a class="navbar-brand" href="#">
-            <i class="fa-brands fa-slack"></i>
-          </a> -->
       </div>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav">
-          <!-- <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="#"><i class="fa-solid fa-house"></i>Home</a>
-        </li> -->
           <li class="nav-item">
             <a class="nav-link" href="./src/Pages/Profile/Profile.html"><i class="fa-regular fa-user"></i>Profile</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="./src/Pages/Cart/cart.html"><i class="fa-solid fa-cart-shopping"></i>Cart</a>
-          </li>
-          <!-- <li class="nav-item">
-        <li class="nav-item">
-          <a class="nav-link" href="src/Pages/Profile/Profile.html"><i class="fa-regular fa-user"></i>Profile</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="src/Pages/Cart/cart.html"><i class="fa-solid fa-cart-shopping"></i>Cart</a>
-        </li>-->
-          <li class="nav-item">
-            <a class="nav-link" href="./src/Pages/Cart/cart.html"><i class="fa-solid fa-bag-shopping"></i>Cart</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="./src/Pages/Payment/Payment.html"><i
@@ -47,76 +35,29 @@
             <a class="nav-link" href="./src/Pages/products/products.html"><i class="fa-solid fa-store"></i>Store</a>
           </li>
         </ul>
-      </div>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-
-      <div class="iconLinks collapse navbar-collapse" id="navbarNav">
-        <form class="d-flex">
+        <form class="d-flex ms-auto">
           <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
-          <button class="btn btn-outline-success" type="submit">
-            Search
-          </button>
+          <button class="btn btn-outline-success" type="submit">Search</button>
           <a href="/src/Pages/Register/register.html">
-            <button class="btn btn-outline-success ms-2" type="button">
-              Signup
-            </button>
+            <button class="btn btn-outline-success ms-2" type="button">Signup</button>
           </a>
         </form>
       </div>
     </div>
   </nav>
-  <!-- <li class="nav-item">
-          <a class="nav-link" href="src/Pages/Payment/Payment.html"><i class="fa-solid fa-credit-card"></i>Payment</a>
-        </li>
-      </ul> -->
-  </div>
-  <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
 
-  <div class="iconLinks collapse navbar-collapse" id="navbarNav">
-    <form class="d-flex">
-      <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
-      <button class="btn btn-outline-success" type="submit">
-        Search
-      </button>
-      <a href="src/Pages/Register/register.html">
-        <button class="btn btn-outline-success ms-2" type="button">
-          Signup
-        </button>
-      </a>
-    </form>
-  </div>
-  </div>
-  </nav>
   <div class="container-fluid">
     <section>
-      <!-- Navbar -->
-
-      <!-- <div
-          class="my-4 d-flex align-content-start justify-content-between flex-wrap"
-        >
-          <a class="btn btn-outline-primary">An item</a>
-          <a class="btn btn-outline-primary">A second item</a>
-          <a class="btn btn-outline-primary">A third item</a>
-          <a class="btn btn-outline-primary">A fourth item</a>
-          <a class="btn btn-outline-primary">And a fifth one</a>
-        </div> -->
-
       <!-- Carousel -->
       <div id="carouselExampleAutoplaying" class="carousel slide my-4" data-bs-ride="carousel">
         <div class="carousel-inner">
-          <div class="carousel-width carousel-item active">
+          <div class="carousel-item active">
             <img src="./public/Images/861724.png" class="d-block w-100" alt="Image 1" />
           </div>
-          <div class="carousel-item carousel-width">
+          <div class="carousel-item">
             <img src="./public/Images/1331316.png" class="d-block w-100" alt="Image 2" />
           </div>
-          <div class="carousel-item carousel-width">
+          <div class="carousel-item">
             <img src="./public/Images/1330031.jpeg" class="d-block w-100" alt="Image 3" />
           </div>
         </div>
@@ -129,162 +70,136 @@
           <span class="carousel-control-next-icon"></span>
         </button>
       </div>
-
     </section>
 
     <section id="Categories">
       <div class="accordion" id="accordionPanelsStayOpenExample">
-        <!--Clothing Section-->
-        <a href="/src/Pages/products/products.html?category=menClothing">
-          <div class="accordion-item">
-            <h2 class="accordion-header">
-              <button class="accordion-button" type="button" data-bs-toggle="collapse"
-                data-bs-target="#panelsStayOpen-collapseOne" aria-expanded="true"
-                aria-controls="panelsStayOpen-collapseOne">
-                men's clothing
-              </button>
-            </h2>
-            <div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse show">
-              <div class="accordion-body">
-                <div
-                  class="row clothing row-cols-1 row-cols-md-2 row-cols-lg-3 g-4 d-flex justify-content-center flex-wrap">
-                  <!-- card api here -->
-                </div>
+        <!-- Men's Clothing Section -->
+        <div class="accordion-item">
+          <h2 class="accordion-header">
+            <button class="accordion-button" type="button" data-bs-toggle="collapse"
+              data-bs-target="#collapseMenClothing" aria-expanded="true" aria-controls="collapseMenClothing">
+              Men's Clothing
+            </button>
+          </h2>
+          <div id="collapseMenClothing" class="accordion-collapse collapse show">
+            <div class="accordion-body">
+              <div
+                class="row clothing row-cols-1 row-cols-md-2 row-cols-lg-3 g-4 d-flex justify-content-center flex-wrap">
+                <!-- Card content will be dynamically generated here -->
               </div>
             </div>
           </div>
-        </a>
-                <!--Clothing Jewelery-->
+        </div>
 
-        <a href="/src/Pages/products/products.html?category=jewelery">
-
-          <div class="accordion-item">
-            <h2 class="accordion-header">
-              <button class="accordion-button" type="button" data-bs-toggle="collapse"
-                data-bs-target="#panelsStayOpen-collapseOne" aria-expanded="true"
-                aria-controls="panelsStayOpen-collapseOne">
-                jewelery
-              </button>
-            </h2>
-            <div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse show">
-              <div class="accordion-body">
-                <div
-                  class="row jewelery row-cols-1 row-cols-md-2 row-cols-lg-3 g-4 d-flex justify-content-center flex-wrap">
-                  <!-- card api here -->
-                </div>
+        <!-- Jewelery Section -->
+        <div class="accordion-item">
+          <h2 class="accordion-header">
+            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseJewelery"
+              aria-expanded="true" aria-controls="collapseJewelery">
+              Jewelery
+            </button>
+          </h2>
+          <div id="collapseJewelery" class="accordion-collapse collapse show">
+            <div class="accordion-body">
+              <div
+                class="row jewelery row-cols-1 row-cols-md-2 row-cols-lg-3 g-4 d-flex justify-content-center flex-wrap">
+                <!-- Card content will be dynamically generated here -->
               </div>
             </div>
           </div>
-        </a>
-                <!--electronics Section-->
+        </div>
 
-        <a href="/src/Pages/products/products.html?category=electronics">
-
-          <div class="accordion-item">
-            <h2 class="accordion-header">
-              <button class="accordion-button" type="button" data-bs-toggle="collapse"
-                data-bs-target="#panelsStayOpen-collapseOne" aria-expanded="true"
-                aria-controls="panelsStayOpen-collapseOne">
-                electronics
-              </button>
-            </h2>
-            <div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse show">
-              <div class="accordion-body">
-                <div
-                  class="row electronics row-cols-1 row-cols-md-2 row-cols-lg-3 g-4 d-flex justify-content-center flex-wrap">
-                  <!-- card api here -->
-                </div>
+        <!-- Electronics Section -->
+        <div class="accordion-item">
+          <h2 class="accordion-header">
+            <button class="accordion-button" type="button" data-bs-toggle="collapse"
+              data-bs-target="#collapseElectronics" aria-expanded="true" aria-controls="collapseElectronics">
+              Electronics
+            </button>
+          </h2>
+          <div id="collapseElectronics" class="accordion-collapse collapse show">
+            <div class="accordion-body">
+              <div
+                class="row electronics row-cols-1 row-cols-md-2 row-cols-lg-3 g-4 d-flex justify-content-center flex-wrap">
+                <!-- Card content will be dynamically generated here -->
               </div>
             </div>
           </div>
-        </a>
-                 <!--Phones Section-->
-        <a href="/src/Pages/products/products.html?category=mobile">
+        </div>
 
-          <div class="accordion-item">
-            <h2 class="accordion-header">
-              <button class="accordion-button" type="button" data-bs-toggle="collapse"
-                data-bs-target="#panelsStayOpen-collapseOne" aria-expanded="true"
-                aria-controls="panelsStayOpen-collapseOne">
-                Phones
-              </button>
-            </h2>
-            <div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse show">
-              <div class="accordion-body">
-                <div
-                  class="row mobile row-cols-1 row-cols-md-2 row-cols-lg-3 g-4 d-flex justify-content-center flex-wrap">
-                  <!-- card api here -->
-                </div>
+        <!-- Phones Section -->
+        <div class="accordion-item">
+          <h2 class="accordion-header">
+            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapsePhones"
+              aria-expanded="true" aria-controls="collapsePhones">
+              Phones
+            </button>
+          </h2>
+          <div id="collapsePhones" class="accordion-collapse collapse show">
+            <div class="accordion-body">
+              <div
+                class="row mobile row-cols-1 row-cols-md-2 row-cols-lg-3 g-4 d-flex justify-content-center flex-wrap">
+                <!-- Card content will be dynamically generated here -->
               </div>
             </div>
           </div>
-        </a>
-                 <!--audio Section-->
-        <a href="/src/Pages/products/products.html?category=audio">
+        </div>
 
-          <div class="accordion-item">
-            <h2 class="accordion-header">
-              <button class="accordion-button" type="button" data-bs-toggle="collapse"
-                data-bs-target="#panelsStayOpen-collapseOne" aria-expanded="true"
-                aria-controls="panelsStayOpen-collapseOne">
-                Audio
-              </button>
-            </h2>
-            <div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse show">
-              <div class="accordion-body">
-                <div
-                  class="row audio row-cols-1 row-cols-md-2 row-cols-lg-3 g-4 d-flex justify-content-center flex-wrap">
-                  <!-- card api here -->
-                </div>
+        <!-- Audio Section -->
+        <div class="accordion-item">
+          <h2 class="accordion-header">
+            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseAudio"
+              aria-expanded="true" aria-controls="collapseAudio">
+              Audio
+            </button>
+          </h2>
+          <div id="collapseAudio" class="accordion-collapse collapse show">
+            <div class="accordion-body">
+              <div class="row audio row-cols-1 row-cols-md-2 row-cols-lg-3 g-4 d-flex justify-content-center flex-wrap">
+                <!-- Card content will be dynamically generated here -->
               </div>
             </div>
           </div>
-        </a>
-         <!--Gaming Section-->
-          <a href="/src/Pages/products/products.html?category=gaming">
+        </div>
 
-        
-          <div class="accordion-item">
-            <h2 class="accordion-header">
-              <button class="accordion-button" type="button" data-bs-toggle="collapse"
-              data-bs-target="#panelsStayOpen-collapseOne" aria-expanded="true"
-              aria-controls="panelsStayOpen-collapseOne">
-                Gaming
-              </button>
-             </h2>
-            <div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse show">
-              <div class="accordion-body">
-                <div
-                  class="row audio row-cols-1 row-cols-md-2 row-cols-lg-3 g-4 d-flex justify-content-center flex-wrap">
-                  <!-- card api here -->
-                </div>
+        <!-- Gaming Section -->
+        <div class="accordion-item">
+          <h2 class="accordion-header">
+            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseGaming"
+              aria-expanded="true" aria-controls="collapseGaming">
+              Gaming
+            </button>
+          </h2>
+          <div id="collapseGaming" class="accordion-collapse collapse show">
+            <div class="accordion-body">
+              <div
+                class="row gaming row-cols-1 row-cols-md-2 row-cols-lg-3 g-4 d-flex justify-content-center flex-wrap">
+                <!-- Card content will be dynamically generated here -->
               </div>
             </div>
           </div>
-        </a>
-         <!--electronics Section-->
-          <a href="/src/Pages/products/products.html?category=tv">
-           <div class="accordion-item">
-            <h2 class="accordion-header">
-              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                data-bs-target="#panelsStayOpen-collapseThree"  aria-expanded="true"
-                aria-controls="panelsStayOpen-collapseThree">
-                TV
-              </button>
-            </h2>
-            <div id="panelsStayOpen-collapseThree" class="accordion-collapse collapse show">
-              <div class="accordion-body">
-                <div class="row tv row-cols-1 row-cols-md-2 row-cols-lg-3 g-4 d-flex flex-wrap">
-                  <!-- Cards generated dynamically will go here -->
-                </div>
+        </div>
+
+        <!-- TV Section -->
+        <div class="accordion-item">
+          <h2 class="accordion-header">
+            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTV"
+              aria-expanded="true" aria-controls="collapseTV">
+              TV
+            </button>
+          </h2>
+          <div id="collapseTV" class="accordion-collapse collapse show">
+            <div class="accordion-body">
+              <div class="row tv row-cols-1 row-cols-md-2 row-cols-lg-3 g-4 d-flex flex-wrap">
+                <!-- Card content will be dynamically generated here -->
               </div>
             </div>
           </div>
-        </a>
+        </div>
       </div>
- 
     </section>
-    <!-- /src/Pages/products/products.html -->
+
     <footer>
       <nav aria-label="Page navigation example">
         <ul class="pagination justify-content-center">
