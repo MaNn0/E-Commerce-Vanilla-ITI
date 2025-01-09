@@ -1,6 +1,8 @@
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.min.js";
 import "@fortawesome/fontawesome-free/css/all.min.css";
+import * as bootstrap from 'bootstrap'
+
 import "./products.css";
 
 // Fetch data from the server
@@ -47,7 +49,8 @@ const renderProducts = (data, container) => {
 };
 
 // Add product to cart
-const addToCart = (productId, products) => {
+export const addToCart = (productId, products) => {
+  console.log(productId,products)
   const product = products.find((p) => p.id == productId);
 
   const existingProducts =

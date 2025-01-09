@@ -36,7 +36,7 @@ export async function fetchUserData() {
 
     const userData = await fetchUserData()
     console.log("🚀 ~ userLogin ~ userData:", userData)
-    userData.includes("770e")
+
     
 
     //Referance FILTER Returns All the element that matches the data
@@ -50,21 +50,31 @@ export async function fetchUserData() {
     // })
 
     //Referance FIND Returns First Element It finds
-    let userEmail ={"email":"mlolo80013@gmail.comssss","password":"mano@6"}
+    let userEmail ={"email":"mlolo80013@gmail.com","password":"mano@6"}
 
     const userfind = userData.find((data)=> {
         return ( data.email == userEmail.email && data.password ==userEmail.password)
         })
-        console.log("🚀 ~ userfind ~ userfind:", userfind)
-    if (userfind) {   
-        console.log("User exists:", userfind);
-        alert(`you are Logged in ${userfind.firstName}`)
-      } else {
-        alert("User does not exist");
-      }
-
-
+     
+    // if (userfind) {   
+    //     console.log("User exists:", userfind);
+    //     alert(`you are Logged in ${userfind.firstName}`)
+    //   } else {
+    //     console.log("🚀 ~ userfind ~ userfind:", userfind)
+    //     alert("User does not exist");
+    //   }
+    
+      userCookies("Auth",userfind,'1')
+ 
 
     
  }
  userLogin()
+ function userCookies(name, value, daysToExpire) {
+    const date = new Date();
+    date.setTime(date.getTime() + (daysToExpire * 24 * 60 * 60 * 1000));
+    const expires = "expires=" + date.toUTCString();
+    const userData=   JSON.stringify(value)
+    console.log(userData)
+    document.cookie = `${name}=${(userData)}; ${expires}; path=/`;
+}
