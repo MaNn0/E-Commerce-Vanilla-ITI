@@ -139,7 +139,7 @@ signup.addEventListener("submit", (e) => {
   for (let element of e.target.elements) {
     if (element.type !== 'submit' && element.name) { // Skip the submit button and elements without a name
       if (element.value) {
-        console.log(`${element.name} || ${element.value}`);
+        // console.log(`${element.name} || ${element.value}`);
         formData[element.name.trim()] = element.value.trim(); // Trim keys and values
       }
     }

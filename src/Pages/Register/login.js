@@ -1,80 +1,97 @@
-  //Getting  UserData Function
+// Fetch user data from the server
 export async function fetchUserData() {
-    try {
-      const url="http://localhost:3000/accounts"
-      // Fetch options
-      const options = {
-        method: 'GET', // Specify the request method
-        headers: {
-          'Content-Type': 'application/json', // Set the content type to JSON
-        },
-      };
-  
-      // Await the fetch call
-      const response = await fetch(url, options);
-  
-      // Check if the response is OK (status code 200-299)
-      if (!response.ok) {
-        throw new Error(`HTTP error! Status: ${response.status}`);
-      }
-  
-      // Parse the JSON response
-      const result = await response.json();
-  
-      // Log the result
-      console.log('Success:', result);
-      return result; // Return the parsed result
-    } catch (error) {
-      // Handle errors
-      console.error('Error:', error);
+  try {
+    const url = "http://localhost:3000/accounts";
+    const options = {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    };
+
+    const response = await fetch(url, options);
+
+    if (!response.ok) {
+      throw new Error(`HTTP error! Status: ${response.status}`);
     }
+
+    const result = await response.json();
+    console.log('Success:', result);
+    return result; // Return the parsed result
+  } catch (error) {
+    console.error('Error:', error);
+    throw error; // Re-throw the error for handling in the caller function
   }
+}
 
-  // UserData Function
+// Set a cookie with a name, value, and expiration in days
+function setCookie(name, value, daysToExpire,rememberMe) {
+console.log(rememberMe)
+if (rememberMe){
+  const date = new Date();
+  date.setTime(date.getTime() + (daysToExpire * 24 * 60 * 60 * 1000));
+  const expires = `expires=${date.toUTCString()}`;
+  const cookieValue = JSON.stringify(value); // Convert value to JSON string
+  document.cookie = `${name}=${cookieValue}; ${expires}; path=/`;
+}else{
+  const sessionValue = JSON.stringify(value); // Convert value to JSON string
+  sessionStorage.setItem("Auth",sessionValue);
+}
+}
 
- const userLogin = async ()=>{
+// Handle user login
+const userLogin = async (userCredentials) => {
+  try {
+    const userData = await fetchUserData();
+    console.log("Fetched user data:", userData);
 
-    const userData = await fetchUserData()
-    console.log("🚀 ~ userLogin ~ userData:", userData)
+    // Find the user in the fetched data
+    const user = userData.find(
+      (data) =>
+        data.email === userCredentials.loginEmail &&
+        data.password === userCredentials.loginPassword
+    );
 
-    
+    if (user) {
+      console.log("User found:", user);
+      alert(`You are logged in as ${user.firstName}`);
+      setCookie("Auth", user, 1 ,userCredentials.rememberMe); // Set cookie with user data
+      // location.replace("http://localhost:5173")
+    } else {
+      console.log("User not found");
+      alert("Invalid email or password");
+    }
+  } catch (error) {
+    console.error("Login failed:", error);
+    alert("An error occurred during login. Please try again.");
+  }
+}
 
-    //Referance FILTER Returns All the element that matches the data
-    // const userfilter = userData.filter((data)=> {
-    //  return ( data.email == userEmail.email && data.password ==userEmail.password)
-    // })
+// Trigger the login process
+const loginForm = document.querySelector(".loginForm");
 
-    //Referance Some Returns True or False
-    // const usersome = userData.some((data)=> {
-    // return ( data.email == userEmail.email && data.password ==userEmail.password)
-    // })
+if (loginForm) {
+  loginForm.addEventListener("submit", (e) => {
+    e.preventDefault(); // Prevent the default form submission
 
-    //Referance FIND Returns First Element It finds
-    let userEmail ={"email":"mlolo80013@gmail.com","password":"mano@6"}
+    // Extract form data into an object
+    const formData = new FormData(e.target); // Create a FormData object from the form
+    const formValues = Object.fromEntries(formData.entries()); // Convert FormData to a plain object
 
-    const userfind = userData.find((data)=> {
-        return ( data.email == userEmail.email && data.password ==userEmail.password)
-        })
-     
-    // if (userfind) {   
-    //     console.log("User exists:", userfind);
-    //     alert(`you are Logged in ${userfind.firstName}`)
-    //   } else {
-    //     console.log("🚀 ~ userfind ~ userfind:", userfind)
-    //     alert("User does not exist");
-    //   }
-    
-      userCookies("Auth",userfind,'1')
- 
+    // Log the form data
+    console.log("Form Data:", formValues);
 
-    
- }
- userLogin()
- function userCookies(name, value, daysToExpire) {
-    const date = new Date();
-    date.setTime(date.getTime() + (daysToExpire * 24 * 60 * 60 * 1000));
-    const expires = "expires=" + date.toUTCString();
-    const userData=   JSON.stringify(value)
-    console.log(userData)
-    document.cookie = `${name}=${(userData)}; ${expires}; path=/`;
+    // Example: Validate or process the form data
+    if (formValues.loginEmail && formValues.loginPassword) {
+      console.log("Email:", formValues.loginEmail);
+      console.log("Password:", formValues.loginPassword);
+      console.log("Remember Me:", formValues.rememberMe === "on"); // Checkbox value
+      userLogin(formValues)
+      // Add your login logic here (e.g., call a login API)
+    } else {
+      console.error("Email and password are required.");
+    }
+  });
+} else {
+  console.error("Login form not found!");
 }
