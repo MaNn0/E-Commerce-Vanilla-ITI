@@ -2,6 +2,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.min.js";
 import "./style.css";
 import "@fortawesome/fontawesome-free/css/all.min.css";
+import { addToCart } from "./Pages/products/products";
 
 (async function () {
   try {
@@ -14,13 +15,20 @@ import "@fortawesome/fontawesome-free/css/all.min.css";
     renderGaming(data);
     renderTv(data);
     renderMobile(data);
-    return data;
+
+    // Attach the event listener after data is fetched and buttons are rendered
+    const btnCart = document.querySelectorAll(".btnCart");
+    btnCart.forEach((button) => {
+      button.addEventListener("click", (event) => {
+        const productId = event.target.getAttribute("productData");
+        // Ensure `data` is available when calling `addToCart`
+        addToCart(productId, data);
+      });
+    });
   } catch (err) {
-    console.error(`data is not found ${err}`);
+    console.error(`Data is not found: ${err}`);
   }
 })();
-
-// export const data = await getData();
 
 function renderClothing(data) {
   const img = document.querySelector(".clothing");
@@ -41,7 +49,9 @@ function renderClothing(data) {
         <a href="/src/Pages/products/productdetails/productdetails.html?id=${
           element.id
         }"  class="btn mx-2 mt-auto btn-warning">Product Details</a>
-        <a href="/src/Pages/products/productdetails/productdetails.html" class="btn mt-auto btn-success">Add to cart</a>
+        <button class="btn mt-auto btn-success btnCart" productData="${
+          element.id
+        }">Add to cart</button>
         </div>
       </div>
       </div>
@@ -50,7 +60,6 @@ function renderClothing(data) {
     .join("");
   img.innerHTML = product;
 }
-
 function renderJewelery(data) {
   const img = document.querySelector(".jewelery");
   const product = data
@@ -70,7 +79,9 @@ function renderJewelery(data) {
         <a href="/src/Pages/products/productdetails/productdetails.html?id=${
           element.id
         }"  class="btn mx-2 mt-auto btn-warning">Product Details</a>
-        <a href="/src/Pages/products/productdetails/productdetails.html" class="btn mt-auto btn-success">Add to cart</a>
+        <button class="btn mt-auto btn-success btnCart" productData="${
+          element.id
+        }">Add to cart</button>
         </div>
       </div>
       </div>
@@ -99,7 +110,9 @@ function renderElectronics(data) {
         <a href="/src/Pages/products/productdetails/productdetails.html?id=${
           element.id
         }"  class="btn mx-2 mt-auto btn-warning">Product Details</a>
-        <a href="/src/Pages/products/productdetails/productdetails.html" class="btn mt-auto btn-success">Add to cart</a>
+        <button class="btn mt-auto btn-success btnCart" productData="${
+          element.id
+        }">Add to cart</button>
         </div>
       </div>
       </div>
@@ -128,7 +141,9 @@ function renderMobile(data) {
         <a href="/src/Pages/products/productdetails/productdetails.html?id=${
           element.id
         }"  class="btn mx-2 mt-auto btn-warning">Product Details</a>
-        <a href="/src/Pages/products/productdetails/productdetails.html" class="btn mt-auto btn-success">Add to cart</a>
+<button class="btn mt-auto btn-success btnCart" productData="${
+        element.id
+      }">Add to cart</button>
         
         </div>
       </div>
@@ -157,7 +172,9 @@ function renderImg(data) {
         <a href="/src/Pages/products/productdetails/productdetails.html?id=${
           element.id
         }"  class="btn mx-2 mt-auto btn-warning">Product Details</a>
-        <a href="/src/Pages/products/productdetails/productdetails.html" class="btn mt-auto btn-success">Add to cart</a>
+        <button class="btn mt-auto btn-success btnCart" productData="${
+          element.id
+        }">Add to cart</button>
         </div>
       </div>
       </div>
@@ -188,7 +205,9 @@ function renderGaming(data) {
         <a href="/src/Pages/products/productdetails/productdetails.html?id=${
           element.id
         }"  class="btn mx-2 mt-auto btn-warning">Product Details</a>
-        <a href="/src/Pages/products/productdetails/productdetails.html" class="btn mt-auto btn-success">Add to cart</a>
+        <button class="btn mt-auto btn-success btnCart" productData="${
+          element.id
+        }">Add to cart</button>
         </div>
       </div>
       </div>
@@ -221,7 +240,9 @@ function renderTv(data) {
         <a href="/src/Pages/products/productdetails/productdetails.html?id=${
           element.id
         }"  class="btn mx-2 mt-auto btn-warning">Product Details</a>
-        <a href="/src/Pages/products/productdetails/productdetails.html" class="btn mt-auto btn-success">Add to cart</a>
+        <button class="btn mt-auto btn-success btnCart" productData="${
+          element.id
+        }">Add to cart</button>
         </div>
       </div>
       </div>

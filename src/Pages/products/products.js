@@ -36,7 +36,7 @@ const renderProducts = (data, container) => {
           <div class="hiddenBody">
             <h5 class="card-title">${product.title}</h5>
             <a href="/src/Pages/products/productdetails/productdetails.html?id=${product.id}" class="btn btn-primary">View Details</a>
-             <button type="button" class="btn btn-success btnCart" productData=${product.id} aria-label="Add to Cart">
+            <button type="button" class="btn btn-success btnCart" productData=${product.id} aria-label="Add to Cart">
               Add to Cart
             </button>  
           </div>
@@ -47,17 +47,20 @@ const renderProducts = (data, container) => {
 };
 
 // Add product to cart
-const addToCart = (productId, products) => {
+export const addToCart = (productId, products) => {
   const product = products.find((p) => p.id == productId);
 
   const existingProducts =
     JSON.parse(localStorage.getItem("cartProducts")) || [];
 
   const productIndex = existingProducts.findIndex((p) => p.id === productId);
+  // productIndex = true(index) OR false (-1)
   if (productIndex !== -1) {
+    // y3ne mawgod [1,2,4,5,6]
     existingProducts[productIndex].quantity += 1;
   } else {
-    product.quantity = 1;
+    // lw m4 mawgod
+    product.quantity = 1; // creating quantity
     existingProducts.push(product);
   }
 
