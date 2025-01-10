@@ -4,8 +4,8 @@ import { isLoggedIn,authName,authData,authType,setCookie,productsData, getCookie
 // Retrieve products from localStorage
 // const products = JSON.parse(localStorage.getItem("cartProducts")) || [];
 let productCart = getCookie("productCart")
-const productsName = productCart ?productCart.name: null;
 const products = productCart ?JSON.parse(productCart.value): null
+const productsName = productCart ?productCart.name: null;
 console.log("🚀 ~ products:", products)
 // Function to update the cart UI and calculations
 

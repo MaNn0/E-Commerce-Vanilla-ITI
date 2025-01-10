@@ -1,9 +1,7 @@
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.min.js";
-import { getCookie } from "../../assets/reusable";
+import { getCookie,isLoggedIn,authData } from "../../assets/reusable";
 import { loadStripe } from '@stripe/stripe-js';
-
-// radio for address button [show,hide]
 
 const defaultAddInput = document.getElementById('defaultADD');
 const newAddInput = document.getElementById('newADD');
@@ -43,7 +41,7 @@ document.querySelector(".btn-primary").addEventListener("click", function () {
 
 // Get the products from localStorage
 // const products = JSON.parse(localStorage.getItem("cartProducts")) || [];
-// getCookie/Sessions
+// getCookie/Sessions Here
 let productCart = getCookie("productCart")
 const products = productCart ?JSON.parse(productCart.value): null
 console.log("🚀 ~ Product:", products);
@@ -231,3 +229,5 @@ form.addEventListener('submit', async (event) => {
     alert('Payment Successful!');
   }
 });
+//Applaying The Auth Data Here
+isLoggedIn(authData,"./../Register/register.html")
