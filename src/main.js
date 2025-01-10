@@ -1,59 +1,95 @@
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.min.js";
-import * as bootstrap from 'bootstrap'
+import * as bootstrap from "bootstrap";
 import "./style.css";
 import "@fortawesome/fontawesome-free/css/all.min.css";
-import { isLoggedIn,setCookie,getCookie,addToCart } from "./assets/reusable";
+import { addToCart } from "./Pages/products/products";
+import { isLoggedIn } from "./assets/reusable";
+function getCookie(name) {
+  // Check sessionStorage first
+  if (sessionStorage.getItem("Auth")) {
+    const sessionValue = sessionStorage.getItem("Auth");
+    try {
+      const sessionData = JSON.parse(sessionValue); // Parse the session data
+      console.log("🚀 ~ getCookie ~ sessionData:", sessionData);
+      if (sessionData) {
+        return { name: "Auth", value: sessionValue, type: "session" }; // Return the session value
+      }
+    } catch (error) {
+      console.error("Error parsing sessionStorage data:", error);
+    }
+  }
 
-// Imports Ends Here
-//Global Declared Variables
-let productCart = getCookie("productCart")
-let authCookie = getCookie("Auth")
-const products = productCart ?JSON.parse(productCart.value): null
+  // If not found in sessionStorage, check cookies
+  const cookies = document.cookie.split(";");
+  for (let cookie of cookies) {
+    const [cookieName, cookieValue] = cookie.trim().split("=");
+    if (cookieName === name) {
+      return { name: cookieName, value: cookieValue, type: "cookies" }; // Return the cookie value
+    }
+  }
+
+  // If not found, return null
+  return null;
+}
+// Get the "Auth" cookie
+const authCookie = getCookie("Auth");
+// console.log("🚀 ~ authCookie:", authCookie)
+
+// DeleteCookie
+function deleteCookie(name) {
+  console.log(name);
+
+  sessionStorage.clear();
+  document.cookie = `${name}=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;`;
+}
+
+// Check if the cookie exists and extract the values
 export const authName = authCookie ? authCookie.name : null;
 export const authData = authCookie ? authCookie.value : null;
 export const authType = authCookie ? authCookie.type : null;
+// console.log(authName, authData,authType);
+const currentPath = window.location.pathname;
+const userData = JSON.parse(authData);
+const initializeApp = async () => {
+  const btnCart = document.querySelectorAll(".btnCart");
+  (async function () {
+    try {
+      const response = await fetch("http://localhost:3000/products");
+      const data = await response.json();
+      renderClothing(data);
+      renderJewelery(data);
+      renderElectronics(data);
+      renderImg(data);
+      renderGaming(data);
+      renderTv(data);
+      renderMobile(data);
 
-const currentPath =  window.location.pathname;
-  const initializeApp = async () =>{
-    // const btnCart = document.querySelectorAll(".btnCart");
-    (async function () {
-      try {
-        const response = await fetch("http://localhost:3000/products");
-        const data = await response.json();
-        renderClothing(data);
-        renderJewelery(data);
-        renderElectronics(data);
-        renderImg(data);
-        renderGaming(data);
-        renderTv(data);
-        renderMobile(data);
-        const btnCart = document.querySelectorAll(".btnCart");
-        // Attach the event listener after data is fetched and buttons are rendered
-        btnCart.forEach((button) => {
-          button.addEventListener("click", (event) => {
-            const productId = event.target.getAttribute("productData");
-            // Ensure `data` is available when calling `addToCart`
-            addToCart(productId, data);
-          });
+      // Attach the event listener after data is fetched and buttons are rendered
+      btnCart.forEach((button) => {
+        button.addEventListener("click", (event) => {
+          const productId = event.target.getAttribute("productData");
+          // Ensure `data` is available when calling `addToCart`
+          addToCart(productId, data);
         });
-      } catch (err) {
-        console.error(`Data is not found: ${err}`);
-      }
-    })();
-    // isLoggedIn(authData)
+      });
+    } catch (err) {
+      console.error(`Data is not found: ${err}`);
+    }
+  })();
+  // isLoggedIn(authData)
 
-function renderClothing(data) {
-  const img = document.querySelector(".clothing");
-  const product = data
-    .filter((element) => element.category === "menClothing")
-    .slice(0, 5)
-    .map((element) => {
-      return `
+  function renderClothing(data) {
+    const img = document.querySelector(".clothing");
+    const product = data
+      .filter((element) => element.category === "menClothing")
+      .slice(0, 5)
+      .map((element) => {
+        return `
     <div class="card mx-2 border border-primary shadow-lg p-3 mb-5 bg-body-tertiary rounded" style="width: 18rem;">
       <img src="${element.image}" class="card-img-top productCard" alt="${
-        element.title
-      }">
+          element.title
+        }">
       <div class="card-body d-flex flex-column ">
         <h5 class="card-title">${element.title}</h5>
         <p class="card-text text-danger mt-auto">Price: ${element.price}$</p>
@@ -69,23 +105,23 @@ function renderClothing(data) {
       </div>
       </div>
       `;
-    })
-    .join("");
-  img.innerHTML = product;
-}
-function renderJewelery(data) {
-  // console.log("🚀 ~ renderJewelery ~ data:", data);
-  const img = document.querySelector(".jewelery");
+      })
+      .join("");
+    img.innerHTML = product;
+  }
+  function renderJewelery(data) {
+    // console.log("🚀 ~ renderJewelery ~ data:", data);
+    const img = document.querySelector(".jewelery");
 
-  const product = data
-    .filter((element) => element.category === "jewelery")
-    .slice(0, 5)
-    .map((element) => {
-      return `
+    const product = data
+      .filter((element) => element.category === "jewelery")
+      .slice(0, 5)
+      .map((element) => {
+        return `
     <div class="card mx-2 productCards border border-primary shadow-lg p-3 mb-3 bg-body-tertiary rounded" style="width: 18rem;">
       <img src="${element.image}" class="card-img-top productCard" alt="${
-        element.title
-      }">
+          element.title
+        }">
       <div class="card-body d-flex flex-column ">
         <h5 class="card-title">${element.title}</h5>
         <p class="card-text text-danger mt-auto">Price: ${element.price}$</p>
@@ -101,23 +137,29 @@ function renderJewelery(data) {
       </div>
       </div>
       `;
-    })
-    .join("");
+      })
+      .join("");
 
-  img.innerHTML = product;
-}
-
-function renderElectronics(data) {
-  const img = document.querySelector(".electronics");
-  const product = data
-    .filter((element) => element.category === "electronics")
-    .slice(0, 5)
-    .map((element) => {
-      return `
+    img.innerHTML = product;
+  }
+  const accordioniItem = document.querySelector(".jewelery");
+  accordioniItem.addEventListener("click", (event) => {
+    if (event.target.classList.contains("btnCart")) {
+      const productId = event.target.getAttribute("productData");
+      addToCart(productId, fetchedData);
+    }
+  });
+  function renderElectronics(data) {
+    const img = document.querySelector(".electronics");
+    const product = data
+      .filter((element) => element.category === "electronics")
+      .slice(0, 5)
+      .map((element) => {
+        return `
     <div class="card mx-2 border border-primary shadow-lg p-3 mb-5 bg-body-tertiary rounded" style="width: 18rem;">
       <img src="${element.image}" class="card-img-top productCard" alt="${
-        element.title
-      }">
+          element.title
+        }">
       <div class="card-body d-flex flex-column ">
         <h5 class="card-title">${element.title}</h5>
         <p class="card-text text-danger mt-auto">Price: ${element.price}$</p>
@@ -133,22 +175,22 @@ function renderElectronics(data) {
       </div>
       </div>
       `;
-    })
-    .join("");
-  img.innerHTML = product;
-}
+      })
+      .join("");
+    img.innerHTML = product;
+  }
 
-function renderMobile(data) {
-  const img = document.querySelector(".mobile");
-  const product = data
-    .filter((element) => element.category === "mobile")
-    .slice(0, 5)
-    .map((element) => {
-      return `
+  function renderMobile(data) {
+    const img = document.querySelector(".mobile");
+    const product = data
+      .filter((element) => element.category === "mobile")
+      .slice(0, 5)
+      .map((element) => {
+        return `
     <div class="card mx-2 border border-primary shadow-lg p-3 mb-5 bg-body-tertiary rounded" style="width: 18rem;">
       <img src="${element.image}" class="card-img-top productCard" alt="${
-        element.title
-      }">
+          element.title
+        }">
       <div class="card-body d-flex flex-column ">
         <h5 class="card-title">${element.title}</h5>
         <p class="card-text text-danger mt-auto">Price: ${element.price}$</p>
@@ -158,28 +200,28 @@ function renderMobile(data) {
           element.id
         }"  class="btn mx-2 mt-auto btn-warning">Product Details</a>
 <button class="btn mt-auto btn-success btnCart" productData="${
-        element.id
-      }">Add to cart</button>
+          element.id
+        }">Add to cart</button>
         
         </div>
       </div>
       </div>
       `;
-    })
-    .join("");
-  img.innerHTML = product;
-}
-function renderImg(data) {
-  const img = document.querySelector(".audio");
-  const product = data
-    .filter((element) => element.category === "audio")
-    .slice(0, 5)
-    .map((element) => {
-      return `
+      })
+      .join("");
+    img.innerHTML = product;
+  }
+  function renderImg(data) {
+    const img = document.querySelector(".audio");
+    const product = data
+      .filter((element) => element.category === "audio")
+      .slice(0, 5)
+      .map((element) => {
+        return `
     <div class="card mx-2 border border-primary shadow-lg p-3 mb-5 bg-body-tertiary rounded" style="width: 18rem;">
       <img src="${element.image}" class="card-img-top productCard" alt="${
-        element.title
-      }">
+          element.title
+        }">
       <div class="card-body d-flex flex-column ">
         <h5 class="card-title">${element.title}</h5>
         <p class="card-text text-danger mt-auto">Price: ${element.price}$</p>
@@ -195,22 +237,22 @@ function renderImg(data) {
       </div>
       </div>
       `;
-    })
-    .join("");
-  img.innerHTML = product;
-}
+      })
+      .join("");
+    img.innerHTML = product;
+  }
 
-function renderGaming(data) {
-  const img = document.querySelector(".gaming");
-  const product = data
-    .filter((element) => element.category === "gaming")
-    .slice(0, 5)
-    .map((element) => {
-      return `
+  function renderGaming(data) {
+    const img = document.querySelector(".gaming");
+    const product = data
+      .filter((element) => element.category === "gaming")
+      .slice(0, 5)
+      .map((element) => {
+        return `
       <div class="card mx-3 border border-primary shadow-lg p-3 mb-5 bg-body-tertiary rounded" style="width: 18rem;">
         <img src="${element.image}" class="card-img-top productCard" alt="${
-        element.title
-      }">
+          element.title
+        }">
       <div class="card-body d-flex flex-column">
         <h5 class="card-title">${element.title}</h5>
         <p class="card-text text-danger mt-auto">Price: ${element.price}$</p>
@@ -228,22 +270,22 @@ function renderGaming(data) {
       </div>
       </div>
         `;
-    })
-    .join("");
-  img.innerHTML = product;
-}
+      })
+      .join("");
+    img.innerHTML = product;
+  }
 
-function renderTv(data) {
-  const img = document.querySelector(".tv");
-  const product = data
-    .filter((element) => element.category === "tv")
-    .slice(0, 5)
-    .map((element) => {
-      return `
+  function renderTv(data) {
+    const img = document.querySelector(".tv");
+    const product = data
+      .filter((element) => element.category === "tv")
+      .slice(0, 5)
+      .map((element) => {
+        return `
       <div class="card mx-3 border border-primary shadow-lg p-3 mb-5 bg-body-tertiary rounded" style="width: 18rem;">
         <img src="${element.image}" class="card-img-top productCard" alt="${
-        element.title
-      }">
+          element.title
+        }">
       <div class="card-body d-flex flex-column">
         <h5 class="card-title">${element.title}</h5>
         <p class="card-text mt-auto text-danger mt-auto">Price: ${
@@ -263,13 +305,13 @@ function renderTv(data) {
       </div>
       </div>
         `;
-    })
-    .join("");
-  img.innerHTML = product;
-}};
+      })
+      .join("");
+    img.innerHTML = product;
+  }
+};
 // CheckAuth(authData);
 if (currentPath == "/") {
-  isLoggedIn(authData,'./src/Pages/Register/register.html')
+  isLoggedIn(authData, "./src/Pages/Register/register.html");
   document.addEventListener("DOMContentLoaded", initializeApp);
 }
-
