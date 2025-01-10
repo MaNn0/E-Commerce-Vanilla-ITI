@@ -74,29 +74,22 @@ function deleteCookie(name) {
 
 const authCookie = getCookie("Auth");
 const productCart = getCookie("productCart");
-
+// Better For Handling Error To get cookies and ReuseThem There {Destruct }
 export const authName = authCookie ? authCookie.name : null;
 export const authData = authCookie ? authCookie.value : null;
 export const authType = authCookie ? authCookie.type : null;
 export const productsName = productCart ?productCart.name: null;
 export const productsData = productCart ?productCart.value: null
-// console.log("🚀 ~ authName:", authName)
-// console.log("🚀 ~ authData:", authData)
-// console.log("🚀 ~ authType:", authType)
-// console.log("🚀 ~ productsName:", productsName)
-// console.log("🚀 ~ productsData:", productsData)
-;
-//   console.log(authName, authData,authType);
 
 export const isLoggedIn = (authData, href) => {
     const userBtn = document.querySelector(".userBtn");
     // If authData is not provided, return early
-    if (!authData) {
-        //   console.error("No authentication data provided.");
-    }
-    else {
+    // if (!authData) {
+    //     //   console.error("No authentication data provided.");
+    // }
+    // else {
 
-    }
+    // }
 
     // Parse user data from authData
     let userData;
@@ -123,11 +116,7 @@ export const isLoggedIn = (authData, href) => {
           </ul>
         </div>
       `;
-    //   <li><a class="dropdown-item" href="#"><i class="fa-solid fa-star"></i> WishList</a></li>
-    //   <li><a class="dropdown-item" href="#"><i class="fa-solid fa-box-archive"></i> Orders</a></li>
-        // Add event listener for logout
         const logOutBtn = document.querySelector(".logOutBtn");
-        //   console.log("🚀 ~ isLoggedIn ~ logOutBtn:", logOutBtn);
         if (logOutBtn) {
             logOutBtn.addEventListener("click", (event) => {
                 event.preventDefault();
@@ -152,9 +141,7 @@ export const isLoggedIn = (authData, href) => {
         return false;
     }
 };
-
-
-
+// Post Data After Updating
 async function postData(data = {}, userId) {
     try {
         // Validate input parameters
@@ -210,6 +197,7 @@ async function postData(data = {}, userId) {
         alert(`Failed: ${error.message}`);
     }
 }
+// Erorr AND declaration Handling
 const nameForm = document.querySelector("#name");
 const nameError = document.querySelector(".nameError");
 
@@ -306,12 +294,15 @@ function showError(nameForm, name2Form, email, password, repassword, address, ad
 
     return hasErrors;
 }
+// Updating Form Data
 export function formSubmit(authType, userId, formName, formData, inputFirstName, inputLastName, inputEmail, inputPassword, inputRePassword, inputMainAddress, inputSecondaryAddress, inputCity) {
-    //   console.log(inputFirstName,inputLastName,inputEmail,inputPassword,inputRePassword,inputMainAddress,inputSecondaryAddress,inputCity);
 
+// Check For Errors
     let noErrors = showError(inputFirstName, inputLastName, inputEmail, inputPassword, inputRePassword, inputMainAddress, inputSecondaryAddress, inputCity);
+    
     if (noErrors === 0) {
         setCookie("Auth", formData, 1, authType)
+        // Post Data
         postData(formData, userId)
 
     }

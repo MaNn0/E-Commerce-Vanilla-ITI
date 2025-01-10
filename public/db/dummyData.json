@@ -29,6 +29,16 @@
       "repassword": "Fightsong@2",
       "mainAddress": "4-hussain",
       "city": "cairo"
+    },
+    {
+      "id": "d8fd",
+      "firstName": "mano",
+      "lastName": "ramadan",
+      "email": "mlolo80013@gmail.com",
+      "password": "Mano2001!",
+      "repassword": "Mano2001!",
+      "mainAddress": "haram",
+      "city": "giza"
     }
   ],
   "orders": [],
