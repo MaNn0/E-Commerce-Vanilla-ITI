@@ -7,6 +7,7 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
   <link rel="stylesheet" href="Payments.css">
   <title>Document</title>
+  <script src="https://js.stripe.com/v3/"></script>
 </head>
 
 <body>
@@ -117,7 +118,7 @@
               <div class="alert alert-success text-start py-2 mb-3 " role="alert">
                 error or warning
               </div>
-              <button  class="btn btn-primary w-50 ">PLACE ORDER</button> <!-- Full width button -->
+              <button class="btn btn-primary w-50" id="place-order-button">PLACE ORDER</button> <!-- Full width button -->
      
             </div>
           </div>
@@ -373,7 +374,7 @@
     <script type="module" src="../../../node_modules/bootstrap/dist/js/bootstrap.bundle.min.js">
     </script>
     <script type="module" src="./Payment.js"></script>
-
+    <script type="module" src="./frontend.js"></script>
 </body>
 
 </html>
