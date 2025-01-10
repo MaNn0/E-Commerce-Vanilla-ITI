@@ -1,33 +1,63 @@
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.min.js";
-import { isLoggedIn,authName,authData,authType,setCookie,productsData, getCookie} from "../../assets/reusable"
+import {
+  isLoggedIn,
+  authName,
+  authData,
+  authType,
+  setCookie,
+  productsData,
+  getCookie,
+} from "../../assets/reusable";
 // Retrieve wishlist from localStorage
 // const products = JSON.parse(localStorage.getItem("cartProducts")) || [];
 
-let account = { ...JSON.parse(authData), wishlist: []}
+let wishlist = getCookie("wishlist");
+const wishlistData = wishlist ? wishlist.value : null;
+let wishlistProducts = JSON.parse(wishlistData);
 
-// Function to update the cart UI and calculations
+// Render wishlist items
+const updateWishlist = () => {
 
-console.log(account.wishlist.length);
-setCookie("Auth", account,1,authType)
+  document.querySelector(".cart-item").innerHTML =
+    wishlistProducts.length > 0
+      ? wishlistProducts.map(
+          (product, index) => `
+         <div class="row">
+                <div class="col-md-6 my-auto">
+                  <a href="../products/productdetails/productdetails.html?id=${product.id}">
+                    <label class="product-name">
+                      <img src="${product.image}" style="width: 150px; height: 150px" alt="">
+                      ${product.title}
+                    </label>
+                  </a>
+                </div>
+                <div class="col-md-2 my-auto">
+                  <label class="price">${product.price} EGP</label>
+                </div>
+               
+                <div class="col-md-2 col-5 my-auto">
+                  <div class="remove">
+                    <button data-index=${index} class="round-red-btn small-btn"><i class="fa fa-trash"></i> Remove</button>
+                  </div>
+                </div>
+              </div>
+      `
+        ).join("")
+      : "<h3 class= 'mt-5' >No items.</h3>";
+};
 
-  // Render wishlist items
-  document.querySelector(".wishlistItem").innerHTML = account.wishlist.length > 0
-    ? account.wishlist.map((product, index) => `
-        <td width="45%">
-                    <div class="display-flex align-center">
-                      <div class="img-product">
-                        <img
-                          src=${product.image}
-                      </div>
-                      <div class="name-product">
-                      ${product.name}
-                      </div>
-                    </div>
-                  </td>
-                  <td width="15%" class="price">${product.price}</td>
-                  <td width="15%"><button class="round-black-btn small-btn">Add to Cart</button></td>
-                  <td width="10%" class="text-center"><a href="#" class="trash-icon"><i
-                        class="far fa-trash-alt"></i></a></td>
-      `).join("")
-    : "<h3 class= 'mt-5' >No items.</h3>";
+document.querySelector(".cart-item").addEventListener("click", (event) => {
+  if (event.target.classList.contains("round-red-btn")) {
+    const index = event.target.getAttribute("data-index");
+    const newWishlistProduct = wishlistProducts.filter(
+      (product) => product.id !== wishlistProducts[index].id
+    );
+    setCookie("wishlist", newWishlistProduct, 1, authType);
+    wishlistProducts = newWishlistProduct;
+    updateWishlist();
+  }
+});
+isLoggedIn(authData, "./../Register/register.html");
+// Initialize the cart UI
+updateWishlist();

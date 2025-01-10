@@ -1,7 +1,13 @@
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.min.js";
 import "@fortawesome/fontawesome-free/css/all.min.css";
-import {authType,setCookie, getCookie,NavBar,fetchData} from "../../assets/reusable" 
+import {
+  authType,
+  setCookie,
+  getCookie,
+  NavBar,
+  fetchData,
+} from "../../assets/reusable";
 import "./products.css";
 
 // Render products to the DOM
@@ -35,6 +41,11 @@ const renderProducts = (data, container) => {
     } aria-label="Add to Cart">
       Add to Cart
     </button>
+    <button type="button" class="btn btn-warning btnWishlist" productData=${
+      product.id
+    } aria-label="Add to Wishlist">
+      Add to Wishlist
+    </button>
   </div>
 </div>
 
@@ -48,17 +59,17 @@ const renderProducts = (data, container) => {
 
 // Add product to cart
 export const addToCart = (productId, products) => {
-  let productCart = getCookie("productCart")
- const productsName = productCart ?productCart.name: null;
- const productsData = productCart ?productCart.value: null
+  let productCart = getCookie("productCart");
+  const productsName = productCart ? productCart.name : null;
+  const productsData = productCart ? productCart.value : null;
 
-  console.log("🚀 ~ getCookieValue ~ getCookie:", getCookie("productCart"))
+  console.log("🚀 ~ getCookieValue ~ getCookie:", getCookie("productCart"));
   const product = products.find((p) => p.id == productId);
   // const existingProducts =
   //   JSON.parse(localStorage.getItem("productCart")) || [];
-      // console.log("🚀 ~ addToCart ~ productsData:", productsData)
-    const existingProducts =JSON.parse(productsData) || [];
-    console.log("🚀 ~ addToCart ~ existingProducts:", existingProducts)
+  // console.log("🚀 ~ addToCart ~ productsData:", productsData)
+  const existingProducts = JSON.parse(productsData) || [];
+  console.log("🚀 ~ addToCart ~ existingProducts:", existingProducts);
   const productIndex = existingProducts.findIndex((p) => p.id === productId);
   // productIndex = true(index) OR false (-1)
   if (productIndex !== -1) {
@@ -69,16 +80,27 @@ export const addToCart = (productId, products) => {
     product.quantity = 1; // creating quantity
     existingProducts.push(product);
   }
-  setCookie("productCart", existingProducts,1,authType)
+  setCookie("productCart", existingProducts, 1, authType);
   // localStorage.setItem("cartProducts", JSON.stringify(existingProducts));
   // console.log("Product added to cart:", product);
 };
- 
 
+export const addToWishlist = (productId, products) => {
+  let wishlist = getCookie("wishlist");
+  const wishlistData = wishlist ? wishlist.value : null;
+  const existingProducts = JSON.parse(wishlistData) || [];
+  let wishlistedProduct = products.filter((p) => productId === p.id);
+  console.log(wishlistedProduct)
+  if(existingProducts.findIndex((p)=> p.id === productId) === -1){
+    existingProducts.push(wishlistedProduct[0]);
+    setCookie("wishlist", existingProducts, 1, authType);
+  }
+
+  
+};
 
 // Initialize the app
 const initializeApp = async () => {
-
   const fetchedData = await fetchData();
   const productsContainer = document.querySelector(".products");
   const categorySelect = document.querySelector(".productCategory");
@@ -106,6 +128,13 @@ const initializeApp = async () => {
     if (event.target.classList.contains("btnCart")) {
       const productId = event.target.getAttribute("productData");
       addToCart(productId, fetchedData);
+    }
+  });
+
+  productsContainer.addEventListener("click", (event) => {
+    if (event.target.classList.contains("btnWishlist")) {
+      const productId = event.target.getAttribute("productData");
+      addToWishlist(productId, fetchedData);
     }
   });
 
@@ -169,12 +198,11 @@ const initializeApp = async () => {
     categorySelect.value = paramsValue;
     updateProducts(); // Apply the filter immediately
   }
-  
 };
 
 // Check if the current page is the products page
 const currentPath = window.location.pathname;
 if (currentPath.endsWith("products.html")) {
-  NavBar("navbar")
+  NavBar("navbar");
   document.addEventListener("DOMContentLoaded", initializeApp);
 }
