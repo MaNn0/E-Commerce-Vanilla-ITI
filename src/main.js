@@ -3,56 +3,20 @@ import "bootstrap/dist/js/bootstrap.bundle.min.js";
 import * as bootstrap from "bootstrap";
 import "./style.css";
 import "@fortawesome/fontawesome-free/css/all.min.css";
-import { addToCart } from "./Pages/products/products";
-import { isLoggedIn } from "./assets/reusable";
-function getCookie(name) {
-  // Check sessionStorage first
-  if (sessionStorage.getItem("Auth")) {
-    const sessionValue = sessionStorage.getItem("Auth");
-    try {
-      const sessionData = JSON.parse(sessionValue); // Parse the session data
-      console.log("🚀 ~ getCookie ~ sessionData:", sessionData);
-      if (sessionData) {
-        return { name: "Auth", value: sessionValue, type: "session" }; // Return the session value
-      }
-    } catch (error) {
-      console.error("Error parsing sessionStorage data:", error);
-    }
-  }
+import { isLoggedIn, setCookie, getCookie, addToCart } from "./assets/reusable";
 
-  // If not found in sessionStorage, check cookies
-  const cookies = document.cookie.split(";");
-  for (let cookie of cookies) {
-    const [cookieName, cookieValue] = cookie.trim().split("=");
-    if (cookieName === name) {
-      return { name: cookieName, value: cookieValue, type: "cookies" }; // Return the cookie value
-    }
-  }
-
-  // If not found, return null
-  return null;
-}
-// Get the "Auth" cookie
-const authCookie = getCookie("Auth");
-// console.log("🚀 ~ authCookie:", authCookie)
-
-// DeleteCookie
-function deleteCookie(name) {
-  console.log(name);
-
-  sessionStorage.clear();
-  document.cookie = `${name}=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;`;
-}
-
-// Check if the cookie exists and extract the values
+// Imports Ends Here
+//Global Declared Variables
+let productCart = getCookie("productCart");
+let authCookie = getCookie("Auth");
+const products = productCart ? JSON.parse(productCart.value) : null;
 export const authName = authCookie ? authCookie.name : null;
 export const authData = authCookie ? authCookie.value : null;
 export const authType = authCookie ? authCookie.type : null;
-// console.log(authName, authData,authType);
+
 const currentPath = window.location.pathname;
-const userData = JSON.parse(authData);
 const initializeApp = async () => {
-  const btnCart = document.querySelectorAll(".btnCart");
+  // const btnCart = document.querySelectorAll(".btnCart");
   (async function () {
     try {
       const response = await fetch("http://localhost:3000/products");
@@ -64,7 +28,7 @@ const initializeApp = async () => {
       renderGaming(data);
       renderTv(data);
       renderMobile(data);
-
+      const btnCart = document.querySelectorAll(".btnCart");
       // Attach the event listener after data is fetched and buttons are rendered
       btnCart.forEach((button) => {
         button.addEventListener("click", (event) => {
@@ -142,13 +106,7 @@ const initializeApp = async () => {
 
     img.innerHTML = product;
   }
-  const accordioniItem = document.querySelector(".jewelery");
-  accordioniItem.addEventListener("click", (event) => {
-    if (event.target.classList.contains("btnCart")) {
-      const productId = event.target.getAttribute("productData");
-      addToCart(productId, fetchedData);
-    }
-  });
+
   function renderElectronics(data) {
     const img = document.querySelector(".electronics");
     const product = data
