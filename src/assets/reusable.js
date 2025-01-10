@@ -4,14 +4,16 @@ import "@fortawesome/fontawesome-free/css/all.min.css";
 import * as bootstrap from 'bootstrap'
 
 // setCookie
+
+
 export function setCookie(name, value, daysToExpire, authType) {
     try {
 
       if (authType === "cookies") {
-        
-        // Set a cookie
 
+        // Set a cookie
         const date = new Date();
+
         date.setTime(date.getTime() + daysToExpire * 24 * 60 * 60 * 1000); // Calculate expiration date
 
         const expires = `expires=${date.toUTCString()}`; // Format expiration date
@@ -27,7 +29,7 @@ export function setCookie(name, value, daysToExpire, authType) {
         // Store in sessionStorage
 
         const sessionValue = JSON.stringify(value); // Convert value to JSON string
-        sessionStorage.setItem(name, sessionValue);
+        sessionStorage.setItem(name, sessionValue);  // Set value in sessionStorage
   
         console.log("🚀 ~ setCookie ~ sessionStorage set:", { name, value });
       }
@@ -52,7 +54,7 @@ export function getCookie(name) {
             console.error("Error parsing sessionStorage data:", error);
         }
     }
-
+    else {
     const cookies = document.cookie.split(';');
     for (let cookie of cookies) {
         const [cookieName, cookieValue] = cookie.trim().split('=');
@@ -60,7 +62,7 @@ export function getCookie(name) {
             return { name: cookieName, value: cookieValue, type: "cookies" }; // Return the cookie value
         }
     }
-
+}
     return null;
 }
 
@@ -76,25 +78,37 @@ const authCookie = getCookie("Auth");
 const productCart = getCookie("productCart");
 // Better For Handling Error To get cookies and ReuseThem There {Destruct }
 export const authName = authCookie ? authCookie.name : null;
+// console.log("🚀 ~ authName:", authName)
 export const authData = authCookie ? authCookie.value : null;
+// console.log("🚀 ~ authData:", authData)
 export const authType = authCookie ? authCookie.type : null;
+// console.log("🚀 ~ authType:", authType)
 export const productsName = productCart ?productCart.name: null;
+// console.log("🚀 ~ productsName:", productsName)
 export const productsData = productCart ?productCart.value: null
+// console.log("🚀 ~ productsData:", productsData)
+
+
+
+
+
 
 export const isLoggedIn = (authData, href) => {
     const userBtn = document.querySelector(".userBtn");
     // If authData is not provided, return early
-    // if (!authData) {
-    //     //   console.error("No authentication data provided.");
-    // }
-    // else {
-
-    // }
+    if (!authData) {
+          console.error("No authentication data provided.");
+    }
+    else {
+        console.log("authentication data provided. 🚀");
+    }
 
     // Parse user data from authData
     let userData;
     try {
         userData = JSON.parse(authData);
+        console.log("🚀 ~ isLoggedIn ~ userData:", userData)
+        
     } catch (error) {
         console.error("Error parsing user data:", error);
         return false;
@@ -350,3 +364,4 @@ export const addToCart = (productId, products) => {
       return []; // Return an empty array to avoid breaking the app
     }
   };
+  

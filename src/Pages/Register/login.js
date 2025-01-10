@@ -29,14 +29,14 @@ function setCookie(name, value, daysToExpire,rememberMe) {
 // console.log(rememberMe)
 if (rememberMe){
   const date = new Date();
-  date.setTime(date.getTime() + (daysToExpire * 24 * 60 * 60 * 1000));
-  const expires = `expires=${date.toUTCString()}`;
+  date.setTime(date.getTime() + (daysToExpire * 24 * 60 * 60 * 1000)); //Date formela Expiredate
+  const expires = `expires=${date.toUTCString()}`;//set Expiredate
   const cookieValue = JSON.stringify(value); // Convert value to JSON string
-  document.cookie = `${name}=${cookieValue}; ${expires}; path=/`;
+  document.cookie = `${name}=${cookieValue}; ${expires}; path=/`; //Set Cookie to Application
 }else{
   // SetSession Name==>Key Data==>Value
   const sessionValue = JSON.stringify(value); // Convert value to JSON string
-  sessionStorage.setItem("Auth",sessionValue);
+  sessionStorage.setItem("Auth",sessionValue);// SetSession to Application
 }
 }
 

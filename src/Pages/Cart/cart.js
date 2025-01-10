@@ -17,8 +17,11 @@ const updateQuantity = () => {
 
   // Update checkout button event listener
   document.querySelector(".checkoutButton").addEventListener("click", () => {
-    localStorage.setItem("totalPrice", JSON.stringify(totalPrice - discount));
-    window.location.href = "../Payment/Payment.html";
+    if (){
+
+      localStorage.setItem("totalPrice", JSON.stringify(totalPrice - discount));
+      window.location.href = "../Payment/Payment.html";
+    }
   });
 
   // Update cart summary
