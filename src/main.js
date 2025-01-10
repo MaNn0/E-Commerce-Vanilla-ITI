@@ -4,35 +4,7 @@ import * as bootstrap from 'bootstrap'
 import "./style.css";
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import { addToCart } from "./Pages/products/products";
-
-// export async function fetchData () {
-//   try {
-//     const response = await fetch("http://localhost:3000/products");
-//     const data = await response.json();
-//     renderClothing(data);
-//     renderJewelery(data);
-//     renderElectronics(data);
-//     renderImg(data);
-//     renderGaming(data);
-//     renderTv(data);
-//     renderMobile(data);
-
-//     // Attach the event listener after data is fetched and buttons are rendered
-//     const btnCart = document.querySelectorAll(".btnCart");
-//     btnCart.forEach((button) => {
-//       button.addEventListener("click", (event) => {
-//         const productId = event.target.getAttribute("productData");
-//         // Ensure `data` is available when calling `addToCart`
-//         addToCart(productId, data);
-//       });
-//     });
-//   } catch (err) {
-//     console.error(`Data is not found: ${err}`);
-//   }
-// };
-
-// Get a cookie or sessionStorage value by name
-
+import { isLoggedIn } from "./assets/reusable";
 function getCookie(name) {
   // Check sessionStorage first
   if (sessionStorage.getItem("Auth")) {
@@ -81,8 +53,51 @@ console.log(authName, authData,authType);
 const currentPath =  window.location.pathname;
 const userData=JSON.parse(authData)
 
+// export const isLoggedIn = (authData)=> {
+//   const userBtn = document.querySelector(".userBtn");
+//   const userData=JSON.parse(authData)
+//   if (userBtn && currentPath =="/" && userData ) {
+
+//     userBtn.innerHTML = `
+//       <div class="btn-group">
+//         <button type="button" class="btn ms-2 dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false" >
+//           <i class="fa-solid fa-user"></i>
+//         </button>
+//         <ul class="dropdown-menu" style="left: -100%;">
+//           <li> ${userData.firstName} ${userData.lastName}</li>
+//           <li><a class="dropdown-item" href="./src/Pages/Profile/Profile.html"><i class="fa-regular fa-user"></i> Profile</a></li>
+//           <li><a class="dropdown-item" href="#"><i class="fa-solid fa-star"></i> WishList</a></li>
+//           <li><a class="dropdown-item" href="#"><i class="fa-solid fa-box-archive"></i> Orders</a></li>
+//           <li><hr class="dropdown-divider"></li>
+//           <li><a class="dropdown-item logOutBtn" href="./"><i class="fa-solid fa-arrow-right-from-bracket"></i>LogOut</a></li>
+//         </ul>
+//       </div>
+//     `
+//     const logOutBtn = document.querySelector(".logOutBtn");
+//     console.log("🚀 ~ initializeApp ~ logOutBtn:", logOutBtn)
+//     if (logOutBtn) {
+//       logOutBtn.addEventListener("click", (event) => {
+//         event.preventDefault();
+//         deleteCookie("Auth");
+//         window.location.href = "http://localhost:5173/"; // Redirect to login page
+//       });
+//     }
+//     return true;
+//   } else {
+//     console.log(userBtn);
+//     userBtn.innerHTML = `
+//      <a href="./src/Pages/Register/register.html">
+//             <button class="btn btn-outline-light ms-2" type="button">
+//               Signup
+//             </button>
+//           </a>
+//     `;
+//     return false;
+//   }
+// }
 
   const initializeApp = async () =>{
+    const btnCart = document.querySelectorAll(".btnCart");
     (async function () {
       try {
         const response = await fetch("http://localhost:3000/products");
@@ -107,55 +122,7 @@ const userData=JSON.parse(authData)
         console.error(`Data is not found: ${err}`);
       }
     })();
-    const userBtn = document.querySelector(".userBtn");
-    const btnCart = document.querySelectorAll(".btnCart");
-    
-
-    
-    // const fetchedData = await fetchData()
-    
-
-  if (userBtn && currentPath =="/" && userData ) {
-
-    userBtn.innerHTML = `
-      <div class="btn-group">
-        <button type="button" class="btn ms-2 dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false" >
-          <i class="fa-solid fa-user"></i>
-        </button>
-        <ul class="dropdown-menu" style="left: -100%;">
-          <li> ${userData.firstName} ${userData.lastName}</li>
-          <li><a class="dropdown-item" href="./src/Pages/Profile/Profile.html"><i class="fa-regular fa-user"></i> Profile</a></li>
-          <li><a class="dropdown-item" href="#"><i class="fa-solid fa-star"></i> WishList</a></li>
-          <li><a class="dropdown-item" href="#"><i class="fa-solid fa-box-archive"></i> Orders</a></li>
-          <li><hr class="dropdown-divider"></li>
-          <li><a class="dropdown-item logOutBtn" href="./"><i class="fa-solid fa-arrow-right-from-bracket"></i>LogOut</a></li>
-        </ul>
-      </div>
-    `
-    const logOutBtn = document.querySelector(".logOutBtn");
-    console.log("🚀 ~ initializeApp ~ logOutBtn:", logOutBtn)
-    if (logOutBtn) {
-      logOutBtn.addEventListener("click", (event) => {
-        event.preventDefault();
-        deleteCookie("Auth");
-        window.location.href = "http://localhost:5173/"; // Redirect to login page
-      });
-    }
-    return true;
-  } else {
-    console.log(userBtn);
-    userBtn.innerHTML = `
-     <a href="./src/Pages/Register/register.html">
-            <button class="btn btn-outline-light ms-2" type="button">
-              Signup
-            </button>
-          </a>
-    `;
-    return false;
-  }
-
-
-
+    // isLoggedIn(authData)
 
 function renderClothing(data) {
   const img = document.querySelector(".clothing");
@@ -389,5 +356,6 @@ function renderTv(data) {
 }};
 // CheckAuth(authData);
 if (currentPath == "/") {
+  isLoggedIn(authData,'./src/Pages/Register/register.html')
   document.addEventListener("DOMContentLoaded", initializeApp);
 }

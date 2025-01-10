@@ -1,12 +1,13 @@
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.min.js";
 import "@fortawesome/fontawesome-free/css/all.min.css";
+import {isLoggedIn,authName,authData,authType} from "../../assets/reusable" 
 import * as bootstrap from 'bootstrap'
-// import {fetchData} from "../../main"
 import "./products.css";
 
 // Fetch data from the server
 export const fetchData = async () => {
+
   try {
     const response = await fetch("http://localhost:3000/products");
     if (!response.ok) {
@@ -23,6 +24,7 @@ export const fetchData = async () => {
     return []; // Return an empty array to avoid breaking the app
   }
 };
+console.log(authName,authData,authType);
 
 // Render products to the DOM
 const renderProducts = (data, container) => {
@@ -185,5 +187,6 @@ const initializeApp = async () => {
 // Check if the current page is the products page
 const currentPath = window.location.pathname;
 if (currentPath.endsWith("products.html")) {
+  isLoggedIn(authData,"../Register/register.html")
   document.addEventListener("DOMContentLoaded", initializeApp);
 }

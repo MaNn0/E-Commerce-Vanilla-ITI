@@ -9,26 +9,49 @@
 
 <body>
   <section id="profile"></section>
-  <nav class="navbar navbar-light">
-    <div class="container">
-      <div class="right">
-        <a class="navbar-brand" href="#">
-          <i class="fa-brands fa-slack"></i>
-        </a>
-        <span class="navbar-brand mb-0 h1">| Navbar</span>
+  <nav class="navbar  navbar-expand-lg px-5 bg-primary">
+    <div class="container-fluid">
+      <div class="left">
+        <span class="navbar-brand mb-0 h1 text-white">Khaled's Store |</span>
       </div>
-
-      <form class="d-flex searchForm">
-        <input class="searchInput form-control me-2" type="search" placeholder="Search" aria-label="Search" />
-        <button class="btn searchIcon" type="submit">
-          <i class="fa-solid fa-magnifying-glass"></i>
-        </button>
-      </form>
-      <div class="iconLinks">
-        <a href="/src/Pages/Cart/cart.html">
-          <i class="fa-solid fa-cart-shopping"></i></a>
-        <span> | </span>
-        <a href="../../../index.html"> <i class="fa-solid fa-house"></i></a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav me-auto">
+          <li class="nav-item">
+            <a class="nav-link text-white" href="/src/Pages/Profile/Profile.html"><i class="fa-regular fa-user"></i>
+              Profile</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-white" href="/src/Pages/Cart/cart.html"><i class="fa-solid fa-cart-shopping"></i>
+              Cart</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-white" href="/src/Pages/products/products.html"><i class="fa-solid fa-store"></i>
+              Store</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-white" href="/src/Pages/Payment/Payment.html"><i
+                class="fa-solid fa-credit-card"></i>
+              Payment</a>
+          </li>
+        </ul>
+        <form class="d-flex">
+          <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" id="searchInput" />
+          <button class="btn btn-outline-light" type="submit">
+            Search
+          </button>
+          <!-- <a href="./src/Pages/Register/register.html">
+            <button class="btn btn-outline-light ms-2" type="button">
+              Signup
+            </button>
+          </a> -->
+          <span class="userBtn">
+              
+          </span >
+        </form>
       </div>
     </div>
   </nav>
