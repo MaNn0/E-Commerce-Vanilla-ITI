@@ -3,7 +3,7 @@ import "bootstrap/dist/js/bootstrap.bundle.min.js";
 import * as bootstrap from 'bootstrap'
 import "./style.css";
 import "@fortawesome/fontawesome-free/css/all.min.css";
-import { isLoggedIn,setCookie,getCookie,addToCart } from "./assets/reusable";
+import { isLoggedIn,getCookie,addToCart } from "./assets/reusable";
 
 // Imports Ends Here
 //Global Declared Variables

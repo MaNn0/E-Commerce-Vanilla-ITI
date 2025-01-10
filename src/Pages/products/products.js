@@ -2,7 +2,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.min.js";
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import * as bootstrap from 'bootstrap'
-import {isLoggedIn,authName,authData,authType,setCookie,productsData, getCookie} from "../../assets/reusable" 
+import {isLoggedIn,authName,authData,authType,setCookie, getCookie} from "../../assets/reusable" 
 import "./products.css";
 
 // Fetch data from the server

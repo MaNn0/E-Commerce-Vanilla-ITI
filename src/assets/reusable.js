@@ -6,11 +6,16 @@ import * as bootstrap from 'bootstrap'
 // setCookie
 export function setCookie(name, value, daysToExpire, authType) {
     try {
+
       if (authType === "cookies") {
+        
         // Set a cookie
+
         const date = new Date();
         date.setTime(date.getTime() + daysToExpire * 24 * 60 * 60 * 1000); // Calculate expiration date
+
         const expires = `expires=${date.toUTCString()}`; // Format expiration date
+
         const cookieValue = JSON.stringify(value); // Convert value to JSON string
   
         // Set the cookie with additional attributes for security
@@ -18,7 +23,9 @@ export function setCookie(name, value, daysToExpire, authType) {
   
         console.log("🚀 ~ setCookie ~ cookie set:", { name, value, expires });
       } else {
+
         // Store in sessionStorage
+
         const sessionValue = JSON.stringify(value); // Convert value to JSON string
         sessionStorage.setItem(name, sessionValue);
   
@@ -32,8 +39,7 @@ export function setCookie(name, value, daysToExpire, authType) {
 // GetCookie
 
 export function getCookie(name) {
-    console.log(name);
-    
+    // console.log(name);
     if (sessionStorage.getItem(name)) {
         const sessionValue = sessionStorage.getItem(name);
         try {
@@ -57,10 +63,10 @@ export function getCookie(name) {
 
     return null;
 }
-// Delete
+
+// Delete Cookies When user LogOut
 
 function deleteCookie(name) {
-    console.log(name);
     sessionStorage.clear();
     document.cookie = `${name}=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;`;
 
@@ -68,7 +74,6 @@ function deleteCookie(name) {
 
 const authCookie = getCookie("Auth");
 const productCart = getCookie("productCart");
-// console.log("🚀 ~ productCart:", productCart)
 
 export const authName = authCookie ? authCookie.name : null;
 export const authData = authCookie ? authCookie.value : null;
@@ -88,7 +93,6 @@ export const isLoggedIn = (authData, href) => {
     // If authData is not provided, return early
     if (!authData) {
         //   console.error("No authentication data provided.");
-
     }
     else {
 
@@ -318,11 +322,9 @@ export const addToCart = (productId, products) => {
    const productsName = productCart ?productCart.name: null;
    const productsData = productCart ?productCart.value: null
   
-    console.log("🚀 ~ getCookieValue ~ getCookie:", getCookie("productCart"))
+
     const product = products.find((p) => p.id == productId);
-    // const existingProducts =
-    //   JSON.parse(localStorage.getItem("productCart")) || [];
-        // console.log("🚀 ~ addToCart ~ productsData:", productsData)
+
       const existingProducts =JSON.parse(productsData) || [];
       console.log("🚀 ~ addToCart ~ existingProducts:", existingProducts)
     const productIndex = existingProducts.findIndex((p) => p.id === productId);
@@ -336,8 +338,7 @@ export const addToCart = (productId, products) => {
       existingProducts.push(product);
     }
     setCookie("productCart", existingProducts,1,authType)
-    // localStorage.setItem("cartProducts", JSON.stringify(existingProducts));
-    // console.log("Product added to cart:", product);
+
   };
   
   export const fetchData = async () => {
