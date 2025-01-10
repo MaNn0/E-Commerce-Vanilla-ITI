@@ -5,6 +5,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
   <link rel="stylesheet" href="./register.css">
   <link rel="stylesheet" href="../../style.css">
 
@@ -16,48 +17,40 @@
 
 <body>
   <div class="w-100">
-    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+    <nav class="navbar  navbar-expand-lg px-5 bg-primary">
       <div class="container-fluid">
         <div class="left">
-          <span class="navbar-brand mb-0 h1">Khaled's Store |</span>
-          <!-- <a class="navbar-brand" href="#">
-                      <i class="fa-brands fa-slack"></i>
-                    </a> -->
-        </div>
-        <div class="collapse navbar-collapse" id="navbarNav">
-          <ul class="navbar-nav">
-            <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="/index.html"><i
-                  class="fa-solid fa-house"></i>Home</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="/src/Pages/Profile/Profile.html"><i class="fa-regular fa-user"></i>Profile</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="/src/Pages/Cart/cart.html"><i class="fa-solid fa-cart-shopping"></i>Cart</a>
-            </li>
-            <!-- <li class="nav-item">
-                    <a class="nav-link" href=""><i class="fa-solid fa-bag-shopping"></i>Cart</a>
-                  </li> -->
-            <li class="nav-item">
-              <a class="nav-link" href="/src/Pages/Payment/Payment.html"><i
-                  class="fa-solid fa-credit-card"></i>Payment</a>
-            </li>
-          </ul>
+          <span class="navbar-brand mb-0 h1 text-white">Khaled's Store |</span>
         </div>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
           aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
-
-        <div class="iconLinks collapse navbar-collapse" id="navbarNav">
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav me-auto">
+            <li class="nav-item">
+              <a class="nav-link text-white" href="../Profile/Profile.html"><i class="fa-regular fa-user"></i>
+                Profile</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link text-white" href="../Cart/cart.html"><i class="fa-solid fa-cart-shopping"></i> Cart</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link text-white" href="../products/products.html"><i class="fa-solid fa-store"></i>
+                Store</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link text-white" href="../Payment/Payment.html"><i class="fa-solid fa-credit-card"></i>
+                Payment</a>
+            </li>
+          </ul>
           <form class="d-flex">
-            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
-            <button class="btn btn-outline-success" type="submit">
+            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" id="searchInput" />
+            <button class="btn btn-outline-light" type="submit">
               Search
             </button>
-            <a href="./src//Pages/Register/register.html">
-              <button class="btn btn-outline-success ms-2" type="button">
+            <a href="./src/Pages/Register/register.html">
+              <button class="btn btn-outline-light ms-2" type="button">
                 Signup
               </button>
             </a>
@@ -84,22 +77,29 @@
       </div>
 
       <div class="w-75 mt-4">
-
         <form class="loginForm">
+          <!-- Email Input -->
           <div class="mb-3">
-            <label for="exampleInputEmail1" class="form-label">Email address</label>
-            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+            <label for="loginEmail" class="form-label">Email address</label>
+            <input type="email" class="form-control" id="loginEmail" name="loginEmail" aria-describedby="emailHelp"
+              required />
             <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
           </div>
+
+          <!-- Password Input -->
           <div class="mb-3">
-            <label for="exampleInputPassword1" class="form-label">Password</label>
-            <input type="password" class="form-control" id="exampleInputPassword1">
+            <label for="loginPassword" class="form-label">Password</label>
+            <input type="password" class="form-control" id="loginPassword" name="loginPassword" required />
           </div>
+
+          <!-- Checkbox -->
           <div class="mb-3 form-check">
-            <input type="checkbox" class="form-check-input" id="exampleCheck1">
-            <label class="form-check-label" for="exampleCheck1">Check me out</label>
+            <input type="checkbox" class="form-check-input" id="rememberMe" name="rememberMe" />
+            <label class="form-check-label" for="rememberMe">Remember me</label>
           </div>
-          <button type="submit" class="btn btn-primary w-100">Submit</button>
+
+          <!-- Submit Button -->
+          <button type="submit" class="btn btn-primary w-100 btnLogin">Submit</button>
         </form>
       </div>
 
@@ -128,13 +128,13 @@
       <div class="w-75 mt-4">
         <form class="row g-3 signup" style="padding: 80px 0;">
           <div class="col-md-6">
-            <label for="name" class="form-label">First Name</label>
-            <input name="name" type="text" class="form-control" id="name">
+            <label for="firstName" class="form-label">First Name</label>
+            <input name="firstName" type="text" class="form-control" id="name">
             <div class="form-text nameError text-danger d-none" id="basic-addon4">Required</div>
           </div>
           <div class="col-md-6">
-            <label for="name" class="form-label">Last Name</label>
-            <input name="name" type="text" class="form-control" id="name2">
+            <label for="lastName" class="form-label">Last Name</label>
+            <input name="lastName" type="text" class="form-control" id="name2">
             <div class="form-text name2Error text-danger d-none" id="basic-addon4">Required</div>
           </div>
 
@@ -145,32 +145,33 @@
         } -->
           <div class="col-md-12">
             <label for="email" class="form-label">Email</label>
-            <input type="text" class="form-control" id="email">
+            <input name="email" type="text" class="form-control" id="email">
             <div class="form-text emailError text-danger" id="basic-addon4"></div>
           </div>
           <div class="col-md-6">
             <label for="password" class="form-label">Password</label>
-            <input type="password" class="form-control" id="password">
+            <input name="password" type="password" class="form-control" id="password">
             <div class="form-text passwordError text-danger " id="basic-addon4">
             </div>
           </div>
           <div class="col-md-6">
             <label for="repassword" class="form-label">Re-enter Password</label>
-            <input type="password" class="form-control" id="repassword">
+            <input name="repassword" type="password" class="form-control" id="repassword">
             <div class="form-text repasswordError text-danger" id="basic-addon4"></div>
           </div>
           <div class="col-6">
-            <label for="inputAddress" class="form-label">Address</label>
-            <input type="text" class="form-control" id="inputAddress" placeholder="1234 Main St">
+            <label for="mainAddress" class="form-label">Address</label>
+            <input name="mainAddress" type="text" class="form-control" id="inputAddress" placeholder="1234 Main St">
             <div class="form-text addressError text-danger " id="basic-addon4"></div>
           </div>
           <div class="col-6">
-            <label for="inputAddress" class="form-label">Address 2 (optional)</label>
-            <input type="text" class="form-control" id="inputAddress" placeholder="1234 Main St">
+            <label for="secondaryAddress" class="form-label">Address 2 (optional)</label>
+            <input name="secondaryAddress" type="text" class="form-control" id="inputAddress"
+              placeholder="1234 Main St">
           </div>
           <div class="col-md-12">
-            <label for="inputCity" class="form-label">City</label>
-            <input type="text" class="form-control" id="inputCity">
+            <label for="city" class="form-label">City</label>
+            <input name="city" type="text" class="form-control" id="inputCity">
             <div class="form-text cityError text-danger " id="basic-addon4"></div>
           </div>
           <!-- <div class="col-12 my-3">
@@ -235,6 +236,7 @@
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
   <script type="module" src="./register.js"></script>
+  <script type="module" src="./login.js"></script>
   <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js">
   </script>
   <script type="text/javascript">

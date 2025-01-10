@@ -1,10 +1,13 @@
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.min.js";
 import "@fortawesome/fontawesome-free/css/all.min.css";
+import * as bootstrap from 'bootstrap'
+import {isLoggedIn,authName,authData,authType} from "../../assets/reusable" 
 import "./products.css";
 
 // Fetch data from the server
 export const fetchData = async () => {
+
   try {
     const response = await fetch("http://localhost:3000/products");
     if (!response.ok) {
@@ -21,25 +24,44 @@ export const fetchData = async () => {
     return []; // Return an empty array to avoid breaking the app
   }
 };
+// console.log(authName,authData,authType);
 
 // Render products to the DOM
 const renderProducts = (data, container) => {
+  console.log("🚀 ~ renderProducts ~ data:", data);
   container.innerHTML = data
     .map(
       (product) => `
-        <div class="card productCards" style="width: 18rem;">
-          <img src="${product.image}" class="card-img-top" alt="${product.title}">
+        <div class="card mx-2 productCards mx-auto border border-primary shadow-lg p-3 mb-3 bg-body-tertiary rounded" style="width: 18rem;">
+          <img src="${product.image}" class="card-img-top" alt="${
+        product.title
+      }" style="max-height:250px">
           <div class="card-body visibleBody">
-            <h5 class="card-title">${product.title}</h5>
-            <h5 class="card-title">${product.price} LE</h5>
-          </div>
-          <div class="hiddenBody">
-            <h5 class="card-title">${product.title}</h5>
-            <a href="/src/Pages/products/productdetails/productdetails.html?id=${product.id}" class="btn btn-primary">View Details</a>
-            <button type="button" class="btn btn-success btnCart" productData=${product.id} aria-label="Add to Cart">
-              Add to Cart
-            </button>     
-          </div>
+  <h5 class="card-title fs-5 text-center">${product.title}</h5>
+  <div class="d-flex justify-content-between align-items-center">
+    <h3 class="card-title text-danger mb-0">${product.price} $</h3>
+    <h3 class="card-title text-success mb-0">Discount ${
+      product.discount || 0
+    }%</h3>
+  </div>
+</div>
+
+<div class="hiddenBody d-flex flex-column">
+  <h5 class="card-title text-center">${product.title}</h5>
+  <div class="mt-auto d-flex justify-content-end gap-2">
+    <a href="/src/Pages/products/productdetails/productdetails.html?id=${
+      product.id
+    }" class="btn btn-primary">View Details</a>
+    <button type="button" class="btn btn-success btnCart" productData=${
+      product.id
+    } aria-label="Add to Cart">
+      Add to Cart
+    </button>
+  </div>
+</div>
+
+</div>
+
         </div>
       `
     )
@@ -47,16 +69,20 @@ const renderProducts = (data, container) => {
 };
 
 // Add product to cart
-const addToCart = (productId, products) => {
+export const addToCart = (productId, products) => {
   const product = products.find((p) => p.id == productId);
 
-  const existingProducts = JSON.parse(localStorage.getItem("cartProducts")) || [];
+  const existingProducts =
+    JSON.parse(localStorage.getItem("cartProducts")) || [];
 
   const productIndex = existingProducts.findIndex((p) => p.id === productId);
+  // productIndex = true(index) OR false (-1)
   if (productIndex !== -1) {
+    // y3ne mawgod [1,2,4,5,6]
     existingProducts[productIndex].quantity += 1;
   } else {
-    product.quantity = 1;
+    // lw m4 mawgod
+    product.quantity = 1; // creating quantity
     existingProducts.push(product);
   }
 
@@ -97,7 +123,9 @@ const initializeApp = async () => {
   });
 
   // Populate category dropdown
-  const uniqueCategories = [...new Set(fetchedData.map((product) => product.category))];
+  const uniqueCategories = [
+    ...new Set(fetchedData.map((product) => product.category)),
+  ];
   uniqueCategories.forEach((category) => {
     const option = document.createElement("option");
     option.value = category;
@@ -106,7 +134,9 @@ const initializeApp = async () => {
   });
 
   // Populate brand dropdown
-  const uniqueBrands = [...new Set(fetchedData.map((product) => product.brand))];
+  const uniqueBrands = [
+    ...new Set(fetchedData.map((product) => product.brand)),
+  ];
   uniqueBrands.forEach((brand) => {
     const option = document.createElement("option");
     option.value = brand;
@@ -157,5 +187,6 @@ const initializeApp = async () => {
 // Check if the current page is the products page
 const currentPath = window.location.pathname;
 if (currentPath.endsWith("products.html")) {
+  isLoggedIn(authData,"../Register/register.html")
   document.addEventListener("DOMContentLoaded", initializeApp);
 }

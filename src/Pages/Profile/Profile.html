@@ -5,30 +5,58 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Vite App</title>
+  <link
+  href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+  rel="stylesheet"
+/>
 </head>
 
 <body>
   <section id="profile"></section>
-  <nav class="navbar navbar-light">
+  
+  <nav class="navbar  navbar-expand-lg px-5 bg-primary">
     <div class="container">
-      <div class="right">
-        <a class="navbar-brand" href="#">
-          <i class="fa-brands fa-slack"></i>
-        </a>
-        <span class="navbar-brand mb-0 h1">| Navbar</span>
+      <div class="left">
+        <span class="navbar-brand mb-0 h1 text-white">Khaled's Store |</span>
       </div>
-
-      <form class="d-flex searchForm">
-        <input class="searchInput form-control me-2" type="search" placeholder="Search" aria-label="Search" />
-        <button class="btn searchIcon" type="submit">
-          <i class="fa-solid fa-magnifying-glass"></i>
-        </button>
-      </form>
-      <div class="iconLinks">
-        <a href="/src/Pages/Cart/cart.html">
-          <i class="fa-solid fa-cart-shopping"></i></a>
-        <span> | </span>
-        <a href="../../../index.html"> <i class="fa-solid fa-house"></i></a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav me-auto">
+          <li class="nav-item">
+            <a class="nav-link text-white" href="/src/Pages/Profile/Profile.html"><i class="fa-regular fa-user"></i>
+              Profile</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-white" href="/src/Pages/Cart/cart.html"><i class="fa-solid fa-cart-shopping"></i>
+              Cart</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-white" href="/src/Pages/products/products.html"><i class="fa-solid fa-store"></i>
+              Store</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-white" href="/src/Pages/Payment/Payment.html"><i
+                class="fa-solid fa-credit-card"></i>
+              Payment</a>
+          </li>
+        </ul>
+        <form class="d-flex">
+          <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" id="searchInput" />
+          <button class="btn btn-outline-light" type="submit">
+            Search
+          </button>
+          <!-- <a href="./src/Pages/Register/register.html">
+            <button class="btn btn-outline-light ms-2" type="button">
+              Signup
+            </button>
+          </a> -->
+          <span class="userBtn">
+              
+          </span >
+        </form>
       </div>
     </div>
   </nav>
@@ -43,44 +71,35 @@
     </div>
     <!-- side Bar user (Image) -->
     <div class="user">
-      <img src="../../../public/Images/1331316.png" alt="User" class="userImg" />
-      <p class="bold navItem">Mano little PIPE</p>
+      <img src="../../../public/Images/icons8-user-52.png" alt="User" class="userImg" />
+      <p class="userName bold navItem">No User </p>
     </div>
     <!-- side Bar List -->
 
     <ul>
       <!-- side Bar Content (List) -->
-
-      <li>
-        <a href="#">
-          <i class="fas fa-home"></i>
-          <span class="navItem">Home</span>
-        </a>
-        <span class="toolTip">Home</span>
-      </li>
-      <!-- side Bar Content (List) -->
       <li>
         <a href="#">
           <i class="fas fa-info-circle"></i>
-          <span class="navItem">About</span>
+          <span class="navItem">AccountSetting</span>
         </a>
-        <span class="toolTip">About</span>
+        <span class="toolTip">AccountSetting</span>
       </li>
       <!-- side Bar Content (List) -->
       <li>
         <a href="#">
-          <i class="fas fa-cogs"></i>
-          <span class="navItem">Services</span>
+          <i class="fa-solid fa-star"></i>
+          <span class="navItem">wishList</span>
         </a>
-        <span class="toolTip">Services</span>
+        <span class="toolTip">wishList</span>
       </li>
       <!-- side Bar Content (List) -->
       <li>
         <a href="#">
-          <i class="fas fa-envelope"></i>
-          <span class="navItem">Contact</span>
+          <i class="fa-solid fa-box-archive"></i> 
+          <span class="navItem">Orders</span>
         </a>
-        <span class="toolTip">Contact</span>
+        <span class="toolTip">Orders</span>
       </li>
     </ul>
   </div>
@@ -89,54 +108,74 @@
     <div class="profileContent container">
       <h1 class="mx-auto">Profile Information</h1>
       <p>This is the main content area.</p>
-      <form class="row g-3">
-        <div class="col-md-6">
-          <label for="inputEmail4" class="form-label">Email</label>
-          <input type="email" class="form-control" id="inputEmail4" />
-        </div>
-        <div class="col-md-6">
-          <label for="inputPassword4" class="form-label">Password</label>
-          <input type="password" class="form-control" id="inputPassword4" />
-        </div>
-        <div class="col-12">
-          <label for="inputAddress" class="form-label">Address</label>
-          <input type="text" class="form-control" id="inputAddress" placeholder="1234 Main St" />
-        </div>
-        <div class="col-12">
-          <label for="inputAddress2" class="form-label">Address 2</label>
-          <input type="text" class="form-control" id="inputAddress2" placeholder="Apartment, studio, or floor" />
-        </div>
-        <div class="col-md-6">
-          <label for="inputCity" class="form-label">City</label>
-          <input type="text" class="form-control" id="inputCity" />
-        </div>
-        <div class="col-md-4">
-          <label for="inputState" class="form-label">State</label>
-          <select id="inputState" class="form-select">
-            <option selected>Choose...</option>
-            <option>...</option>
-          </select>
-        </div>
-        <div class="col-md-2">
-          <label for="inputZip" class="form-label">Zip</label>
-          <input type="text" class="form-control" id="inputZip" />
-        </div>
-        <div class="col-12">
-          <div class="form-check">
-            <input class="form-check-input" type="checkbox" id="gridCheck" />
-            <label class="form-check-label" for="gridCheck">
-              Check me out
-            </label>
+     <form class="row g-3 profileForm" >
+
+      <div class="col-md-6" style="display: none;">
+        <label for="id" class="form-label">First Name</label>
+        <input name="id" type="text" class="form-control" id="id">
+        <div class="form-text nameError text-danger d-none" id="basic-addon4">Required</div>
+      </div>
+
+          <div class="col-md-6">
+            <label for="firstName" class="form-label">First Name</label>
+            <input name="firstName" type="text" class="form-control" id="name">
+            <div class="form-text nameError text-danger d-none" id="basic-addon4">Required</div>
           </div>
-        </div>
-        <div class="col-12">
-          <button type="submit" class="btn btn-primary">Sign in</button>
-        </div>
-      </form>
+          <div class="col-md-6">
+            <label for="lastName" class="form-label">Last Name</label>
+            <input name="lastName" type="text" class="form-control" id="name2">
+            <div class="form-text name2Error text-danger d-none" id="basic-addon4">Required</div>
+          </div>
+
+          <!-- {formError.userNameError &&
+            <div className='form-text text-danger'>
+                {formError.userNameError}
+            </div>
+        } -->
+          <div class="col-md-12">
+            <label for="email" class="form-label">Email</label>
+            <input name="email" type="text" class="form-control" id="email">
+            <div class="form-text emailError text-danger" id="basic-addon4"></div>
+          </div>
+          <div class="col-md-6">
+            <label for="password" class="form-label">Password</label>
+            <input name="password" type="password" class="form-control" id="password">
+            <div class="form-text passwordError text-danger " id="basic-addon4">
+            </div>
+          </div>
+          <div class="col-md-6">
+            <label for="repassword" class="form-label">Re-enter Password</label>
+            <input name="repassword" type="password" class="form-control" id="repassword">
+            <div class="form-text repasswordError text-danger" id="basic-addon4"></div>
+          </div>
+          <div class="col-6">
+            <label for="mainAddress" class="form-label">Address</label>
+            <input name="mainAddress" type="text" class="form-control" id="inputAddress" placeholder="1234 Main St">
+            <div class="form-text addressError text-danger " id="basic-addon4"></div>
+          </div>
+          <div class="col-6">
+            <label for="secondaryAddress" class="form-label">Address 2 (optional)</label>
+            <input name="secondaryAddress" type="text" class="form-control" id="inputAddress2"
+              placeholder="1234 Main St">
+          </div>
+          <div class="col-md-12">
+            <label for="city" class="form-label">City</label>
+            <input name="city" type="text" class="form-control" id="inputCity">
+            <div class="form-text cityError text-danger " id="basic-addon4"></div>
+          </div>
+          <!-- <div class="col-12 my-3">
+            <input type="checkbox" class="form-check-input" id="exampleCheck1">
+            <label class="form-check-label" for="exampleCheck1">Remember me</label>
+          </div> -->
+          <div class="col-12">
+            <button type="submit" class="btn btn-primary w-100">Signup</button>
+          </div>
+        </form>
     </div>
   </section>
   <!-- side Bar Ends HEre Booooys SUUUUUUUUUUUUUUUUUUUUUUUUUI -->
   <section class="main-content"></section>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
   <script type="module" src="./profile.js"></script>
 </body>
 

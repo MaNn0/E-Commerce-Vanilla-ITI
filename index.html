@@ -4,66 +4,54 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
   <link rel="stylesheet" href="style.css" />
   <title>E-Commerce</title>
 </head>
 
 <body>
-  <nav class="navbar navbar-expand-lg bg-body-tertiary">
+  <nav class="navbar  navbar-expand-lg px-5 bg-primary">
     <div class="container-fluid">
       <div class="left">
-        <span class="navbar-brand mb-0 h1">Khaled's Store |</span>
-        <!-- <a class="navbar-brand" href="#">
-            <i class="fa-brands fa-slack"></i>
-          </a> -->
-      </div>
-      <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav">
-          <!-- <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="#"><i class="fa-solid fa-house"></i>Home</a>
-        </li> -->
-          <li class="nav-item">
-            <a class="nav-link" href="./src/Pages/Profile/Profile.html"><i class="fa-regular fa-user"></i>Profile</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="./src/Pages/Cart/cart.html"><i class="fa-solid fa-cart-shopping"></i>Cart</a>
-          </li>
-          <!-- <li class="nav-item">
-        <li class="nav-item">
-          <a class="nav-link" href="src/Pages/Profile/Profile.html"><i class="fa-regular fa-user"></i>Profile</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="src/Pages/Cart/cart.html"><i class="fa-solid fa-cart-shopping"></i>Cart</a>
-        </li>-->
-          <li class="nav-item">
-            <a class="nav-link" href="./src/Pages/Cart/cart.html"><i class="fa-solid fa-bag-shopping"></i>Cart</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="./src/Pages/Payment/Payment.html"><i
-                class="fa-solid fa-credit-card"></i>Payment</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="./src/Pages/products/products.html"><i class="fa-solid fa-store"></i>Store</a>
-          </li>
-        </ul>
+        <span class="navbar-brand mb-0 h1 text-white">Khaled's Store |</span>
       </div>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
         aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
-
-      <div class="iconLinks collapse navbar-collapse" id="navbarNav">
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav me-auto">
+          <li class="nav-item">
+            <a class="nav-link text-white" href="/src/Pages/Profile/Profile.html"><i class="fa-regular fa-user"></i>
+              Profile</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-white" href="/src/Pages/Cart/cart.html"><i class="fa-solid fa-cart-shopping"></i>
+              Cart</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-white" href="/src/Pages/products/products.html"><i class="fa-solid fa-store"></i>
+              Store</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-white" href="/src/Pages/Payment/Payment.html"><i
+                class="fa-solid fa-credit-card"></i>
+              Payment</a>
+          </li>
+        </ul>
         <form class="d-flex">
-          <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
-          <button class="btn btn-outline-success" type="submit">
+          <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" id="searchInput" />
+          <button class="btn btn-outline-light" type="submit">
             Search
           </button>
-          <a href="/src/Pages/Register/register.html">
-            <button class="btn btn-outline-success ms-2" type="button">
+          <!-- <a href="./src/Pages/Register/register.html">
+            <button class="btn btn-outline-light ms-2" type="button">
               Signup
             </button>
-          </a>
+          </a> -->
+          <span class="userBtn">
+              
+          </span >
         </form>
       </div>
     </div>
@@ -134,173 +122,227 @@
 
     <section id="Categories">
       <div class="accordion" id="accordionPanelsStayOpenExample">
-        <!--Clothing Section-->
-        <a href="/src/Pages/products/products.html?category=menClothing">
-          <div class="accordion-item">
-            <h2 class="accordion-header">
+        <!-- Men's Clothing Section -->
+        <div class="accordion-item">
+          <h2 class="accordion-header">
+            <a href="/src/Pages/products/products.html?category=menClothing">
+
               <button class="accordion-button" type="button" data-bs-toggle="collapse"
-                data-bs-target="#panelsStayOpen-collapseOne" aria-expanded="true"
-                aria-controls="panelsStayOpen-collapseOne">
-                men's clothing
+                data-bs-target="#collapseMenClothing" aria-expanded="true" aria-controls="collapseMenClothing">View all
+                Men's Clothing
               </button>
-            </h2>
-            <div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse show">
-              <div class="accordion-body">
-                <div
-                  class="row clothing row-cols-1 row-cols-md-2 row-cols-lg-3 g-4 d-flex justify-content-center flex-wrap">
-                  <!-- card api here -->
-                </div>
+            </a>
+          </h2>
+          <div id="collapseMenClothing" class="accordion-collapse collapse show">
+            <div class="accordion-body">
+              <div
+                class="row clothing row-cols-1 row-cols-md-2 row-cols-lg-3 g-4 d-flex justify-content-center flex-wrap">
+                <!-- Card content will be dynamically generated here -->
               </div>
             </div>
           </div>
-        </a>
-                <!--Clothing Jewelery-->
+        </div>
 
-        <a href="/src/Pages/products/products.html?category=jewelery">
+        <!-- Jewelery Section -->
 
-          <div class="accordion-item">
-            <h2 class="accordion-header">
+        <div class="accordion-item">
+          <h2 class="accordion-header">
+            <a href="/src/Pages/products/products.html?category=jewelery">
+
               <button class="accordion-button" type="button" data-bs-toggle="collapse"
-                data-bs-target="#panelsStayOpen-collapseOne" aria-expanded="true"
-                aria-controls="panelsStayOpen-collapseOne">
-                jewelery
+                data-bs-target="#collapseJewelery" aria-expanded="true" aria-controls="collapseJewelery">
+                View all Jewelery
               </button>
-            </h2>
-            <div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse show">
-              <div class="accordion-body">
-                <div
-                  class="row jewelery row-cols-1 row-cols-md-2 row-cols-lg-3 g-4 d-flex justify-content-center flex-wrap">
-                  <!-- card api here -->
-                </div>
+            </a>
+          </h2>
+          <div id="collapseJewelery" class="accordion-collapse collapse show">
+            <div class="accordion-body">
+              <div
+                class="row jewelery row-cols-1 row-cols-md-2 row-cols-lg-3 g-4 d-flex justify-content-center flex-wrap">
+                <!-- Card content will be dynamically generated here -->
               </div>
             </div>
           </div>
-        </a>
-                <!--electronics Section-->
+        </div>
 
-        <a href="/src/Pages/products/products.html?category=electronics">
-
-          <div class="accordion-item">
-            <h2 class="accordion-header">
+        <!-- Electronics Section -->
+        <div class="accordion-item">
+          <h2 class="accordion-header">
+            <a href="/src/Pages/products/products.html?category=electronics">
               <button class="accordion-button" type="button" data-bs-toggle="collapse"
-                data-bs-target="#panelsStayOpen-collapseOne" aria-expanded="true"
-                aria-controls="panelsStayOpen-collapseOne">
-                electronics
+                data-bs-target="#collapseElectronics" aria-expanded="true" aria-controls="collapseElectronics">
+                View all Electronics
               </button>
-            </h2>
-            <div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse show">
-              <div class="accordion-body">
-                <div
-                  class="row electronics row-cols-1 row-cols-md-2 row-cols-lg-3 g-4 d-flex justify-content-center flex-wrap">
-                  <!-- card api here -->
-                </div>
+            </a>
+          </h2>
+          <div id="collapseElectronics" class="accordion-collapse collapse show">
+            <div class="accordion-body">
+              <div
+                class="row electronics row-cols-1 row-cols-md-2 row-cols-lg-3 g-4 d-flex justify-content-center flex-wrap">
+                <!-- Card content will be dynamically generated here -->
               </div>
             </div>
           </div>
-        </a>
-                 <!--Phones Section-->
-        <a href="/src/Pages/products/products.html?category=mobile">
+        </div>
 
-          <div class="accordion-item">
-            <h2 class="accordion-header">
-              <button class="accordion-button" type="button" data-bs-toggle="collapse"
-                data-bs-target="#panelsStayOpen-collapseOne" aria-expanded="true"
-                aria-controls="panelsStayOpen-collapseOne">
-                Phones
-              </button>
-            </h2>
-            <div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse show">
-              <div class="accordion-body">
-                <div
-                  class="row mobile row-cols-1 row-cols-md-2 row-cols-lg-3 g-4 d-flex justify-content-center flex-wrap">
-                  <!-- card api here -->
-                </div>
-              </div>
-            </div>
-          </div>
-        </a>
-                 <!--audio Section-->
-        <a href="/src/Pages/products/products.html?category=audio">
+        <!-- Phones Section -->
+        <div class="accordion-item">
+          <h2 class="accordion-header">
+            <a href="/src/Pages/products/products.html?category=phones">
 
-          <div class="accordion-item">
-            <h2 class="accordion-header">
-              <button class="accordion-button" type="button" data-bs-toggle="collapse"
-                data-bs-target="#panelsStayOpen-collapseOne" aria-expanded="true"
-                aria-controls="panelsStayOpen-collapseOne">
-                Audio
+              <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapsePhones"
+                aria-expanded="true" aria-controls="collapsePhones">
+                View all Phones
               </button>
-            </h2>
-            <div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse show">
-              <div class="accordion-body">
-                <div
-                  class="row audio row-cols-1 row-cols-md-2 row-cols-lg-3 g-4 d-flex justify-content-center flex-wrap">
-                  <!-- card api here -->
-                </div>
+            </a>
+          </h2>
+          <div id="collapsePhones" class="accordion-collapse collapse show">
+            <div class="accordion-body">
+              <div
+                class="row mobile row-cols-1 row-cols-md-2 row-cols-lg-3 g-4 d-flex justify-content-center flex-wrap">
+                <!-- Card content will be dynamically generated here -->
               </div>
             </div>
           </div>
-        </a>
-         <!--Gaming Section-->
-          <a href="/src/Pages/products/products.html?category=gaming">
+        </div>
 
-        
-          <div class="accordion-item">
-            <h2 class="accordion-header">
-              <button class="accordion-button" type="button" data-bs-toggle="collapse"
-              data-bs-target="#panelsStayOpen-collapseOne" aria-expanded="true"
-              aria-controls="panelsStayOpen-collapseOne">
-                Gaming
+        <!-- Audio Section -->
+        <div class="accordion-item">
+          <h2 class="accordion-header">
+            <a href="/src/Pages/products/products.html?category=audio">
+
+              <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseAudio"
+                aria-expanded="true" aria-controls="collapseAudio">
+                View all Audio
               </button>
-             </h2>
-            <div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse show">
-              <div class="accordion-body">
-                <div
-                  class="row audio row-cols-1 row-cols-md-2 row-cols-lg-3 g-4 d-flex justify-content-center flex-wrap">
-                  <!-- card api here -->
-                </div>
+            </a>
+          </h2>
+          <div id="collapseAudio" class="accordion-collapse collapse show">
+            <div class="accordion-body">
+              <div class="row audio row-cols-1 row-cols-md-2 row-cols-lg-3 g-4 d-flex justify-content-center flex-wrap">
+                <!-- Card content will be dynamically generated here -->
               </div>
             </div>
           </div>
-        </a>
-         <!--electronics Section-->
-          <a href="/src/Pages/products/products.html?category=tv">
-           <div class="accordion-item">
-            <h2 class="accordion-header">
-              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                data-bs-target="#panelsStayOpen-collapseThree"  aria-expanded="true"
-                aria-controls="panelsStayOpen-collapseThree">
-                TV
+        </div>
+
+        <!-- Gaming Section -->
+        <div class="accordion-item">
+          <h2 class="accordion-header">
+            <a href="/src/Pages/products/products.html?category=gaming">
+
+              <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseGaming"
+                aria-expanded="true" aria-controls="collapseGaming">
+                View all Gaming
               </button>
-            </h2>
-            <div id="panelsStayOpen-collapseThree" class="accordion-collapse collapse show">
-              <div class="accordion-body">
-                <div class="row tv row-cols-1 row-cols-md-2 row-cols-lg-3 g-4 d-flex flex-wrap">
-                  <!-- Cards generated dynamically will go here -->
-                </div>
+            </a>
+          </h2>
+          <div id="collapseGaming" class="accordion-collapse collapse show">
+            <div class="accordion-body">
+              <div
+                class="row gaming row-cols-1 row-cols-md-2 row-cols-lg-3 g-4 d-flex justify-content-center flex-wrap">
+                <!-- Card content will be dynamically generated here -->
               </div>
             </div>
           </div>
-        </a>
+        </div>
+
+        <!-- TV Section -->
+        <div class="accordion-item">
+          <h2 class="accordion-header">
+            <a href="/src/Pages/products/products.html?category=tv">
+
+              <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTV"
+                aria-expanded="true" aria-controls="collapseTV">
+                View all TV
+              </button>
+            </a>
+          </h2>
+          <div id="collapseTV" class="accordion-collapse collapse show">
+            <div class="accordion-body">
+              <div class="row tv row-cols-1 row-cols-md-2 row-cols-lg-3 g-4 d-flex flex-wrap">
+                <!-- Card content will be dynamically generated here -->
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
- 
     </section>
-    <!-- /src/Pages/products/products.html -->
-    <footer>
-      <nav aria-label="Page navigation example">
-        <ul class="pagination justify-content-center">
-          <li class="page-item disabled">
-            <a class="page-link">Previous</a>
-          </li>
-          <li class="page-item"><a class="page-link" href="#">1</a></li>
-          <li class="page-item"><a class="page-link" href="#">2</a></li>
-          <li class="page-item"><a class="page-link" href="#">3</a></li>
-          <li class="page-item">
-            <a class="page-link" href="#">Next</a>
-          </li>
-        </ul>
-      </nav>
-    </footer>
+
   </div>
+  <footer class="bg-primary text-white py-4">
+    <div class="container text-center">
+      <div class="row gy-4">
+        <!-- Mahmoud Nasr -->
+        <div class="col-md-3 border-end border-black">
+          <h4 class="bg-dark text-white py-2 rounded">Mahmoud Nasr</h4>
+          <a href="https://www.linkedin.com/in/mahmoud-nasr-82aa822a9/" target="_blank"
+            class="d-inline d-flex align-items-center justify-content-center text-white text-decoration-none hover-link my-2">
+            LinkedIn <i class="fa-brands fa-linkedin ms-2"></i>
+          </a>
+          <a href="https://github.com/MahmoudNasrZ" target="_blank"
+            class="d-inline d-flex align-items-center justify-content-center text-white text-decoration-none hover-link my-2">
+            GitHub <i class="fa-brands fa-github ms-2"></i>
+          </a>
+          <a href="https://mahmoudnasrz.github.io/Portfolio/" target="_blank"
+            class="d-inline d-flex align-items-center justify-content-center text-white text-decoration-none hover-link my-2">
+            Portfolio <i class="fa-solid fa-briefcase ms-2"></i>
+          </a>
+        </div>
+
+        <!-- Abdelrahman Ebeid -->
+        <div class="col-md-3 border-end border-black">
+          <h4 class="bg-dark text-white py-2 rounded">Abdelrahman Ebeid</h4>
+          <a href="https://www.linkedin.com/in/abdelrahman-ebied69/" target="_blank"
+            class="d-inline d-flex align-items-center justify-content-center text-white text-decoration-none hover-link my-2">
+            LinkedIn <i class="fa-brands fa-linkedin ms-2"></i>
+          </a>
+          <a href="https://github.com/MaNn0" target="_blank"
+            class="d-inline d-flex align-items-center justify-content-center text-white text-decoration-none hover-link my-2">
+            GitHub <i class="fa-brands fa-github ms-2"></i>
+          </a>
+          <a href="https://mann0.github.io/Portfolio/" target="_blank"
+            class="d-inline d-flex align-items-center justify-content-center text-white text-decoration-none hover-link my-2">
+            Portfolio <i class="fa-solid fa-briefcase ms-2"></i>
+          </a>
+        </div>
+
+        <!-- Hossam Zakaria -->
+        <div class="col-md-3 border-end border-black">
+          <h4 class="bg-dark text-white py-2 rounded">Hossam Zakaria</h4>
+          <a href="https://www.linkedin.com/in/hossam-zakaria-s/" target="_blank"
+            class="d-inline d-flex align-items-center justify-content-center text-white text-decoration-none hover-link my-2">
+            LinkedIn <i class="fa-brands fa-linkedin ms-2"></i>
+          </a>
+          <a href="https://github.com/HossamZakariaSannad" target="_blank"
+            class="d-inline d-flex align-items-center justify-content-center text-white text-decoration-none hover-link my-2">
+            GitHub <i class="fa-brands fa-github ms-2"></i>
+          </a>
+          <a href="https://hossamzakariasannad.github.io/html-project-portfolio/" target="_blank"
+            class="d-inline d-flex align-items-center justify-content-center text-white text-decoration-none hover-link my-2">
+            Portfolio <i class="fa-solid fa-briefcase ms-2"></i>
+          </a>
+        </div>
+
+        <!-- Farid Mahmoud -->
+        <div class="col-md-3 ">
+          <h4 class="bg-dark text-white py-2 rounded">Farid Mahmoud</h4>
+          <a href="https://www.linkedin.com/in/farid-azzam-2882051b2/" target="_blank"
+            class="d-inline d-flex align-items-center justify-content-center text-white text-decoration-none hover-link my-2">
+            LinkedIn <i class="fa-brands fa-linkedin ms-2"></i>
+          </a>
+          <a href="https://github.com/fazm1" target="_blank"
+            class="d-inline d-flex align-items-center justify-content-center text-white text-decoration-none hover-link my-2">
+            GitHub <i class="fa-brands fa-github ms-2"></i>
+          </a>
+          <a href="https://fazm1.github.io/portfolio/" target="_blank"
+            class="d-inline d-flex align-items-center justify-content-center text-white text-decoration-none hover-link my-2">
+            Portfolio <i class="fa-solid fa-briefcase ms-2"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+  </footer>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
   <script type="module" src="./src/main.js"></script>
 </body>

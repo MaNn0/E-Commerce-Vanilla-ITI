@@ -1,13 +1,18 @@
+import "bootstrap/dist/css/bootstrap.min.css";
+import "bootstrap/dist/js/bootstrap.bundle.min.js";
+import * as bootstrap from 'bootstrap'
+import "@fortawesome/fontawesome-free/css/all.min.css";
 import "./productdetails.css";
-import { fetchData } from "../products";
-
+import { addToCart, fetchData } from "../products";
+import { isLoggedIn,authData,authName,authType } from "../../../assets/reusable";
 document.addEventListener("DOMContentLoaded", async () => {
   // Get product ID from URL
   const urlParams = new URLSearchParams(window.location.search);
+  console.log("🚀 ~ document.addEventListener ~ urlParams:", urlParams);
   const productid = urlParams.get("id"); // id
   console.log("🚀 ~ productid:", productid);
 
-  // Fetch data import { fetchData } from "../products";
+  // Fetch data
   const fetchedData = await fetchData();
 
   // Filter product by ID
@@ -20,6 +25,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     return;
   }
 
+  // Render the product details first
   productsContainer.innerHTML = dataToMap.length
     ? dataToMap
         .map((product) => {
@@ -27,7 +33,7 @@ document.addEventListener("DOMContentLoaded", async () => {
           <div class="col-12 product-container">
             <!-- Product Image -->
             <div class="imgContainer col-6">
-              <img src="${product.image}" class="card-img-top" alt="${product.title}">
+              <img src="${product.image}" class="card-img-top w-75" alt="${product.title}">
             </div>
 
             <!-- Product Details -->
@@ -52,13 +58,25 @@ document.addEventListener("DOMContentLoaded", async () => {
                   </tr>
                 </tbody>
               </table>
-
               <!-- Product Price -->
               <h5 class="card-title">Price: ${product.price} LE</h5>
+              <button class="btn mt-auto btn-success btnCart" data-id="${product.id}">Add to cart</button>
             </div>
           </div>
         `;
         })
         .join("")
     : `<h1>404 Not Found</h1>`;
+
+  // Attach event listeners to the dynamically created "Add to cart" buttons
+  const btnCart = document.querySelectorAll(".btnCart");
+
+  btnCart.forEach((button) => {
+    button.addEventListener("click", (event) => {
+      const productId = event.target.getAttribute("data-id");
+      console.log("Product added to cart:", productId);
+      addToCart(productId, fetchedData);
+    });
+  });
 });
+isLoggedIn(authData,"./../../Register/register.html")
