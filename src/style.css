@@ -42,3 +42,71 @@ a {
 .iconLinks {
   justify-content: flex-end;
 }
+
+.search-container {
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+.searchBtn,
+.searchInput {
+  width: 3rem;
+  height: 2.5rem;
+  border: none;
+  border-radius: 0.5rem;
+  background-color: transparent;
+  font-size: 1.2rem;
+  cursor: text;
+  outline: none;
+  transition: all 0.3s ease;
+}
+
+.searchInput {
+  padding-left: 1rem;
+  background-color: #ffffff;
+  color: #000;
+  font-size: 1rem;
+  visibility: hidden;
+}
+
+.searchInput.active {
+  visibility: visible;
+  width: 15rem;
+}
+
+/* Dropdown Results */
+.searchResults {
+  position: absolute;
+  top: 3rem;
+  left: 0;
+  width: 100%;
+  background-color: white;
+  border: 1px solid #ddd;
+  border-radius: 0.5rem;
+  max-height: 200px;
+  overflow-y: auto;
+  z-index: 10;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.resultItem {
+  padding: 0.5rem;
+  cursor: pointer;
+  border-bottom: 1px solid #f1f1f1;
+}
+
+.resultItem:hover {
+  background-color: #007bff;
+  color: white;
+}
+
+.noResults {
+  padding: 0.5rem;
+  color: #999;
+  text-align: center;
+}
+
+.searchInput {
+  transition: all 0.3s ease;
+}

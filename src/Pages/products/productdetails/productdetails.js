@@ -1,12 +1,13 @@
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.min.js";
-import * as bootstrap from 'bootstrap'
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import "./productdetails.css";
-import { addToCart, fetchData } from "../products";
-import { isLoggedIn,authData,authName,authType } from "../../../assets/reusable";
+import { addToCart } from "../products";
+import { NavBar,fetchData} from "../../../assets/reusable";
 document.addEventListener("DOMContentLoaded", async () => {
-  // Get product ID from URL
+  // Navbar Dry  Dynamic
+  NavBar("navbar")
+    // Get product ID from URL
   const urlParams = new URLSearchParams(window.location.search);
   console.log("🚀 ~ document.addEventListener ~ urlParams:", urlParams);
   const productid = urlParams.get("id"); // id
@@ -79,4 +80,6 @@ document.addEventListener("DOMContentLoaded", async () => {
     });
   });
 });
-isLoggedIn(authData,"./../../Register/register.html")
+
+const currentPath = window.location.pathname;
+// 

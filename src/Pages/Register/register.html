@@ -18,51 +18,13 @@
 <body>
   <div class="w-100">
     <nav class="navbar  navbar-expand-lg px-5 bg-primary">
-      <div class="container-fluid">
-        <div class="left">
-          <span class="navbar-brand mb-0 h1 text-white">Khaled's Store |</span>
-        </div>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-          aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
-          <ul class="navbar-nav me-auto">
-            <li class="nav-item">
-              <a class="nav-link text-white" href="../Profile/Profile.html"><i class="fa-regular fa-user"></i>
-                Profile</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link text-white" href="../Cart/cart.html"><i class="fa-solid fa-cart-shopping"></i> Cart</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link text-white" href="../products/products.html"><i class="fa-solid fa-store"></i>
-                Store</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link text-white" href="../Payment/Payment.html"><i class="fa-solid fa-credit-card"></i>
-                Payment</a>
-            </li>
-          </ul>
-          <form class="d-flex">
-            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" id="searchInput" />
-            <button class="btn btn-outline-light" type="submit">
-              Search
-            </button>
-            <a href="./src/Pages/Register/register.html">
-              <button class="btn btn-outline-light ms-2" type="button">
-                Signup
-              </button>
-            </a>
-          </form>
-        </div>
-      </div>
+     
     </nav>
 
   </div>
   <div
-    class="container-fluid d-flex justify-content-between align-items-center p-5 my-5 border border-primary shadow bg-light"
-    style="height: 800px;">
+    class="container d-flex justify-content-between align-items-center p-5 my-5 border border-primary shadow bg-light "
+    style="height: 55rem;">
 
     <!-- Login Section -->
     <div class="d-flex flex-column align-items-center position-relative " style="width: 50%; height: 100%;">
@@ -161,12 +123,12 @@
           </div>
           <div class="col-6">
             <label for="mainAddress" class="form-label">Address</label>
-            <input name="mainAddress" type="text" class="form-control" id="inputAddress" placeholder="1234 Main St">
+            <input name="mainAddress" type="text" class="form-control" id="mainAddress" placeholder="1234 Main St">
             <div class="form-text addressError text-danger " id="basic-addon4"></div>
           </div>
           <div class="col-6">
             <label for="secondaryAddress" class="form-label">Address 2 (optional)</label>
-            <input name="secondaryAddress" type="text" class="form-control" id="inputAddress"
+            <input name="secondaryAddress" type="text" class="form-control" id="secondaryAddress"
               placeholder="1234 Main St">
           </div>
           <div class="col-md-12">

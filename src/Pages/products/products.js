@@ -1,30 +1,8 @@
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.min.js";
 import "@fortawesome/fontawesome-free/css/all.min.css";
-import * as bootstrap from 'bootstrap'
-import {isLoggedIn,authName,authData,authType,setCookie, getCookie} from "../../assets/reusable" 
+import {authType,setCookie, getCookie,NavBar,fetchData} from "../../assets/reusable" 
 import "./products.css";
-
-// Fetch data from the server
-export const fetchData = async () => {
-
-  try {
-    const response = await fetch("http://localhost:3000/products");
-    if (!response.ok) {
-      throw new Error("Network response was not ok");
-    }
-    return await response.json();
-  } catch (error) {
-    console.error("Error fetching data:", error);
-    // Display an error message to the user
-    const productsContainer = document.querySelector(".products");
-    if (productsContainer) {
-      productsContainer.innerHTML = `<p class="text-danger">Failed to load products. Please try again later.</p>`;
-    }
-    return []; // Return an empty array to avoid breaking the app
-  }
-};
-// console.log(authName,authData,authType);
 
 // Render products to the DOM
 const renderProducts = (data, container) => {
@@ -100,6 +78,7 @@ export const addToCart = (productId, products) => {
 
 // Initialize the app
 const initializeApp = async () => {
+
   const fetchedData = await fetchData();
   const productsContainer = document.querySelector(".products");
   const categorySelect = document.querySelector(".productCategory");
@@ -190,11 +169,12 @@ const initializeApp = async () => {
     categorySelect.value = paramsValue;
     updateProducts(); // Apply the filter immediately
   }
+  
 };
 
 // Check if the current page is the products page
 const currentPath = window.location.pathname;
 if (currentPath.endsWith("products.html")) {
-  isLoggedIn(authData,"../Register/register.html")
+  NavBar("navbar")
   document.addEventListener("DOMContentLoaded", initializeApp);
 }

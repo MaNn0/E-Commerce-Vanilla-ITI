@@ -2,41 +2,59 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.min.js";
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import "./profile.css";
-import { isLoggedIn,authName,authData,authType } from "../../assets/reusable";
+import {  authData, authType } from "../../assets/reusable";
 import { formSubmit } from "../../assets/reusable";
-document.querySelector("#profile").innerHTML = `
-`;
-let btn = document.querySelector("#btn");
-let sideBar = document.querySelector(".sideBar");
-btn.onclick = function () {
-  sideBar.classList.toggle("active");
+
+// Initialize the app
+const initializeApp = () => {
+  // Toggle sidebar
+  let btn = document.querySelector("#btn");
+  let sideBar = document.querySelector(".sideBar");
+  if (btn && sideBar) {
+    btn.onclick = function () {
+      sideBar.classList.toggle("active");
+    };
+  }
+
+  // Populate user name
+  let UserData;
+  try {
+    UserData = JSON.parse(authData);
+  } catch (error) {
+    console.error("Error parsing user data:", error);
+    return;
+  }
+
+  if (UserData) {
+    const userNameElement = document.querySelector(".userName");
+    if (userNameElement) {
+      userNameElement.innerHTML = `${UserData.firstName} ${UserData.lastName}`;
+    }
+  }
+
+  // Handle form submission
+  HandleForm(authData);
 };
-let UserData = JSON.parse(authData)
-if(UserData){
-document.querySelector(".userName").innerHTML=`
-${UserData.firstName} ${UserData.lastName}
-`
-}
+
+// Handle form population and submission
 const HandleForm = (authData) => {
   const profileForm = document.querySelector(".profileForm");
   if (!profileForm) {
-    // console.error("Profile form not found!");
+    console.error("Profile form not found!");
     return;
   }
-// console.log(authData);
-  // // Parse the user data
-  // let UserData;
-  // try {
-  //   UserData = JSON.parse(authData);
-    
-  // } catch (error) {
-  //   // console.error("Error parsing user data:", error);
-  //   return;
-  // }
+
+  // Parse the user data
+  let UserData;
+  try {
+    UserData = JSON.parse(authData);
+  } catch (error) {
+    console.error("Error parsing user data:", error);
+    return;
+  }
+
   // Populate the form fields with user data
   if (UserData) {
-    // console.log("🚀 ~ HandleForm ~ UserData:", UserData,UserData.id);
-    // Example: Populate input fields if they exist
     const inputUserId = profileForm.querySelector('input[name="id"]');
     const inputFirstName = profileForm.querySelector('input[name="firstName"]');
     const inputLastName = profileForm.querySelector('input[name="lastName"]');
@@ -57,33 +75,42 @@ const HandleForm = (authData) => {
     if (inputSecondaryAddress) inputSecondaryAddress.value = UserData.secondaryAddress || "";
     if (inputCity) inputCity.value = UserData.city || "";
 
-    profileForm.addEventListener('submit', (e) => {
+    profileForm.addEventListener("submit", (e) => {
       e.preventDefault();
-  
+
       // Collect form data
-      const formData = {};
-      formData.id=UserData.id
+      const formData = { id: UserData.id };
       for (let element of e.target.elements) {
-        if (element.type !== 'submit' && element.name) {
+        if (element.type !== "submit" && element.name) {
           if (element.value) {
-            // console.log(formData[element.name.trim()] = element.value.trim() );
-            
             formData[element.name.trim()] = element.value.trim(); // Trim keys and values
           }
         }
       }
-      formSubmit(authType,UserData.id,profileForm,formData,inputFirstName,inputLastName,inputEmail,inputPassword,inputRePassword,inputMainAddress,inputSecondaryAddress,inputCity)
-     
-      window.location.href=window.location.href
+
+      formSubmit(
+        authType,
+        UserData.id,
+        profileForm,
+        formData,
+        inputFirstName,
+        inputLastName,
+        inputEmail,
+        inputPassword,
+        inputRePassword,
+        inputMainAddress,
+        inputSecondaryAddress,
+        inputCity
+      );
+
+      // Refresh the page after form submission
+      window.location.href = window.location.href;
     });
   }
-
-
 };
 
-
-
-HandleForm(authData);
-
-// console.log(authName,authType,authData);   
-isLoggedIn(authData,"./../Register/register.html")
+// Check if the current page is Profile.html
+const currentPath = window.location.pathname;
+if (currentPath.endsWith("Profile.html")) {
+  document.addEventListener("DOMContentLoaded", initializeApp);
+}
