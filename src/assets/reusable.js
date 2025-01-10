@@ -339,4 +339,22 @@ export const addToCart = (productId, products) => {
     // localStorage.setItem("cartProducts", JSON.stringify(existingProducts));
     // console.log("Product added to cart:", product);
   };
-   
+  
+  export const fetchData = async () => {
+
+    try {
+      const response = await fetch("http://localhost:3000/products");
+      if (!response.ok) {
+        throw new Error("Network response was not ok");
+      }
+      return await response.json();
+    } catch (error) {
+      console.error("Error fetching data:", error);
+      // Display an error message to the user
+      const productsContainer = document.querySelector(".products");
+      if (productsContainer) {
+        productsContainer.innerHTML = `<p class="text-danger">Failed to load products. Please try again later.</p>`;
+      }
+      return []; // Return an empty array to avoid breaking the app
+    }
+  };
