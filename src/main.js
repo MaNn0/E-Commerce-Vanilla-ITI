@@ -3,7 +3,7 @@ import "bootstrap/dist/js/bootstrap.bundle.min.js";
 import * as bootstrap from "bootstrap";
 import "./style.css";
 import "@fortawesome/fontawesome-free/css/all.min.css";
-import { isLoggedIn,getCookie,addToCart } from "./assets/reusable";
+import { isLoggedIn, getCookie, addToCart } from "./assets/reusable";
 
 // Imports Ends Here
 //Global Declared Variables
@@ -43,6 +43,42 @@ const initializeApp = async () => {
   })();
   // isLoggedIn(authData)
 
+  const searchContainer = document.querySelector(".search-container");
+  const searchBtn = document.querySelector(".searchBtn");
+
+  searchBtn.addEventListener("click", (e) => {
+    e.preventDefault();
+
+    // Create the input element
+    const input = document.createElement("input");
+    input.type = "text";
+    input.placeholder = "Search...";
+    input.className = "searchInput"; // Add the base class
+
+    // Append the input element and trigger transition
+    searchContainer.replaceChild(input, searchBtn);
+
+    // Allow initial styles to apply before adding the "active" class
+    setTimeout(() => {
+      input.classList.add("active", "searchInput2");
+      // input.focus();
+    }, 10);
+
+    // Handle blur event
+    input.addEventListener("blur", () => {
+      if (!input.value.trim()) {
+        input.classList.remove("active");
+        setTimeout(() => {
+          searchContainer.replaceChild(searchBtn, input);
+        }, 300);
+      }
+    });
+
+    input.addEventListener("input", (e) => {
+      console.log("hi");
+    });
+  });
+
   function renderClothing(data) {
     const img = document.querySelector(".clothing");
     const product = data
@@ -51,7 +87,9 @@ const initializeApp = async () => {
       .map((element) => {
         return `
     <div class="card mx-2 border border-primary shadow-lg p-3 mb-5 bg-body-tertiary rounded" style="width: 18rem;">
-      <img src="${element.image}" class="card-img-top productCard" alt="${
+      <img src="${
+        element.image
+      }" style="max-height:300px" class="card-img-top productCard" alt="${
           element.title
         }">
       <div class="card-body d-flex flex-column ">
@@ -83,7 +121,9 @@ const initializeApp = async () => {
       .map((element) => {
         return `
     <div class="card mx-2 productCards border border-primary shadow-lg p-3 mb-3 bg-body-tertiary rounded" style="width: 18rem;">
-      <img src="${element.image}" class="card-img-top productCard" alt="${
+      <img src="${
+        element.image
+      }" style="max-height:300px" class="card-img-top productCard" alt="${
           element.title
         }">
       <div class="card-body d-flex flex-column ">
@@ -115,7 +155,9 @@ const initializeApp = async () => {
       .map((element) => {
         return `
     <div class="card mx-2 border border-primary shadow-lg p-3 mb-5 bg-body-tertiary rounded" style="width: 18rem;">
-      <img src="${element.image}" class="card-img-top productCard" alt="${
+      <img src="${
+        element.image
+      }" style="max-height:300px" class="card-img-top productCard" alt="${
           element.title
         }">
       <div class="card-body d-flex flex-column ">
@@ -146,7 +188,9 @@ const initializeApp = async () => {
       .map((element) => {
         return `
     <div class="card mx-2 border border-primary shadow-lg p-3 mb-5 bg-body-tertiary rounded" style="width: 18rem;">
-      <img src="${element.image}" class="card-img-top productCard" alt="${
+      <img src="${
+        element.image
+      }" style="max-height:300px" class="card-img-top productCard" alt="${
           element.title
         }">
       <div class="card-body d-flex flex-column ">
@@ -177,7 +221,9 @@ const initializeApp = async () => {
       .map((element) => {
         return `
     <div class="card mx-2 border border-primary shadow-lg p-3 mb-5 bg-body-tertiary rounded" style="width: 18rem;">
-      <img src="${element.image}" class="card-img-top productCard" alt="${
+      <img src="${
+        element.image
+      }" style="max-height:300px" class="card-img-top productCard" alt="${
           element.title
         }">
       <div class="card-body d-flex flex-column ">
@@ -208,7 +254,9 @@ const initializeApp = async () => {
       .map((element) => {
         return `
       <div class="card mx-3 border border-primary shadow-lg p-3 mb-5 bg-body-tertiary rounded" style="width: 18rem;">
-        <img src="${element.image}" class="card-img-top productCard" alt="${
+        <img src="${
+          element.image
+        }" style="max-height:300px" class="card-img-top productCard" alt="${
           element.title
         }">
       <div class="card-body d-flex flex-column">
@@ -241,7 +289,9 @@ const initializeApp = async () => {
       .map((element) => {
         return `
       <div class="card mx-3 border border-primary shadow-lg p-3 mb-5 bg-body-tertiary rounded" style="width: 18rem;">
-        <img src="${element.image}" class="card-img-top productCard" alt="${
+        <img src="${
+          element.image
+        }" style="max-height:300px" class="card-img-top productCard" alt="${
           element.title
         }">
       <div class="card-body d-flex flex-column">
