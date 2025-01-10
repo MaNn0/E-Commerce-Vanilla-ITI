@@ -11,6 +11,12 @@ let sideBar = document.querySelector(".sideBar");
 btn.onclick = function () {
   sideBar.classList.toggle("active");
 };
+let UserData = JSON.parse(authData)
+if(UserData){
+document.querySelector(".userName").innerHTML=`
+${UserData.firstName} ${UserData.lastName}
+`
+}
 const HandleForm = (authData) => {
   const profileForm = document.querySelector(".profileForm");
   if (!profileForm) {
@@ -18,18 +24,15 @@ const HandleForm = (authData) => {
     return;
   }
 // console.log(authData);
-
-  // Parse the user data
-  let UserData;
-  try {
-    UserData = JSON.parse(authData);
+  // // Parse the user data
+  // let UserData;
+  // try {
+  //   UserData = JSON.parse(authData);
     
-  } catch (error) {
-    // console.error("Error parsing user data:", error);
-    return;
-  }
-
-
+  // } catch (error) {
+  //   // console.error("Error parsing user data:", error);
+  //   return;
+  // }
   // Populate the form fields with user data
   if (UserData) {
     // console.log("🚀 ~ HandleForm ~ UserData:", UserData,UserData.id);
@@ -71,7 +74,7 @@ const HandleForm = (authData) => {
       }
       formSubmit(authType,UserData.id,profileForm,formData,inputFirstName,inputLastName,inputEmail,inputPassword,inputRePassword,inputMainAddress,inputSecondaryAddress,inputCity)
      
-      
+      window.location.href=window.location.href
     });
   }
 

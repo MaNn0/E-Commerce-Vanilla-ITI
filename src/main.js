@@ -52,50 +52,6 @@ export const authType = authCookie ? authCookie.type : null;
 // console.log(authName, authData,authType);
 const currentPath =  window.location.pathname;
 const userData=JSON.parse(authData)
-
-// export const isLoggedIn = (authData)=> {
-//   const userBtn = document.querySelector(".userBtn");
-//   const userData=JSON.parse(authData)
-//   if (userBtn && currentPath =="/" && userData ) {
-
-//     userBtn.innerHTML = `
-//       <div class="btn-group">
-//         <button type="button" class="btn ms-2 dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false" >
-//           <i class="fa-solid fa-user"></i>
-//         </button>
-//         <ul class="dropdown-menu" style="left: -100%;">
-//           <li> ${userData.firstName} ${userData.lastName}</li>
-//           <li><a class="dropdown-item" href="./src/Pages/Profile/Profile.html"><i class="fa-regular fa-user"></i> Profile</a></li>
-//           <li><a class="dropdown-item" href="#"><i class="fa-solid fa-star"></i> WishList</a></li>
-//           <li><a class="dropdown-item" href="#"><i class="fa-solid fa-box-archive"></i> Orders</a></li>
-//           <li><hr class="dropdown-divider"></li>
-//           <li><a class="dropdown-item logOutBtn" href="./"><i class="fa-solid fa-arrow-right-from-bracket"></i>LogOut</a></li>
-//         </ul>
-//       </div>
-//     `
-//     const logOutBtn = document.querySelector(".logOutBtn");
-//     console.log("🚀 ~ initializeApp ~ logOutBtn:", logOutBtn)
-//     if (logOutBtn) {
-//       logOutBtn.addEventListener("click", (event) => {
-//         event.preventDefault();
-//         deleteCookie("Auth");
-//         window.location.href = "http://localhost:5173/"; // Redirect to login page
-//       });
-//     }
-//     return true;
-//   } else {
-//     console.log(userBtn);
-//     userBtn.innerHTML = `
-//      <a href="./src/Pages/Register/register.html">
-//             <button class="btn btn-outline-light ms-2" type="button">
-//               Signup
-//             </button>
-//           </a>
-//     `;
-//     return false;
-//   }
-// }
-
   const initializeApp = async () =>{
     const btnCart = document.querySelectorAll(".btnCart");
     (async function () {

@@ -12,71 +12,79 @@
 
   <body>
     <!--navBar-->
-    <nav class="navbar navbar-expand-lg bg-body-tertiary">
-      <div class="container-fluid">
-        <div class="left">
-          <span class="navbar-brand mb-0 h1">Khaled's Store |</span>
-          <!-- <a class="navbar-brand" href="#">
-            <i class="fa-brands fa-slack"></i>
-          </a> -->
-        </div>
-        <div class="collapse navbar-collapse" id="navbarNav">
-          <ul class="navbar-nav">
-            <!-- <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="#"><i class="fa-solid fa-house"></i>Home</a>
-        </li> -->
-            <li class="nav-item">
-              <a class="nav-link" href="../../Profile/Profile.html"
-                ><i class="fa-regular fa-user"></i>Profile</a
-              >
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="../../Cart/cart.html"
-                ><i class="fa-solid fa-cart-shopping"></i>Cart</a
-              >
-            </li>
-            <!-- <li class="nav-item">
-          <a class="nav-link" href=""><i class="fa-solid fa-bag-shopping"></i>Cart</a>
-        </li> -->
-            <li class="nav-item">
-              <a class="nav-link" href="../../Payment/Payment.html"
-                ><i class="fa-solid fa-credit-card"></i>Payment</a
-              >
-            </li>
-          </ul>
-        </div>
-        <button
-          class="navbar-toggler"
-          type="button"
-          data-bs-toggle="collapse"
-          data-bs-target="#navbarNav"
-          aria-controls="navbarNav"
-          aria-expanded="false"
-          aria-label="Toggle navigation"
-        >
-          <span class="navbar-toggler-icon"></span>
-        </button>
-
-        <div class="iconLinks collapse navbar-collapse" id="navbarNav">
-          <form class="d-flex">
-            <input
-              class="form-control me-2"
-              type="search"
-              placeholder="Search"
-              aria-label="Search"
-            />
-            <button class="btn btn-outline-success" type="submit">
-              Search
-            </button>
-            <a href="./src//Pages/Register/register.html">
-              <button class="btn btn-outline-success ms-2" type="button">
-                Signup
+    <header>
+      <nav class="navbar navbar-expand-lg px-5 bg-primary">
+        <div class="container-fluid">
+          <!-- Brand/Logo -->
+          <div class="left">
+            <span class="navbar-brand mb-0 h1 text-white">Khaled's Store |</span>
+          </div>
+    
+          <!-- Toggle Button for Mobile -->
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarNav"
+            aria-controls="navbarNav"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <span class="navbar-toggler-icon"></span>
+          </button>
+    
+          <!-- Navbar Links -->
+          <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav me-auto">
+              <li class="nav-item">
+                <a class="nav-link text-white" href="/src/Pages/Profile/Profile.html">
+                  <i class="fa-regular fa-user"></i> Profile
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link text-white" href="/src/Pages/Cart/cart.html">
+                  <i class="fa-solid fa-cart-shopping"></i> Cart
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link text-white" href="/src/Pages/products/products.html">
+                  <i class="fa-solid fa-store"></i> Store
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link text-white" href="/src/Pages/Payment/Payment.html">
+                  <i class="fa-solid fa-credit-card"></i> Payment
+                </a>
+              </li>
+            </ul>
+    
+            <!-- Search Form -->
+            <form class="d-flex">
+              <input
+                class="form-control me-2"
+                type="search"
+                placeholder="Search"
+                aria-label="Search"
+                id="searchInput"
+              />
+              <button class="btn btn-outline-light" type="submit" aria-label="Search">
+                Search
               </button>
-            </a>
-          </form>
+            </form>
+    
+            <!-- User Button (Dynamic Content) -->
+            <span class="userBtn ms-2">
+              <!-- Example: Display Login/Logout Button Based on User Authentication -->
+              <a href="/src/Pages/Register/register.html">
+                <button class="btn btn-outline-light" type="button">
+                  Login/Signup
+                </button>
+              </a>
+            </span>
+          </div>
         </div>
-      </div>
-    </nav>
+      </nav>
+    </header>
 
     <section class="container">
       <div class="row products mt-5"></div>
@@ -86,6 +94,8 @@
       type="module"
       src="../../../node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"
     ></script> -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
     <script type="module" src="./productdetails.js"></script>
   </body>
 </html>

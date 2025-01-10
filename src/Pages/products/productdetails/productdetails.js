@@ -1,6 +1,10 @@
+import "bootstrap/dist/css/bootstrap.min.css";
+import "bootstrap/dist/js/bootstrap.bundle.min.js";
+import * as bootstrap from 'bootstrap'
+import "@fortawesome/fontawesome-free/css/all.min.css";
 import "./productdetails.css";
 import { addToCart, fetchData } from "../products";
-
+import { isLoggedIn,authData,authName,authType } from "../../../assets/reusable";
 document.addEventListener("DOMContentLoaded", async () => {
   // Get product ID from URL
   const urlParams = new URLSearchParams(window.location.search);
@@ -75,3 +79,4 @@ document.addEventListener("DOMContentLoaded", async () => {
     });
   });
 });
+isLoggedIn(authData,"./../../Register/register.html")
