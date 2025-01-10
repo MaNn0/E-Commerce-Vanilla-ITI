@@ -1,6 +1,8 @@
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.min.js";
 
+import { loadStripe } from '@stripe/stripe-js';
+
 // radio for address button [show,hide]
 const defaultAddInput = document.getElementById('defaultADD');
 const newAddInput = document.getElementById('newADD');
@@ -39,7 +41,7 @@ document.querySelector(".btn-primary").addEventListener("click", function () {
 
 
 // Get the products from localStorage
-const products = JSON.parse(localStorage.getItem("products")) || [];
+const products = JSON.parse(localStorage.getItem("cartProducts")) || [];
 console.log("🚀 ~ Product:", products);
 // Calculate the subtotal
 // acc >> accumulator , 0 initial value  return the acc 
@@ -108,6 +110,7 @@ const orderContainer = document.querySelector('.your-order-section .order-contai
 // Clear existing content in the container (optional)
 orderContainer.innerHTML = '';
 
+
 // Loop through the products array and create HTML elements for each product
  //change md for sizing line 104
  // Check if there are products in the array
@@ -145,3 +148,82 @@ products.forEach(product => {
   orderContainer.innerHTML += productRow;
 });
 }
+
+const amount_stripe = total_vac*100
+console.log(amount_stripe)
+
+// Initialize Stripe with your publishable key
+const stripe = await loadStripe('pk_test_51Qf9q7AnBfxoX5a3ubkQ9mbIGvB6FujzedMCkDo7AvQXnz9ZHZSbsrGP8P8oEWkMc6eckOGJthugfD0tk3Gljibw00uNOSK4YD');
+
+const elements = stripe.elements();
+
+// Create the Card Element
+const cardElement = elements.create('card', {
+  style: {
+    base: {
+      color: '#32325d',
+      fontFamily: 'Arial, sans-serif',
+      fontSize: '16px',
+      '::placeholder': {
+        color: '#aab7c4',
+      },
+    },
+    invalid: {
+      color: '#fa755a',
+    },
+  },
+});
+
+// Mount the Card Element
+cardElement.mount('#card-element');
+
+// Form Submission Handler
+const form = document.getElementById('payment-form');
+
+form.addEventListener('submit', async (event) => {
+  event.preventDefault(); // Prevent the form from reloading
+
+  // Collect user details from the form
+  const firstName = document.getElementById('first-name').value;
+  const lastName = document.getElementById('last-name').value;
+  const country = document.getElementById('country').value;
+  const city = document.getElementById('city').value;
+  const zipCode = document.getElementById('zip-code').value;
+  const email = document.getElementById('email').value;
+  const phoneNumber = document.getElementById('phone-number').value;
+
+  // Call your backend to create a Payment Intent
+  //post man https://web.postman.co/workspace/be3e1119-c301-42d9-8075-8dcadada94f8/request/create?requestId=6db5ac94-5e6b-4d6b-bdfa-e39bd063e6ea
+  const response = await fetch('http://localhost:5000/create-payment-intent', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ amount: amount_stripe }), // Replace with your amount in cents
+  });
+
+  const { clientSecret } = await response.json();
+
+  // Confirm the payment
+  const { error, paymentIntent } = await stripe.confirmCardPayment(clientSecret, {
+    payment_method: {
+      card: cardElement,
+      billing_details: {
+        name: `${firstName} ${lastName}`,
+        email: email,
+        address: {
+          city: city,
+          postal_code: zipCode,
+          country: country,
+        },
+        phone: phoneNumber,
+      },
+    },
+  });
+
+  if (error) {
+    // Display error message
+    document.getElementById('card-errors').textContent = error.message;
+  } else if (paymentIntent.status === 'succeeded') {
+    // Payment succeeded
+    alert('Payment Successful!');
+  }
+});

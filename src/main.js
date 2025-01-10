@@ -194,3 +194,4 @@ function renderTv(data) {
     .join("");
   img.innerHTML = product;
 }
+

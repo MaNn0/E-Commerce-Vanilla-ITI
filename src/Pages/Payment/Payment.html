@@ -14,7 +14,7 @@
   <nav class="navbar navbar-expand-lg bg-body-tertiary">
     <div class="container-fluid">
       <div class="left">
-        <span class="navbar-brand mb-0 h1">a7aaaaaaaa |</span>
+        <span class="navbar-brand mb-0 h1">Hossam wa7d bas |</span>
       </div>
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav">
@@ -111,7 +111,8 @@
               <div class="alert alert-success text-start py-2 mb-3 " role="alert">
                 error or warning
               </div>
-              <button class="btn btn-primary w-50 ">PLACE ORDER</button> <!-- Full width button -->
+              <button  class="btn btn-primary w-50 ">PLACE ORDER</button> <!-- Full width button -->
+     
             </div>
           </div>
         </div>
@@ -216,7 +217,7 @@
         </div>
       </div>
 
-      <!-- Payment Modals Section -->
+      <!-- Payment Modals Section
       <div class="modal fade" id="paymentModals" tabindex="-1" aria-labelledby="paymentModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered modal-lg">
           <div class="modal-content">
@@ -225,9 +226,9 @@
               <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-              <div class="d-flex justify-content-between flex-wrap">
+              <div class="d-flex justify-content-between flex-wrap"> -->
                 <!-- Card Information Section -->
-                <div class="card-info">
+                <!-- <div class="card-info">
                   <h5 class="mb-3">Card information</h5>
                   <p class="text-muted mb-4">Indicate details of the card from which money will be debited</p>
                   <div class="mb-3">
@@ -242,10 +243,10 @@
                     <input type="text" class="form-control card-input" placeholder="MM / YY" style="flex: 1;">
                     <input type="password" class="form-control card-input" placeholder="CVV" style="flex: 1;">
                   </div>
-                </div>
+                </div> -->
 
                 <!-- Personal Information Form -->
-                <div class="container form-container ms-4">
+                <!-- <div class="container form-container ms-4">
                   <form>
                     <div class="mb-3">
                       <input type="text" class="form-control" placeholder="First name">
@@ -275,6 +276,64 @@
                     </div>
                   </form>
                 </div>
+              </div>
+            </div>
+            <div class="modal-footer d-flex justify-content-center">
+              <button type="button" class="btn btn-primary">Save</button>
+            </div>
+          </div>
+        </div>
+      </div> -->
+
+
+      <!-- Payment Modals Section -->
+      <div class="modal fade" id="paymentModals" tabindex="-1" aria-labelledby="paymentModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="paymentModalLabel">Payment Details</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <div class="d-flex justify-content-between flex-wrap">
+                
+                <form id="payment-form">
+                  <div class="mb-3">
+                    <input type="text" class="form-control" id="first-name" placeholder="First name" required>
+                  </div>
+                  <div class="mb-3">
+                    <input type="text" class="form-control" id="last-name" placeholder="Last name" required>
+                  </div>
+                  <div class="mb-3">
+                    <select class="form-select" id="country" required>
+                      <option value="" selected disabled>Select Country</option>
+                      <option value="EG">Egypt</option>
+                    </select>
+                  </div>
+                  <div class="row">
+                    <div class="col-6 mb-3">
+                      <input type="text" class="form-control" id="city" placeholder="City" required>
+                    </div>
+                    <div class="col-6 mb-3">
+                      <input type="text" class="form-control" id="zip-code" placeholder="Zip code" required>
+                    </div>
+                  </div>
+                  <div class="mb-3">
+                    <input type="email" class="form-control" id="email" placeholder="E-mail" required>
+                  </div>
+                  <div class="mb-3">
+                    <input type="tel" class="form-control" id="phone-number" placeholder="Phone number" required>
+                  </div>
+                
+                  <!-- Stripe Card Element -->
+                  <div id="card-element" class="form-control" style="padding: 10px;"></div>
+                  <div id="card-errors" class="text-danger mt-2"></div>
+                
+                  <!-- Checkout Button -->
+                  <button type="submit" class="btn btn-primary w-100" id="checkout-button">Checkout</button>
+                </form>
+                
+                
               </div>
             </div>
             <div class="modal-footer d-flex justify-content-center">
