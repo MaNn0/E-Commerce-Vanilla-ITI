@@ -9,8 +9,9 @@
 
 <body>
   <section id="profile"></section>
+  
   <nav class="navbar  navbar-expand-lg px-5 bg-primary">
-    <div class="container-fluid">
+    <div class="container">
       <div class="left">
         <span class="navbar-brand mb-0 h1 text-white">Khaled's Store |</span>
       </div>
@@ -112,50 +113,69 @@
     <div class="profileContent container">
       <h1 class="mx-auto">Profile Information</h1>
       <p>This is the main content area.</p>
-      <form class="row g-3">
-        <div class="col-md-6">
-          <label for="inputEmail4" class="form-label">Email</label>
-          <input type="email" class="form-control" id="inputEmail4" />
-        </div>
-        <div class="col-md-6">
-          <label for="inputPassword4" class="form-label">Password</label>
-          <input type="password" class="form-control" id="inputPassword4" />
-        </div>
-        <div class="col-12">
-          <label for="inputAddress" class="form-label">Address</label>
-          <input type="text" class="form-control" id="inputAddress" placeholder="1234 Main St" />
-        </div>
-        <div class="col-12">
-          <label for="inputAddress2" class="form-label">Address 2</label>
-          <input type="text" class="form-control" id="inputAddress2" placeholder="Apartment, studio, or floor" />
-        </div>
-        <div class="col-md-6">
-          <label for="inputCity" class="form-label">City</label>
-          <input type="text" class="form-control" id="inputCity" />
-        </div>
-        <div class="col-md-4">
-          <label for="inputState" class="form-label">State</label>
-          <select id="inputState" class="form-select">
-            <option selected>Choose...</option>
-            <option>...</option>
-          </select>
-        </div>
-        <div class="col-md-2">
-          <label for="inputZip" class="form-label">Zip</label>
-          <input type="text" class="form-control" id="inputZip" />
-        </div>
-        <div class="col-12">
-          <div class="form-check">
-            <input class="form-check-input" type="checkbox" id="gridCheck" />
-            <label class="form-check-label" for="gridCheck">
-              Check me out
-            </label>
+     <form class="row g-3 profileForm" >
+
+      <div class="col-md-6" style="display: none;">
+        <label for="id" class="form-label">First Name</label>
+        <input name="id" type="text" class="form-control" id="id">
+        <div class="form-text nameError text-danger d-none" id="basic-addon4">Required</div>
+      </div>
+
+          <div class="col-md-6">
+            <label for="firstName" class="form-label">First Name</label>
+            <input name="firstName" type="text" class="form-control" id="name">
+            <div class="form-text nameError text-danger d-none" id="basic-addon4">Required</div>
           </div>
-        </div>
-        <div class="col-12">
-          <button type="submit" class="btn btn-primary">Sign in</button>
-        </div>
-      </form>
+          <div class="col-md-6">
+            <label for="lastName" class="form-label">Last Name</label>
+            <input name="lastName" type="text" class="form-control" id="name2">
+            <div class="form-text name2Error text-danger d-none" id="basic-addon4">Required</div>
+          </div>
+
+          <!-- {formError.userNameError &&
+            <div className='form-text text-danger'>
+                {formError.userNameError}
+            </div>
+        } -->
+          <div class="col-md-12">
+            <label for="email" class="form-label">Email</label>
+            <input name="email" type="text" class="form-control" id="email">
+            <div class="form-text emailError text-danger" id="basic-addon4"></div>
+          </div>
+          <div class="col-md-6">
+            <label for="password" class="form-label">Password</label>
+            <input name="password" type="password" class="form-control" id="password">
+            <div class="form-text passwordError text-danger " id="basic-addon4">
+            </div>
+          </div>
+          <div class="col-md-6">
+            <label for="repassword" class="form-label">Re-enter Password</label>
+            <input name="repassword" type="password" class="form-control" id="repassword">
+            <div class="form-text repasswordError text-danger" id="basic-addon4"></div>
+          </div>
+          <div class="col-6">
+            <label for="mainAddress" class="form-label">Address</label>
+            <input name="mainAddress" type="text" class="form-control" id="inputAddress" placeholder="1234 Main St">
+            <div class="form-text addressError text-danger " id="basic-addon4"></div>
+          </div>
+          <div class="col-6">
+            <label for="secondaryAddress" class="form-label">Address 2 (optional)</label>
+            <input name="secondaryAddress" type="text" class="form-control" id="inputAddress2"
+              placeholder="1234 Main St">
+          </div>
+          <div class="col-md-12">
+            <label for="city" class="form-label">City</label>
+            <input name="city" type="text" class="form-control" id="inputCity">
+            <div class="form-text cityError text-danger " id="basic-addon4"></div>
+          </div>
+          <!-- <div class="col-12 my-3">
+            <input type="checkbox" class="form-check-input" id="exampleCheck1">
+            <label class="form-check-label" for="exampleCheck1">Remember me</label>
+          </div> -->
+          <div class="col-12">
+            <button type="submit" class="btn btn-primary w-100">Signup</button>
+          </div>
+        </form>
     </div>
   </section>
   <!-- side Bar Ends HEre Booooys SUUUUUUUUUUUUUUUUUUUUUUUUUI -->

@@ -24,7 +24,7 @@ export const fetchData = async () => {
     return []; // Return an empty array to avoid breaking the app
   }
 };
-console.log(authName,authData,authType);
+// console.log(authName,authData,authType);
 
 // Render products to the DOM
 const renderProducts = (data, container) => {

@@ -49,7 +49,7 @@ function deleteCookie(name) {
 export const authName = authCookie ? authCookie.name : null;
 export const authData = authCookie ? authCookie.value : null;
 export const authType = authCookie ? authCookie.type : null;
-console.log(authName, authData,authType);
+// console.log(authName, authData,authType);
 const currentPath =  window.location.pathname;
 const userData=JSON.parse(authData)
 

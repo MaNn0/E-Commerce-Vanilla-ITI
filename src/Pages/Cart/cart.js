@@ -1,6 +1,6 @@
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.min.js";
-
+import { isLoggedIn,authName,authData,authType } from "./../../assets/reusable"
 // Retrieve products from localStorage
 const products = JSON.parse(localStorage.getItem("cartProducts")) || [];
 
@@ -73,6 +73,6 @@ document.querySelector(".allItems").addEventListener("click", (event) => {
     updateQuantity();
   }
 });
-
+isLoggedIn(authData,"./../Register/register.html")
 // Initialize the cart UI
 updateQuantity();
