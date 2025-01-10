@@ -26,7 +26,7 @@ export async function fetchUserData() {
 
 // Set a cookie with a name, value, and expiration in days
 function setCookie(name, value, daysToExpire,rememberMe) {
-console.log(rememberMe)
+// console.log(rememberMe)
 if (rememberMe){
   const date = new Date();
   date.setTime(date.getTime() + (daysToExpire * 24 * 60 * 60 * 1000));
@@ -34,6 +34,7 @@ if (rememberMe){
   const cookieValue = JSON.stringify(value); // Convert value to JSON string
   document.cookie = `${name}=${cookieValue}; ${expires}; path=/`;
 }else{
+  // SetSession Name==>Key Data==>Value
   const sessionValue = JSON.stringify(value); // Convert value to JSON string
   sessionStorage.setItem("Auth",sessionValue);
 }

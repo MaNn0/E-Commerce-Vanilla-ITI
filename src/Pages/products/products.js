@@ -2,7 +2,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.min.js";
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import * as bootstrap from 'bootstrap'
-import {isLoggedIn,authName,authData,authType} from "../../assets/reusable" 
+import {isLoggedIn,authName,authData,authType,setCookie, getCookie} from "../../assets/reusable" 
 import "./products.css";
 
 // Fetch data from the server
@@ -28,7 +28,7 @@ export const fetchData = async () => {
 
 // Render products to the DOM
 const renderProducts = (data, container) => {
-  console.log("🚀 ~ renderProducts ~ data:", data);
+  // console.log("🚀 ~ renderProducts ~ data:", data);
   container.innerHTML = data
     .map(
       (product) => `
@@ -70,11 +70,17 @@ const renderProducts = (data, container) => {
 
 // Add product to cart
 export const addToCart = (productId, products) => {
+  let productCart = getCookie("productCart")
+ const productsName = productCart ?productCart.name: null;
+ const productsData = productCart ?productCart.value: null
+
+  console.log("🚀 ~ getCookieValue ~ getCookie:", getCookie("productCart"))
   const product = products.find((p) => p.id == productId);
-
-  const existingProducts =
-    JSON.parse(localStorage.getItem("cartProducts")) || [];
-
+  // const existingProducts =
+  //   JSON.parse(localStorage.getItem("productCart")) || [];
+      // console.log("🚀 ~ addToCart ~ productsData:", productsData)
+    const existingProducts =JSON.parse(productsData) || [];
+    console.log("🚀 ~ addToCart ~ existingProducts:", existingProducts)
   const productIndex = existingProducts.findIndex((p) => p.id === productId);
   // productIndex = true(index) OR false (-1)
   if (productIndex !== -1) {
@@ -85,10 +91,12 @@ export const addToCart = (productId, products) => {
     product.quantity = 1; // creating quantity
     existingProducts.push(product);
   }
-
-  localStorage.setItem("cartProducts", JSON.stringify(existingProducts));
-  console.log("Product added to cart:", product);
+  setCookie("productCart", existingProducts,1,authType)
+  // localStorage.setItem("cartProducts", JSON.stringify(existingProducts));
+  // console.log("Product added to cart:", product);
 };
+ 
+
 
 // Initialize the app
 const initializeApp = async () => {

@@ -7,7 +7,7 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
 
-  <link rel="stylesheet" href="cart.css">
+  <link rel="stylesheet" href="orders.css">
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Vite App</title>
 </head>
@@ -59,63 +59,46 @@
       </div>
     </div>
   </nav>
-  <div class="cartContainer container">
-    <h1>Cart <span class="titleCount"></span> </h1>
-    <div class="row">
-      <div class="allItems col-7 mt-4">
-        <div class="cartItem">
+  <div class="cart-wrap">
+		<div class="container">
+	        <div class="row">
+			    <div class="col-md-12">
+			        <div class="main-heading mb-5 mt-5 display-6">My orders</div>
+			        <div class="table-orders">
+				        <table cellpadding="0" cellspacing="0" border="0" width="100%">
+				        	<thead>
+					        	<tr>
+					        		<th width="45%">Order #</th>
+					        		<th width="15%">Total Price</th>
+                      
+					        	</tr>
+					        </thead>
+					        <tbody>
+					        	<tr>
+					        		<td width="45%">
+					        			<div class="display-flex align-center">
+		                                    
+		                                    <div class="name-product">
+		                                        #12345
+		                                    </div>
+	                                    </div>
+	                                </td>
+					        		<td width="15%" class="total">$110.00</td>
+					        		<td width="15%"><button class="btn btn-primary">View order</button></td>
+					        	</tr>
+				        	</tbody>
+				        </table>
+				    </div>
+			    </div>
+			</div>
+		</div>
+	</div>
 
-          <div class="imageContainer">
-            <img class="image" src="${product.image}" height="164px" width="120px">
-          </div>
-
-          <div class="itemName">
-            <h4>item name</h4>
-          </div>
-
-          <div class="total d-flex flex-row-reverse mx-2">
-            <span class="currency">EGP</span><span class="price">124.00</span>
-          </div>
-
-          <div class="buttonContainer">
-            <button class="removeButton"><img src="./images/trash-solid.svg" width="20px" height="20px"></button>
-          </div>
-
-          <div class="itemCount mx-2">
-            <label for="qty">Qty </label>
-            <select name="qty" id="qty">
-              <option value="1">1</option>
-              <option value="2">2</option>
-              <option value="3">3</option>
-              <option value="4">4</option>
-            </select>
-          </div>
-
-        </div>
-      </div>
-      <div class="orderSummary col-4 mx-auto mt-4">
-        <h4>Order Summary</h4>
-        <span class="subTotal"></span>
-        <br>
-        <span class="discount"></span>
-        <br>
-        <span class="shippingFee">Shipping Fee (Credit/Debit) <span>FREE</span></span>
-        <hr>
-
-        <span class="TotalText mt-2">Total </span>
-        <br>
-        <span class="totalPrice"></span>
-        <br>
-        <br>
-        <button class="checkoutButton">Checkout</button>
-      </div>
-    </div>
-  </div>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
   integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
   crossorigin="anonymous"></script>
 
-  <script type="module" src="./cart.js"></script>
+  <script type="module" src="./orders.js"></script>
 </body>
 
 </html>

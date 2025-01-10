@@ -2,14 +2,51 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.min.js";
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import * as bootstrap from 'bootstrap'
+
+// setCookie
+export function setCookie(name, value, daysToExpire, authType) {
+    try {
+
+      if (authType === "cookies") {
+        
+        // Set a cookie
+
+        const date = new Date();
+        date.setTime(date.getTime() + daysToExpire * 24 * 60 * 60 * 1000); // Calculate expiration date
+
+        const expires = `expires=${date.toUTCString()}`; // Format expiration date
+
+        const cookieValue = JSON.stringify(value); // Convert value to JSON string
+  
+        // Set the cookie with additional attributes for security
+        document.cookie = `${name}=${cookieValue}; ${expires}; path=/; Secure; SameSite=Strict`;
+  
+        console.log("🚀 ~ setCookie ~ cookie set:", { name, value, expires });
+      } else {
+
+        // Store in sessionStorage
+
+        const sessionValue = JSON.stringify(value); // Convert value to JSON string
+        sessionStorage.setItem(name, sessionValue);
+  
+        console.log("🚀 ~ setCookie ~ sessionStorage set:", { name, value });
+      }
+    } catch (error) {
+      console.error("Error in setCookie:", error);
+    }
+  }
+
+// GetCookie
+
 export function getCookie(name) {
-    if (sessionStorage.getItem("Auth")) {
-        const sessionValue = sessionStorage.getItem("Auth");
+    // console.log(name);
+    if (sessionStorage.getItem(name)) {
+        const sessionValue = sessionStorage.getItem(name);
         try {
             const sessionData = JSON.parse(sessionValue); // Parse the session data
             // console.log("🚀 ~ getCookie ~ sessionData:", sessionData )
             if (sessionData) {
-                return { name: "Auth", value: sessionValue, type: "session" }; // Return the session value
+                return { name: name, value: sessionValue, type: "session" }; // Return the session value
             }
         } catch (error) {
             console.error("Error parsing sessionStorage data:", error);
@@ -27,31 +64,32 @@ export function getCookie(name) {
     return null;
 }
 
-const authCookie = getCookie("Auth");
+// Delete Cookies When user LogOut
 
 function deleteCookie(name) {
-    console.log(name);
-
     sessionStorage.clear();
     document.cookie = `${name}=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;`;
 
 }
 
+const authCookie = getCookie("Auth");
+const productCart = getCookie("productCart");
+// Better For Handling Error To get cookies and ReuseThem There {Destruct }
 export const authName = authCookie ? authCookie.name : null;
 export const authData = authCookie ? authCookie.value : null;
 export const authType = authCookie ? authCookie.type : null;
-//   console.log(authName, authData,authType);
+export const productsName = productCart ?productCart.name: null;
+export const productsData = productCart ?productCart.value: null
 
 export const isLoggedIn = (authData, href) => {
     const userBtn = document.querySelector(".userBtn");
     // If authData is not provided, return early
-    if (!authData) {
-        //   console.error("No authentication data provided.");
+    // if (!authData) {
+    //     //   console.error("No authentication data provided.");
+    // }
+    // else {
 
-    }
-    else {
-
-    }
+    // }
 
     // Parse user data from authData
     let userData;
@@ -78,11 +116,7 @@ export const isLoggedIn = (authData, href) => {
           </ul>
         </div>
       `;
-    //   <li><a class="dropdown-item" href="#"><i class="fa-solid fa-star"></i> WishList</a></li>
-    //   <li><a class="dropdown-item" href="#"><i class="fa-solid fa-box-archive"></i> Orders</a></li>
-        // Add event listener for logout
         const logOutBtn = document.querySelector(".logOutBtn");
-        //   console.log("🚀 ~ isLoggedIn ~ logOutBtn:", logOutBtn);
         if (logOutBtn) {
             logOutBtn.addEventListener("click", (event) => {
                 event.preventDefault();
@@ -107,19 +141,7 @@ export const isLoggedIn = (authData, href) => {
         return false;
     }
 };
-function setCookie(name, value, daysToExpire, authType) {
-
-    if (authType == "cookies") {
-        const date = new Date();
-        date.setTime(date.getTime() + (daysToExpire * 24 * 60 * 60 * 1000));
-        const expires = `expires=${date.toUTCString()}`;
-        const cookieValue = JSON.stringify(value); // Convert value to JSON string
-        document.cookie = `${name}=${cookieValue}; ${expires}; path=/`;
-    } else {
-        const sessionValue = JSON.stringify(value); // Convert value to JSON string
-        sessionStorage.setItem("Auth", sessionValue);
-    }
-}
+// Post Data After Updating
 async function postData(data = {}, userId) {
     try {
         // Validate input parameters
@@ -175,6 +197,7 @@ async function postData(data = {}, userId) {
         alert(`Failed: ${error.message}`);
     }
 }
+// Erorr AND declaration Handling
 const nameForm = document.querySelector("#name");
 const nameError = document.querySelector(".nameError");
 
@@ -271,13 +294,59 @@ function showError(nameForm, name2Form, email, password, repassword, address, ad
 
     return hasErrors;
 }
+// Updating Form Data
 export function formSubmit(authType, userId, formName, formData, inputFirstName, inputLastName, inputEmail, inputPassword, inputRePassword, inputMainAddress, inputSecondaryAddress, inputCity) {
-    //   console.log(inputFirstName,inputLastName,inputEmail,inputPassword,inputRePassword,inputMainAddress,inputSecondaryAddress,inputCity);
 
+// Check For Errors
     let noErrors = showError(inputFirstName, inputLastName, inputEmail, inputPassword, inputRePassword, inputMainAddress, inputSecondaryAddress, inputCity);
+    
     if (noErrors === 0) {
         setCookie("Auth", formData, 1, authType)
+        // Post Data
         postData(formData, userId)
 
     }
 }
+
+export const addToCart = (productId, products) => {
+    let productCart = getCookie("productCart")
+   const productsName = productCart ?productCart.name: null;
+   const productsData = productCart ?productCart.value: null
+  
+
+    const product = products.find((p) => p.id == productId);
+
+      const existingProducts =JSON.parse(productsData) || [];
+      console.log("🚀 ~ addToCart ~ existingProducts:", existingProducts)
+    const productIndex = existingProducts.findIndex((p) => p.id === productId);
+    // productIndex = true(index) OR false (-1)
+    if (productIndex !== -1) {
+      // y3ne mawgod [1,2,4,5,6]
+      existingProducts[productIndex].quantity += 1;
+    } else {
+      // lw m4 mawgod
+      product.quantity = 1; // creating quantity
+      existingProducts.push(product);
+    }
+    setCookie("productCart", existingProducts,1,authType)
+
+  };
+  
+  export const fetchData = async () => {
+
+    try {
+      const response = await fetch("http://localhost:3000/products");
+      if (!response.ok) {
+        throw new Error("Network response was not ok");
+      }
+      return await response.json();
+    } catch (error) {
+      console.error("Error fetching data:", error);
+      // Display an error message to the user
+      const productsContainer = document.querySelector(".products");
+      if (productsContainer) {
+        productsContainer.innerHTML = `<p class="text-danger">Failed to load products. Please try again later.</p>`;
+      }
+      return []; // Return an empty array to avoid breaking the app
+    }
+  };
