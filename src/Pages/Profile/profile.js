@@ -2,7 +2,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.min.js";
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import "./profile.css";
-import { isLoggedIn, authData, authType, NavBar } from "../../assets/reusable";
+import {  authData, authType } from "../../assets/reusable";
 import { formSubmit } from "../../assets/reusable";
 
 // Initialize the app

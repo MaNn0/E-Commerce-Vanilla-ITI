@@ -97,12 +97,13 @@ export const productsData = productCart ? productCart.value : null;
 export const isLoggedIn = (authData, href) => {
   const userBtn = document.querySelector(".userBtn");
   // If authData is not provided, return early
-  // if (!authData) {
-  //     //   console.error("No authentication data provided.");
-  // }
-  // else {
+  if (!authData) {
+        console.error("No authentication data provided.");
+  }
+  else {
+    console.error("Authentication data provided.");
 
-  // }
+  }
 
   // Parse user data from authData
   let userData;
@@ -122,10 +123,10 @@ export const isLoggedIn = (authData, href) => {
           </button>
           <ul class="dropdown-menu text-center" style="left: -100%;">
             <li class="py-2">Hello, ${userData.firstName} ${userData.lastName}</li>
-            <li><a class="dropdown-item border-top" href="./src/Pages/Profile/Profile.html"><i class="fa-regular fa-user"></i> Profile</a></li>
+            <li><a class="dropdown-item border-top" href="/src/Pages/Profile/Profile.html"><i class="fa-regular fa-user"></i> Profile</a></li>
      
             <li><hr class="dropdown-divider"></li>
-            <li><a class="dropdown-item logOutBtn" href="./"><i class="fa-solid fa-arrow-right-from-bracket"></i>LogOut</a></li>
+            <li><a class="dropdown-item logOutBtn" href="/"><i class="fa-solid fa-arrow-right-from-bracket"></i>LogOut</a></li>
           </ul>
         </div>
       `;
