@@ -1,9 +1,8 @@
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.min.js";
-import * as bootstrap from "bootstrap";
 import "./style.css";
 import "@fortawesome/fontawesome-free/css/all.min.css";
-import { isLoggedIn,getCookie,addToCart } from "./assets/reusable";
+import {getCookie, addToCart,fetchData ,NavBar} from "./assets/reusable";
 
 // Imports Ends Here
 //Global Declared Variables
@@ -13,14 +12,18 @@ const products = productCart ? JSON.parse(productCart.value) : null;
 export const authName = authCookie ? authCookie.name : null;
 export const authData = authCookie ? authCookie.value : null;
 export const authType = authCookie ? authCookie.type : null;
-
 const currentPath = window.location.pathname;
+// Declaretion  End Here
+
+//main Function
 const initializeApp = async () => {
-  // const btnCart = document.querySelectorAll(".btnCart");
-  (async function () {
-    try {
-      const response = await fetch("http://localhost:3000/products");
-      const data = await response.json();
+//Lexical Declaration Variables
+// searchButton()
+NavBar("navbar")
+  const btnCart = document.querySelectorAll(".btnCart");
+  //DataFetched To Allocate to Function
+
+  const data=await fetchData();
       renderClothing(data);
       renderJewelery(data);
       renderElectronics(data);
@@ -28,7 +31,7 @@ const initializeApp = async () => {
       renderGaming(data);
       renderTv(data);
       renderMobile(data);
-      const btnCart = document.querySelectorAll(".btnCart");
+
       // Attach the event listener after data is fetched and buttons are rendered
       btnCart.forEach((button) => {
         button.addEventListener("click", (event) => {
@@ -37,11 +40,8 @@ const initializeApp = async () => {
           addToCart(productId, data);
         });
       });
-    } catch (err) {
-      console.error(`Data is not found: ${err}`);
-    }
-  })();
-  // isLoggedIn(authData)
+  //Event Listener
+  
 
   function renderClothing(data) {
     const img = document.querySelector(".clothing");
@@ -51,7 +51,9 @@ const initializeApp = async () => {
       .map((element) => {
         return `
     <div class="card mx-2 border border-primary shadow-lg p-3 mb-5 bg-body-tertiary rounded" style="width: 18rem;">
-      <img src="${element.image}" class="card-img-top productCard" alt="${
+      <img src="${
+        element.image
+      }" style="max-height:300px" class="card-img-top productCard" alt="${
           element.title
         }">
       <div class="card-body d-flex flex-column ">
@@ -83,7 +85,9 @@ const initializeApp = async () => {
       .map((element) => {
         return `
     <div class="card mx-2 productCards border border-primary shadow-lg p-3 mb-3 bg-body-tertiary rounded" style="width: 18rem;">
-      <img src="${element.image}" class="card-img-top productCard" alt="${
+      <img src="${
+        element.image
+      }" style="max-height:300px" class="card-img-top productCard" alt="${
           element.title
         }">
       <div class="card-body d-flex flex-column ">
@@ -115,7 +119,9 @@ const initializeApp = async () => {
       .map((element) => {
         return `
     <div class="card mx-2 border border-primary shadow-lg p-3 mb-5 bg-body-tertiary rounded" style="width: 18rem;">
-      <img src="${element.image}" class="card-img-top productCard" alt="${
+      <img src="${
+        element.image
+      }" style="max-height:300px" class="card-img-top productCard" alt="${
           element.title
         }">
       <div class="card-body d-flex flex-column ">
@@ -146,7 +152,9 @@ const initializeApp = async () => {
       .map((element) => {
         return `
     <div class="card mx-2 border border-primary shadow-lg p-3 mb-5 bg-body-tertiary rounded" style="width: 18rem;">
-      <img src="${element.image}" class="card-img-top productCard" alt="${
+      <img src="${
+        element.image
+      }" style="max-height:300px" class="card-img-top productCard" alt="${
           element.title
         }">
       <div class="card-body d-flex flex-column ">
@@ -177,7 +185,9 @@ const initializeApp = async () => {
       .map((element) => {
         return `
     <div class="card mx-2 border border-primary shadow-lg p-3 mb-5 bg-body-tertiary rounded" style="width: 18rem;">
-      <img src="${element.image}" class="card-img-top productCard" alt="${
+      <img src="${
+        element.image
+      }" style="max-height:300px" class="card-img-top productCard" alt="${
           element.title
         }">
       <div class="card-body d-flex flex-column ">
@@ -208,7 +218,9 @@ const initializeApp = async () => {
       .map((element) => {
         return `
       <div class="card mx-3 border border-primary shadow-lg p-3 mb-5 bg-body-tertiary rounded" style="width: 18rem;">
-        <img src="${element.image}" class="card-img-top productCard" alt="${
+        <img src="${
+          element.image
+        }" style="max-height:300px" class="card-img-top productCard" alt="${
           element.title
         }">
       <div class="card-body d-flex flex-column">
@@ -241,7 +253,9 @@ const initializeApp = async () => {
       .map((element) => {
         return `
       <div class="card mx-3 border border-primary shadow-lg p-3 mb-5 bg-body-tertiary rounded" style="width: 18rem;">
-        <img src="${element.image}" class="card-img-top productCard" alt="${
+        <img src="${
+          element.image
+        }" style="max-height:300px" class="card-img-top productCard" alt="${
           element.title
         }">
       <div class="card-body d-flex flex-column">
@@ -268,8 +282,9 @@ const initializeApp = async () => {
     img.innerHTML = product;
   }
 };
+
 // CheckAuth(authData);
 if (currentPath == "/") {
-  isLoggedIn(authData, "./src/Pages/Register/register.html");
+  // isLoggedIn(authData, "./src/Pages/Register/register.html");
   document.addEventListener("DOMContentLoaded", initializeApp);
 }

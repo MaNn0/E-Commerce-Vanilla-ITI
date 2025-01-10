@@ -4,8 +4,12 @@ import { isLoggedIn,authName,authData,authType,setCookie,productsData, getCookie
 // Retrieve products from localStorage
 // const products = JSON.parse(localStorage.getItem("cartProducts")) || [];
 let productCart = getCookie("productCart")
+let userDdata = getCookie("Auth")
 const products = productCart ?JSON.parse(productCart.value): null
 const productsName = productCart ?productCart.name: null;
+const AuthData = userDdata ?JSON.parse(userDdata.value): null;
+console.log("🚀 ~ AuthData:", AuthData)
+
 console.log("🚀 ~ products:", products)
 // Function to update the cart UI and calculations
 
@@ -17,10 +21,14 @@ const updateQuantity = () => {
 
   // Update checkout button event listener
   document.querySelector(".checkoutButton").addEventListener("click", () => {
-    if (){
-
+    if (AuthData){
       localStorage.setItem("totalPrice", JSON.stringify(totalPrice - discount));
       window.location.href = "../Payment/Payment.html";
+    }
+    else {
+      alert("you Mother FUCKER HAVE TO LOG IN MOTHERR RUSSIAAAAAA")
+      // location.replace("./../Register/register.html")
+      window.location.pathname = "/src/Pages/Register/register.html";
     }
   });
 

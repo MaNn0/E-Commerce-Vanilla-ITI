@@ -1,3 +1,4 @@
+import {getCookie, transferGuestAction} from "../../assets/reusable"
 // Fetch user data from the server
 export async function fetchUserData() {
   try {
@@ -16,7 +17,7 @@ export async function fetchUserData() {
     }
 
     const result = await response.json();
-    console.log('Success:', result);
+    // console.log('Success:', result); to alert
     return result; // Return the parsed result
   } catch (error) {
     console.error('Error:', error);
@@ -44,7 +45,7 @@ if (rememberMe){
 const userLogin = async (userCredentials) => {
   try {
     const userData = await fetchUserData();
-    console.log("Fetched user data:", userData);
+    // console.log("Fetched user data:", userData);
 
     // Find the user in the fetched data
     const user = userData.find(
@@ -54,10 +55,41 @@ const userLogin = async (userCredentials) => {
     );
 
     if (user) {
-      console.log("User found:", user);
-      alert(`You are logged in as ${user.firstName}`);
+      // console.log("User found:", user);
       setCookie("Auth", user, 1 ,userCredentials.rememberMe); // Set cookie with user data
-      location.replace("http://localhost:5173")
+    // Retrieve cookies
+const productCart = getCookie("productCart");
+const authCookie = getCookie("Auth"); // Ensure this is defined
+const authType = authCookie ? authCookie.type : null;
+const productsName = productCart ? productCart.name : null;
+
+// Debugging logs
+console.log("🚀 ~ userLogin ~ authType:", authType);
+console.log("🚀 ~ userLogin ~ productsName:", productsName);
+
+// Check if user is authenticated
+if (authType) {
+  console.log("🚀 ~ userLogin ~ authType:", authType);
+  // Ensure productsName is available before calling transferGuestAction
+  if (productsName) {
+    transferGuestAction(productsName, authType);
+  } else {
+    console.error("Product cart name is missing.");
+  }
+
+  // Ensure user object is defined
+  if (user && user.firstName) {
+    alert(`You are logged in as ${user.firstName}`);
+  } else {
+    console.error("User information is missing.");
+  }
+
+  // Redirect user (commented out for now)
+  location.replace("http://localhost:5173");
+} else {
+  console.error("User is not authenticated.");
+}
+
     } else {
       console.log("User not found");
       alert("Invalid email or password");

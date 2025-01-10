@@ -1,8 +1,9 @@
+import { NavBar } from "../../assets/reusable";
 const switchBtnLogin = document.querySelector(".switchBtnLogin");
 const switchBtnRegister = document.querySelector(".switchBtnRegister");
 const hideLogin = document.querySelector("#toggleHideLogin");
 const hideRegister = document.querySelector("#toggleHideRegister");
-
+NavBar("navbar")
 // We Have to check id and E-mail Uniqness
 
 switchBtnLogin.addEventListener("click", () => {
@@ -36,7 +37,7 @@ const passwordError = document.querySelector(".passwordError");
 const repassword = document.querySelector("#repassword");
 const repasswordError = document.querySelector(".repasswordError");
 
-const address = document.querySelector("#inputAddress");
+const address = document.querySelector("#mainAddress");
 const addressError = document.querySelector(".addressError");
 
 const city = document.querySelector("#inputCity");
