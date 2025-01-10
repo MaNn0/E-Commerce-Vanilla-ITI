@@ -1,10 +1,14 @@
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.min.js";
-import { isLoggedIn,authName,authData,authType } from "./../../assets/reusable"
+import { isLoggedIn,authName,authData,authType,setCookie,productsData, getCookie} from "./../../assets/reusable"
 // Retrieve products from localStorage
-const products = JSON.parse(localStorage.getItem("cartProducts")) || [];
-
+// const products = JSON.parse(localStorage.getItem("cartProducts")) || [];
+let productCart = getCookie("productCart")
+const productsName = productCart ?productCart.name: null;
+const products = productCart ?JSON.parse(productCart.value): null
+console.log("🚀 ~ products:", products)
 // Function to update the cart UI and calculations
+
 const updateQuantity = () => {
   // Calculate total price, discount, and quantity
   const totalPrice = products.reduce((acc, product) => acc + product.price * product.quantity, 0);
@@ -69,7 +73,8 @@ document.querySelector(".allItems").addEventListener("click", (event) => {
     }
 
     // Save updated products to localStorage and refresh UI
-    localStorage.setItem("cartProducts", JSON.stringify(products));
+    setCookie("productCart", products,1,authType)
+    // localStorage.setItem("cartProducts", JSON.stringify(products));
     updateQuantity();
   }
 });

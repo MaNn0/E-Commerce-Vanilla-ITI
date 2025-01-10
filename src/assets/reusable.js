@@ -2,14 +2,45 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.min.js";
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import * as bootstrap from 'bootstrap'
+
+// setCookie
+export function setCookie(name, value, daysToExpire, authType) {
+    try {
+      if (authType === "cookies") {
+        // Set a cookie
+        const date = new Date();
+        date.setTime(date.getTime() + daysToExpire * 24 * 60 * 60 * 1000); // Calculate expiration date
+        const expires = `expires=${date.toUTCString()}`; // Format expiration date
+        const cookieValue = JSON.stringify(value); // Convert value to JSON string
+  
+        // Set the cookie with additional attributes for security
+        document.cookie = `${name}=${cookieValue}; ${expires}; path=/; Secure; SameSite=Strict`;
+  
+        console.log("🚀 ~ setCookie ~ cookie set:", { name, value, expires });
+      } else {
+        // Store in sessionStorage
+        const sessionValue = JSON.stringify(value); // Convert value to JSON string
+        sessionStorage.setItem(name, sessionValue);
+  
+        console.log("🚀 ~ setCookie ~ sessionStorage set:", { name, value });
+      }
+    } catch (error) {
+      console.error("Error in setCookie:", error);
+    }
+  }
+
+// GetCookie
+
 export function getCookie(name) {
-    if (sessionStorage.getItem("Auth")) {
-        const sessionValue = sessionStorage.getItem("Auth");
+    console.log(name);
+    
+    if (sessionStorage.getItem(name)) {
+        const sessionValue = sessionStorage.getItem(name);
         try {
             const sessionData = JSON.parse(sessionValue); // Parse the session data
             // console.log("🚀 ~ getCookie ~ sessionData:", sessionData )
             if (sessionData) {
-                return { name: "Auth", value: sessionValue, type: "session" }; // Return the session value
+                return { name: name, value: sessionValue, type: "session" }; // Return the session value
             }
         } catch (error) {
             console.error("Error parsing sessionStorage data:", error);
@@ -26,20 +57,30 @@ export function getCookie(name) {
 
     return null;
 }
-
-const authCookie = getCookie("Auth");
+// Delete
 
 function deleteCookie(name) {
     console.log(name);
-
     sessionStorage.clear();
     document.cookie = `${name}=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;`;
 
 }
 
+const authCookie = getCookie("Auth");
+const productCart = getCookie("productCart");
+// console.log("🚀 ~ productCart:", productCart)
+
 export const authName = authCookie ? authCookie.name : null;
 export const authData = authCookie ? authCookie.value : null;
 export const authType = authCookie ? authCookie.type : null;
+export const productsName = productCart ?productCart.name: null;
+export const productsData = productCart ?productCart.value: null
+// console.log("🚀 ~ authName:", authName)
+// console.log("🚀 ~ authData:", authData)
+// console.log("🚀 ~ authType:", authType)
+// console.log("🚀 ~ productsName:", productsName)
+// console.log("🚀 ~ productsData:", productsData)
+;
 //   console.log(authName, authData,authType);
 
 export const isLoggedIn = (authData, href) => {
@@ -107,19 +148,9 @@ export const isLoggedIn = (authData, href) => {
         return false;
     }
 };
-function setCookie(name, value, daysToExpire, authType) {
 
-    if (authType == "cookies") {
-        const date = new Date();
-        date.setTime(date.getTime() + (daysToExpire * 24 * 60 * 60 * 1000));
-        const expires = `expires=${date.toUTCString()}`;
-        const cookieValue = JSON.stringify(value); // Convert value to JSON string
-        document.cookie = `${name}=${cookieValue}; ${expires}; path=/`;
-    } else {
-        const sessionValue = JSON.stringify(value); // Convert value to JSON string
-        sessionStorage.setItem("Auth", sessionValue);
-    }
-}
+
+
 async function postData(data = {}, userId) {
     try {
         // Validate input parameters
