@@ -84,10 +84,110 @@
 
 
 
+// import "bootstrap/dist/css/bootstrap.min.css";
+// import "bootstrap/dist/js/bootstrap.bundle.min.js";
+// import { loadStripe } from '@stripe/stripe-js';
+// import { amount_stripe } from './Payment.js'; // Import the amount_stripe from Payment.js
+
+// // Initialize Stripe with your publishable key
+// const stripe = await loadStripe('pk_test_51Qf9q7AnBfxoX5a3ubkQ9mbIGvB6FujzedMCkDo7AvQXnz9ZHZSbsrGP8P8oEWkMc6eckOGJthugfD0tk3Gljibw00uNOSK4YD');
+
+// // Place Order Button Event Listener
+// document.querySelector(".btn-primary").addEventListener("click", async function () {
+//   const address = document.getElementById("address").value.trim();
+//   const addressOptionSelected = document.querySelector('input[name="address-option"]:checked');
+//   const paymentOptionSelected = document.querySelector('input[name="paymentOption"]:checked');
+
+//   // Check if all required fields are filled
+//   if (!address || !addressOptionSelected || !paymentOptionSelected) {
+//     document.getElementById("errorMessage").textContent = "Please fill all the required fields and select options where necessary.";
+//     const errorModal = new bootstrap.Modal(document.getElementById("errorModal"));
+//     errorModal.show();
+//     return;
+//   }
+
+//   // Define success and cancel URLs
+//   const success_url = 'http://localhost:5173/src/Pages/Payment/success.html'; // Replace with your success page URL
+//   const cancel_url = 'http://localhost:5173/src/Pages/Payment/fail.html'; // Replace with your failure page URL
+
+//   // Call the backend to create a Checkout Session
+//   const response = await fetch('http://localhost:5000/create-checkout-session', {
+//     method: 'POST',
+//     headers: { 'Content-Type': 'application/json' },
+//     body: JSON.stringify({
+//       amount: amount_stripe, // Use the amount_stripe from Payment.js
+//       currency: 'EGP',
+//       success_url: success_url,
+//       cancel_url: cancel_url,
+//     }),
+//   });
+
+//   const { id } = await response.json(); // Get the session ID
+//   // Redirect to Stripe's hosted payment page
+//   await stripe.redirectToCheckout({ sessionId: id });
+// });
+
+
+// import "bootstrap/dist/css/bootstrap.min.css";
+// import "bootstrap/dist/js/bootstrap.bundle.min.js";
+// import { loadStripe } from '@stripe/stripe-js';
+// import { amount_stripe, products } from './Payment.js'; // Import the amount_stripe and products from Payment.js
+
+// // Initialize Stripe with your publishable key
+// const stripe = await loadStripe('pk_test_51Qf9q7AnBfxoX5a3ubkQ9mbIGvB6FujzedMCkDo7AvQXnz9ZHZSbsrGP8P8oEWkMc6eckOGJthugfD0tk3Gljibw00uNOSK4YD');
+
+// // Place Order Button Event Listener
+// document.querySelector(".btn-primary").addEventListener("click", async function () {
+//   const address = document.getElementById("address").value.trim();
+//   const addressOptionSelected = document.querySelector('input[name="address-option"]:checked');
+//   const paymentOptionSelected = document.querySelector('input[name="paymentOption"]:checked');
+
+//   // Check if all required fields are filled
+//   if (!address || !addressOptionSelected || !paymentOptionSelected) {
+//     document.getElementById("errorMessage").textContent = "Please fill all the required fields and select options where necessary.";
+//     const errorModal = new bootstrap.Modal(document.getElementById("errorModal"));
+//     errorModal.show();
+//     return;
+//   }
+
+//   // Define success and cancel URLs
+//   const success_url = 'http://localhost:5173/src/Pages/Payment/success.html'; // Replace with your success page URL
+//   const cancel_url = 'http://localhost:5173/src/Pages/Payment/fail.html'; // Replace with your failure page URL
+
+//   console.log(products)
+//   // Prepare the products array for the backend
+// // Prepare the products array for the backend
+// //image must be "url"
+// const productsForCheckout = products.map(product => ({
+//     title: product.title,
+//     image: "https://storage.googleapis.com/fir-auth-1c3bc.appspot.com/1692947383286-714WUJlhbLS._SL1500_.jpg",
+//     price: product.price * 100, // Convert price to cents
+//     quantity: product.quantity || 1, // Default to 1 if quantity is not provided
+//   }));
+  
+//   // Log the prepared products array
+//   console.log("Prepared products for checkout:", productsForCheckout);
+//   // Call the backend to create a Checkout Session
+//   const response = await fetch('http://localhost:5000/create-checkout-session', {
+//     method: 'POST',
+//     headers: { 'Content-Type': 'application/json' },
+//     body: JSON.stringify({
+//       products: productsForCheckout, // Send the products array
+//       success_url: success_url,
+//       cancel_url: cancel_url,
+//     }),
+//   });
+
+//   const { id } = await response.json(); // Get the session ID
+
+//   // Redirect to Stripe's hosted payment page
+//   await stripe.redirectToCheckout({ sessionId: id }); // Pass the sessionId
+// });
+
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.min.js";
 import { loadStripe } from '@stripe/stripe-js';
-import { amount_stripe } from './Payment.js'; // Import the amount_stripe from Payment.js
+import { amount_stripe, products } from './Payment.js'; // Import the amount_stripe and products from Payment.js
 
 // Initialize Stripe with your publishable key
 const stripe = await loadStripe('pk_test_51Qf9q7AnBfxoX5a3ubkQ9mbIGvB6FujzedMCkDo7AvQXnz9ZHZSbsrGP8P8oEWkMc6eckOGJthugfD0tk3Gljibw00uNOSK4YD');
@@ -110,16 +210,32 @@ document.querySelector(".btn-primary").addEventListener("click", async function 
   const success_url = 'http://localhost:5173/src/Pages/Payment/success.html'; // Replace with your success page URL
   const cancel_url = 'http://localhost:5173/src/Pages/Payment/fail.html'; // Replace with your failure page URL
 
+  // Log the products array for debugging
+  console.log("Products:", products);
+  products.forEach(product => {
+    const originalUrl = product.image;
+    const sanitizedUrl = encodeURI(originalUrl.trim().replace(/\s/g, '%20'));
+    console.log("Original URL:", originalUrl);
+    console.log("Sanitized URL:", sanitizedUrl);
+  });
+
   // Call the backend to create a Checkout Session
   const response = await fetch('http://localhost:5000/create-checkout-session', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({
-      amount: amount_stripe, // Use the amount_stripe from Payment.js
-      currency: 'EGP',
-      success_url: success_url,
-      cancel_url: cancel_url,
-    }),
+        amount: amount_stripe,
+        currency: 'EGP',
+        success_url: success_url,
+        cancel_url: cancel_url,
+        products: products.map(product => ({
+          title: product.title,
+          price: product.price * 100,
+          quantity: product.quantity || 1,
+          image: encodeURI(product.image.trim()), // Ensure this is valid product.image  encodeURI(product.image.trim().replace(/\s/g, '%20'))
+        })),
+      }),
+      
   });
 
   const { id } = await response.json(); // Get the session ID
