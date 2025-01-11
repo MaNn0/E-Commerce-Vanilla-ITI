@@ -60,8 +60,10 @@ const userLogin = async (userCredentials) => {
     // Retrieve cookies
 const productCart = getCookie("productCart");
 const authCookie = getCookie("Auth"); // Ensure this is defined
+const wishList = getCookie("wishlist"); // Ensure this is defined
 const authType = authCookie ? authCookie.type : null;
 const productsName = productCart ? productCart.name : null;
+const wshLists = wishList ? wishList.name : null;
 
 // Debugging logs
 console.log("🚀 ~ userLogin ~ authType:", authType);
@@ -73,7 +75,10 @@ if (authType) {
   // Ensure productsName is available before calling transferGuestAction
   if (productsName) {
     transferGuestAction(productsName, authType);
-  } else {
+    transferGuestAction(wshLists, authType);
+
+
+  } else  {
     console.error("Product cart name is missing.");
   }
 
