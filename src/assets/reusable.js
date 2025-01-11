@@ -603,9 +603,9 @@ export const NavBar = (navName) => {
   isLoggedIn(authData, "/src/Pages/Register/register.html");
 };
 export function changeBtn(parent, child, fetchData, targetKey) {
-  console.log("🚀 ~ changeBtn ~ fetchData:", fetchData)
-  console.log("🚀 ~ changeBtn ~ child:", child)
-  console.log("🚀 ~ changeBtn ~ parent:", parent)
+  // console.log("🚀 ~ changeBtn ~ fetchData:", fetchData)
+  // console.log("🚀 ~ changeBtn ~ child:", child)
+  // console.log("🚀 ~ changeBtn ~ parent:", parent)
   // Get the product cart data from storage
   
   
