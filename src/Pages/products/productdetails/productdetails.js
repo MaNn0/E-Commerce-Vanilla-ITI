@@ -62,6 +62,11 @@ document.addEventListener("DOMContentLoaded", async () => {
               <!-- Product Price -->
               <h5 class="card-title">Price: ${product.price} LE</h5>
               <button class="btn mt-auto btn-success btnCart addToCart " productdata="${product.id}">Add to cart</button>
+                 <button type="button" class="btn btn-warning btnWishlist" productData=${
+      product.id
+    } aria-label="Add to Wishlist">
+      Add to Wishlist
+    </button>
             </div>
           </div>
         `;
@@ -69,7 +74,8 @@ document.addEventListener("DOMContentLoaded", async () => {
         .join("")
         
     : `<h1>404 Not Found</h1>`;
-    changeBtn("productDetails", "addToCart", fetchedData);
+    changeBtn("productDetails", "addToCart", fetchedData,"productCart");
+    changeBtn("productDetails", "btnWishlist", fetchedData,"wishlist");
 
   // Attach event listeners to the dynamically created "Add to cart" buttons
   const btnCart = document.querySelectorAll(".btnCart");

@@ -602,14 +602,14 @@ export const NavBar = (navName) => {
   // Check if the user is logged in
   isLoggedIn(authData, "/src/Pages/Register/register.html");
 };
-export function changeBtn(parent, child, fetchData) {
+export function changeBtn(parent, child, fetchData, targetKey) {
   console.log("🚀 ~ changeBtn ~ fetchData:", fetchData)
   console.log("🚀 ~ changeBtn ~ child:", child)
   console.log("🚀 ~ changeBtn ~ parent:", parent)
   // Get the product cart data from storage
   
   
-  const product = getCookie("productCart");
+  const product = getCookie(targetKey);
   const productInCart = product ? JSON.parse(product.value) : [];
 
   // Select the container
@@ -631,7 +631,7 @@ export function changeBtn(parent, child, fetchData) {
         element.textContent = "Remove";
         element.classList.add("removeFromCart");
       } else {
-        element.textContent = "Add to Cart";
+        element.textContent = "ADD";
         element.classList.remove("removeFromCart");
       }
     });
@@ -643,6 +643,7 @@ export function changeBtn(parent, child, fetchData) {
   // Add event listener to the container for event delegation
   container.addEventListener("click", (event) => {
     if (event.target.classList.contains(child.replace(".", ""))) {
+      //If you want to use it Pul Value 
       const productData = event.target.getAttribute("productdata");
 
       // Find the product in the cart
@@ -664,10 +665,11 @@ export function changeBtn(parent, child, fetchData) {
       }
 
       // Update the storage with the new cart data
-      setCookie("productCart", productInCart, 1, authType); // Set cookie with 1-day expiration
+      setCookie(targetKey, productInCart, 1, authType); // Set cookie with 1-day expiration
 
       // Update the buttons to reflect the new cart state
       updateButtons();
     }
   });
 }
+
