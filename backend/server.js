@@ -220,7 +220,7 @@ app.use(cors());
 // Middleware to parse JSON
 app.use(express.json());
 
-const stripe = Stripe(process.env.STRIPE_SECRET_KEY);
+const stripe = Stripe('sk_test_51Qf9q7AnBfxoX5a3kzC1a8dEjsaAscWnYmKIire0XkfMEZHlIqsKaV84DCGM7N3hxKHiSUYXJx1LqKuOmkWf43mZ00Nn1f3pxi');
 console.log(process.env.STRIPE_SECRET_KEY); // This should print the Stripe secret key
 
 // Home route to check if the backend is running
