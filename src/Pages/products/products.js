@@ -61,7 +61,8 @@ const renderProducts = async (data, container) => {
     .join("");
   
 
-    changeBtn("products", "addToCart",fetchedData);
+    changeBtn("products", "addToCart", fetchedData,"productCart");
+    changeBtn("products", "btnWishlist", fetchedData,"wishlist");
 
 };
 
@@ -93,19 +94,19 @@ const renderProducts = async (data, container) => {
 //   // console.log("Product added to cart:", product);
 // };
 
-export const addToWishlist = (productId, products) => {
-  let wishlist = getCookie("wishlist");
-  const wishlistData = wishlist ? wishlist.value : null;
-  const existingProducts = JSON.parse(wishlistData) || [];
-  let wishlistedProduct = products.filter((p) => productId === p.id);
-  console.log(wishlistedProduct)
-  if(existingProducts.findIndex((p)=> p.id === productId) === -1){
-    existingProducts.push(wishlistedProduct[0]);
-    setCookie("wishlist", existingProducts, 1, authType);
-  }
+// export const addToWishlist = (productId, products) => {
+//   let wishlist = getCookie("wishlist");
+//   const wishlistData = wishlist ? wishlist.value : null;
+//   const existingProducts = JSON.parse(wishlistData) || [];
+//   let wishlistedProduct = products.filter((p) => productId === p.id);
+//   console.log(wishlistedProduct)
+//   if(existingProducts.findIndex((p)=> p.id === productId) === -1){
+//     existingProducts.push(wishlistedProduct[0]);
+//     setCookie("wishlist", existingProducts, 1, authType);
+//   }
 
   
-};
+// };
 
 // Initialize the app
 const initializeApp = async () => {

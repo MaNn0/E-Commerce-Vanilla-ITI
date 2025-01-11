@@ -42,6 +42,7 @@ if (rememberMe){
 }
 
 // Handle user login
+
 const userLogin = async (userCredentials) => {
   try {
     const userData = await fetchUserData();
@@ -60,44 +61,52 @@ const userLogin = async (userCredentials) => {
     // Retrieve cookies
 const productCart = getCookie("productCart");
 const authCookie = getCookie("Auth"); // Ensure this is defined
+const wishList = getCookie("wishlist"); // Ensure this is defined
 const authType = authCookie ? authCookie.type : null;
 const productsName = productCart ? productCart.name : null;
+const wshLists = wishList ? wishList.name : null;
+
 
 // Debugging logs
 console.log("🚀 ~ userLogin ~ authType:", authType);
 console.log("🚀 ~ userLogin ~ productsName:", productsName);
+console.log("🚀 ~ userLogin ~ wshLists:", wshLists)
 
 // Check if user is authenticated
 if (authType) {
-  console.log("🚀 ~ userLogin ~ authType:", authType);
-  // Ensure productsName is available before calling transferGuestAction
+  // Transfer guest actions (e.g., cart, wishlist) to authenticated user
   if (productsName) {
     transferGuestAction(productsName, authType);
   } else {
     console.error("Product cart name is missing.");
   }
 
-  // Ensure user object is defined
+  if (wshLists) {
+    transferGuestAction(wshLists, authType);
+  } else {
+    console.error("Wishlist name is missing.");
+  }
+
+  // Display welcome message
   if (user && user.firstName) {
     alert(`You are logged in as ${user.firstName}`);
   } else {
     console.error("User information is missing.");
   }
 
-  // Redirect user (commented out for now)
+  // Redirect user
   location.replace("http://localhost:5173");
 } else {
   console.error("User is not authenticated.");
 }
-
-    } else {
-      console.log("User not found");
-      alert("Invalid email or password");
-    }
-  } catch (error) {
-    console.error("Login failed:", error);
-    alert("An error occurred during login. Please try again.");
-  }
+} else {
+console.log("User not found");
+alert("Invalid email or password");
+}
+} catch (error) {
+console.error("Login failed:", error);
+alert("An error occurred during login. Please try again.");
+}
 }
 
 // Trigger the login process
