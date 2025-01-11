@@ -1,8 +1,8 @@
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.min.js";
 import "@fortawesome/fontawesome-free/css/all.min.css";
-import * as bootstrap from "bootstrap";
 // DataFetching
+
 export const fetchData = async () => {
   try {
     const response = await fetch("http://localhost:3000/products");
@@ -20,6 +20,7 @@ export const fetchData = async () => {
     return []; // Return an empty array to avoid breaking the app
   }
 };
+
 // setCookie
 export function setCookie(name, value, daysToExpire, authType) {
   try {
@@ -42,8 +43,7 @@ export function setCookie(name, value, daysToExpire, authType) {
       const sessionValue = JSON.stringify(value); // Convert value to JSON string
       sessionStorage.setItem(name, sessionValue);
       // console.log("🚀 ~ setCookie ~ sessionStorage set:", { name, value });
-    }
-    else {
+    } else {
       const localValue = JSON.stringify(value); // Convert value to JSON string
       localStorage.setItem(name, localValue);
     }
@@ -67,8 +67,7 @@ export function getCookie(name) {
     } catch (error) {
       console.error("Error parsing sessionStorage data:", error);
     }
-  }
-  else if (localStorage.getItem(name)) {
+  } else if (localStorage.getItem(name)) {
     const localValue = localStorage.getItem(name);
     try {
       const localData = JSON.parse(localValue); // Parse the session data
@@ -88,8 +87,6 @@ export function getCookie(name) {
       }
     }
   }
-
-
 
   return null;
 }
@@ -117,10 +114,8 @@ export const isLoggedIn = (authData, href) => {
   // If authData is not provided, return early
   if (!authData) {
     console.error("No authentication data provided.");
-  }
-  else {
+  } else {
     console.error("Authentication data provided.");
-
   }
 
   // Parse user data from authData
@@ -209,8 +204,8 @@ async function postData(data = {}, userId) {
         response.status === 404
           ? "User not found"
           : response.status === 400
-            ? "Invalid data provided"
-            : `HTTP error! Status: ${response.status}`;
+          ? "Invalid data provided"
+          : `HTTP error! Status: ${response.status}`;
       throw new Error(errorMessage);
     }
 
@@ -396,63 +391,91 @@ export const addToCart = (productId, products) => {
 };
 // Fetch Data
 
-
 // is userLoged in Cart Btn Login Button
 export const transferGuestAction = (name, authType) => {
-  const localItem = localStorage.getItem(name)
-  console.log("🚀 ~ transferGuestAction ~ localItem:", localItem)
-  const localValue = JSON.parse(localItem)
-  console.log("🚀 ~ transferGuestAction ~ localValue:", localValue)
+  const localItem = localStorage.getItem(name);
+  console.log("🚀 ~ transferGuestAction ~ localItem:", localItem);
+  const localValue = JSON.parse(localItem);
+  console.log("🚀 ~ transferGuestAction ~ localValue:", localValue);
   if (localValue) {
     if (authType === "cookies") {
       setCookie(name, localValue, 1, authType);
-      localStorage.removeItem(name)
+      localStorage.removeItem(name);
     } else if (authType === "session") {
       setCookie(name, localValue, 1, authType);
-      localStorage.removeItem(name)
-    }
-    else {
+      localStorage.removeItem(name);
+    } else {
       console.log("🚀 ~ transferGuestAction ~ lovalValue:", localValue);
-
     }
   }
-
-}
+};
 export const searchButton = () => {
   const searchContainer = document.querySelector(".search-container");
   const searchBtn = document.querySelector(".searchBtn");
-  searchBtn.addEventListener("click", (e) => {
+  const searchResults = document.querySelector(".searchResults");
+
+  let products = []; // Store fetched products
+
+  // Fetch products when the button is clicked
+  searchBtn.addEventListener("click", async (e) => {
     e.preventDefault();
-    // Create the input element
-    const input = document.createElement("input");
-    input.type = "text";
-    input.placeholder = "Search...";
-    input.className = "searchInput"; // Add the base class
 
-    // Append the input element and trigger transition
-    searchContainer.replaceChild(input, searchBtn);
+    // Fetch product data
+    products = await fetchData();
 
-    // Allow initial styles to apply before adding the "active" class
-    setTimeout(() => {
-      input.classList.add("active", "searchInput2");
-      // input.focus();
-    }, 10);
+    let input = searchContainer.querySelector(".searchInput");
+    if (!input) {
+      input = document.createElement("input");
+      input.type = "text";
+      input.placeholder = "Search...";
+      input.className = "searchInput"; // Add the base class
 
-    // Handle blur event
-    input.addEventListener("blur", () => {
-      if (!input.value.trim()) {
-        input.classList.remove("active");
-        setTimeout(() => {
-          searchContainer.replaceChild(searchBtn, input);
-        }, 300);
-      }
-    });
+      searchContainer.replaceChild(input, searchBtn);
 
-    input.addEventListener("input", (e) => {
-      console.log("hi");
-    });
+      setTimeout(() => {
+        input.classList.add("active", "searchInput2");
+        input.focus();
+      }, 10);
+
+      input.addEventListener("blur", () => {
+        if (!input.value.trim()) {
+          input.classList.remove("active");
+          searchResults.classList.add("d-none");
+          setTimeout(() => {
+            searchContainer.replaceChild(searchBtn, input);
+          }, 300);
+        }
+      });
+
+      input.addEventListener("input", () => {
+        searchResults.classList.remove("d-none");
+
+        const foundProduct = products.filter((product) =>
+          product.title.toLowerCase().includes(input.value.toLowerCase())
+        );
+
+        if (foundProduct) {
+          searchResults.innerHTML = foundProduct
+            .map(
+              (product) => `
+    <a class="text-decoration-none " href="/src/Pages/products/productdetails/productdetails.html?id=${product.id}">
+    <div class="productlink">
+      <img style="width:50px" src="${product.image}" alt="Product Image" />
+      <span>${product.title}</span>
+      </div>
+    </a>
+  `
+            )
+            .join("");
+        } else {
+          searchResults.textContent = "No product found"; // If no product found
+        }
+      });
+    } else {
+      input.focus(); // Focus on the existing input
+    }
   });
-}
+};
 
 export const footerInjection = (footerNam) => {
   const footerElement = document.querySelector(`.${footerNam}`);
@@ -579,6 +602,7 @@ export const NavBar = (navName) => {
             <input class="form-control me-2 searchInput" type="search" placeholder="Search" aria-label="Search" id="searchInput" />
             <div class="search-container">
               <button class="searchBtn" type="submit"><i class="fa-solid fa-magnifying-glass" style="color: #f6f5f4;"></i></button>
+              <div class="searchResults d-none"></div>
             </div>
             <span class="userBtn"></span>
           </form>
@@ -588,27 +612,23 @@ export const NavBar = (navName) => {
 
   // Inject the navbar HTML
   navElement.innerHTML = navbarHTML;
-  // Add event listeners or other logic here if needed
-  const searchBtn = navElement.querySelector('.searchBtn');
-  if (searchBtn) {
-    searchBtn.addEventListener('click', (e) => {
-      e.preventDefault(); // Prevent form submission
-      const searchInput = navElement.querySelector('#searchInput').value;
-      console.log('Search for:', searchInput);
-      // Add search functionality here
-    });
-  }
-  searchButton()
+
+  // Initialize the search button functionality
+  searchButton();
+
   // Check if the user is logged in
   isLoggedIn(authData, "/src/Pages/Register/register.html");
 };
+
+const searchResults = document.querySelector(".searchResults");
+// const searchInput = document.querySelector(".searchInput");
+// console.log(searchInput.value);
 export function changeBtn(parent, child, fetchData, targetKey) {
   // console.log("🚀 ~ changeBtn ~ fetchData:", fetchData)
   // console.log("🚀 ~ changeBtn ~ child:", child)
   // console.log("🚀 ~ changeBtn ~ parent:", parent)
   // Get the product cart data from storage
-  
-  
+
   const product = getCookie(targetKey);
   const productInCart = product ? JSON.parse(product.value) : [];
 
@@ -624,7 +644,9 @@ export function changeBtn(parent, child, fetchData, targetKey) {
       const productData = element.getAttribute("productdata");
 
       // Check if the product is in the cart
-      const productExists = productInCart.some((product) => product.id == productData);
+      const productExists = productInCart.some(
+        (product) => product.id == productData
+      );
 
       // Update the button text and class
       if (productExists) {
@@ -643,15 +665,19 @@ export function changeBtn(parent, child, fetchData, targetKey) {
   // Add event listener to the container for event delegation
   container.addEventListener("click", (event) => {
     if (event.target.classList.contains(child.replace(".", ""))) {
-      //If you want to use it Pul Value 
+      //If you want to use it Pul Value
       const productData = event.target.getAttribute("productdata");
 
       // Find the product in the cart
-      const productIndex = productInCart.findIndex((product) => product.id == productData);
+      const productIndex = productInCart.findIndex(
+        (product) => product.id == productData
+      );
 
       if (productIndex === -1) {
         // Product doesn't exist in the cart, so add it
-        const productToAdd = fetchData.find((product) => product.id === productData);
+        const productToAdd = fetchData.find(
+          (product) => product.id === productData
+        );
         if (productToAdd) {
           // Set initial quantity to 1
           productToAdd.quantity = 1;
@@ -672,4 +698,3 @@ export function changeBtn(parent, child, fetchData, targetKey) {
     }
   });
 }
-
