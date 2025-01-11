@@ -212,7 +212,7 @@ const cors = require('cors');
 
 dotenv.config(); // Load environment variables from .env
 
-const app = express();
+const app = express(); //server 
 
 // Enable CORS to allow cross-origin requests from the frontend
 app.use(cors());
@@ -220,7 +220,7 @@ app.use(cors());
 // Middleware to parse JSON
 app.use(express.json());
 
-const stripe = Stripe('sk_test_51Qf9q7AnBfxoX5a3kzC1a8dEjsaAscWnYmKIire0XkfMEZHlIqsKaV84DCGM7N3hxKHiSUYXJx1LqKuOmkWf43mZ00Nn1f3pxi');
+const stripe = Stripe(process.env.STRIPE_SECRET_KEY);
 console.log(process.env.STRIPE_SECRET_KEY); // This should print the Stripe secret key
 
 // Home route to check if the backend is running
@@ -241,7 +241,8 @@ app.post('/create-checkout-session', async (req, res) => {
   try {
     // Prepare line items for the Checkout Session
     const line_items = products.map(product => {
-     
+      const priceWithTax = Math.round(product.price * 1.12); // Add 12% tax and round to the nearest integer (Stripe expects amounts in cents)
+
       return {
         price_data: {
           currency: currency || 'EGP',
@@ -249,7 +250,7 @@ app.post('/create-checkout-session', async (req, res) => {
             name: product.title,
             images: [product.image],
           },
-          unit_amount:product.price,
+          unit_amount:priceWithTax,
         },
         quantity: product.quantity || 1,
       };

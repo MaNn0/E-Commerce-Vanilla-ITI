@@ -1,24 +1,28 @@
 body {
-    background-image: url('imgs/bgcover.jpg'); /* Replace with your image path */
+    background-image: url('imgs/3409297.jpg'); /* Replace with your image path */
     background-size: cover;
     background-repeat: no-repeat;
     background-attachment: fixed; /* Keeps the background fixed while scrolling */
     background-position: center; /* Center the image */
     color: #fff; /* Optional: Adjust text color for readability */
-  }
-  
-  /* Optional: Add a semi-transparent overlay */
-  body::before {
+    margin: 0; /* Remove default body margin */
+    height: 100vh; /* Ensure it covers the full viewport height */
+}
+
+/* Add a white-blue blurred overlay */
+body::before {
     content: '';
-    position: fixed;
+    position: fixed; /* Make it cover the entire viewport */
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0, 0, 0, 0.5); /* Adjust opacity and color as needed */
-    z-index: -1; /* Ensure it stays behind all content */
-  }
-  
+    background: rgba(255, 255, 255, 0.3); /* Semi-transparent white */
+    backdrop-filter: blur(10px); /* Applies the blur effect */
+    z-index: -1; /* Ensures the overlay stays behind content */
+}
+
+
 #paymentModals .modal-header {
     background-color: #1344cc; /* Vibrant background color */
     color: #fff; /* White text for contrast */
@@ -153,8 +157,10 @@ body {
     border-radius: 10px; /* Rounded corners for a smooth look */
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Light shadow for depth */
     padding: 30px; /* Increase padding inside the container */
-    background-image: url("imgs/main\ bg.png");
- 
+    background-image: url("imgs/main bg.png"); /* Updated file path */
+    background-size: cover; /* Ensures the image covers the container */
+    background-position: center; /* Centers the image */
+    background-repeat: no-repeat; /* Prevents the image from repeating */
 }
 
 /* Header Styling */

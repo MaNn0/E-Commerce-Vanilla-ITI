@@ -8,8 +8,8 @@ let productCart = getCookie("productCart");
 let userDdata = getCookie("Auth");
 const productsCart = productCart ? JSON.parse(productCart.value) : [];
 const productsName = productCart ? productCart.name : null;
-const AuthData = userDdata ? JSON.parse(userDdata.value) : null;
-console.log(AuthData.mainAddress);
+// const AuthData = userDdata ? JSON.parse(userDdata.value) : null;
+// console.log(AuthData.mainAddress);
 
 // radio for address button [show,hide]
 const defaultAddInput = document.getElementById('defaultADD');
@@ -60,21 +60,15 @@ const subtotal = products.reduce((acc, product) => acc + product.price*product.q
 // Calculate total VAT (12% of each product's price)
 const vat = products.reduce((acc, product) => acc + product.price * 0.12*product.quantity, 0);
 
-// // shipping fee 
-// const shippingFee = 50;
-// var FinaleFee = shippingFee+vat
-
-// Update the Subtotal in the DOM
-// const debitCreditCardInputs = document.getElementById('debitCreditCard');
-// const cashOnDeliveryInputs = document.getElementById('cashOnDelivery');
 
 if(subtotal==0)
   {
     document.getElementById("subtotal").textContent = `Please Add Some Items To Cart`;
-    debitCreditCardInputs.disabled = true; //disable radio button
-    cashOnDeliveryInputs.disabled = true;
+    // debitCreditCardInputs.disabled = true; //disable radio button
+    // cashOnDeliveryInputs.disabled = true;
   }
-  else { document.getElementById("subtotal").textContent = `EGP ${subtotal}`}
+
+  else { document.getElementById("subtotal").textContent = `EGP ${Math.round(((subtotal)+ Number.EPSILON) * 100) / 100}`}
   
 //   const debitCreditCardInput = document.getElementById('debitCreditCard');
 //   const cashOnDeliveryInput = document.getElementById('cashOnDelivery');
@@ -88,45 +82,22 @@ if(subtotal==0)
 
   shippingFeeElement.textContent = "Free Shipping"; // shipping fee element
 
-  document.getElementById("total").textContent = `EGP ${total}`; 
-
-//   // update shipping fee
-// function updateShippingFee() {
-//   //if credit card checked
-//   if (debitCreditCardInput.checked) {
-//     shippingFeeElement.textContent = "Free Shipping"; // shipping fee element
-
-//     document.getElementById("total").textContent = `EGP ${total}`; // >>>>>>>>>>>>>  Update the total in the DOM
-
-// //if on cash checked
-//   } else if (cashOnDeliveryInput.checked) {
-//     shippingFeeElement.textContent = `EGP +${shippingFee}`; // shipping fee element
-//     ;
-//     // Update the total in the DOM
-//     document.getElementById("total").textContent = `EGP ${total_vac}`; // >>>>>>>>>>>>>  Update the total in the DOM
-//   }
-// }
-
-// // for radio button chaanges
-// debitCreditCardInput.addEventListener('change', () => {
-//   if (debitCreditCardInput.checked) {
-//     paymentModals.show(); // show modal
-//   }
-//   updateShippingFee(); });
-
-// cashOnDeliveryInput.addEventListener('change', updateShippingFee);
+  if(total==0)
+    {
+      document.getElementById("total").textContent = `No Items`; 
+    }
+    else {  document.getElementById("total").textContent = `EGP ${total}`; }
+    
 
 
-// Get the container where the order items will be displayed in "Your Order" section
-const orderContainer = document.querySelector('.your-order-section .order-container'); // Targeting the row inside the unique section
-
-// Clear existing content in the container (optional)
-orderContainer.innerHTML = '';
+// Get the container where the order items will be displayed in upper "Place Order" section
+const orderContainer = document.querySelector('.your-order-section .order-container');  // Targeting the row inside the unique section
 
 
 // Loop through the products array and create HTML elements for each product
  //change md for sizing line 104
  // Check if there are products in the array
+ console.log("before no items",products)
 if (products.length === 0) {
   // If no products, display the "No items" message
   orderContainer.innerHTML = `
@@ -136,6 +107,7 @@ if (products.length === 0) {
   `;
 }
 else {
+  orderContainer.innerHTML = ''; //Clear the orderContainer before appending the new rows if not used it duplicates items
 products.forEach(product => {
   const productRow = `
     <div class="row mb-4">
