@@ -2,7 +2,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.min.js";
 import "./style.css";
 import "@fortawesome/fontawesome-free/css/all.min.css";
-import {getCookie, addToCart,fetchData ,NavBar} from "./assets/reusable";
+import {getCookie, addToCart,fetchData ,NavBar,changeBtn,footerInjection} from "./assets/reusable";
 
 // Imports Ends Here
 //Global Declared Variables
@@ -19,7 +19,7 @@ const currentPath = window.location.pathname;
 const initializeApp = async () => {
 //Lexical Declaration Variables
 // searchButton()
-NavBar("navbar")
+
   const btnCart = document.querySelectorAll(".btnCart");
   //DataFetched To Allocate to Function
 
@@ -64,7 +64,7 @@ NavBar("navbar")
         <a href="/src/Pages/products/productdetails/productdetails.html?id=${
           element.id
         }"  class="btn mx-2 mt-auto btn-warning">Product Details</a>
-        <button class="btn mt-auto btn-success btnCart" productData="${
+        <button class="btn mt-auto btn-success btnCart addToCart" productData="${
           element.id
         }">Add to cart</button>
         </div>
@@ -74,6 +74,7 @@ NavBar("navbar")
       })
       .join("");
     img.innerHTML = product;
+    changeBtn("clothing", "addToCart",data);
   }
   function renderJewelery(data) {
     // console.log("🚀 ~ renderJewelery ~ data:", data);
@@ -98,7 +99,7 @@ NavBar("navbar")
         <a href="/src/Pages/products/productdetails/productdetails.html?id=${
           element.id
         }"  class="btn mx-2 mt-auto btn-warning">Product Details</a>
-        <button class="btn mt-auto btn-success btnCart" productData="${
+        <button class="btn mt-auto btn-success btnCart addToCart" productData="${
           element.id
         }">Add to cart</button>
         </div>
@@ -109,6 +110,7 @@ NavBar("navbar")
       .join("");
 
     img.innerHTML = product;
+    changeBtn("jewelery", "addToCart",data);
   }
 
   function renderElectronics(data) {
@@ -132,7 +134,7 @@ NavBar("navbar")
         <a href="/src/Pages/products/productdetails/productdetails.html?id=${
           element.id
         }"  class="btn mx-2 mt-auto btn-warning">Product Details</a>
-        <button class="btn mt-auto btn-success btnCart" productData="${
+        <button class="btn mt-auto btn-success btnCart addToCart" productData="${
           element.id
         }">Add to cart</button>
         </div>
@@ -142,6 +144,7 @@ NavBar("navbar")
       })
       .join("");
     img.innerHTML = product;
+    changeBtn("electronics", "addToCart",data);
   }
 
   function renderMobile(data) {
@@ -165,7 +168,7 @@ NavBar("navbar")
         <a href="/src/Pages/products/productdetails/productdetails.html?id=${
           element.id
         }"  class="btn mx-2 mt-auto btn-warning">Product Details</a>
-<button class="btn mt-auto btn-success btnCart" productData="${
+<button class="btn mt-auto btn-success btnCart addToCart" productData="${
           element.id
         }">Add to cart</button>
         
@@ -176,6 +179,9 @@ NavBar("navbar")
       })
       .join("");
     img.innerHTML = product;
+    changeBtn("mobile", "addToCart",data);
+
+    
   }
   function renderImg(data) {
     const img = document.querySelector(".audio");
@@ -198,7 +204,7 @@ NavBar("navbar")
         <a href="/src/Pages/products/productdetails/productdetails.html?id=${
           element.id
         }"  class="btn mx-2 mt-auto btn-warning">Product Details</a>
-        <button class="btn mt-auto btn-success btnCart" productData="${
+        <button class="btn mt-auto btn-success btnCart addToCart" productData="${
           element.id
         }">Add to cart</button>
         </div>
@@ -208,6 +214,7 @@ NavBar("navbar")
       })
       .join("");
     img.innerHTML = product;
+    changeBtn("audio ", "addToCart",data);
   }
 
   function renderGaming(data) {
@@ -233,7 +240,7 @@ NavBar("navbar")
         <a href="/src/Pages/products/productdetails/productdetails.html?id=${
           element.id
         }"  class="btn mx-2 mt-auto btn-warning">Product Details</a>
-        <button class="btn mt-auto btn-success btnCart" productData="${
+        <button class="btn mt-auto btn-success btnCart addToCart" productData="${
           element.id
         }">Add to cart</button>
         </div>
@@ -243,6 +250,7 @@ NavBar("navbar")
       })
       .join("");
     img.innerHTML = product;
+    changeBtn("gaming ", "addToCart",data);
   }
 
   function renderTv(data) {
@@ -270,7 +278,7 @@ NavBar("navbar")
         <a href="/src/Pages/products/productdetails/productdetails.html?id=${
           element.id
         }"  class="btn mx-2 mt-auto btn-warning">Product Details</a>
-        <button class="btn mt-auto btn-success btnCart" productData="${
+        <button class="btn mt-auto btn-success btnCart addToCart" productData="${
           element.id
         }">Add to cart</button>
         </div>
@@ -280,11 +288,14 @@ NavBar("navbar")
       })
       .join("");
     img.innerHTML = product;
+    changeBtn("tv ", "addToCart",data);
   }
 };
 
 // CheckAuth(authData);
 if (currentPath == "/") {
   // isLoggedIn(authData, "./src/Pages/Register/register.html");
+  NavBar("navbar")
+  footerInjection("footer")
   document.addEventListener("DOMContentLoaded", initializeApp);
 }

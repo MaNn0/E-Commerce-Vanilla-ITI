@@ -2,8 +2,8 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.min.js";
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import "./productdetails.css";
-import { addToCart } from "../products";
-import { NavBar,fetchData} from "../../../assets/reusable";
+// import { addToCart } from "../products";
+import { NavBar,fetchData ,changeBtn} from "../../../assets/reusable";
 document.addEventListener("DOMContentLoaded", async () => {
   // Navbar Dry  Dynamic
   NavBar("navbar")
@@ -61,24 +61,20 @@ document.addEventListener("DOMContentLoaded", async () => {
               </table>
               <!-- Product Price -->
               <h5 class="card-title">Price: ${product.price} LE</h5>
-              <button class="btn mt-auto btn-success btnCart" data-id="${product.id}">Add to cart</button>
+              <button class="btn mt-auto btn-success btnCart addToCart " productdata="${product.id}">Add to cart</button>
             </div>
           </div>
         `;
         })
         .join("")
+        
     : `<h1>404 Not Found</h1>`;
+    changeBtn("productDetails", "addToCart", fetchedData);
 
   // Attach event listeners to the dynamically created "Add to cart" buttons
   const btnCart = document.querySelectorAll(".btnCart");
 
-  btnCart.forEach((button) => {
-    button.addEventListener("click", (event) => {
-      const productId = event.target.getAttribute("data-id");
-      console.log("Product added to cart:", productId);
-      addToCart(productId, fetchedData);
-    });
-  });
+   
 });
 
 const currentPath = window.location.pathname;
