@@ -515,7 +515,11 @@ export const NavBar = (navName) => {
   isLoggedIn(authData, "/src/Pages/Register/register.html");
 };
 export function changeBtn(parent, child, fetchData) {
+  console.log("🚀 ~ changeBtn ~ fetchData:", fetchData)
+  console.log("🚀 ~ changeBtn ~ child:", child)
+  console.log("🚀 ~ changeBtn ~ parent:", parent)
   // Get the product cart data from storage
+  
   const product = getCookie("productCart");
   const productInCart = product ? JSON.parse(product.value) : [];
 
