@@ -1,7 +1,14 @@
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.min.js";
-import { GlobalCart } from "../Cart/cart";
+import { isLoggedIn, authName, authData, authType, setCookie, getCookie, NavBar, addToCart } from "../../assets/reusable";
 import { loadStripe } from '@stripe/stripe-js';
+
+
+let productCart = getCookie("productCart");
+let userDdata = getCookie("Auth");
+const productsCart = productCart ? JSON.parse(productCart.value) : [];
+const productsName = productCart ? productCart.name : null;
+const AuthData = userDdata ? JSON.parse(userDdata.value) : null;
 
 // radio for address button [show,hide]
 const defaultAddInput = document.getElementById('defaultADD');
@@ -42,9 +49,9 @@ toggleAddressButton();
 
 // Get the products from localStorage
 
-const products = JSON.parse(localStorage.getItem("cartProducts")) || [];
+export const products = productsCart || [];
 console.log("🚀 ~ Product:", products);
-console.log(GlobalCart)
+
 // Calculate the subtotal
 // acc >> accumulator , 0 initial value  return the acc 
 const subtotal = products.reduce((acc, product) => acc + product.price*product.quantity, 0) ;
@@ -152,5 +159,5 @@ products.forEach(product => {
 }
 
 export const  amount_stripe = total_vac*100
-
+console.log("aaaaaaaahhhhh",amount_stripe)
 
