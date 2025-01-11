@@ -59,11 +59,9 @@ const renderProducts = async (data, container) => {
       `
     )
     .join("");
-  
 
     changeBtn("products", "addToCart", fetchedData,"productCart");
     changeBtn("products", "btnWishlist", fetchedData,"wishlist");
-
 };
 
 // Add product to cart

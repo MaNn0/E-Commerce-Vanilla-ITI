@@ -9,6 +9,7 @@ let userDdata = getCookie("Auth");
 const productsCart = productCart ? JSON.parse(productCart.value) : [];
 const productsName = productCart ? productCart.name : null;
 const AuthData = userDdata ? JSON.parse(userDdata.value) : null;
+console.log(AuthData.mainAddress);
 
 // radio for address button [show,hide]
 const defaultAddInput = document.getElementById('defaultADD');

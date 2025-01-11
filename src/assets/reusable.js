@@ -2,6 +2,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.min.js";
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import * as bootstrap from "bootstrap";
+// import { Button } from "bootstrap/dist/js/bootstrap.bundle.min.js";
 // DataFetching
 export const fetchData = async () => {
   try {
@@ -602,6 +603,7 @@ export const NavBar = (navName) => {
   // Check if the user is logged in
   isLoggedIn(authData, "/src/Pages/Register/register.html");
 };
+// Change Button
 export function changeBtn(parent, child, fetchData, targetKey) {
   // console.log("🚀 ~ changeBtn ~ fetchData:", fetchData)
   // console.log("🚀 ~ changeBtn ~ child:", child)

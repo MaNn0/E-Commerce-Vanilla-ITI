@@ -207,8 +207,8 @@ document.querySelector(".btn-primary").addEventListener("click", async function 
   }
 
   // Define success and cancel URLs
-  const success_url = 'http://localhost:5173/src/Pages/Payment/success.html'; // Replace with your success page URL
-  const cancel_url = 'http://localhost:5173/src/Pages/Payment/fail.html'; // Replace with your failure page URL
+  const success_url = 'http://127.0.0.1:5500/src/Pages/Payment/success.html'; // Replace with your success page URL
+  const cancel_url = 'http://127.0.0.1:5500/src/Pages/Payment/fail.html'; // Replace with your failure page URL
 
   // Log the products array for debugging
   // console.log("Products:", products);
