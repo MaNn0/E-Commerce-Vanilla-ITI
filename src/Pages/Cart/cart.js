@@ -110,6 +110,9 @@ if (allItems) {
 const currentPath = window.location.pathname;
 if (currentPath.endsWith("cart.html")) {
   NavBar("navbar")
-    footerInjection("footer")
+  footerInjection("footer")
   document.addEventListener("DOMContentLoaded",  updateQuantity);
 }
+
+
+

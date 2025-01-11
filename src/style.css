@@ -105,3 +105,19 @@ a {
   color: var(--c1);
   box-shadow: 0 4px 8px var(--c1);
 }
+.removeFromCart{
+color: #b10b0b;
+}
+.removeFromCart:hover{
+  color: green;
+  }
+  .removeFromCart{
+    color: #b10b0b;
+    }
+    .removeFromCart:hover{
+      color: var(--c1);
+      }
+      .addToCartIcon:hover{
+        color: black;
+
+      }

@@ -130,19 +130,19 @@ const initializeApp = async () => {
   renderProducts(fetchedData, productsContainer);
 
   // Add event listener for cart buttons
-  productsContainer.addEventListener("click", (event) => {
-    if (event.target.classList.contains("btnCart")) {
-      const productId = event.target.getAttribute("productData");
-      // addToCart(productId, fetchedData);
-    }
-  });
+  // productsContainer.addEventListener("click", (event) => {
+  //   if (event.target.classList.contains("btnCart")) {
+  //     const productId = event.target.getAttribute("productData");
+  //     // addToCart(productId, fetchedData);
+  //   }
+  // });
 
-  productsContainer.addEventListener("click", (event) => {
-    if (event.target.classList.contains("btnWishlist")) {
-      const productId = event.target.getAttribute("productData");
-      addToWishlist(productId, fetchedData);
-    }
-  });
+  // productsContainer.addEventListener("click", (event) => {
+  //   if (event.target.classList.contains("btnWishlist")) {
+  //     const productId = event.target.getAttribute("productData");
+  //     addToWishlist(productId, fetchedData);
+  //   }
+  // });
 
   // Populate category dropdown
   const uniqueCategories = [

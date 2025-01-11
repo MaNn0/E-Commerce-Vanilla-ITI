@@ -73,7 +73,7 @@ const initializeApp = async () => {
         <button class="btn mt-auto btn-success btnCart addToCart" productData="${
           element.id
         }">Add to cart</button>
-            <button type="button" class="btn btn-warning btnWishlist" productData=${
+              <button class="btn btnWishlist" style="border:0" productData=${
               element.id
             } aria-label="Add to Wishlist">
       Add to Wishlist
@@ -114,7 +114,7 @@ const initializeApp = async () => {
         <button class="btn mt-auto btn-success btnCart addToCart" productData="${
           element.id
         }">Add to cart</button>
-            <button type="button" class="btn btn-warning btnWishlist" productData=${
+              <button class="btn btnWishlist" style="border:0" productData=${
               element.id
             } aria-label="Add to Wishlist">
       Add to Wishlist
@@ -155,7 +155,7 @@ const initializeApp = async () => {
         <button class="btn mt-auto btn-success btnCart addToCart" productData="${
           element.id
         }">Add to cart</button>
-            <button type="button" class="btn btn-warning btnWishlist" productData=${
+              <button class="btn btnWishlist" style="border:0" productData=${
               element.id
             } aria-label="Add to Wishlist">
       Add to Wishlist
@@ -276,7 +276,7 @@ const initializeApp = async () => {
         <button class="btn mt-auto btn-success btnCart addToCart" productData="${
           element.id
         }">Add to cart</button>
-            <button type="button" class="btn btn-warning btnWishlist" productData=${
+              <button class="btn btnWishlist" style="border:0" productData=${
               element.id
             } aria-label="Add to Wishlist">
       Add to Wishlist
@@ -288,7 +288,7 @@ const initializeApp = async () => {
       })
       .join("");
     img.innerHTML = product;
-    changeBtn("gaming ", "addToCart", data, "productCart"); //Cart Button
+    changeBtn("gaming", "addToCart", data, "productCart"); //Cart Button
     changeBtn("gaming", "btnWishlist", data, "wishlist"); //Wishlist Button
   }
 
@@ -320,7 +320,7 @@ const initializeApp = async () => {
         <button class="btn mt-auto btn-success btnCart addToCart" productData="${
           element.id
         }">Add to cart</button>
-            <button type="button" class="btn btn-warning btnWishlist" productData=${
+            <button class="btn btnWishlist" style="border:0" productData=${
               element.id
             } aria-label="Add to Wishlist">
       Add to Wishlist
@@ -333,7 +333,7 @@ const initializeApp = async () => {
       .join("");
     img.innerHTML = product;
     changeBtn("tv ", "addToCart", data, "productCart");
-    changeBtn("tv", "btnWishlist", data, "wishlist");
+    changeBtn("tv", "btnWishlist", data, "wishlist"); //Wishlist Button
   }
 };
 
