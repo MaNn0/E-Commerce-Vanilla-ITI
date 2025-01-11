@@ -196,10 +196,10 @@ const stripe = await loadStripe('pk_test_51Qf9q7AnBfxoX5a3ubkQ9mbIGvB6FujzedMCkD
 document.querySelector(".btn-primary").addEventListener("click", async function () {
   const address = document.getElementById("address").value.trim();
   const addressOptionSelected = document.querySelector('input[name="address-option"]:checked');
-  const paymentOptionSelected = document.querySelector('input[name="paymentOption"]:checked');
+  // const paymentOptionSelected = document.querySelector('input[name="paymentOption"]:checked');
 
   // Check if all required fields are filled
-  if (!address || !addressOptionSelected || !paymentOptionSelected) {
+  if (!address || !addressOptionSelected ) {
     document.getElementById("errorMessage").textContent = "Please fill all the required fields and select options where necessary.";
     const errorModal = new bootstrap.Modal(document.getElementById("errorModal"));
     errorModal.show();
@@ -211,13 +211,13 @@ document.querySelector(".btn-primary").addEventListener("click", async function 
   const cancel_url = 'http://localhost:5173/src/Pages/Payment/fail.html'; // Replace with your failure page URL
 
   // Log the products array for debugging
-  console.log("Products:", products);
-  products.forEach(product => {
-    const originalUrl = product.image;
-    const sanitizedUrl = encodeURI(originalUrl.trim().replace(/\s/g, '%20'));
-    console.log("Original URL:", originalUrl);
-    console.log("Sanitized URL:", sanitizedUrl);
-  });
+  // console.log("Products:", products);
+  // products.forEach(product => {
+  //   const originalUrl = product.image;
+  //   const sanitizedUrl = encodeURI(originalUrl.trim().replace(/\s/g, '%20'));
+  //   console.log("Original URL:", originalUrl);
+  //   console.log("Sanitized URL:", sanitizedUrl);
+  // });
 
   // Call the backend to create a Checkout Session
   const response = await fetch('http://localhost:5000/create-checkout-session', {

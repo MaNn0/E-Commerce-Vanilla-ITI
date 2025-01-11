@@ -208,14 +208,7 @@ const express = require('express');
 const Stripe = require('stripe');
 const dotenv = require('dotenv');
 const cors = require('cors');
-function isValidURL(url) {
-  try {
-    new URL(url);
-    return true;
-  } catch {
-    return false;
-  }
-}
+
 
 dotenv.config(); // Load environment variables from .env
 
@@ -256,13 +249,14 @@ app.post('/create-checkout-session', async (req, res) => {
             name: product.title,
             images: [product.image],
           },
-          unit_amount: product.price,
+          unit_amount:product.price,
         },
         quantity: product.quantity || 1,
       };
     });
     console.log("Processed Line Items:", JSON.stringify(line_items, null, 2));
 
+console.log("Products:", products);
 
     console.log("Line Items:", line_items); //trace
 

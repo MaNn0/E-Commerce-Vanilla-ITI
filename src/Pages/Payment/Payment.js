@@ -59,13 +59,13 @@ const subtotal = products.reduce((acc, product) => acc + product.price*product.q
 // Calculate total VAT (12% of each product's price)
 const vat = products.reduce((acc, product) => acc + product.price * 0.12*product.quantity, 0);
 
-// shipping fee 
-const shippingFee = 50;
-var FinaleFee = shippingFee+vat
+// // shipping fee 
+// const shippingFee = 50;
+// var FinaleFee = shippingFee+vat
 
 // Update the Subtotal in the DOM
-const debitCreditCardInputs = document.getElementById('debitCreditCard');
-const cashOnDeliveryInputs = document.getElementById('cashOnDelivery');
+// const debitCreditCardInputs = document.getElementById('debitCreditCard');
+// const cashOnDeliveryInputs = document.getElementById('cashOnDelivery');
 
 if(subtotal==0)
   {
@@ -75,42 +75,45 @@ if(subtotal==0)
   }
   else { document.getElementById("subtotal").textContent = `EGP ${subtotal}`}
   
-  const debitCreditCardInput = document.getElementById('debitCreditCard');
-  const cashOnDeliveryInput = document.getElementById('cashOnDelivery');
+//   const debitCreditCardInput = document.getElementById('debitCreditCard');
+//   const cashOnDeliveryInput = document.getElementById('cashOnDelivery');
   const shippingFeeElement = document.querySelector(".text-success"); //  shipping fee
   
-  const paymentModals = new bootstrap.Modal(document.getElementById('paymentModals')); //for payment modal 
+//   const paymentModals = new bootstrap.Modal(document.getElementById('paymentModals')); //for payment modal 
   // paymentModals.show(); // show modal
   
   //round the values 
   const total=   Math.round(((subtotal+vat)+ Number.EPSILON) * 100) / 100;
-  const total_vac=   Math.round(((subtotal+FinaleFee)+ Number.EPSILON) * 100) / 100;
 
-  // update shipping fee
-function updateShippingFee() {
-  //if credit card checked
-  if (debitCreditCardInput.checked) {
-    shippingFeeElement.textContent = "Free Shipping"; // shipping fee element
+  shippingFeeElement.textContent = "Free Shipping"; // shipping fee element
 
-    document.getElementById("total").textContent = `EGP ${total}`; // >>>>>>>>>>>>>  Update the total in the DOM
+  document.getElementById("total").textContent = `EGP ${total}`; 
 
-//if on cash checked
-  } else if (cashOnDeliveryInput.checked) {
-    shippingFeeElement.textContent = `EGP +${shippingFee}`; // shipping fee element
-    ;
-    // Update the total in the DOM
-    document.getElementById("total").textContent = `EGP ${total_vac}`; // >>>>>>>>>>>>>  Update the total in the DOM
-  }
-}
+//   // update shipping fee
+// function updateShippingFee() {
+//   //if credit card checked
+//   if (debitCreditCardInput.checked) {
+//     shippingFeeElement.textContent = "Free Shipping"; // shipping fee element
 
-// for radio button chaanges
-debitCreditCardInput.addEventListener('change', () => {
-  if (debitCreditCardInput.checked) {
-    paymentModals.show(); // show modal
-  }
-  updateShippingFee(); });
+//     document.getElementById("total").textContent = `EGP ${total}`; // >>>>>>>>>>>>>  Update the total in the DOM
 
-cashOnDeliveryInput.addEventListener('change', updateShippingFee);
+// //if on cash checked
+//   } else if (cashOnDeliveryInput.checked) {
+//     shippingFeeElement.textContent = `EGP +${shippingFee}`; // shipping fee element
+//     ;
+//     // Update the total in the DOM
+//     document.getElementById("total").textContent = `EGP ${total_vac}`; // >>>>>>>>>>>>>  Update the total in the DOM
+//   }
+// }
+
+// // for radio button chaanges
+// debitCreditCardInput.addEventListener('change', () => {
+//   if (debitCreditCardInput.checked) {
+//     paymentModals.show(); // show modal
+//   }
+//   updateShippingFee(); });
+
+// cashOnDeliveryInput.addEventListener('change', updateShippingFee);
 
 
 // Get the container where the order items will be displayed in "Your Order" section
@@ -158,6 +161,6 @@ products.forEach(product => {
 });
 }
 
-export const  amount_stripe = total_vac*100
+export const  amount_stripe = total*100
 console.log("aaaaaaaahhhhh",amount_stripe)
 
