@@ -8,7 +8,7 @@
       "password": "Fightsongg@7677",
       "repassword": "Fightsongg@7677",
       "mainAddress": "4-hussain",
-      "city": "cairo"   
+      "city": "cairo"
     },
     {
       "id": "77dasd0e",
@@ -35,6 +35,16 @@
       "firstName": "mano",
       "lastName": "ramadan",
       "email": "mlolo80013@gmail.com",
+      "password": "Mano2001!",
+      "repassword": "Mano2001!",
+      "mainAddress": "haram",
+      "city": "giza"
+    },
+    {
+      "id": "3a1d",
+      "firstName": "mano",
+      "lastName": "ramadan",
+      "email": "abdomano2001@gmail.com",
       "password": "Mano2001!",
       "repassword": "Mano2001!",
       "mainAddress": "haram",

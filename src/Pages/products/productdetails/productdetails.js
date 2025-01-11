@@ -3,11 +3,11 @@ import "bootstrap/dist/js/bootstrap.bundle.min.js";
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import "./productdetails.css";
 // import { addToCart } from "../products";
-import { NavBar,fetchData ,changeBtn} from "../../../assets/reusable";
+import { NavBar, fetchData, changeBtn } from "../../../assets/reusable";
 document.addEventListener("DOMContentLoaded", async () => {
   // Navbar Dry  Dynamic
-  NavBar("navbar")
-    // Get product ID from URL
+  NavBar("navbar");
+  // Get product ID from URL
   const urlParams = new URLSearchParams(window.location.search);
   console.log("🚀 ~ document.addEventListener ~ urlParams:", urlParams);
   const productid = urlParams.get("id"); // id
@@ -62,9 +62,7 @@ document.addEventListener("DOMContentLoaded", async () => {
               <!-- Product Price -->
               <h5 class="card-title">Price: ${product.price} LE</h5>
               <button class="btn mt-auto btn-success btnCart addToCart " productdata="${product.id}">Add to cart</button>
-                 <button type="button" class="btn btn-warning btnWishlist" productData=${
-      product.id
-    } aria-label="Add to Wishlist">
+                 <button type="button" class="btn btn-warning btnWishlist" productData=${product.id} aria-label="Add to Wishlist">
       Add to Wishlist
     </button>
             </div>
@@ -72,16 +70,13 @@ document.addEventListener("DOMContentLoaded", async () => {
         `;
         })
         .join("")
-        
     : `<h1>404 Not Found</h1>`;
-    changeBtn("productDetails", "addToCart", fetchedData,"productCart");
-    changeBtn("productDetails", "btnWishlist", fetchedData,"wishlist");
+  changeBtn("productDetails", "addToCart", fetchedData, "productCart");
+  changeBtn("productDetails", "btnWishlist", fetchedData, "wishlist");
 
   // Attach event listeners to the dynamically created "Add to cart" buttons
   const btnCart = document.querySelectorAll(".btnCart");
-
-   
 });
 
 const currentPath = window.location.pathname;
-// 
+//
