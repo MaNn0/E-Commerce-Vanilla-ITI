@@ -1,6 +1,6 @@
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.min.js";
-import { GlobalCart } from "../Cart/cart";
+// import { GlobalCart } from "../Cart/cart";
 import { loadStripe } from '@stripe/stripe-js';
 
 // radio for address button [show,hide]
@@ -44,7 +44,7 @@ toggleAddressButton();
 
 const products = JSON.parse(localStorage.getItem("cartProducts")) || [];
 console.log("🚀 ~ Product:", products);
-console.log(GlobalCart)
+// console.log(GlobalCart)
 // Calculate the subtotal
 // acc >> accumulator , 0 initial value  return the acc 
 const subtotal = products.reduce((acc, product) => acc + product.price*product.quantity, 0) ;

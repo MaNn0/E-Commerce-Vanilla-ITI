@@ -7,11 +7,14 @@ import {
   getCookie,
   NavBar,
   fetchData,
+  changeBtn
 } from "../../assets/reusable";
 import "./products.css";
 
 // Render products to the DOM
-const renderProducts = (data, container) => {
+// const fetchedData = await fetchData();
+const renderProducts = async (data, container) => {
+  const fetchedData = await fetchData();
   // console.log("🚀 ~ renderProducts ~ data:", data);
   container.innerHTML = data
     .map(
@@ -36,7 +39,7 @@ const renderProducts = (data, container) => {
     <a href="/src/Pages/products/productdetails/productdetails.html?id=${
       product.id
     }" class="btn btn-primary">View Details</a>
-    <button type="button" class="btn btn-success btnCart" productData=${
+    <button type="button" class="btn btn-success btnCart addToCart" productData=${
       product.id
     } aria-label="Add to Cart">
       Add to Cart
@@ -55,35 +58,39 @@ const renderProducts = (data, container) => {
       `
     )
     .join("");
+  
+
+    changeBtn("products", "addToCart",fetchedData);
+
 };
 
 // Add product to cart
-export const addToCart = (productId, products) => {
-  let productCart = getCookie("productCart");
-  const productsName = productCart ? productCart.name : null;
-  const productsData = productCart ? productCart.value : null;
+// export const addToCart = (productId, products) => {
+//   let productCart = getCookie("productCart");
+//   const productsName = productCart ? productCart.name : null;
+//   const productsData = productCart ? productCart.value : null;
 
-  console.log("🚀 ~ getCookieValue ~ getCookie:", getCookie("productCart"));
-  const product = products.find((p) => p.id == productId);
-  // const existingProducts =
-  //   JSON.parse(localStorage.getItem("productCart")) || [];
-  // console.log("🚀 ~ addToCart ~ productsData:", productsData)
-  const existingProducts = JSON.parse(productsData) || [];
-  console.log("🚀 ~ addToCart ~ existingProducts:", existingProducts);
-  const productIndex = existingProducts.findIndex((p) => p.id === productId);
-  // productIndex = true(index) OR false (-1)
-  if (productIndex !== -1) {
-    // y3ne mawgod [1,2,4,5,6]
-    existingProducts[productIndex].quantity += 1;
-  } else {
-    // lw m4 mawgod
-    product.quantity = 1; // creating quantity
-    existingProducts.push(product);
-  }
-  setCookie("productCart", existingProducts, 1, authType);
-  // localStorage.setItem("cartProducts", JSON.stringify(existingProducts));
-  // console.log("Product added to cart:", product);
-};
+//   console.log("🚀 ~ getCookieValue ~ getCookie:", getCookie("productCart"));
+//   const product = products.find((p) => p.id == productId);
+//   // const existingProducts =
+//   //   JSON.parse(localStorage.getItem("productCart")) || [];
+//   // console.log("🚀 ~ addToCart ~ productsData:", productsData)
+//   const existingProducts = JSON.parse(productsData) || [];
+//   console.log("🚀 ~ addToCart ~ existingProducts:", existingProducts);
+//   const productIndex = existingProducts.findIndex((p) => p.id === productId);
+//   // productIndex = true(index) OR false (-1)
+//   if (productIndex !== -1) {
+//     // y3ne mawgod [1,2,4,5,6]
+//     existingProducts[productIndex].quantity += 1;
+//   } else {
+//     // lw m4 mawgod
+//     product.quantity = 1; // creating quantity
+//     existingProducts.push(product);
+//   }
+//   setCookie("productCart", existingProducts, 1, authType);
+//   // localStorage.setItem("cartProducts", JSON.stringify(existingProducts));
+//   // console.log("Product added to cart:", product);
+// };
 
 export const addToWishlist = (productId, products) => {
   let wishlist = getCookie("wishlist");
@@ -107,7 +114,6 @@ const initializeApp = async () => {
   const brandSelect = document.querySelector(".productBrand");
   const sortSelectByPrice = document.querySelector(".sortProductByPrice");
   const sortSelectByTitle = document.querySelector(".sortProduct");
-
   // Check if required elements exist
   if (
     !productsContainer ||
@@ -127,7 +133,7 @@ const initializeApp = async () => {
   productsContainer.addEventListener("click", (event) => {
     if (event.target.classList.contains("btnCart")) {
       const productId = event.target.getAttribute("productData");
-      addToCart(productId, fetchedData);
+      // addToCart(productId, fetchedData);
     }
   });
 
@@ -203,6 +209,7 @@ const initializeApp = async () => {
 // Check if the current page is the products page
 const currentPath = window.location.pathname;
 if (currentPath.endsWith("products.html")) {
+
   NavBar("navbar");
   document.addEventListener("DOMContentLoaded", initializeApp);
 }

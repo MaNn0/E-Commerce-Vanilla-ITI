@@ -19,7 +19,7 @@ const currentPath = window.location.pathname;
 const initializeApp = async () => {
 //Lexical Declaration Variables
 // searchButton()
-NavBar("navbar")
+
   const btnCart = document.querySelectorAll(".btnCart");
   //DataFetched To Allocate to Function
 
@@ -286,5 +286,6 @@ NavBar("navbar")
 // CheckAuth(authData);
 if (currentPath == "/") {
   // isLoggedIn(authData, "./src/Pages/Register/register.html");
+  NavBar("navbar")
   document.addEventListener("DOMContentLoaded", initializeApp);
 }

@@ -111,5 +111,4 @@ const currentPath = window.location.pathname;
 if (currentPath.endsWith("cart.html")) {
   NavBar("navbar")
   document.addEventListener("DOMContentLoaded",  updateQuantity);
-  // updateQuantity();
 }

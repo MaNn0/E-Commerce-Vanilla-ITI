@@ -2,6 +2,24 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.min.js";
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import * as bootstrap from "bootstrap";
+// DataFetching
+export const fetchData = async () => {
+  try {
+    const response = await fetch("http://localhost:3000/products");
+    if (!response.ok) {
+      throw new Error("Network response was not ok");
+    }
+    return await response.json();
+  } catch (error) {
+    console.error("Error fetching data:", error);
+    // Display an error message to the user
+    const productsContainer = document.querySelector(".products");
+    if (productsContainer) {
+      productsContainer.innerHTML = `<p class="text-danger">Failed to load products. Please try again later.</p>`;
+    }
+    return []; // Return an empty array to avoid breaking the app
+  }
+};
 // setCookie
 export function setCookie(name, value, daysToExpire, authType) {
   try {
@@ -23,11 +41,11 @@ export function setCookie(name, value, daysToExpire, authType) {
       // Store in sessionStorage
       const sessionValue = JSON.stringify(value); // Convert value to JSON string
       sessionStorage.setItem(name, sessionValue);
-      console.log("🚀 ~ setCookie ~ sessionStorage set:", { name, value });
+      // console.log("🚀 ~ setCookie ~ sessionStorage set:", { name, value });
     }
-    else{
-        const localValue = JSON.stringify(value); // Convert value to JSON string
-        localStorage.setItem(name, localValue);
+    else {
+      const localValue = JSON.stringify(value); // Convert value to JSON string
+      localStorage.setItem(name, localValue);
     }
   } catch (error) {
     console.error("Error in setCookie:", error);
@@ -50,7 +68,7 @@ export function getCookie(name) {
       console.error("Error parsing sessionStorage data:", error);
     }
   }
-else if (localStorage.getItem(name)) {
+  else if (localStorage.getItem(name)) {
     const localValue = localStorage.getItem(name);
     try {
       const localData = JSON.parse(localValue); // Parse the session data
@@ -61,15 +79,15 @@ else if (localStorage.getItem(name)) {
     } catch (error) {
       console.error("Error parsing localStorage data:", error);
     }
-}else{
-  const cookies = document.cookie.split(";");
-  for (let cookie of cookies) {
-    const [cookieName, cookieValue] = cookie.trim().split("=");
-    if (cookieName === name) {
-      return { name: cookieName, value: cookieValue, type: "cookies" }; // Return the cookie value
+  } else {
+    const cookies = document.cookie.split(";");
+    for (let cookie of cookies) {
+      const [cookieName, cookieValue] = cookie.trim().split("=");
+      if (cookieName === name) {
+        return { name: cookieName, value: cookieValue, type: "cookies" }; // Return the cookie value
+      }
     }
   }
-}
 
 
 
@@ -98,7 +116,7 @@ export const isLoggedIn = (authData, href) => {
   const userBtn = document.querySelector(".userBtn");
   // If authData is not provided, return early
   if (!authData) {
-        console.error("No authentication data provided.");
+    console.error("No authentication data provided.");
   }
   else {
     console.error("Authentication data provided.");
@@ -159,60 +177,60 @@ export const isLoggedIn = (authData, href) => {
 };
 // Post Data After Updating
 async function postData(data = {}, userId) {
-    try {
-      // Validate input parameters
-      if (!userId || typeof userId !== "string") {
-        throw new Error("Invalid user ID");
-      }
-      if (Object.keys(data).length === 0) {
-        throw new Error("No data provided for update");
-      }
-  
-      console.log("🚀 ~ postData ~ data:", data);
-  
-      const url = `http://localhost:3000/accounts/${userId}`;
-  
-      // Fetch options
-      const options = {
-        method: "PUT", // Specify the request method
-        headers: {
-          "Content-Type": "application/json", // Set the content type to JSON
-        },
-        body: JSON.stringify(data), // Convert the data to JSON
-      };
-  
-      // Await the fetch call
-      const response = await fetch(url, options);
-  
-      // Check if the response is OK (status code 200-299)
-      if (!response.ok) {
-        // Handle specific HTTP errors
-        const errorMessage =
-          response.status === 404
-            ? "User not found"
-            : response.status === 400
+  try {
+    // Validate input parameters
+    if (!userId || typeof userId !== "string") {
+      throw new Error("Invalid user ID");
+    }
+    if (Object.keys(data).length === 0) {
+      throw new Error("No data provided for update");
+    }
+
+    console.log("🚀 ~ postData ~ data:", data);
+
+    const url = `http://localhost:3000/accounts/${userId}`;
+
+    // Fetch options
+    const options = {
+      method: "PUT", // Specify the request method
+      headers: {
+        "Content-Type": "application/json", // Set the content type to JSON
+      },
+      body: JSON.stringify(data), // Convert the data to JSON
+    };
+
+    // Await the fetch call
+    const response = await fetch(url, options);
+
+    // Check if the response is OK (status code 200-299)
+    if (!response.ok) {
+      // Handle specific HTTP errors
+      const errorMessage =
+        response.status === 404
+          ? "User not found"
+          : response.status === 400
             ? "Invalid data provided"
             : `HTTP error! Status: ${response.status}`;
-        throw new Error(errorMessage);
-      }
-  
-      // Parse the JSON response
-      const result = await response.json();
-  
-      // Log the result
-      console.log("🚀 ~ postData ~ result:", result);
-  
-      // Provide user feedback
-      alert("Success: Data updated successfully!");
-      return result; // Return the parsed result
-    } catch (error) {
-      // Handle errors
-      console.error("Error in postData:", error);
-  
-      // Provide user feedback
-      alert(`Failed: ${error.message}`);
+      throw new Error(errorMessage);
     }
+
+    // Parse the JSON response
+    const result = await response.json();
+
+    // Log the result
+    console.log("🚀 ~ postData ~ result:", result);
+
+    // Provide user feedback
+    alert("Success: Data updated successfully!");
+    return result; // Return the parsed result
+  } catch (error) {
+    // Handle errors
+    console.error("Error in postData:", error);
+
+    // Provide user feedback
+    alert(`Failed: ${error.message}`);
   }
+}
 // Erorr AND declaration Handling
 const nameForm = document.querySelector("#name");
 const nameError = document.querySelector(".nameError");
@@ -376,92 +394,76 @@ export const addToCart = (productId, products) => {
   }
   setCookie("productCart", existingProducts, 1, authType);
 };
- // Fetch Data
-export const fetchData = async () => {
-  try {
-    const response = await fetch("http://localhost:3000/products");
-    if (!response.ok) {
-      throw new Error("Network response was not ok");
-    }
-    return await response.json();
-  } catch (error) {
-    console.error("Error fetching data:", error);
-    // Display an error message to the user
-    const productsContainer = document.querySelector(".products");
-    if (productsContainer) {
-      productsContainer.innerHTML = `<p class="text-danger">Failed to load products. Please try again later.</p>`;
-    }
-    return []; // Return an empty array to avoid breaking the app
-  }
-};
+// Fetch Data
+
 
 // is userLoged in Cart Btn Login Button
-export const transferGuestAction =(name,authType)=>{
-const localItem=localStorage.getItem(name)
-console.log("🚀 ~ transferGuestAction ~ localItem:", localItem)
-const localValue=JSON.parse(localItem)
-console.log("🚀 ~ transferGuestAction ~ localValue:", localValue)
-if (localValue){
+export const transferGuestAction = (name, authType) => {
+  const localItem = localStorage.getItem(name)
+  console.log("🚀 ~ transferGuestAction ~ localItem:", localItem)
+  const localValue = JSON.parse(localItem)
+  console.log("🚀 ~ transferGuestAction ~ localValue:", localValue)
+  if (localValue) {
     if (authType === "cookies") {
-        setCookie(name, localValue, 1, authType);
-        localStorage.removeItem(name)
+      setCookie(name, localValue, 1, authType);
+      localStorage.removeItem(name)
     } else if (authType === "session") {
-        setCookie(name, localValue, 1, authType);
-        localStorage.removeItem(name)
+      setCookie(name, localValue, 1, authType);
+      localStorage.removeItem(name)
     }
-    else{
-     console.log("🚀 ~ transferGuestAction ~ lovalValue:", localValue);
-     
+    else {
+      console.log("🚀 ~ transferGuestAction ~ lovalValue:", localValue);
+
     }
-}
+  }
 
 }
-export const searchButton=()=>{
-    const searchContainer = document.querySelector(".search-container");
-    const searchBtn = document.querySelector(".searchBtn");
-    searchBtn.addEventListener("click", (e) => {
-        e.preventDefault();
-        // Create the input element
-        const input = document.createElement("input");
-        input.type = "text";
-        input.placeholder = "Search...";
-        input.className = "searchInput"; // Add the base class
-    
-        // Append the input element and trigger transition
-        searchContainer.replaceChild(input, searchBtn);
-    
-        // Allow initial styles to apply before adding the "active" class
+export const searchButton = () => {
+  const searchContainer = document.querySelector(".search-container");
+  const searchBtn = document.querySelector(".searchBtn");
+  searchBtn.addEventListener("click", (e) => {
+    e.preventDefault();
+    // Create the input element
+    const input = document.createElement("input");
+    input.type = "text";
+    input.placeholder = "Search...";
+    input.className = "searchInput"; // Add the base class
+
+    // Append the input element and trigger transition
+    searchContainer.replaceChild(input, searchBtn);
+
+    // Allow initial styles to apply before adding the "active" class
+    setTimeout(() => {
+      input.classList.add("active", "searchInput2");
+      // input.focus();
+    }, 10);
+
+    // Handle blur event
+    input.addEventListener("blur", () => {
+      if (!input.value.trim()) {
+        input.classList.remove("active");
         setTimeout(() => {
-          input.classList.add("active", "searchInput2");
-          // input.focus();
-        }, 10);
-    
-        // Handle blur event
-        input.addEventListener("blur", () => {
-          if (!input.value.trim()) {
-            input.classList.remove("active");
-            setTimeout(() => {
-              searchContainer.replaceChild(searchBtn, input);
-            }, 300);
-          }
-        });
-    
-        input.addEventListener("input", (e) => {
-          console.log("hi");
-        });
-      });
+          searchContainer.replaceChild(searchBtn, input);
+        }, 300);
+      }
+    });
+
+    input.addEventListener("input", (e) => {
+      console.log("hi");
+    });
+  });
 }
 export const NavBar = (navName) => {
-    const navElement = document.querySelector(`.${navName}`);
-  
-    // Check if the element exists
-    if (!navElement) {
-      console.error(`Element with class "${navName}" not found.`);
-      return;
-    }
-  
-    // Navbar HTML template
-    const navbarHTML = `
+  const navElement = document.querySelector(`.${navName}`);
+
+  // Check if the element exists
+  if (!navElement) {
+    console.error(`Element with class "${navName}" not found.`);
+    return;
+  }
+
+  // Navbar HTML template
+  const navbarHTML = `
       <div class="container-fluid">
         <div class="left">
           <span class="navbar-brand mb-0 h1 text-white">Khaled's Store |</span>
@@ -495,21 +497,84 @@ export const NavBar = (navName) => {
         </div>
       </div>
     `;
-  
-    // Inject the navbar HTML
-    navElement.innerHTML = navbarHTML;
-  
-    // Add event listeners or other logic here if needed
-    const searchBtn = navElement.querySelector('.searchBtn');
-    if (searchBtn) {
-      searchBtn.addEventListener('click', (e) => {
-        e.preventDefault(); // Prevent form submission
-        const searchInput = navElement.querySelector('#searchInput').value;
-        console.log('Search for:', searchInput);
-        // Add search functionality here
-      });
+
+  // Inject the navbar HTML
+  navElement.innerHTML = navbarHTML;
+  // Add event listeners or other logic here if needed
+  const searchBtn = navElement.querySelector('.searchBtn');
+  if (searchBtn) {
+    searchBtn.addEventListener('click', (e) => {
+      e.preventDefault(); // Prevent form submission
+      const searchInput = navElement.querySelector('#searchInput').value;
+      console.log('Search for:', searchInput);
+      // Add search functionality here
+    });
+  }
+  searchButton()
+  // Check if the user is logged in
+  isLoggedIn(authData, "/src/Pages/Register/register.html");
+};
+export function changeBtn(parent, child, fetchData) {
+  // Get the product cart data from storage
+  const product = getCookie("productCart");
+  const productInCart = product ? JSON.parse(product.value) : [];
+
+  // Select the container
+  const container = document.querySelector(`.${parent}`);
+  if (!container) return; // Exit if the container doesn't exist
+
+  // Function to update button text and class
+  function updateButtons() {
+    const btnToChangeNodes = document.querySelectorAll(`.${child}`);
+
+    btnToChangeNodes.forEach((element) => {
+      const productData = element.getAttribute("productdata");
+
+      // Check if the product is in the cart
+      const productExists = productInCart.some((product) => product.id == productData);
+
+      // Update the button text and class
+      if (productExists) {
+        element.textContent = "Remove";
+        element.classList.add("removeFromCart");
+      } else {
+        element.textContent = "Add to Cart";
+        element.classList.remove("removeFromCart");
+      }
+    });
+  }
+
+  // Initial button update
+  updateButtons();
+
+  // Add event listener to the container for event delegation
+  container.addEventListener("click", (event) => {
+    if (event.target.classList.contains(child.replace(".", ""))) {
+      const productData = event.target.getAttribute("productdata");
+
+      // Find the product in the cart
+      const productIndex = productInCart.findIndex((product) => product.id == productData);
+
+      if (productIndex === -1) {
+        // Product doesn't exist in the cart, so add it
+        const productToAdd = fetchData.find((product) => product.id === productData);
+        if (productToAdd) {
+          // Set initial quantity to 1
+          productToAdd.quantity = 1;
+          productInCart.push(productToAdd);
+          console.log("Product added to cart:", productToAdd);
+        }
+      } else {
+        // Product exists in the cart, so remove it
+        const removedProduct = productInCart.splice(productIndex, 1);
+        console.log("Product removed from cart:", removedProduct);
+      }
+
+      // Update the storage with the new cart data
+      setCookie("productCart", productInCart, 1, authType); // Set cookie with 1-day expiration
+
+      // Update the buttons to reflect the new cart state
+      updateButtons();
     }
-    searchButton()
-    // Check if the user is logged in
-    isLoggedIn(authData, "/src/Pages/Register/register.html");
-  };
+  });
+}
