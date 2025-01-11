@@ -7,7 +7,8 @@ import {
   getCookie,
   NavBar,
   fetchData,
-  changeBtn
+  changeBtn,
+  footerInjection
 } from "../../assets/reusable";
 import "./products.css";
 
@@ -211,5 +212,6 @@ const currentPath = window.location.pathname;
 if (currentPath.endsWith("products.html")) {
 
   NavBar("navbar");
+  footerInjection("footer")
   document.addEventListener("DOMContentLoaded", initializeApp);
 }

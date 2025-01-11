@@ -2,7 +2,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.min.js";
 import "./style.css";
 import "@fortawesome/fontawesome-free/css/all.min.css";
-import {getCookie, addToCart,fetchData ,NavBar,changeBtn} from "./assets/reusable";
+import {getCookie, addToCart,fetchData ,NavBar,changeBtn,footerInjection} from "./assets/reusable";
 
 // Imports Ends Here
 //Global Declared Variables
@@ -296,5 +296,6 @@ const initializeApp = async () => {
 if (currentPath == "/") {
   // isLoggedIn(authData, "./src/Pages/Register/register.html");
   NavBar("navbar")
+  footerInjection("footer")
   document.addEventListener("DOMContentLoaded", initializeApp);
 }

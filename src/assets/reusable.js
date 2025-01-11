@@ -453,6 +453,94 @@ export const searchButton = () => {
     });
   });
 }
+
+export const footerInjection = (footerNam) => {
+  const footerElement = document.querySelector(`.${footerNam}`);
+
+  // Check if the element exists
+  if (!footerElement) {
+    console.error(`Element with class "${footerNam}" not found.`);
+    return;
+  }
+
+  // Define the footer HTML
+  const footerHTML = `
+    <div class="container text-center">
+      <div class="row gy-4">
+        <!-- Mahmoud Nasr -->
+        <div class="col-md-3 border-end border-black">
+          <h4 class="bg-dark text-white py-2 rounded">Mahmoud Nasr</h4>
+          <a href="https://www.linkedin.com/in/mahmoud-nasr-82aa822a9/" target="_blank"
+            class="d-inline d-flex align-items-center justify-content-center text-white text-decoration-none hover-link my-2">
+            LinkedIn <i class="fa-brands fa-linkedin ms-2"></i>
+          </a>
+          <a href="https://github.com/MahmoudNasrZ" target="_blank"
+            class="d-inline d-flex align-items-center justify-content-center text-white text-decoration-none hover-link my-2">
+            GitHub <i class="fa-brands fa-github ms-2"></i>
+          </a>
+          <a href="https://mahmoudnasrz.github.io/Portfolio/" target="_blank"
+            class="d-inline d-flex align-items-center justify-content-center text-white text-decoration-none hover-link my-2">
+            Portfolio <i class="fa-solid fa-briefcase ms-2"></i>
+          </a>
+        </div>
+
+        <!-- Abdelrahman Ebeid -->
+        <div class="col-md-3 border-end border-black">
+          <h4 class="bg-dark text-white py-2 rounded">Abdelrahman Ebeid</h4>
+          <a href="https://www.linkedin.com/in/abdelrahman-ebied69/" target="_blank"
+            class="d-inline d-flex align-items-center justify-content-center text-white text-decoration-none hover-link my-2">
+            LinkedIn <i class="fa-brands fa-linkedin ms-2"></i>
+          </a>
+          <a href="https://github.com/MaNn0" target="_blank"
+            class="d-inline d-flex align-items-center justify-content-center text-white text-decoration-none hover-link my-2">
+            GitHub <i class="fa-brands fa-github ms-2"></i>
+          </a>
+          <a href="https://mann0.github.io/Portfolio/" target="_blank"
+            class="d-inline d-flex align-items-center justify-content-center text-white text-decoration-none hover-link my-2">
+            Portfolio <i class="fa-solid fa-briefcase ms-2"></i>
+          </a>
+        </div>
+
+        <!-- Hossam Zakaria -->
+        <div class="col-md-3 border-end border-black">
+          <h4 class="bg-dark text-white py-2 rounded">Hossam Zakaria</h4>
+          <a href="https://www.linkedin.com/in/hossam-zakaria-s/" target="_blank"
+            class="d-inline d-flex align-items-center justify-content-center text-white text-decoration-none hover-link my-2">
+            LinkedIn <i class="fa-brands fa-linkedin ms-2"></i>
+          </a>
+          <a href="https://github.com/HossamZakariaSannad" target="_blank"
+            class="d-inline d-flex align-items-center justify-content-center text-white text-decoration-none hover-link my-2">
+            GitHub <i class="fa-brands fa-github ms-2"></i>
+          </a>
+          <a href="https://hossamzakariasannad.github.io/html-project-portfolio/" target="_blank"
+            class="d-inline d-flex align-items-center justify-content-center text-white text-decoration-none hover-link my-2">
+            Portfolio <i class="fa-solid fa-briefcase ms-2"></i>
+          </a>
+        </div>
+
+        <!-- Farid Mahmoud -->
+        <div class="col-md-3">
+          <h4 class="bg-dark text-white py-2 rounded">Farid Mohamed</h4>
+          <a href="https://www.linkedin.com/in/farid-azzam-2882051b2/" target="_blank"
+            class="d-inline d-flex align-items-center justify-content-center text-white text-decoration-none hover-link my-2">
+            LinkedIn <i class="fa-brands fa-linkedin ms-2"></i>
+          </a>
+          <a href="https://github.com/fazm1" target="_blank"
+            class="d-inline d-flex align-items-center justify-content-center text-white text-decoration-none hover-link my-2">
+            GitHub <i class="fa-brands fa-github ms-2"></i>
+          </a>
+          <a href="https://fazm1.github.io/portfolio/" target="_blank"
+            class="d-inline d-flex align-items-center justify-content-center text-white text-decoration-none hover-link my-2">
+            Portfolio <i class="fa-solid fa-briefcase ms-2"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+  `;
+
+  // Inject the footer HTML into the footer element
+  footerElement.innerHTML = footerHTML;
+};
 export const NavBar = (navName) => {
   const navElement = document.querySelector(`.${navName}`);
 
@@ -519,6 +607,7 @@ export function changeBtn(parent, child, fetchData) {
   console.log("🚀 ~ changeBtn ~ child:", child)
   console.log("🚀 ~ changeBtn ~ parent:", parent)
   // Get the product cart data from storage
+  
   
   const product = getCookie("productCart");
   const productInCart = product ? JSON.parse(product.value) : [];

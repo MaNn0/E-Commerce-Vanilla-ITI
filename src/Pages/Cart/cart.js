@@ -1,6 +1,6 @@
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.min.js";
-import { isLoggedIn, authName, authData, authType, setCookie, getCookie, NavBar, addToCart } from "./../../assets/reusable";
+import { isLoggedIn, authName, authData, authType, setCookie, getCookie, NavBar, addToCart,footerInjection } from "./../../assets/reusable";
 
 // Retrieve products from cookies
 let productCart = getCookie("productCart");
@@ -110,5 +110,6 @@ if (allItems) {
 const currentPath = window.location.pathname;
 if (currentPath.endsWith("cart.html")) {
   NavBar("navbar")
+    footerInjection("footer")
   document.addEventListener("DOMContentLoaded",  updateQuantity);
 }
