@@ -75,38 +75,33 @@ a {
   width: 15rem;
 }
 
-/* Dropdown Results */
 .searchResults {
   position: absolute;
+  padding: 10px;
   top: 3rem;
   left: 0;
-  width: 100%;
+  width: 135%;
   background-color: white;
   border: 1px solid #ddd;
   border-radius: 0.5rem;
-  max-height: 200px;
+  max-height: 400px;
   overflow-y: auto;
   z-index: 10;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
-.resultItem {
-  padding: 0.5rem;
-  cursor: pointer;
-  border-bottom: 1px solid #f1f1f1;
+.productlink {
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  margin-bottom: 10px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.resultItem:hover {
-  background-color: #007bff;
-  color: white;
-}
-
-.noResults {
-  padding: 0.5rem;
-  color: #999;
-  text-align: center;
-}
-
-.searchInput {
-  transition: all 0.3s ease;
+.productlink:hover {
+  transform: translateY(-5px);
+  color: var(--c1);
+  box-shadow: 0 4px 8px var(--c1);
 }

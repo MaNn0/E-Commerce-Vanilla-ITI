@@ -2,7 +2,14 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.min.js";
 import "./style.css";
 import "@fortawesome/fontawesome-free/css/all.min.css";
-import { getCookie, addToCart, fetchData, NavBar, changeBtn, footerInjection } from "./assets/reusable";
+import {
+  getCookie,
+  addToCart,
+  fetchData,
+  NavBar,
+  changeBtn,
+  footerInjection,
+} from "./assets/reusable";
 import { Button } from "bootstrap/dist/js/bootstrap.bundle.min.js";
 
 // Imports Ends Here
@@ -41,8 +48,6 @@ const initializeApp = async () => {
       addToCart(productId, data);
     });
   });
-  //Event Listener
-
 
   function renderClothing(data) {
     const img = document.querySelector(".clothing");
@@ -52,21 +57,25 @@ const initializeApp = async () => {
       .map((element) => {
         return `
     <div class="card mx-2 border border-primary shadow-lg p-3 mb-5 bg-body-tertiary rounded" style="width: 18rem;">
-      <img src="${element.image
-          }" style="max-height:300px" class="card-img-top productCard" alt="${element.title
-          }">
+      <img src="${
+        element.image
+      }" style="max-height:300px" class="card-img-top productCard" alt="${
+          element.title
+        }">
       <div class="card-body d-flex flex-column ">
         <h5 class="card-title">${element.title}</h5>
         <p class="card-text text-danger mt-auto">Price: ${element.price}$</p>
         <p class="card-text text-success">Discount ${element.discount || 0}%</p>
         <div class="d-flex">
-        <a href="/src/Pages/products/productdetails/productdetails.html?id=${element.id
-          }"  class="btn mx-2 mt-auto btn-warning">Product Details</a>
-        <button class="btn mt-auto btn-success btnCart addToCart" productData="${element.id
-          }">Add to cart</button>
+        <a href="/src/Pages/products/productdetails/productdetails.html?id=${
+          element.id
+        }"  class="btn mx-2 mt-auto btn-warning">Product Details</a>
+        <button class="btn mt-auto btn-success btnCart addToCart" productData="${
+          element.id
+        }">Add to cart</button>
             <button type="button" class="btn btn-warning btnWishlist" productData=${
-                element.id
-    } aria-label="Add to Wishlist">
+              element.id
+            } aria-label="Add to Wishlist">
       Add to Wishlist
     </button>
         </div>
@@ -77,7 +86,7 @@ const initializeApp = async () => {
       .join("");
     img.innerHTML = product;
     changeBtn("clothing", "addToCart", data, "productCart");
-    changeBtn("clothing", "btnWishlist", data, "wishlist");   
+    changeBtn("clothing", "btnWishlist", data, "wishlist");
   }
   function renderJewelery(data) {
     // console.log("🚀 ~ renderJewelery ~ data:", data);
@@ -89,21 +98,25 @@ const initializeApp = async () => {
       .map((element) => {
         return `
     <div class="card mx-2 productCards border border-primary shadow-lg p-3 mb-3 bg-body-tertiary rounded" style="width: 18rem;">
-      <img src="${element.image
-          }" style="max-height:300px" class="card-img-top productCard" alt="${element.title
-          }">
+      <img src="${
+        element.image
+      }" style="max-height:300px" class="card-img-top productCard" alt="${
+          element.title
+        }">
       <div class="card-body d-flex flex-column ">
         <h5 class="card-title">${element.title}</h5>
         <p class="card-text text-danger mt-auto">Price: ${element.price}$</p>
         <p class="card-text text-success">Discount ${element.discount || 0}%</p>
         <div class="d-flex">
-        <a href="/src/Pages/products/productdetails/productdetails.html?id=${element.id
-          }"  class="btn mx-2 mt-auto btn-warning">Product Details</a>
-        <button class="btn mt-auto btn-success btnCart addToCart" productData="${element.id
-          }">Add to cart</button>
+        <a href="/src/Pages/products/productdetails/productdetails.html?id=${
+          element.id
+        }"  class="btn mx-2 mt-auto btn-warning">Product Details</a>
+        <button class="btn mt-auto btn-success btnCart addToCart" productData="${
+          element.id
+        }">Add to cart</button>
             <button type="button" class="btn btn-warning btnWishlist" productData=${
-                element.id
-    } aria-label="Add to Wishlist">
+              element.id
+            } aria-label="Add to Wishlist">
       Add to Wishlist
     </button>
         </div>
@@ -116,7 +129,6 @@ const initializeApp = async () => {
     img.innerHTML = product;
     changeBtn("jewelery", "addToCart", data, "productCart");
     changeBtn("jewelery", "btnWishlist", data, "wishlist");
-
   }
 
   function renderElectronics(data) {
@@ -127,21 +139,25 @@ const initializeApp = async () => {
       .map((element) => {
         return `
     <div class="card mx-2 border border-primary shadow-lg p-3 mb-5 bg-body-tertiary rounded" style="width: 18rem;">
-      <img src="${element.image
-          }" style="max-height:300px" class="card-img-top productCard" alt="${element.title
-          }">
+      <img src="${
+        element.image
+      }" style="max-height:300px" class="card-img-top productCard" alt="${
+          element.title
+        }">
       <div class="card-body d-flex flex-column ">
         <h5 class="card-title">${element.title}</h5>
         <p class="card-text text-danger mt-auto">Price: ${element.price}$</p>
         <p class="card-text text-success">Discount ${element.discount || 0}%</p>
         <div class="d-flex">
-        <a href="/src/Pages/products/productdetails/productdetails.html?id=${element.id
-          }"  class="btn mx-2 mt-auto btn-warning">Product Details</a>
-        <button class="btn mt-auto btn-success btnCart addToCart" productData="${element.id
-          }">Add to cart</button>
+        <a href="/src/Pages/products/productdetails/productdetails.html?id=${
+          element.id
+        }"  class="btn mx-2 mt-auto btn-warning">Product Details</a>
+        <button class="btn mt-auto btn-success btnCart addToCart" productData="${
+          element.id
+        }">Add to cart</button>
             <button type="button" class="btn btn-warning btnWishlist" productData=${
-                element.id
-    } aria-label="Add to Wishlist">
+              element.id
+            } aria-label="Add to Wishlist">
       Add to Wishlist
     </button>
         </div>
@@ -163,21 +179,25 @@ const initializeApp = async () => {
       .map((element) => {
         return `
     <div class="card mx-2 border border-primary shadow-lg p-3 mb-5 bg-body-tertiary rounded" style="width: 18rem;">
-      <img src="${element.image
-          }" style="max-height:300px" class="card-img-top productCard" alt="${element.title
-          }">
+      <img src="${
+        element.image
+      }" style="max-height:300px" class="card-img-top productCard" alt="${
+          element.title
+        }">
       <div class="card-body d-flex flex-column ">
         <h5 class="card-title">${element.title}</h5>
         <p class="card-text text-danger mt-auto">Price: ${element.price}$</p>
         <p class="card-text text-success">Discount ${element.discount || 0}%</p>
         <div class="d-flex">
-        <a href="/src/Pages/products/productdetails/productdetails.html?id=${element.id
-          }"  class="btn mx-2 mt-auto btn-warning">Product Details</a>
-<button class="btn mt-auto btn-success btnCart addToCart" productData="${element.id
-          }">Add to cart</button>
+        <a href="/src/Pages/products/productdetails/productdetails.html?id=${
+          element.id
+        }"  class="btn mx-2 mt-auto btn-warning">Product Details</a>
+<button class="btn mt-auto btn-success btnCart addToCart" productData="${
+          element.id
+        }">Add to cart</button>
         <button type="button" class="btn btn-warning btnWishlist" productData=${
-                element.id
-    } aria-label="Add to Wishlist">
+          element.id
+        } aria-label="Add to Wishlist">
       Add to Wishlist
     </button>
         </div>
@@ -198,21 +218,25 @@ const initializeApp = async () => {
       .map((element) => {
         return `
     <div class="card mx-2 border border-primary shadow-lg p-3 mb-5 bg-body-tertiary rounded" style="width: 18rem;">
-      <img src="${element.image
-          }" style="max-height:300px" class="card-img-top productCard" alt="${element.title
-          }">
+      <img src="${
+        element.image
+      }" style="max-height:300px" class="card-img-top productCard" alt="${
+          element.title
+        }">
       <div class="card-body d-flex flex-column ">
         <h5 class="card-title">${element.title}</h5>
         <p class="card-text text-danger mt-auto">Price: ${element.price}$</p>
         <p class="card-text text-success">Discount ${element.discount || 0}%</p>
         <div class="d-flex">
-        <a href="/src/Pages/products/productdetails/productdetails.html?id=${element.id
-          }"  class="btn mx-2 mt-auto btn-warning">Product Details</a>
-        <button class="btn mt-auto btn-success btnCart addToCart" productData="${element.id
-          }">Add to cart</button>
+        <a href="/src/Pages/products/productdetails/productdetails.html?id=${
+          element.id
+        }"  class="btn mx-2 mt-auto btn-warning">Product Details</a>
+        <button class="btn mt-auto btn-success btnCart addToCart" productData="${
+          element.id
+        }">Add to cart</button>
               <button type="button" class="btn btn-warning btnWishlist" productData=${
                 element.id
-    } aria-label="Add to Wishlist">
+              } aria-label="Add to Wishlist">
       Add to Wishlist
     </button>
         </div>
@@ -234,21 +258,27 @@ const initializeApp = async () => {
       .map((element) => {
         return `
       <div class="card mx-3 border border-primary shadow-lg p-3 mb-5 bg-body-tertiary rounded" style="width: 18rem;">
-        <img src="${element.image
-          }" style="max-height:300px" class="card-img-top productCard" alt="${element.title
-          }">
+        <img src="${
+          element.image
+        }" style="max-height:300px" class="card-img-top productCard" alt="${
+          element.title
+        }">
       <div class="card-body d-flex flex-column">
         <h5 class="card-title">${element.title}</h5>
         <p class="card-text text-danger mt-auto">Price: ${element.price}$</p>
-        <p class="card-text mt-auto text-success">Discount ${element.discount || 0
-          }%</p>
+        <p class="card-text mt-auto text-success">Discount ${
+          element.discount || 0
+        }%</p>
         <div class="d-flex">
-        <a href="/src/Pages/products/productdetails/productdetails.html?id=${element.id
-          }"  class="btn mx-2 mt-auto btn-warning">Product Details</a>
-        <button class="btn mt-auto btn-success btnCart addToCart" productData="${element.id
-          }">Add to cart</button>
-            <button type="button" class="btn btn-warning btnWishlist" productData=${element.id
-          } aria-label="Add to Wishlist">
+        <a href="/src/Pages/products/productdetails/productdetails.html?id=${
+          element.id
+        }"  class="btn mx-2 mt-auto btn-warning">Product Details</a>
+        <button class="btn mt-auto btn-success btnCart addToCart" productData="${
+          element.id
+        }">Add to cart</button>
+            <button type="button" class="btn btn-warning btnWishlist" productData=${
+              element.id
+            } aria-label="Add to Wishlist">
       Add to Wishlist
     </button>
         </div>
@@ -270,22 +300,29 @@ const initializeApp = async () => {
       .map((element) => {
         return `
       <div class="card mx-3 border border-primary shadow-lg p-3 mb-5 bg-body-tertiary rounded" style="width: 18rem;">
-        <img src="${element.image
-          }" style="max-height:300px" class="card-img-top productCard" alt="${element.title
-          }">
+        <img src="${
+          element.image
+        }" style="max-height:300px" class="card-img-top productCard" alt="${
+          element.title
+        }">
       <div class="card-body d-flex flex-column">
         <h5 class="card-title">${element.title}</h5>
-        <p class="card-text mt-auto text-danger mt-auto">Price: ${element.price
-          }$</p>
-        <p class="card-text mt-auto text-success">Discount ${element.discount || 0
-          }%</p>
+        <p class="card-text mt-auto text-danger mt-auto">Price: ${
+          element.price
+        }$</p>
+        <p class="card-text mt-auto text-success">Discount ${
+          element.discount || 0
+        }%</p>
         <div class="d-flex">
-        <a href="/src/Pages/products/productdetails/productdetails.html?id=${element.id
-          }"  class="btn mx-2 mt-auto btn-warning">Product Details</a>
-        <button class="btn mt-auto btn-success btnCart addToCart" productData="${element.id
-          }">Add to cart</button>
-            <button type="button" class="btn btn-warning btnWishlist" productData=${element.id
-          } aria-label="Add to Wishlist">
+        <a href="/src/Pages/products/productdetails/productdetails.html?id=${
+          element.id
+        }"  class="btn mx-2 mt-auto btn-warning">Product Details</a>
+        <button class="btn mt-auto btn-success btnCart addToCart" productData="${
+          element.id
+        }">Add to cart</button>
+            <button type="button" class="btn btn-warning btnWishlist" productData=${
+              element.id
+            } aria-label="Add to Wishlist">
       Add to Wishlist
     </button>
         </div>
@@ -303,7 +340,7 @@ const initializeApp = async () => {
 // CheckAuth(authData);
 if (currentPath == "/") {
   // isLoggedIn(authData, "./src/Pages/Register/register.html");
-  NavBar("navbar")
-  footerInjection("footer")
+  NavBar("navbar");
+  footerInjection("footer");
   document.addEventListener("DOMContentLoaded", initializeApp);
 }
