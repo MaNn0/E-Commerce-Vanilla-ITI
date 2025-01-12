@@ -5,26 +5,78 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <!-- <link rel="stylesheet" href="../../style.css" /> -->
     <title>E-Commerce</title>
 </head>
 
 <body>
     <nav class="navbar navbar-expand-lg px-5 bg-primary"></nav>
 
-    <div class="d-flex justify-content-center" style="height: 74vh;">
-
-        <form style="width: 1200px; height: 615px;" class="my-5 border bg-primary " action="">
-
+    <div class="d-flex justify-content-center align-items-center" style="min-height: 710px;">
+        <form id="contactForm" class="my-5 border border-primary shadow p-4 w-100 row g-3"
+            style="max-width: 1200px; height: 600px;" action="https://formspree.io/f/mzzzynkd" method="POST">
+            <h1 class="text-center">Contact Us</h1>
+            <div class="col-md-6">
+                <label for="inputName" class="form-label">Name</label>
+                <input type="text" name="name" class="form-control" id="inputName" placeholder="Your Name" required>
+            </div>
+            <div class="col-md-6">
+                <label for="inputEmail" class="form-label">Email</label>
+                <input type="email" name="email" placeholder="foo@gmail.com" class="form-control" id="inputEmail"
+                    required>
+            </div>
+            <div class="col-12">
+                <label for="inputMobile" class="form-label">Mobile Number</label>
+                <input type="tel" name="mobile" class="form-control" id="inputMobile" placeholder="+20xxxxxxxxx"
+                    pattern="^\+?[0-9]{10,15}$" required>
+                <div class="form-text">Format: +20xxxxxxxxx</div>
+            </div>
+            <div class="col-12">
+                <label for="inputMessage" class="form-label">Message</label>
+                <textarea name="message" class="form-control" id="inputMessage" placeholder="Your message here..."
+                    rows="5" required></textarea>
+            </div>
+            <div class="col-12 text-center">
+                <button type="submit" class="btn btn-primary px-4">Send</button>
+                <p class="form-text mt-2">We will reach out to you shortly.</p>
+            </div>
         </form>
     </div>
 
-    <footer class="footer bg-primary text-white py-4">
+    <footer class="footer bg-primary text-white py-4"></footer>
 
-    </footer>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script type="module" src="../../main.js"></script>
     <script type="module" src="./contact.js"></script>
+    <script>
+        const form = document.getElementById('contactForm');
+        form.addEventListener('submit', async (e) => {
+            e.preventDefault();
+
+            const formData = {
+                name: document.getElementById('inputName').value,
+                email: document.getElementById('inputEmail').value,
+                mobile: document.getElementById('inputMobile').value,
+                message: document.getElementById('inputMessage').value,
+            };
+
+            try {
+                const response = await fetch(form.action, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(formData),
+                });
+
+                if (response.ok) {
+                    alert('Your message has been sent successfully!');
+                    form.reset();
+                } else {
+                    alert('There was an error submitting your message. Please try again.');
+                }
+            } catch (error) {
+                alert('There was a network error. Please try again later.');
+            }
+        });
+    </script>
 </body>
 
 </html>

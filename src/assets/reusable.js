@@ -139,6 +139,10 @@ export const isLoggedIn = (authData, href) => {
             <li class="py-2">Hello, ${userData.firstName} ${userData.lastName}</li>
             <li><a class="dropdown-item border-top" href="/src/Pages/Profile/Profile.html"><i class="fa-regular fa-user"></i> Profile</a></li>
      
+            <li><a class="dropdown-item border-top" href="/src/Pages/Wishlist/wishlist.html"><i class="fa-regular fa-user"></i> Wishlist</a></li>
+     
+            <li><a class="dropdown-item border-top" href="/src/Pages/Orders/orders.html"><i class="fa-regular fa-user"></i> Orders</a></li>
+     
             <li><hr class="dropdown-divider"></li>
             <li><a class="dropdown-item logOutBtn" href="/"><i class="fa-solid fa-arrow-right-from-bracket"></i>LogOut</a></li>
           </ul>
@@ -590,17 +594,14 @@ export const NavBar = (navName) => {
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
           <ul class="navbar-nav me-auto">
-            <li class="nav-item">
-              <a class="nav-link text-white" href="/src/Pages/Profile/Profile.html"><i class="fa-regular fa-user"></i> Profile</a>
+                      <li class="nav-item">
+              <a class="nav-link text-white" href="/"><i class="fa-solid fa-house"></i>Home</a>
             </li>
             <li class="nav-item">
               <a class="nav-link text-white" href="/src/Pages/Cart/cart.html"><i class="fa-solid fa-cart-shopping"></i> Cart</a>
             </li>
             <li class="nav-item">
               <a class="nav-link text-white" href="/src/Pages/products/products.html"><i class="fa-solid fa-store"></i> Store</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link text-white" href="/src/Pages/Payment/Payment.html"><i class="fa-solid fa-credit-card"></i> Payment</a>
             </li>
             </li>  <li class="nav-item">
               <a class="nav-link text-white" href="/src/Pages/Contact/contact.html"><i class="fa-solid fa-credit-card"></i> Contact Us</a>
