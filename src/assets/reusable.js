@@ -417,36 +417,68 @@ export const transferGuestAction = (name, authType) => {
 export const searchButton = () => {
   const searchContainer = document.querySelector(".search-container");
   const searchBtn = document.querySelector(".searchBtn");
-  searchBtn.addEventListener("click", (e) => {
+  const searchResults = document.querySelector(".searchResults");
+
+  let products = []; // Store fetched products
+
+  // Fetch products when the button is clicked
+  searchBtn.addEventListener("click", async (e) => {
     e.preventDefault();
-    // Create the input element
-    const input = document.createElement("input");
-    input.type = "text";
-    input.placeholder = "Search...";
-    input.className = "searchInput"; // Add the base class
 
-    // Append the input element and trigger transition
-    searchContainer.replaceChild(input, searchBtn);
+    // Fetch product data
+    products = await fetchData();
 
-    // Allow initial styles to apply before adding the "active" class
-    setTimeout(() => {
-      input.classList.add("active", "searchInput2");
-      // input.focus();
-    }, 10);
+    let input = searchContainer.querySelector(".searchInput");
+    if (!input) {
+      input = document.createElement("input");
+      input.type = "text";
+      input.placeholder = "Search...";
+      input.className = "searchInput"; // Add the base class
 
-    // Handle blur event
-    input.addEventListener("blur", () => {
-      if (!input.value.trim()) {
-        input.classList.remove("active");
-        setTimeout(() => {
-          searchContainer.replaceChild(searchBtn, input);
-        }, 300);
-      }
-    });
+      searchContainer.replaceChild(input, searchBtn);
 
-    input.addEventListener("input", (e) => {
-      console.log("hi");
-    });
+      setTimeout(() => {
+        input.classList.add("active", "searchInput2");
+        input.focus();
+      }, 10);
+
+      input.addEventListener("blur", () => {
+        if (!input.value.trim()) {
+          input.classList.remove("active");
+          searchResults.classList.add("d-none");
+          setTimeout(() => {
+            searchContainer.replaceChild(searchBtn, input);
+          }, 300);
+        }
+      });
+
+      input.addEventListener("input", () => {
+        searchResults.classList.remove("d-none");
+
+        const foundProduct = products.filter((product) =>
+          product.title.toLowerCase().includes(input.value.toLowerCase())
+        );
+
+        if (foundProduct) {
+          searchResults.innerHTML = foundProduct
+            .map(
+              (product) => `
+    <a class="text-decoration-none " href="/src/Pages/products/productdetails/productdetails.html?id=${product.id}">
+    <div class="productlink">
+      <img style="width:50px" src="${product.image}" alt="Product Image" />
+      <span>${product.title}</span>
+      </div>
+    </a>
+  `
+            )
+            .join("");
+        } else {
+          searchResults.textContent = "No product found"; // If no product found
+        }
+      });
+    } else {
+      input.focus(); // Focus on the existing input
+    }
   });
 };
 
@@ -569,6 +601,7 @@ export const NavBar = (navName) => {
             </li>
             <li class="nav-item">
               <a class="nav-link text-white" href="/src/Pages/Payment/Payment.html"><i class="fa-solid fa-credit-card"></i> Payment</a>
+            </li>
             </li>  <li class="nav-item">
               <a class="nav-link text-white" href="/src/Pages/Contact/contact.html"><i class="fa-solid fa-credit-card"></i> Contact Us</a>
             </li>
@@ -577,6 +610,7 @@ export const NavBar = (navName) => {
             <input class="form-control me-2 searchInput" type="search" placeholder="Search" aria-label="Search" id="searchInput" />
             <div class="search-container">
               <button class="searchBtn" type="submit"><i class="fa-solid fa-magnifying-glass" style="color: #f6f5f4;"></i></button>
+              <div class="searchResults d-none"></div>
             </div>
             <span class="userBtn"></span>
           </form>
@@ -586,23 +620,19 @@ export const NavBar = (navName) => {
 
   // Inject the navbar HTML
   navElement.innerHTML = navbarHTML;
-  // Add event listeners or other logic here if needed
-  const searchBtn = navElement.querySelector(".searchBtn");
-  if (searchBtn) {
-    searchBtn.addEventListener("click", (e) => {
-      e.preventDefault(); // Prevent form submission
-      const searchInput = navElement.querySelector("#searchInput").value;
-      console.log("Search for:", searchInput);
-      // Add search functionality here
-    });
-  }
+
+  // Initialize the search button functionality
   searchButton();
+
   // Check if the user is logged in
   isLoggedIn(authData, "/src/Pages/Register/register.html");
 };
+
 // Change Button
+
 export function changeBtn(parent, child, fetchData, targetKey) {
-  // Define button text/icons based on the targetKey
+  // debugger
+
   let btnName = "";
   let btnRmName = "";
 
@@ -611,31 +641,34 @@ export function changeBtn(parent, child, fetchData, targetKey) {
     btnRmName = "Remove From Cart";
   } else {
     btnName = `<i class="fa-regular fa-heart"></i>`;
-    btnRmName = `<i class="fa-solid fa-heart" style="color:#b10b0b"></i>`;
+    btnRmName = `<i class="fa-solid fa-heart"></i>`;
   }
 
-  // Get the product cart/wishlist data from storage
+  // Get the product cart data from storage
+
   const product = getCookie(targetKey);
   const productInCart = product ? JSON.parse(product.value) : [];
 
-  // Select the container for the specific section
+  // Select the container
   const container = document.querySelector(`.${parent}`);
   if (!container) return; // Exit if the container doesn't exist
 
-  // Function to update button text and class within the specific section
+  // Function to update button text and class
   function updateButtons() {
-    const btnToChangeNodes = container.querySelectorAll(`.${child}`);
+    const btnToChangeNodes = document.querySelectorAll(`.${child}`);
 
     btnToChangeNodes.forEach((element) => {
       const productData = element.getAttribute("productdata");
 
-      // Check if the product is in the cart/wishlist
+      // Check if the product is in the cart
       const productExists = productInCart.some(
         (product) => product.id == productData
       );
 
       // Update the button text and class
       if (productExists) {
+        console.log("🚀 ~ changeBtn ~ btnRmName:", btnRmName);
+        console.log("🚀 ~ changeBtn ~ BtnName:", btnName);
         element.innerHTML = `${btnRmName}`;
         element.classList.remove("addToCartIcon");
         element.classList.add("removeFromCart");
@@ -652,36 +685,36 @@ export function changeBtn(parent, child, fetchData, targetKey) {
 
   // Add event listener to the container for event delegation
   container.addEventListener("click", (event) => {
-    const clickedButton = event.target.closest(`.${child}`);
-    if (clickedButton) {
-      const productData = clickedButton.getAttribute("productdata");
+    if (event.target.classList.contains(child.replace(".", ""))) {
+      //If you want to use it Pul Value
+      const productData = event.target.getAttribute("productdata");
 
-      // Find the product in the cart/wishlist
+      // Find the product in the cart
       const productIndex = productInCart.findIndex(
         (product) => product.id == productData
       );
 
       if (productIndex === -1) {
-        // Product doesn't exist in the cart/wishlist, so add it
+        // Product doesn't exist in the cart, so add it
         const productToAdd = fetchData.find(
           (product) => product.id === productData
         );
         if (productToAdd) {
-          // Set initial quantity to 1 (if applicable)
+          // Set initial quantity to 1
           productToAdd.quantity = 1;
           productInCart.push(productToAdd);
-          console.log("Product added to cart/wishlist:", productToAdd);
+          console.log("Product added to cart:", productToAdd);
         }
       } else {
-        // Product exists in the cart/wishlist, so remove it
+        // Product exists in the cart, so remove it
         const removedProduct = productInCart.splice(productIndex, 1);
-        console.log("Product removed from cart/wishlist:", removedProduct);
+        console.log("Product removed from cart:", removedProduct);
       }
 
-      // Update the storage with the new cart/wishlist data
+      // Update the storage with the new cart data
       setCookie(targetKey, productInCart, 1, authType); // Set cookie with 1-day expiration
 
-      // Update the buttons within the specific section
+      // Update the buttons to reflect the new cart state
       updateButtons();
     }
   });

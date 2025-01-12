@@ -1,15 +1,7 @@
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.min.js";
 import "@fortawesome/fontawesome-free/css/all.min.css";
-import {
-  getCookie,
-  addToCart,
-  fetchData,
-  NavBar,
-  changeBtn,
-  footerInjection,
-} from "../../assets/reusable";
-// import "./.css";
+import { NavBar, footerInjection } from "../../assets/reusable";
 
 const currentPath = window.location.pathname;
 if (currentPath.endsWith("contact.html")) {
