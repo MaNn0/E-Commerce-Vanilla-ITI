@@ -29,14 +29,13 @@ const currentPath = window.location.pathname;
 const initializeApp = async () => {
   //Lexical Declaration Variables
   // searchButton()
-  if(authCookie){
+  if (authCookie) {
     const userData = await fetchUserData();
     const userFromDB = userData.find(
-      (data) =>
-        data.email === JSON.parse(authData).email
+      (data) => data.email === JSON.parse(authData).email
     );
     console.log(userFromDB);
-  setCookie("orders", userFromDB.orders, 1, authType);
+    setCookie("orders", userFromDB.orders, 1, authType);
   }
   const btnCart = document.querySelectorAll(".btnCart");
   //DataFetched To Allocate to Function
@@ -85,15 +84,8 @@ const initializeApp = async () => {
         }%</span>
         </div>
         <div class="d-flex justify-content-between">
-        <button class="btn mt-auto btn-success btnCart addToCart" productData="${
-          element.id
-        }">Add to cart</button>
         
-        <button class="btn d-flex  btnWishlist fs-3" style="border:0" productData=${
-          element.id
-        } aria-label="Add to Wishlist">
-      
-    </button>
+    
         </div>
       </div>
       </div>
@@ -101,8 +93,17 @@ const initializeApp = async () => {
       })
       .join("");
     img.innerHTML = product;
-    changeBtn("clothing", "addToCart", data, "productCart");
-    changeBtn("clothing", "btnWishlist", data, "wishlist");
+    // <button class="btn mt-auto btn-success btnCart addToCart" productData="${
+    //   element.id
+    // }">Add to cart</button>
+
+    // <button class="btn d-flex  btnWishlist fs-3" style="border:0" productData=${
+    //   element.id
+    // } aria-label="Add to Wishlist">
+
+    // </button>
+    // changeBtn("clothing", "addToCart", data, "productCart");
+    // changeBtn("clothing", "btnWishlist", data, "wishlist");
   }
   function renderJewelery(data) {
     // console.log("🚀 ~ renderJewelery ~ data:", data);
@@ -132,13 +133,7 @@ const initializeApp = async () => {
         }%</span>
         </div>
         <div class="d-flex justify-content-between">
-        <button class="btn mt-auto btn-success btnCart addToCart" productData="${
-          element.id
-        }">Add to cart</button>
-        
-        <button class="btn d-flex  btnWishlist fs-3" style="border:0" productData=${
-          element.id
-        } aria-label="Add to Wishlist">
+
       
     </button>
         </div>
@@ -149,8 +144,15 @@ const initializeApp = async () => {
       .join("");
 
     img.innerHTML = product;
-    changeBtn("jewelery", "addToCart", data, "productCart");
-    changeBtn("jewelery", "btnWishlist", data, "wishlist");
+    //     <button class="btn mt-auto btn-success btnCart addToCart" productData="${
+    //   element.id
+    // }">Add to cart</button>
+
+    // <button class="btn d-flex  btnWishlist fs-3" style="border:0" productData=${
+    //   element.id
+    // } aria-label="Add to Wishlist"></button>
+    // changeBtn("jewelery", "addToCart", data, "productCart");
+    // changeBtn("jewelery", "btnWishlist", data, "wishlist");
   }
 
   function renderElectronics(data) {
@@ -179,15 +181,7 @@ const initializeApp = async () => {
         }%</span>
         </div>
         <div class="d-flex justify-content-between">
-        <button class="btn mt-auto btn-success btnCart addToCart" productData="${
-          element.id
-        }">Add to cart</button>
-        
-        <button class="btn d-flex  btnWishlist fs-3" style="border:0" productData=${
-          element.id
-        } aria-label="Add to Wishlist">
-      
-    </button>
+
         </div>
       </div>
       </div>
@@ -195,8 +189,17 @@ const initializeApp = async () => {
       })
       .join("");
     img.innerHTML = product;
-    changeBtn("electronics", "addToCart", data, "productCart");
-    changeBtn("electronics", "btnWishlist", data, "wishlist");
+    //         <button class="btn mt-auto btn-success btnCart addToCart" productData="${
+    //       element.id
+    //     }">Add to cart</button>
+
+    //     <button class="btn d-flex  btnWishlist fs-3" style="border:0" productData=${
+    //       element.id
+    //     } aria-label="Add to Wishlist">
+
+    // </button>
+    // changeBtn("electronics", "addToCart", data, "productCart");
+    // changeBtn("electronics", "btnWishlist", data, "wishlist");
   }
 
   function renderMobile(data) {
@@ -225,15 +228,7 @@ const initializeApp = async () => {
         }%</span>
         </div>
         <div class="d-flex justify-content-between">
-        <button class="btn mt-auto btn-success btnCart addToCart" productData="${
-          element.id
-        }">Add to cart</button>
-        
-        <button class="btn d-flex  btnWishlist fs-3" style="border:0" productData=${
-          element.id
-        } aria-label="Add to Wishlist">
-      
-    </button>
+
         </div>
       </div>
       </div>
@@ -241,8 +236,17 @@ const initializeApp = async () => {
       })
       .join("");
     img.innerHTML = product;
-    changeBtn("mobile", "addToCart", data, "productCart");
-    changeBtn("mobile", "btnWishlist", data, "wishlist");
+    //         <button class="btn mt-auto btn-success btnCart addToCart" productData="${
+    //       element.id
+    //     }">Add to cart</button>
+
+    //     <button class="btn d-flex  btnWishlist fs-3" style="border:0" productData=${
+    //       element.id
+    //     } aria-label="Add to Wishlist">
+
+    // </button>
+    // changeBtn("mobile", "addToCart", data, "productCart");
+    // changeBtn("mobile", "btnWishlist", data, "wishlist");
   }
   function renderImg(data) {
     const img = document.querySelector(".audio");
@@ -270,15 +274,7 @@ const initializeApp = async () => {
         }%</span>
         </div>
         <div class="d-flex justify-content-between">
-        <button class="btn mt-auto btn-success btnCart addToCart" productData="${
-          element.id
-        }">Add to cart</button>
-        
-        <button class="btn d-flex  btnWishlist fs-3" style="border:0" productData=${
-          element.id
-        } aria-label="Add to Wishlist">
-      
-    </button>
+
         </div>
       </div>
       </div>
@@ -286,8 +282,17 @@ const initializeApp = async () => {
       })
       .join("");
     img.innerHTML = product;
-    changeBtn("audio ", "addToCart", data, "productCart");
-    changeBtn("audio", "btnWishlist", data, "wishlist"); //Wishlist Button
+    //         <button class="btn mt-auto btn-success btnCart addToCart" productData="${
+    //       element.id
+    //     }">Add to cart</button>
+
+    //     <button class="btn d-flex  btnWishlist fs-3" style="border:0" productData=${
+    //       element.id
+    //     } aria-label="Add to Wishlist">
+
+    // </button>
+    // changeBtn("audio ", "addToCart", data, "productCart");
+    // changeBtn("audio", "btnWishlist", data, "wishlist"); //Wishlist Button
   }
 
   function renderGaming(data) {
@@ -316,15 +321,7 @@ const initializeApp = async () => {
         }%</span>
         </div>
         <div class="d-flex justify-content-between">
-        <button class="btn mt-auto btn-success btnCart addToCart" productData="${
-          element.id
-        }">Add to cart</button>
-        
-        <button class="btn d-flex  btnWishlist fs-3" style="border:0" productData=${
-          element.id
-        } aria-label="Add to Wishlist">
-      
-    </button>
+
         </div>
       </div>
       </div>
@@ -332,8 +329,17 @@ const initializeApp = async () => {
       })
       .join("");
     img.innerHTML = product;
-    changeBtn("gaming", "addToCart", data, "productCart"); //Cart Button
-    changeBtn("gaming", "btnWishlist", data, "wishlist"); //Wishlist Button
+    //         <button class="btn mt-auto btn-success btnCart addToCart" productData="${
+    //       element.id
+    //     }">Add to cart</button>
+
+    //     <button class="btn d-flex  btnWishlist fs-3" style="border:0" productData=${
+    //       element.id
+    //     } aria-label="Add to Wishlist">
+
+    // </button>
+    // changeBtn("gaming", "addToCart", data, "productCart"); //Cart Button
+    // changeBtn("gaming", "btnWishlist", data, "wishlist"); //Wishlist Button
   }
 
   function renderTv(data) {
@@ -362,15 +368,7 @@ const initializeApp = async () => {
         }%</span>
         </div>
         <div class="d-flex justify-content-between">
-        <button class="btn mt-auto btn-success btnCart addToCart" productData="${
-          element.id
-        }">Add to cart</button>
-        
-        <button class="btn d-flex  btnWishlist fs-3" style="border:0" productData=${
-          element.id
-        } aria-label="Add to Wishlist">
-      
-    </button>
+  
         </div>
       </div>
       </div>
@@ -378,8 +376,17 @@ const initializeApp = async () => {
       })
       .join("");
     img.innerHTML = product;
-    changeBtn("tv ", "addToCart", data, "productCart");
-    changeBtn("tv", "btnWishlist", data, "wishlist"); //Wishlist Button
+    //       <button class="btn mt-auto btn-success btnCart addToCart" productData="${
+    //       element.id
+    //     }">Add to cart</button>
+
+    //     <button class="btn d-flex  btnWishlist fs-3" style="border:0" productData=${
+    //       element.id
+    //     } aria-label="Add to Wishlist">
+
+    // </button>
+    // changeBtn("tv ", "addToCart", data, "productCart");
+    // changeBtn("tv", "btnWishlist", data, "wishlist"); //Wishlist Button
   }
 };
 

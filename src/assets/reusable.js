@@ -714,7 +714,7 @@ export function changeBtn(parent, child, fetchData, targetKey) {
       }
 
       // Update the storage with the new cart data
-      setCookie(targetKey, productInCart, 1, "cookies"); // Replace "cookies" with the appropriate authType
+      setCookie(targetKey, productInCart, 1, authType); // Replace "cookies" with the appropriate authType
 
       // Update the buttons to reflect the new cart state
       updateButtons();
