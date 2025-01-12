@@ -9,7 +9,7 @@ const products = productCart ? JSON.parse(productCart.value) : [];
 const productsName = productCart ? productCart.name : null;
 const AuthData = userDdata ? JSON.parse(userDdata.value) : null;
 
-console.log("🚀 ~ AuthData:", AuthData);
+console.log("🚀 ~ AuthData:", JSON.parse(authData).email );
 console.log("🚀 ~ products:", products);
 
 // Function to update the cart UI and calculations

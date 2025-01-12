@@ -176,7 +176,7 @@ export const isLoggedIn = (authData, href) => {
   }
 };
 // Post Data After Updating
-async function postData(data = {}, userId) {
+export async function postData(data = {}, userId) {
   try {
     // Validate input parameters
     if (!userId || typeof userId !== "string") {

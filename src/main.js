@@ -4,6 +4,7 @@ import "./style.css";
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import {
   getCookie,
+  setCookie,
   addToCart,
   fetchData,
   NavBar,
@@ -11,6 +12,7 @@ import {
   footerInjection,
 } from "./assets/reusable";
 import { Button } from "bootstrap/dist/js/bootstrap.bundle.min.js";
+import { fetchUserData } from "./Pages/Register/login";
 
 // Imports Ends Here
 //Global Declared Variables
@@ -27,7 +29,15 @@ const currentPath = window.location.pathname;
 const initializeApp = async () => {
   //Lexical Declaration Variables
   // searchButton()
-
+  if(authCookie){
+    const userData = await fetchUserData();
+    const userFromDB = userData.find(
+      (data) =>
+        data.email === JSON.parse(authData).email
+    );
+    console.log(userFromDB);
+  setCookie("orders", userFromDB.orders, 1, authType);
+  }
   const btnCart = document.querySelectorAll(".btnCart");
   //DataFetched To Allocate to Function
 
