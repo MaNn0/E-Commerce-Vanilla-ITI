@@ -7,78 +7,86 @@ import { amount_stripe, products } from './Payment.js'; // Import the amount_str
 // Initialize Stripe with your publishable key
 const stripe = await loadStripe('pk_test_51Qf9q7AnBfxoX5a3ubkQ9mbIGvB6FujzedMCkDo7AvQXnz9ZHZSbsrGP8P8oEWkMc6eckOGJthugfD0tk3Gljibw00uNOSK4YD');
 
-
-// Place Order Button Event Listener
 document.querySelector(".btn-primary").addEventListener("click", async function () {
   const address = document.getElementById("address").value.trim();
   const addressOptionSelected = document.querySelector('input[name="address-option"]:checked');
-  const ErrorContainer = document.querySelector('.footer-error .error-body-text'); // error text upper place order 
-console.log(addressOptionSelected)
-console.log(address)
-  if(products.length===0)
-  {
-   // Clear existing content in the container (optional)
-ErrorContainer.innerHTML = `
-<div class="alert alert-danger text-start py-2 mb-3" id="PlaceOrderError" role="alert">
-  You Can Not Place Order While No Items In Your Cart
-</div>
-`;
-return; // Exit the function early if there are no products
-  }
-  else  if (!address || !addressOptionSelected ) {
-    ErrorContainer.innerHTML = `
-    <div class="alert alert-danger text-start py-2 mb-3" id="PlaceOrderError" role="alert">
-      Please Check Your Address Information
-    </div>
-    `;
+  const errorContainer = document.querySelector('.footer-error .error-body-text');
+
+  // Clear previous error messages
+  errorContainer.innerHTML = "";
+
+  if (products.length === 0) {
+    showError("You cannot place an order while no items are in your cart.");
     return;
   }
 
-//if you want error modal
-  
+  if (!address || !addressOptionSelected) {
+    showError("Please check your address information.");
+    return;
+  }
 
-  // // Check if all required fields are filled
-  // if (!address || !addressOptionSelected ) {
-  //   document.getElementById("errorMessage").textContent = "Please fill all the required fields and select options where necessary.";
-  //   const errorModal = new bootstrap.Modal(document.getElementById("errorModal"));
-  //   errorModal.show();
-  //   return;
-  // }
+  const success_url = 'http://localhost:5173/src/Pages/Payment/myOrder.html'; // Redirect to myOrder.html after successful payment
+  const cancel_url = 'http://localhost:5173/src/Pages/Payment/fail.html';
 
-  // Define success and cancel URLs
-  const success_url = 'http://127.0.0.1:5500/src/Pages/Payment/success.html'; // Replace with your success page URL
-  const cancel_url = 'http://127.0.0.1:5500/src/Pages/Payment/fail.html'; // Replace with your failure page URL
-
-  // Log the products array for debugging
-  // console.log("Products:", products);
-  // products.forEach(product => {
-  //   const originalUrl = product.image;
-  //   const sanitizedUrl = encodeURI(originalUrl.trim().replace(/\s/g, '%20'));
-  //   console.log("Original URL:", originalUrl);
-  //   console.log("Sanitized URL:", sanitizedUrl);
-  // });
-
-  // Call the backend to create a Checkout Session
-  const response = await fetch('http://localhost:5000/create-checkout-session', {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({
+  try {
+    const response = await fetch('http://localhost:5000/create-checkout-session', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
         amount: amount_stripe,
         currency: 'EGP',
-        success_url: success_url,
-        cancel_url: cancel_url,
+        success_url,
+        cancel_url,
         products: products.map(product => ({
           title: product.title,
-          price: product.price * 100,
+          price: product.price * 100, // Stripe accepts prices in cents
           quantity: product.quantity || 1,
-          image: encodeURI(product.image.trim()), // Ensure this is valid product.image  encodeURI(product.image.trim().replace(/\s/g, '%20'))
+          image: encodeURI(product.image.trim()),
         })),
       }),
-      
-  });
+    });
 
-  const { id } = await response.json(); // Get the session ID
+    const { id } = await response.json(); // Get the session ID
 
-  // Redirect to Stripe's hosted payment page
-  await stripe.redirectToCheckout({ sessionId: id });
+    // Store the order in localStorage with a pending state
+    const order = {
+      sessionId: id,
+      products,
+      totalAmount: amount_stripe,
+      timestamp: new Date().toISOString(),
+      success: false, // Initially set to false
+    };
+
+    const existingOrders = JSON.parse(localStorage.getItem('orders')) || [];
+    existingOrders.push(order);
+    localStorage.setItem('orders', JSON.stringify(existingOrders));
+
+    // Redirect to Stripe's hosted payment page
+    await stripe.redirectToCheckout({ sessionId: id });
+  } catch (error) {
+    console.error("Error during checkout:", error);
+
+    // Store a failed order state
+    const failedOrder = {
+      products,
+      totalAmount: amount_stripe,
+      timestamp: new Date().toISOString(),
+      success: false, // Mark as failed
+    };
+
+    const existingOrders = JSON.parse(localStorage.getItem('orders')) || [];
+    existingOrders.push(failedOrder);
+    localStorage.setItem('orders', JSON.stringify(existingOrders));
+
+    showError("Something went wrong with your order. Please try again.");
+  }
 });
+
+function showError(message) {
+  const errorContainer = document.querySelector('.footer-error .error-body-text');
+  errorContainer.innerHTML = `
+    <div class="alert alert-danger text-start py-2 mb-3" role="alert">
+      ${message}
+    </div>
+  `;
+}

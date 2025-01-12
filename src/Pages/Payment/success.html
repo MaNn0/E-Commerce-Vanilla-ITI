@@ -5,14 +5,27 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Payment Successful</title>
   <link rel="stylesheet" href="success.css">
+  <script>
+    // Get the session ID from the URL parameters
+    const urlParams = new URLSearchParams(window.location.search);
+    const sessionId = urlParams.get('session_id');
+
+    // Redirect to myOrder.html with the session ID
+    if (sessionId) {
+      window.location.href = `myOrder.html?session_id=${sessionId}`;
+    } else {
+      // If session_id is not present, show an error message
+      document.body.innerHTML = "<h2>Error: Session ID is missing. Please try again.</h2>";
+    }
+  </script>
 </head>
 <body>
+  <!-- The page will automatically redirect after the script runs -->
   <div class="container">
     <div class="success-card">
       <h1>🎉 Payment Successful!</h1>
       <p>Thank you for your purchase. Your order has been successfully processed.</p>
-      <p>You will receive a confirmation email shortly.</p>
-      <a href="../products/products.html" class="btn">Back to Store</a>
+      <p>If you are not redirected, click <a href="myOrder.html">here</a>.</p>
     </div>
   </div>
 </body>
