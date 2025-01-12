@@ -1,6 +1,16 @@
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.min.js";
-import { isLoggedIn, authName, authData, authType, setCookie, getCookie, NavBar, addToCart,footerInjection } from "./../../assets/reusable";
+import {
+  isLoggedIn,
+  authName,
+  authData,
+  authType,
+  setCookie,
+  getCookie,
+  NavBar,
+  addToCart,
+  footerInjection,
+} from "./../../assets/reusable";
 
 // Retrieve products from cookies
 let productCart = getCookie("productCart");
@@ -8,8 +18,11 @@ let userDdata = getCookie("Auth");
 const products = productCart ? JSON.parse(productCart.value) : [];
 const productsName = productCart ? productCart.name : null;
 const AuthData = userDdata ? JSON.parse(userDdata.value) : null;
-
-console.log("🚀 ~ AuthData:", JSON.parse(authData).email );
+// if (!AuthData) {
+//   alert("you have to login first");
+//   window.location.href = "/src/Pages/Register/register.html";
+// }
+console.log("🚀 ~ AuthData:", JSON.parse(authData).email);
 console.log("🚀 ~ products:", products);
 
 // Function to update the cart UI and calculations
@@ -20,8 +33,14 @@ const updateQuantity = () => {
   let quantity = 0;
 
   if (products && products.length > 0) {
-    totalPrice = products.reduce((acc, product) => acc + product.price * product.quantity, 0);
-    discount = products.reduce((acc, product) => acc + (product.discount || 0) * product.quantity, 0);
+    totalPrice = products.reduce(
+      (acc, product) => acc + product.price * product.quantity,
+      0
+    );
+    discount = products.reduce(
+      (acc, product) => acc + (product.discount || 0) * product.quantity,
+      0
+    );
     quantity = products.reduce((acc, product) => acc + product.quantity, 0);
   }
 
@@ -30,7 +49,10 @@ const updateQuantity = () => {
   if (checkoutButton) {
     checkoutButton.addEventListener("click", () => {
       if (AuthData) {
-        localStorage.setItem("totalPrice", JSON.stringify(totalPrice - discount));
+        localStorage.setItem(
+          "totalPrice",
+          JSON.stringify(totalPrice - discount)
+        );
         window.location.href = "../Payment/Payment.html";
       } else {
         alert("You have to log in to proceed!");
@@ -47,19 +69,29 @@ const updateQuantity = () => {
   const orderSummary = document.querySelector(".orderSummary");
 
   if (titleCount) titleCount.textContent = `${quantity} item(s)`;
-  if (subTotal) subTotal.innerHTML = `Subtotal: ${quantity} item(s) <span>EGP ${totalPrice.toLocaleString()}</span>`;
-  if (discountElement) discountElement.innerHTML = `Discount <span>EGP ${discount.toLocaleString()}</span>`;
-  if (totalPriceElement) totalPriceElement.textContent = `${(totalPrice - discount).toLocaleString()} EGP`;
-  if (orderSummary && products.length < 1) orderSummary.innerHTML = '';
+  if (subTotal)
+    subTotal.innerHTML = `Subtotal: ${quantity} item(s) <span>EGP ${totalPrice.toLocaleString()}</span>`;
+  if (discountElement)
+    discountElement.innerHTML = `Discount <span>EGP ${discount.toLocaleString()}</span>`;
+  if (totalPriceElement)
+    totalPriceElement.textContent = `${(
+      totalPrice - discount
+    ).toLocaleString()} EGP`;
+  if (orderSummary && products.length < 1) orderSummary.innerHTML = "";
 
   // Render cart items
   const allItems = document.querySelector(".allItems");
   if (allItems) {
-    allItems.innerHTML = products.length > 0
-      ? products.map((product, index) => `
+    allItems.innerHTML =
+      products.length > 0
+        ? products
+            .map(
+              (product, index) => `
           <div class="cartItem">
             <div class="imageContainer">
-              <img class="image" src="${product.image}" height="164px" width="140px">
+              <img class="image" src="${
+                product.image
+              }" height="164px" width="140px">
             </div>
             <div class="itemName">
               <span>${product.title}</span>
@@ -75,8 +107,10 @@ const updateQuantity = () => {
               <button class="qtyButton" data-index="${index}" data-action="increment">+</button>
             </div>
           </div>
-        `).join("")
-      : "<h3>No items in cart.</h3>";
+        `
+            )
+            .join("")
+        : "<h3>No items in cart.</h3>";
   }
 };
 
@@ -109,10 +143,7 @@ if (allItems) {
 // Initialize the cart UI
 const currentPath = window.location.pathname;
 if (currentPath.endsWith("cart.html")) {
-  NavBar("navbar")
-  footerInjection("footer")
-  document.addEventListener("DOMContentLoaded",  updateQuantity);
+  NavBar("navbar");
+  footerInjection("footer");
+  document.addEventListener("DOMContentLoaded", updateQuantity);
 }
-
-
-
