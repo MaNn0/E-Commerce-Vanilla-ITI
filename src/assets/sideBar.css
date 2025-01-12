@@ -1,0 +1,224 @@
+:root {
+    --con: 70%;
+    --c1: #428aff;
+    --c2: #494949de;
+    line-height: 1.5;
+    font-weight: 400;
+  }
+  
+.sideBar {
+    position: fixed;
+    left: 0;
+    top: 0;
+    height: 100vh;
+    width: 80px;
+    background-color: var(--c1);
+    padding: 0.4rem 0.8rem;
+    transition: all 0.5s ease;
+    z-index: 1000;
+  }
+  
+  .sideBar.active {
+    width: 250px;
+    background-color: black;
+  }
+  
+  .sideBar.active ~ .main-content {
+    left: 250px;
+    width: calc(100% - 250px);
+  }
+  
+  /* Sidebar Button */
+  .sideBar #btn {
+    position: absolute;
+    color: var(--white);
+    top: 0.4rem;
+    left: 50%;
+    font-size: 1.2rem;
+    line-height: 50px;
+    transform: translateX(-50%);
+    cursor: pointer;
+  }
+  
+  .sideBar.active #btn {
+    left: 90%;
+  }
+  
+  /* Sidebar Logo */
+  .sideBar .top .logo {
+    color: var(--white);
+    display: flex;
+    height: 50px;
+    width: 100%;
+    align-items: center;
+    pointer-events: none;
+    opacity: 0;
+  }
+  
+  .sideBar.active .top .logo {
+    opacity: 1;
+  }
+  
+  .top .logo i {
+    font-size: 2rem;
+    margin-right: 15px;
+  }
+  
+  /* Sidebar User Section */
+  .user {
+    display: flex;
+    align-items: center;
+    margin: 1rem 0;
+  }
+  
+  .user p {
+    color: var(--white);
+    opacity: 0;
+    margin-left: 1rem;
+  }
+  
+  .sideBar.active .user p {
+    opacity: 1;
+  }
+  
+  .bold {
+    font-weight: 600;
+  }
+  
+  /* Sidebar List Items */
+  .sideBar ul {
+    padding: 0;
+  }
+  
+  .sideBar ul li {
+    position: relative;
+    list-style: none;
+    height: 50px;
+    width: 90%;
+    margin: 0.8rem auto;
+    line-height: 0px;
+  
+  }
+  
+  .sideBar ul li a {
+    color: var(--white);
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    border-radius: 0.8rem;
+    transition: all 0.5s ease;
+  }
+  
+  .sideBar ul li a:hover {
+    background-color: var(--c1);
+    color: #12171e;
+  }
+  
+  .sideBar ul li a i {
+    min-width: 50px;
+    text-align: center;
+    height: 50px;
+    border-radius: 12px;
+    line-height: 50px;
+  }
+  
+  /* Sidebar Text and Tooltips */
+  .sideBar .navItem {
+    opacity: 0;
+  }
+  
+  .sideBar.active .navItem {
+    opacity: 1;
+  }
+  
+  .sideBar ul li .toolTip {
+    position: absolute;
+    left: 125px;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    box-shadow: 0 0.5rem 0.8rem black;
+    border-radius: 0.6rem;
+    padding: 0.4rem 1.2rem;
+    line-height: 1.8rem;
+    z-index: 20;
+    opacity: 0;
+    background-color: var(--white);
+    color: black;
+  }
+  
+  .sideBar ul li:hover .toolTip {
+    opacity: 1;
+  }
+  
+  .sideBar.active ul li .toolTip {
+    display: none;
+  }
+  
+  /* User Image */
+  .userImg {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    border: 1px solid var(--c1f);
+  }
+  
+  /* Navbar Styles */
+  .navbar {
+    background-color: var(--c1);
+  }
+  
+  /* Search Icon and Input */
+  .searchIcon {
+    position: absolute;
+    right: 50px;
+  }
+  
+  .searchInput {
+    width: 700px;
+    height: 50px;
+  }
+  
+  .searchForm .searchIcon {
+    position: relative;
+  }
+  
+  /* Icon Links */
+  .iconLinks {
+    padding: 5px;
+  }
+  
+  .iconLinks i {
+    color: black;
+    padding: 10px;
+  }
+  /* sideBar ENds HEre YYAAAAAAAAAAAAAA SUUUUUUUUUUUUUUUUUUI */
+  
+  /* Main Content Section */
+  .main-content {
+    position: relative;
+    /* min-height: 100vh; */
+    top: 0;
+    /* left: 80px; */
+    transition: all 0.5s ease;
+    width: calc(100% - 80px);
+    padding: 1rem;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    display: flex;
+    justify-content: center; /* Center horizontally */
+    align-items: center; /* Center vertically */
+  }
+  
+  /* Blur Effect for Background */
+  .main-content::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: inherit;
+    filter: blur(8px);
+    z-index: 1;
+  }

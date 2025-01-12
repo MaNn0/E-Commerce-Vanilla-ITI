@@ -4,18 +4,18 @@ import "@fortawesome/fontawesome-free/css/all.min.css";
 import "./profile.css";
 import {  authData, authType } from "../../assets/reusable";
 import { formSubmit } from "../../assets/reusable";
-
+import { sideBarInjection } from "../../assets/sideBar";
 // Initialize the app
 const initializeApp = () => {
   // Toggle sidebar
-  let btn = document.querySelector("#btn");
-  let sideBar = document.querySelector(".sideBar");
-  if (btn && sideBar) {
-    btn.onclick = function () {
-      sideBar.classList.toggle("active");
-    };
-  }
-
+  // let btn = document.querySelector("#btn");
+  // let sideBar = document.querySelector(".sideBar");
+  // if (btn && sideBar) {
+  //   btn.onclick = function () {
+  //     sideBar.classList.toggle("active");
+  //   };
+  // }
+  sideBarInjection("sideBar")
   // Populate user name
   let UserData;
   try {
