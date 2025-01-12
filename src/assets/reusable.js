@@ -642,7 +642,7 @@ export function changeBtn(parent, child, fetchData, targetKey) {
     btnRmName = "Remove From Cart";
   } else {
     btnName = `<i class="fa-regular fa-heart"></i>`;
-    btnRmName = `<i class="fa-solid fa-heart"></i>`;
+    btnRmName = `<i class="fa-solid fa-heart" style="color:#b10b0b"></i>`;
   }
 
   // Get the product cart data from storage
