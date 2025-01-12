@@ -3,7 +3,7 @@ const switchBtnLogin = document.querySelector(".switchBtnLogin");
 const switchBtnRegister = document.querySelector(".switchBtnRegister");
 const hideLogin = document.querySelector("#toggleHideLogin");
 const hideRegister = document.querySelector("#toggleHideRegister");
-NavBar("navbar")
+NavBar("navbar");
 // We Have to check id and E-mail Uniqness
 
 switchBtnLogin.addEventListener("click", () => {
@@ -47,12 +47,12 @@ const cityError = document.querySelector(".cityError");
 
 async function postData(data = {}) {
   try {
-    const url="http://localhost:3000/accounts"
+    const url = "http://localhost:3000/accounts";
     // Fetch options
     const options = {
-      method: 'POST', // Specify the request method
+      method: "POST", // Specify the request method
       headers: {
-        'Content-Type': 'application/json', // Set the content type to JSON
+        "Content-Type": "application/json", // Set the content type to JSON
       },
       body: JSON.stringify(data), // Convert the data to JSON
     };
@@ -69,11 +69,11 @@ async function postData(data = {}) {
     const result = await response.json();
 
     // Log the result
-    console.log('Success:', result);
+    console.log("Success:", result);
     return result; // Return the parsed result
   } catch (error) {
     // Handle errors
-    console.error('Error:', error);
+    console.error("Error:", error);
   }
 }
 
@@ -138,7 +138,8 @@ signup.addEventListener("submit", (e) => {
 
   // Loop through all form elements
   for (let element of e.target.elements) {
-    if (element.type !== 'submit' && element.name) { // Skip the submit button and elements without a name
+    if (element.type !== "submit" && element.name) {
+      // Skip the submit button and elements without a name
       if (element.value) {
         // console.log(`${element.name} || ${element.value}`);
         formData[element.name.trim()] = element.value.trim(); // Trim keys and values
@@ -147,11 +148,11 @@ signup.addEventListener("submit", (e) => {
   }
 
   console.log(formData); // Log the formData object
- 
+
   let noErrors = showError();
   if (noErrors === 0) {
     sendMail();
-    postData(formData)
+    postData(formData);
   }
 });
 let otp = ""; // global otp to be accessed in another functions
@@ -175,7 +176,7 @@ const check = document.querySelector(".check");
 const welcome = document.querySelector(".welcome");
 function sendMail() {
   otp = generateOTP(); // Generate OTP
-  // console.log(otp);
+  console.log(otp);
 
   let params = {
     to_name: nameForm.value, // First name
@@ -197,7 +198,7 @@ function sendMail() {
 }
 check.addEventListener("click", (e) => {
   e.preventDefault();
-  if (otpInput.value === otp) {
+  if (otpInput.value.trim() === otp) {
     verify.classList.remove("disabled");
     otpError.classList.remove("text-danger");
     otpError.classList.add("text-success");

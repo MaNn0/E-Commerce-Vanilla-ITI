@@ -56,27 +56,33 @@ const initializeApp = async () => {
       .slice(0, 5)
       .map((element) => {
         return `
-    <div class="card mx-2 border border-primary shadow-lg p-3 mb-5 bg-body-tertiary rounded" style="width: 18rem;">
+    <div class="hoverCard card mx-2 border border-primary shadow-lg p-3 mb-5 bg-body-tertiary rounded" style="width: 18rem;">
+    <a href="/src/Pages/products/productdetails/productdetails.html?id=${
+      element.id
+    }"class=" mx-2 mt-auto text-decoration-none">
       <img src="${
         element.image
-      }" style="max-height:300px" class="card-img-top productCard" alt="${
+      }" style="max-height:300px;min-height: 300px;" class="card-img-top productCard " alt="${
           element.title
         }">
-      <div class="card-body d-flex flex-column ">
-        <h5 class="card-title">${element.title}</h5>
-        <p class="card-text text-danger mt-auto">Price: ${element.price}$</p>
-        <p class="card-text text-success">Discount ${element.discount || 0}%</p>
-        <div class="d-flex">
-        <a href="/src/Pages/products/productdetails/productdetails.html?id=${
-          element.id
-        }"  class="btn mx-2 mt-auto btn-warning">Product Details</a>
+        <h5 class="card-title mt-2">${element.title}</h5>
+        </a>
+      <div class="card-body d-flex flex-column">
+        <div class="d-flex justify-content-between align-items-center mt-auto mb-3">
+        <span class="card-text fs-3 mt-auto"><sup>$</sup>${element.price}</span>
+        <span class="card-text text-success">Discount ${
+          element.discount || 0
+        }%</span>
+        </div>
+        <div class="d-flex justify-content-between">
         <button class="btn mt-auto btn-success btnCart addToCart" productData="${
           element.id
         }">Add to cart</button>
-              <button class="btn btnWishlist" style="border:0" productData=${
-              element.id
-            } aria-label="Add to Wishlist">
-      Add to Wishlist
+        
+        <button class="btn d-flex  btnWishlist fs-3" style="border:0" productData=${
+          element.id
+        } aria-label="Add to Wishlist">
+      
     </button>
         </div>
       </div>
@@ -97,27 +103,33 @@ const initializeApp = async () => {
       .slice(0, 5)
       .map((element) => {
         return `
-    <div class="card mx-2 productCards border border-primary shadow-lg p-3 mb-3 bg-body-tertiary rounded" style="width: 18rem;">
+        <div class="hoverCard card mx-2 border border-primary shadow-lg p-3 mb-5 bg-body-tertiary rounded" style="width: 18rem;">
+    <a href="/src/Pages/products/productdetails/productdetails.html?id=${
+      element.id
+    }"class=" mx-2 mt-auto text-decoration-none">
       <img src="${
         element.image
-      }" style="max-height:300px" class="card-img-top productCard" alt="${
+      }" style="max-height:300px;min-height: 300px;" class="card-img-top productCard " alt="${
           element.title
         }">
-      <div class="card-body d-flex flex-column ">
-        <h5 class="card-title">${element.title}</h5>
-        <p class="card-text text-danger mt-auto">Price: ${element.price}$</p>
-        <p class="card-text text-success">Discount ${element.discount || 0}%</p>
-        <div class="d-flex">
-        <a href="/src/Pages/products/productdetails/productdetails.html?id=${
-          element.id
-        }"  class="btn mx-2 mt-auto btn-warning">Product Details</a>
+        <h5 class="card-title mt-2">${element.title}</h5>
+        </a>
+      <div class="card-body d-flex flex-column">
+        <div class="d-flex justify-content-between align-items-center mt-auto mb-3">
+        <span class="card-text fs-3 mt-auto"><sup>$</sup>${element.price}</span>
+        <span class="card-text text-success">Discount ${
+          element.discount || 0
+        }%</span>
+        </div>
+        <div class="d-flex justify-content-between">
         <button class="btn mt-auto btn-success btnCart addToCart" productData="${
           element.id
         }">Add to cart</button>
-              <button class="btn btnWishlist" style="border:0" productData=${
-              element.id
-            } aria-label="Add to Wishlist">
-      Add to Wishlist
+        
+        <button class="btn d-flex  btnWishlist fs-3" style="border:0" productData=${
+          element.id
+        } aria-label="Add to Wishlist">
+      
     </button>
         </div>
       </div>
@@ -138,27 +150,33 @@ const initializeApp = async () => {
       .slice(0, 5)
       .map((element) => {
         return `
-    <div class="card mx-2 border border-primary shadow-lg p-3 mb-5 bg-body-tertiary rounded" style="width: 18rem;">
+       <div class="hoverCard card mx-2 border border-primary shadow-lg p-3 mb-5 bg-body-tertiary rounded" style="width: 18rem;">
+    <a href="/src/Pages/products/productdetails/productdetails.html?id=${
+      element.id
+    }"class=" mx-2 mt-auto text-decoration-none">
       <img src="${
         element.image
-      }" style="max-height:300px" class="card-img-top productCard" alt="${
+      }" style="max-height:300px;min-height: 300px;" class="card-img-top productCard " alt="${
           element.title
         }">
-      <div class="card-body d-flex flex-column ">
-        <h5 class="card-title">${element.title}</h5>
-        <p class="card-text text-danger mt-auto">Price: ${element.price}$</p>
-        <p class="card-text text-success">Discount ${element.discount || 0}%</p>
-        <div class="d-flex">
-        <a href="/src/Pages/products/productdetails/productdetails.html?id=${
-          element.id
-        }"  class="btn mx-2 mt-auto btn-warning">Product Details</a>
+        <h5 class="card-title mt-2">${element.title}</h5>
+        </a>
+      <div class="card-body d-flex flex-column">
+        <div class="d-flex justify-content-between align-items-center mt-auto mb-3">
+        <span class="card-text fs-3 mt-auto"><sup>$</sup>${element.price}</span>
+        <span class="card-text text-success">Discount ${
+          element.discount || 0
+        }%</span>
+        </div>
+        <div class="d-flex justify-content-between">
         <button class="btn mt-auto btn-success btnCart addToCart" productData="${
           element.id
         }">Add to cart</button>
-              <button class="btn btnWishlist" style="border:0" productData=${
-              element.id
-            } aria-label="Add to Wishlist">
-      Add to Wishlist
+        
+        <button class="btn d-flex  btnWishlist fs-3" style="border:0" productData=${
+          element.id
+        } aria-label="Add to Wishlist">
+      
     </button>
         </div>
       </div>
@@ -178,27 +196,33 @@ const initializeApp = async () => {
       .slice(0, 5)
       .map((element) => {
         return `
-    <div class="card mx-2 border border-primary shadow-lg p-3 mb-5 bg-body-tertiary rounded" style="width: 18rem;">
+        <div class="hoverCard card mx-2 border border-primary shadow-lg p-3 mb-5 bg-body-tertiary rounded" style="width: 18rem;">
+    <a href="/src/Pages/products/productdetails/productdetails.html?id=${
+      element.id
+    }"class=" mx-2 mt-auto text-decoration-none">
       <img src="${
         element.image
-      }" style="max-height:300px" class="card-img-top productCard" alt="${
+      }" style="max-height:300px;min-height: 300px;" class="card-img-top productCard " alt="${
           element.title
         }">
-      <div class="card-body d-flex flex-column ">
-        <h5 class="card-title">${element.title}</h5>
-        <p class="card-text text-danger mt-auto">Price: ${element.price}$</p>
-        <p class="card-text text-success">Discount ${element.discount || 0}%</p>
-        <div class="d-flex">
-        <a href="/src/Pages/products/productdetails/productdetails.html?id=${
-          element.id
-        }"  class="btn mx-2 mt-auto btn-warning">Product Details</a>
-<button class="btn mt-auto btn-success btnCart addToCart" productData="${
+        <h5 class="card-title mt-2">${element.title}</h5>
+        </a>
+      <div class="card-body d-flex flex-column">
+        <div class="d-flex justify-content-between align-items-center mt-auto mb-3">
+        <span class="card-text fs-3 mt-auto"><sup>$</sup>${element.price}</span>
+        <span class="card-text text-success">Discount ${
+          element.discount || 0
+        }%</span>
+        </div>
+        <div class="d-flex justify-content-between">
+        <button class="btn mt-auto btn-success btnCart addToCart" productData="${
           element.id
         }">Add to cart</button>
-        <button type="button" class="btn btn-warning btnWishlist" productData=${
+        
+        <button class="btn d-flex  btnWishlist fs-3" style="border:0" productData=${
           element.id
         } aria-label="Add to Wishlist">
-      Add to Wishlist
+      
     </button>
         </div>
       </div>
@@ -217,27 +241,33 @@ const initializeApp = async () => {
       .slice(0, 5)
       .map((element) => {
         return `
-    <div class="card mx-2 border border-primary shadow-lg p-3 mb-5 bg-body-tertiary rounded" style="width: 18rem;">
+        <div class="hoverCard card mx-2 border border-primary shadow-lg p-3 mb-5 bg-body-tertiary rounded" style="width: 18rem;">
+    <a href="/src/Pages/products/productdetails/productdetails.html?id=${
+      element.id
+    }"class=" mx-2 mt-auto text-decoration-none">
       <img src="${
         element.image
-      }" style="max-height:300px" class="card-img-top productCard" alt="${
+      }" style="max-height:300px;min-height: 300px;" class="card-img-top productCard " alt="${
           element.title
         }">
-      <div class="card-body d-flex flex-column ">
-        <h5 class="card-title">${element.title}</h5>
-        <p class="card-text text-danger mt-auto">Price: ${element.price}$</p>
-        <p class="card-text text-success">Discount ${element.discount || 0}%</p>
-        <div class="d-flex">
-        <a href="/src/Pages/products/productdetails/productdetails.html?id=${
-          element.id
-        }"  class="btn mx-2 mt-auto btn-warning">Product Details</a>
+        <h5 class="card-title mt-2">${element.title}</h5>
+        </a>
+      <div class="card-body d-flex flex-column">
+        <div class="d-flex justify-content-between align-items-center mt-auto mb-3">
+        <span class="card-text fs-3 mt-auto"><sup>$</sup>${element.price}</span>
+        <span class="card-text text-success">Discount ${
+          element.discount || 0
+        }%</span>
+        </div>
+        <div class="d-flex justify-content-between">
         <button class="btn mt-auto btn-success btnCart addToCart" productData="${
           element.id
         }">Add to cart</button>
-              <button type="button" class="btn btn-warning btnWishlist" productData=${
-                element.id
-              } aria-label="Add to Wishlist">
-      Add to Wishlist
+        
+        <button class="btn d-flex  btnWishlist fs-3" style="border:0" productData=${
+          element.id
+        } aria-label="Add to Wishlist">
+      
     </button>
         </div>
       </div>
@@ -257,29 +287,33 @@ const initializeApp = async () => {
       .slice(0, 5)
       .map((element) => {
         return `
-      <div class="card mx-3 border border-primary shadow-lg p-3 mb-5 bg-body-tertiary rounded" style="width: 18rem;">
-        <img src="${
-          element.image
-        }" style="max-height:300px" class="card-img-top productCard" alt="${
+    <div class="hoverCard card mx-2 border border-primary shadow-lg p-3 mb-5 bg-body-tertiary rounded" style="width: 18rem;">
+    <a href="/src/Pages/products/productdetails/productdetails.html?id=${
+      element.id
+    }"class=" mx-2 mt-auto text-decoration-none">
+      <img src="${
+        element.image
+      }" style="max-height:300px;min-height: 300px;" class="card-img-top productCard " alt="${
           element.title
         }">
+        <h5 class="card-title mt-2">${element.title}</h5>
+        </a>
       <div class="card-body d-flex flex-column">
-        <h5 class="card-title">${element.title}</h5>
-        <p class="card-text text-danger mt-auto">Price: ${element.price}$</p>
-        <p class="card-text mt-auto text-success">Discount ${
+        <div class="d-flex justify-content-between align-items-center mt-auto mb-3">
+        <span class="card-text fs-3 mt-auto"><sup>$</sup>${element.price}</span>
+        <span class="card-text text-success">Discount ${
           element.discount || 0
-        }%</p>
-        <div class="d-flex">
-        <a href="/src/Pages/products/productdetails/productdetails.html?id=${
-          element.id
-        }"  class="btn mx-2 mt-auto btn-warning">Product Details</a>
+        }%</span>
+        </div>
+        <div class="d-flex justify-content-between">
         <button class="btn mt-auto btn-success btnCart addToCart" productData="${
           element.id
         }">Add to cart</button>
-              <button class="btn btnWishlist" style="border:0" productData=${
-              element.id
-            } aria-label="Add to Wishlist">
-      Add to Wishlist
+        
+        <button class="btn d-flex  btnWishlist fs-3" style="border:0" productData=${
+          element.id
+        } aria-label="Add to Wishlist">
+      
     </button>
         </div>
       </div>
@@ -299,31 +333,33 @@ const initializeApp = async () => {
       .slice(0, 5)
       .map((element) => {
         return `
-      <div class="card mx-3 border border-primary shadow-lg p-3 mb-5 bg-body-tertiary rounded" style="width: 18rem;">
-        <img src="${
-          element.image
-        }" style="max-height:300px" class="card-img-top productCard" alt="${
+        <div class="hoverCard card mx-2 border border-primary shadow-lg p-3 mb-5 bg-body-tertiary rounded" style="width: 18rem;">
+    <a href="/src/Pages/products/productdetails/productdetails.html?id=${
+      element.id
+    }"class=" mx-2 mt-auto text-decoration-none">
+      <img src="${
+        element.image
+      }" style="max-height:300px;" class="card-img-top productCard " alt="${
           element.title
         }">
+        <h5 class="card-title mt-2">${element.title}</h5>
+        </a>
       <div class="card-body d-flex flex-column">
-        <h5 class="card-title">${element.title}</h5>
-        <p class="card-text mt-auto text-danger mt-auto">Price: ${
-          element.price
-        }$</p>
-        <p class="card-text mt-auto text-success">Discount ${
+        <div class="d-flex justify-content-between align-items-center mt-auto mb-3">
+        <span class="card-text fs-3 mt-auto"><sup>$</sup>${element.price}</span>
+        <span class="card-text text-success">Discount ${
           element.discount || 0
-        }%</p>
-        <div class="d-flex">
-        <a href="/src/Pages/products/productdetails/productdetails.html?id=${
-          element.id
-        }"  class="btn mx-2 mt-auto btn-warning">Product Details</a>
+        }%</span>
+        </div>
+        <div class="d-flex justify-content-between">
         <button class="btn mt-auto btn-success btnCart addToCart" productData="${
           element.id
         }">Add to cart</button>
-            <button class="btn btnWishlist" style="border:0" productData=${
-              element.id
-            } aria-label="Add to Wishlist">
-      Add to Wishlist
+        
+        <button class="btn d-flex  btnWishlist fs-3" style="border:0" productData=${
+          element.id
+        } aria-label="Add to Wishlist">
+      
     </button>
         </div>
       </div>

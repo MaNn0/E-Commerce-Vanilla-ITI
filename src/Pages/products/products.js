@@ -8,7 +8,7 @@ import {
   NavBar,
   fetchData,
   changeBtn,
-  footerInjection
+  footerInjection,
 } from "../../assets/reusable";
 import "./products.css";
 
@@ -60,8 +60,8 @@ const renderProducts = async (data, container) => {
     )
     .join("");
 
-    changeBtn("products", "addToCart", fetchedData,"productCart");
-    changeBtn("products", "btnWishlist", fetchedData,"wishlist");
+  changeBtn("products", "addToCart", fetchedData, "productCart");
+  changeBtn("products", "btnWishlist", fetchedData, "wishlist");
 };
 
 // Add product to cart
@@ -103,7 +103,6 @@ const renderProducts = async (data, container) => {
 //     setCookie("wishlist", existingProducts, 1, authType);
 //   }
 
-  
 // };
 
 // Initialize the app
@@ -209,8 +208,7 @@ const initializeApp = async () => {
 // Check if the current page is the products page
 const currentPath = window.location.pathname;
 if (currentPath.endsWith("products.html")) {
-
   NavBar("navbar");
-  footerInjection("footer")
+  footerInjection("footer");
   document.addEventListener("DOMContentLoaded", initializeApp);
 }

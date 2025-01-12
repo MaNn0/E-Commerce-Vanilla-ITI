@@ -43,8 +43,7 @@ export function setCookie(name, value, daysToExpire, authType) {
       const sessionValue = JSON.stringify(value); // Convert value to JSON string
       sessionStorage.setItem(name, sessionValue);
       // console.log("🚀 ~ setCookie ~ sessionStorage set:", { name, value });
-    }
-    else {
+    } else {
       const localValue = JSON.stringify(value); // Convert value to JSON string
       localStorage.setItem(name, localValue);
     }
@@ -68,8 +67,7 @@ export function getCookie(name) {
     } catch (error) {
       console.error("Error parsing sessionStorage data:", error);
     }
-  }
-  else if (localStorage.getItem(name)) {
+  } else if (localStorage.getItem(name)) {
     const localValue = localStorage.getItem(name);
     try {
       const localData = JSON.parse(localValue); // Parse the session data
@@ -89,8 +87,6 @@ export function getCookie(name) {
       }
     }
   }
-
-
 
   return null;
 }
@@ -119,10 +115,8 @@ export const isLoggedIn = (authData, href) => {
   // If authData is not provided, return early
   if (!authData) {
     console.error("No authentication data provided.");
-  }
-  else {
+  } else {
     console.error("Authentication data provided.");
-
   }
 
   // Parse user data from authData
@@ -215,8 +209,8 @@ async function postData(data = {}, userId) {
         response.status === 404
           ? "User not found"
           : response.status === 400
-            ? "Invalid data provided"
-            : `HTTP error! Status: ${response.status}`;
+          ? "Invalid data provided"
+          : `HTTP error! Status: ${response.status}`;
       throw new Error(errorMessage);
     }
 
@@ -402,28 +396,24 @@ export const addToCart = (productId, products) => {
 };
 // Fetch Data
 
-
 // is userLoged in Cart Btn Login Button
 export const transferGuestAction = (name, authType) => {
-  const localItem = localStorage.getItem(name)
-  console.log("🚀 ~ transferGuestAction ~ localItem:", localItem)
-  const localValue = JSON.parse(localItem)
-  console.log("🚀 ~ transferGuestAction ~ localValue:", localValue)
+  const localItem = localStorage.getItem(name);
+  console.log("🚀 ~ transferGuestAction ~ localItem:", localItem);
+  const localValue = JSON.parse(localItem);
+  console.log("🚀 ~ transferGuestAction ~ localValue:", localValue);
   if (localValue) {
     if (authType === "cookies") {
       setCookie(name, localValue, 1, authType);
-      localStorage.removeItem(name)
+      localStorage.removeItem(name);
     } else if (authType === "session") {
       setCookie(name, localValue, 1, authType);
-      localStorage.removeItem(name)
-    }
-    else {
+      localStorage.removeItem(name);
+    } else {
       console.log("🚀 ~ transferGuestAction ~ lovalValue:", localValue);
-
     }
   }
-
-}
+};
 export const searchButton = () => {
   const searchContainer = document.querySelector(".search-container");
   const searchBtn = document.querySelector(".searchBtn");
@@ -458,7 +448,7 @@ export const searchButton = () => {
       console.log("hi");
     });
   });
-}
+};
 
 export const footerInjection = (footerNam) => {
   const footerElement = document.querySelector(`.${footerNam}`);
@@ -595,39 +585,37 @@ export const NavBar = (navName) => {
   // Inject the navbar HTML
   navElement.innerHTML = navbarHTML;
   // Add event listeners or other logic here if needed
-  const searchBtn = navElement.querySelector('.searchBtn');
+  const searchBtn = navElement.querySelector(".searchBtn");
   if (searchBtn) {
-    searchBtn.addEventListener('click', (e) => {
+    searchBtn.addEventListener("click", (e) => {
       e.preventDefault(); // Prevent form submission
-      const searchInput = navElement.querySelector('#searchInput').value;
-      console.log('Search for:', searchInput);
+      const searchInput = navElement.querySelector("#searchInput").value;
+      console.log("Search for:", searchInput);
       // Add search functionality here
     });
   }
-  searchButton()
+  searchButton();
   // Check if the user is logged in
   isLoggedIn(authData, "/src/Pages/Register/register.html");
 };
 // Change Button
 
 export function changeBtn(parent, child, fetchData, targetKey) {
-// debugger
+  // debugger
 
-  let btnName="";
-  let btnRmName=""
+  let btnName = "";
+  let btnRmName = "";
 
   if (child === "addToCart") {
-  btnName="Add To Cart"
-  btnRmName="Remove From Cart"
-  }
-  else{
-  btnName=`<i class="fa-regular fa-heart"></i>`
-  btnRmName=`<i class="fa-solid fa-heart"></i>`
-
+    btnName = "Add To Cart";
+    btnRmName = "Remove From Cart";
+  } else {
+    btnName = `<i class="fa-regular fa-heart"></i>`;
+    btnRmName = `<i class="fa-solid fa-heart" style="color:#b10b0b"></i>`;
   }
 
   // Get the product cart data from storage
-  
+
   const product = getCookie(targetKey);
   const productInCart = product ? JSON.parse(product.value) : [];
 
@@ -643,18 +631,19 @@ export function changeBtn(parent, child, fetchData, targetKey) {
       const productData = element.getAttribute("productdata");
 
       // Check if the product is in the cart
-      const productExists = productInCart.some((product) => product.id == productData);
+      const productExists = productInCart.some(
+        (product) => product.id == productData
+      );
 
       // Update the button text and class
       if (productExists) {
-        console.log("🚀 ~ changeBtn ~ btnRmName:", btnRmName)
-        console.log("🚀 ~ changeBtn ~ BtnName:", btnName)
-        element.innerHTML =  `${btnRmName}`
+        console.log("🚀 ~ changeBtn ~ btnRmName:", btnRmName);
+        console.log("🚀 ~ changeBtn ~ BtnName:", btnName);
+        element.innerHTML = `${btnRmName}`;
         element.classList.remove("addToCartIcon");
         element.classList.add("removeFromCart");
-
       } else {
-        element.innerHTML  = `${btnName}`
+        element.innerHTML = `${btnName}`;
         element.classList.add("addToCartIcon");
         element.classList.remove("removeFromCart");
       }
@@ -667,15 +656,19 @@ export function changeBtn(parent, child, fetchData, targetKey) {
   // Add event listener to the container for event delegation
   container.addEventListener("click", (event) => {
     if (event.target.classList.contains(child.replace(".", ""))) {
-      //If you want to use it Pul Value 
+      //If you want to use it Pul Value
       const productData = event.target.getAttribute("productdata");
 
       // Find the product in the cart
-      const productIndex = productInCart.findIndex((product) => product.id == productData);
+      const productIndex = productInCart.findIndex(
+        (product) => product.id == productData
+      );
 
       if (productIndex === -1) {
         // Product doesn't exist in the cart, so add it
-        const productToAdd = fetchData.find((product) => product.id === productData);
+        const productToAdd = fetchData.find(
+          (product) => product.id === productData
+        );
         if (productToAdd) {
           // Set initial quantity to 1
           productToAdd.quantity = 1;
@@ -696,4 +689,3 @@ export function changeBtn(parent, child, fetchData, targetKey) {
     }
   });
 }
-
