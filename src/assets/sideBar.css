@@ -21,6 +21,7 @@
   .sideBar.active {
     width: 250px;
     background-color: black;
+    color: white;
   }
   
   .sideBar.active ~ .main-content {

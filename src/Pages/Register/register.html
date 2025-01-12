@@ -16,18 +16,18 @@
 <!-- src/Pages/Register/register.html -->
 
 <body>
-  <div class="w-100">
+  <div class="w-100 ">
     <nav class="navbar  navbar-expand-lg px-5 bg-primary">
-     
+
     </nav>
 
   </div>
   <div
-    class="container d-flex justify-content-between align-items-center p-5 my-5 border border-primary shadow bg-light "
-    style="height: 55rem;">
+    class="container d-flex justify-content-between align-items-center p-5 my-5 border border-primary shadow bg-light"
+    style="height: 50rem;">
 
     <!-- Login Section -->
-    <div class="d-flex flex-column align-items-center position-relative " style="width: 50%; height: 100%;">
+    <div class="d-flex flex-column align-items-center position-relative " style="width: 50%;">
       <!-- Image with highest z-index -->
       <div id="toggleHideLogin">
 
@@ -168,8 +168,6 @@
             <button type="button" class="btn btn-secondary check">Check for OTP</button>
             <button class="btn btn-success disabled verify" data-bs-target="#exampleModalToggle2"
               data-bs-toggle="modal">Verify</button>
-
-            <!-- <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Close</button> -->
           </div>
         </div>
       </div>
@@ -185,10 +183,11 @@
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
-          Account Has Been Created Successfully 🎉
+          Account Has Been Created Successfully 🎉,<br>please login to access your account.
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" aria-label="Close"
+            onclick="window.location.href = '/src/Pages/Register/register.html'">Close</button>
         </div>
       </div>
     </div>

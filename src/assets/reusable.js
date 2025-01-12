@@ -136,8 +136,12 @@ export const isLoggedIn = (authData, href) => {
             <i class="fa-solid fa-user"></i>
           </button>
           <ul class="dropdown-menu text-center" style="left: -100%;">
-            <li class="py-2">Hello, ${userData.firstName} ${userData.lastName}</li>
-            <li><a class="dropdown-item border-top" href="/src/Pages/Profile/Profile.html"><i class="fa-regular fa-user"></i> Profile</a></li>
+            <li class="py-2">Hello, <span class="text-danger">${userData.firstName} ${userData.lastName}</span></li>
+            <li><a class="dropdown-item border-top" href="/src/Pages/Profile/Profile.html"><i class="fa-regular fa-user me-1"></i> Profile</a></li>
+     
+            <li><a class="dropdown-item border-top" href="/src/Pages/Wishlist/wishlist.html"><i class="fa-regular fa-bookmark me-1"></i>Wishlist</a></li>
+     
+            <li><a class="dropdown-item border-top" href="/src/Pages/Payment/myOrder.html"><i class="fa-solid fa-cart-shopping me-1"></i> Orders</a></li>
      
             <li><hr class="dropdown-divider"></li>
             <li><a class="dropdown-item logOutBtn" href="/"><i class="fa-solid fa-arrow-right-from-bracket"></i>LogOut</a></li>
@@ -175,6 +179,7 @@ export const isLoggedIn = (authData, href) => {
     return false;
   }
 };
+
 // Post Data After Updating
 export async function postData(data = {}, userId) {
   try {

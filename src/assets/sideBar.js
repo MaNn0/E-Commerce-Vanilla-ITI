@@ -13,9 +13,8 @@ export function sideBarInjection(sideName) {
   const sideBarHTML = `
     <!-- Sidebar Starts Here -->
       <div class="top">
-        <div class="logo">
-          <i class="fas fa-home"></i>
-          <span class="navItem">Logo</span>
+          <span class="navItem">Khaled's Store |
+</span>
         </div>
         <i class="fas fa-bars" id="btn"></i>
       </div>
@@ -28,7 +27,7 @@ export function sideBarInjection(sideName) {
       <ul>
         <li>
           <a href="/">
-            <i class="fas fa-info-circle"></i>
+            <i class="fas fa-home"></i>
             <span class="navItem">Home</span>
           </a>
           <span class="toolTip">Home</span>
