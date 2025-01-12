@@ -1,8 +1,34 @@
+import { setCookie,getCookie,deleteCookie } from "../../assets/reusable";
+
+
 document.addEventListener("DOMContentLoaded", async () => {
   const ordersContainer = document.getElementById("orders-container");
+  //Get Orders from session/Cookie Function Calling
+  const productCart = getCookie("productCart");
+  const authCookie = getCookie("Auth");
+  const userOrder = getCookie("orders");
 
+  //Declare
+  // User Data
+   const authName = authCookie ? authCookie.name : null; // Name of The Get Cookie
+  // console.log("🚀 ~ authName:", authName)
+   const authType = authCookie ? authCookie.type : null; // Type of The Get Cookie/Session/localStorage
+  // console.log("🚀 ~ authType:", authType)
+   const authData = authCookie ? authCookie.value : null;//The Actual Data
+  // console.log("🚀 ~ authData:", authData)
+  //Products Data
+   const productsName = productCart ? productCart.name : null; // Name of The Get Cookie
+  // console.log("🚀 ~ productsName:", productsName)
+   const productsType = productCart ? productCart.type : null; // Type of The Get Cookie/Session/localStorage
+  // console.log("🚀 ~ productsType:", productsType)
+   const productsData = productCart ? productCart.value : null; //The Actual Data
+  // console.log("🚀 ~ productsData:", productsData)
+  //Orders Data
+  const orders = userOrder ? JSON.parse(userOrder.value) : [];   //The Actual Data After Parsing
+  console.log("🚀 ~ document.addEventListener ~ orders:", orders)
+  
   // Retrieve orders from localStorage
-  const orders = JSON.parse(localStorage.getItem("orders")) || [];
+  // const orders = JSON.parse(localStorage.getItem("orders")) || []; // Retrieve orders from localStorage
 
   if (orders.length === 0) {
     ordersContainer.innerHTML = `
@@ -22,7 +48,7 @@ document.addEventListener("DOMContentLoaded", async () => {
       if (response.ok) {
         const data = await response.json();
         console.log('Payment verification success:', data);
-        
+        deleteCookie("productCart");
         // Update the order success status based on the payment status
         order.success = data.status === 'Successful';
       } else {
@@ -38,8 +64,8 @@ document.addEventListener("DOMContentLoaded", async () => {
   }
 
   // Save updated orders back to localStorage
-  localStorage.setItem('orders', JSON.stringify(orders));
-
+  // localStorage.setItem('orders', JSON.stringify(orders));
+setCookie("orders", orders, 1, authType);
   // Create a table to display orders
   const ordersTable = document.createElement("table");
   ordersTable.className = "table table-bordered";
@@ -80,6 +106,15 @@ document.addEventListener("DOMContentLoaded", async () => {
       `).join("")}
     </tbody>
   `;
+      if (orders[0].success==true) {
+      console.log("hello");
+    
+      }
+      else{
 
+        console.log("no");
+      }
+
+      
   ordersContainer.appendChild(ordersTable);
 });

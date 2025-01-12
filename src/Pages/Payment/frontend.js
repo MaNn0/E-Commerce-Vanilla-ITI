@@ -3,6 +3,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.min.js";
 import { loadStripe } from '@stripe/stripe-js';
 import { amount_stripe, products } from './Payment.js'; // Import the amount_stripe and products from Payment.js
+import { setCookie,getCookie } from "../../assets/reusable";
 
 // Initialize Stripe with your publishable key
 const stripe = await loadStripe('pk_test_51Qf9q7AnBfxoX5a3ubkQ9mbIGvB6FujzedMCkDo7AvQXnz9ZHZSbsrGP8P8oEWkMc6eckOGJthugfD0tk3Gljibw00uNOSK4YD');
@@ -11,7 +12,11 @@ document.querySelector(".btn-primary").addEventListener("click", async function 
   const address = document.getElementById("address").value.trim();
   const addressOptionSelected = document.querySelector('input[name="address-option"]:checked');
   const errorContainer = document.querySelector('.footer-error .error-body-text');
+  const userOrder = getCookie("orders");
+  const authCookie = getCookie("Auth");
+  const authType = authCookie ? authCookie.type : null; // Type of The Get Cookie/Session/localStorage
 
+  // console.log("🚀 ~ document.addEventListener ~ orders:", orders)
   // Clear previous error messages
   errorContainer.innerHTML = "";
 
@@ -57,10 +62,12 @@ document.querySelector(".btn-primary").addEventListener("click", async function 
       success: false, // Initially set to false
     };
 
-    const existingOrders = JSON.parse(localStorage.getItem('orders')) || [];
-    existingOrders.push(order);
-    localStorage.setItem('orders', JSON.stringify(existingOrders));
+    // const existingOrders = JSON.parse(localStorage.getItem('orders')) || [];
+    const existingOrders = userOrder ? JSON.parse(userOrder.value) : [];   //The Actual Data After Parsing
 
+    existingOrders.push(order);
+    // localStorage.setItem('orders', JSON.stringify(existingOrders));
+    setCookie("orders", existingOrders, 1, authType);
     // Redirect to Stripe's hosted payment page
     await stripe.redirectToCheckout({ sessionId: id });
   } catch (error) {
@@ -73,10 +80,11 @@ document.querySelector(".btn-primary").addEventListener("click", async function 
       timestamp: new Date().toISOString(),
       success: false, // Mark as failed
     };
-
-    const existingOrders = JSON.parse(localStorage.getItem('orders')) || [];
+    // const existingOrders = JSON.parse(localStorage.getItem('orders')) || [];
+    const existingOrders = userOrder ? JSON.parse(userOrder.value) : [];   //The Actual Data After Parsing
     existingOrders.push(failedOrder);
-    localStorage.setItem('orders', JSON.stringify(existingOrders));
+    // localStorage.setItem('orders', JSON.stringify(existingOrders));
+    setCookie("orders", existingOrders, 1, authType);
 
     showError("Something went wrong with your order. Please try again.");
   }

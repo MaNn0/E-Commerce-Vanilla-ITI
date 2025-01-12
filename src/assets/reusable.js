@@ -97,9 +97,10 @@ export function getCookie(name) {
 
 // Delete Cookies When user LogOut
 
-function deleteCookie(name) {
-  sessionStorage.clear();
+export function deleteCookie(name) {
+  sessionStorage.removeItem(name); // Deletes the 'username'
   document.cookie = `${name}=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;`;
+  // sessionStorage.clear();
 }
 
 const authCookie = getCookie("Auth");
@@ -154,6 +155,10 @@ export const isLoggedIn = (authData, href) => {
       logOutBtn.addEventListener("click", (event) => {
         event.preventDefault();
         deleteCookie("Auth");
+        deleteCookie("orders");
+        deleteCookie("productCart");
+        deleteCookie("wishlist");
+
         if (
           window.location.href ==
           "http://localhost:5173/src/Pages/Profile/Profile.html"
@@ -620,13 +625,8 @@ export function changeBtn(parent, child, fetchData, targetKey) {
   btnRmName=`<i class="fa-solid fa-heart"></i>`
 
   }
-  // console.log("🚀 ~ changeBtn ~ btnRmName:", btnRmName)
-  // console.log("🚀 ~ changeBtn ~ BtnName:", BtnName)
-  // console.log("🚀 ~ changeBtn ~ fetchData:", fetchData)
-  // console.log("🚀 ~ changeBtn ~ child:", child)
-  // console.log("🚀 ~ changeBtn ~ parent:", parent)
+
   // Get the product cart data from storage
-  
   
   const product = getCookie(targetKey);
   const productInCart = product ? JSON.parse(product.value) : [];

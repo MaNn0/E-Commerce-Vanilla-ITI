@@ -1,13 +1,23 @@
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.min.js";
-import { isLoggedIn, authName, authData, authType, setCookie, getCookie, NavBar, addToCart } from "../../assets/reusable";
+import { isLoggedIn,   setCookie, getCookie, NavBar, addToCart } from "../../assets/reusable";
 import { loadStripe } from '@stripe/stripe-js';
 
 
 let productCart = getCookie("productCart");
-let userDdata = getCookie("Auth");
 const productsCart = productCart ? JSON.parse(productCart.value) : [];
 const productsName = productCart ? productCart.name : null;
+const authCookie = getCookie("Auth");
+  //Declare
+  // User Data
+   const authName = authCookie ? authCookie.name : null; // Name of The Get Cookie
+  // console.log("🚀 ~ authName:", authName)
+   const authType = authCookie ? authCookie.type : null; // Type of The Get Cookie/Session/localStorage
+  // console.log("🚀 ~ authType:", authType)
+   const authData = authCookie ? JSON.parse(authCookie.value) : null;//The Actual Data
+   console.log("🚀 ~ authData:", authData)
+   console.log("🚀 ~ authData:", authData.mainAddress)
+   
 // const AuthData = userDdata ? JSON.parse(userDdata.value) : null;
 // console.log(AuthData.mainAddress);
 
@@ -19,8 +29,15 @@ const addAddressBtn = document.getElementById('add-address-btn');
 function toggleAddressButton() {
   if (defaultAddInput.checked) {
     addAddressBtn.style.display = 'none';
+    document.getElementById("address").setAttribute("disabled", "disabled");
+    document.getElementById("address").value = authData.mainAddress
+
   } else {
     addAddressBtn.style.display = 'inline-block';
+    document.getElementById("address").value = ""
+    document.getElementById("address").removeAttribute("disabled", "disabled");
+
+
   }
 }
 defaultAddInput.addEventListener('change', toggleAddressButton);
