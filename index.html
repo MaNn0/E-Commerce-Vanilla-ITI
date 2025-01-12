@@ -1,202 +1,271 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+    <title>E-Commerce</title>
+  </head>
 
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-  <link rel="stylesheet" href="style.css" />
-  <title>E-Commerce</title>
-</head>
+  <body>
+    <nav class="navbar navbar-expand-lg px-5 bg-primary"></nav>
 
-<body>
-  <nav class="navbar  navbar-expand-lg px-5 bg-primary">
-
-  </nav>
-
-  <div class="container-fluid">
-    <section>
-
-      <!-- Carousel -->
-      <div id="carouselExampleAutoplaying" class="carousel slide my-4" data-bs-ride="carousel">
-        <div class="carousel-inner">
-          <div class="carousel-width carousel-item active">
-            <img src="./public/Images/ad1.png" class="d-block w-100" alt="Image 1" />
+    <div class="container-fluid">
+      <section>
+        <!-- Carousel -->
+        <div
+          id="carouselExampleAutoplaying"
+          class="carousel slide my-4"
+          data-bs-ride="carousel"
+        >
+          <div class="carousel-inner">
+            <div class="carousel-width carousel-item active">
+              <img
+                src="./public/Images/ad1.png"
+                class="d-block w-100"
+                alt="Image 1"
+              />
+            </div>
+            <div class="carousel-item carousel-width">
+              <img
+                src="./public/Images/ad2.webp"
+                class="d-block w-100"
+                alt="Image 2"
+              />
+            </div>
+            <div class="carousel-item carousel-width">
+              <img
+                src="./public/Images/ad3.png"
+                class="d-block w-100"
+                alt="Image 3"
+              />
+            </div>
           </div>
-          <div class="carousel-item carousel-width">
-            <img src="./public/Images/ad2.webp" class="d-block w-100" alt="Image 2" />
-          </div>
-          <div class="carousel-item carousel-width">
-            <img src="./public/Images/ad3.png" class="d-block w-100" alt="Image 3" />
-          </div>
+          <button
+            class="carousel-control-prev"
+            type="button"
+            data-bs-target="#carouselExampleAutoplaying"
+            data-bs-slide="prev"
+          >
+            <span class="carousel-control-prev-icon"></span>
+          </button>
+          <button
+            class="carousel-control-next"
+            type="button"
+            data-bs-target="#carouselExampleAutoplaying"
+            data-bs-slide="next"
+          >
+            <span class="carousel-control-next-icon"></span>
+          </button>
         </div>
-        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleAutoplaying"
-          data-bs-slide="prev">
-          <span class="carousel-control-prev-icon"></span>
-        </button>
-        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleAutoplaying"
-          data-bs-slide="next">
-          <span class="carousel-control-next-icon"></span>
-        </button>
-      </div>
+      </section>
 
-    </section>
+      <section id="Categories">
+        <div class="accordion" id="accordionPanelsStayOpenExample">
+          <!-- Men's Clothing Section -->
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <a href="/src/Pages/products/products.html?category=menClothing">
+                <button
+                  class="accordion-button"
+                  type="button"
+                  data-bs-toggle="collapse"
+                  data-bs-target="#collapseMenClothing"
+                  aria-expanded="true"
+                  aria-controls="collapseMenClothing"
+                >
+                  View all Men's Clothing
+                </button>
+              </a>
+            </h2>
+            <div
+              id="collapseMenClothing"
+              class="accordion-collapse collapse show"
+            >
+              <div class="accordion-body">
+                <div
+                  class="row clothing row-cols-1 row-cols-md-2 row-cols-lg-3 g-4 d-flex justify-content-center flex-wrap"
+                >
+                  <!-- Card content will be dynamically generated here -->
+                </div>
+              </div>
+            </div>
+          </div>
 
-    <section id="Categories">
-      <div class="accordion" id="accordionPanelsStayOpenExample">
-        <!-- Men's Clothing Section -->
-        <div class="accordion-item">
-          <h2 class="accordion-header">
-            <a href="/src/Pages/products/products.html?category=menClothing">
+          <!-- Jewelery Section -->
 
-              <button class="accordion-button" type="button" data-bs-toggle="collapse"
-                data-bs-target="#collapseMenClothing" aria-expanded="true" aria-controls="collapseMenClothing">View all
-                Men's Clothing
-              </button>
-            </a>
-          </h2>
-          <div id="collapseMenClothing" class="accordion-collapse collapse show">
-            <div class="accordion-body">
-              <div
-                class="row clothing row-cols-1 row-cols-md-2 row-cols-lg-3 g-4 d-flex justify-content-center flex-wrap">
-                <!-- Card content will be dynamically generated here -->
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <a href="/src/Pages/products/products.html?category=jewelery">
+                <button
+                  class="accordion-button"
+                  type="button"
+                  data-bs-toggle="collapse"
+                  data-bs-target="#collapseJewelery"
+                  aria-expanded="true"
+                  aria-controls="collapseJewelery"
+                >
+                  View all Jewelery
+                </button>
+              </a>
+            </h2>
+            <div id="collapseJewelery" class="accordion-collapse collapse show">
+              <div class="accordion-body">
+                <div
+                  class="row jewelery row-cols-1 row-cols-md-2 row-cols-lg-3 g-4 d-flex justify-content-center flex-wrap"
+                >
+                  <!-- Card content will be dynamically generated here -->
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Electronics Section -->
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <a href="/src/Pages/products/products.html?category=electronics">
+                <button
+                  class="accordion-button"
+                  type="button"
+                  data-bs-toggle="collapse"
+                  data-bs-target="#collapseElectronics"
+                  aria-expanded="true"
+                  aria-controls="collapseElectronics"
+                >
+                  View all Electronics
+                </button>
+              </a>
+            </h2>
+            <div
+              id="collapseElectronics"
+              class="accordion-collapse collapse show"
+            >
+              <div class="accordion-body">
+                <div
+                  class="row electronics row-cols-1 row-cols-md-2 row-cols-lg-3 g-4 d-flex justify-content-center flex-wrap"
+                >
+                  <!-- Card content will be dynamically generated here -->
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Phones Section -->
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <a href="/src/Pages/products/products.html?category=phones">
+                <button
+                  class="accordion-button"
+                  type="button"
+                  data-bs-toggle="collapse"
+                  data-bs-target="#collapsePhones"
+                  aria-expanded="true"
+                  aria-controls="collapsePhones"
+                >
+                  View all Phones
+                </button>
+              </a>
+            </h2>
+            <div id="collapsePhones" class="accordion-collapse collapse show">
+              <div class="accordion-body">
+                <div
+                  class="row mobile row-cols-1 row-cols-md-2 row-cols-lg-3 g-4 d-flex justify-content-center flex-wrap"
+                >
+                  <!-- Card content will be dynamically generated here -->
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Audio Section -->
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <a href="/src/Pages/products/products.html?category=audio">
+                <button
+                  class="accordion-button"
+                  type="button"
+                  data-bs-toggle="collapse"
+                  data-bs-target="#collapseAudio"
+                  aria-expanded="true"
+                  aria-controls="collapseAudio"
+                >
+                  View all Audio
+                </button>
+              </a>
+            </h2>
+            <div id="collapseAudio" class="accordion-collapse collapse show">
+              <div class="accordion-body">
+                <div
+                  class="row audio row-cols-1 row-cols-md-2 row-cols-lg-3 g-4 d-flex justify-content-center flex-wrap"
+                >
+                  <!-- Card content will be dynamically generated here -->
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Gaming Section -->
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <a href="/src/Pages/products/products.html?category=gaming">
+                <button
+                  class="accordion-button"
+                  type="button"
+                  data-bs-toggle="collapse"
+                  data-bs-target="#collapseGaming"
+                  aria-expanded="true"
+                  aria-controls="collapseGaming"
+                >
+                  View all Gaming
+                </button>
+              </a>
+            </h2>
+            <div id="collapseGaming" class="accordion-collapse collapse show">
+              <div class="accordion-body">
+                <div
+                  class="row gaming row-cols-1 row-cols-md-2 row-cols-lg-3 g-4 d-flex justify-content-center flex-wrap"
+                >
+                  <!-- Card content will be dynamically generated here -->
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- TV Section -->
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <a href="/src/Pages/products/products.html?category=tv">
+                <button
+                  class="accordion-button"
+                  type="button"
+                  data-bs-toggle="collapse"
+                  data-bs-target="#collapseTV"
+                  aria-expanded="true"
+                  aria-controls="collapseTV"
+                >
+                  View all TV
+                </button>
+              </a>
+            </h2>
+            <div id="collapseTV" class="accordion-collapse collapse show">
+              <div class="accordion-body">
+                <div
+                  class="row tv row-cols-1 row-cols-md-2 row-cols-lg-3 g-4 d-flex justify-content-center flex-wrap"
+                >
+                  <!-- Card content will be dynamically generated here -->
+                </div>
               </div>
             </div>
           </div>
         </div>
-
-        <!-- Jewelery Section -->
-
-        <div class="accordion-item">
-          <h2 class="accordion-header">
-            <a href="/src/Pages/products/products.html?category=jewelery">
-
-              <button class="accordion-button" type="button" data-bs-toggle="collapse"
-                data-bs-target="#collapseJewelery" aria-expanded="true" aria-controls="collapseJewelery">
-                View all Jewelery
-              </button>
-            </a>
-          </h2>
-          <div id="collapseJewelery" class="accordion-collapse collapse show">
-            <div class="accordion-body">
-              <div
-                class="row jewelery row-cols-1 row-cols-md-2 row-cols-lg-3 g-4 d-flex justify-content-center flex-wrap">
-                <!-- Card content will be dynamically generated here -->
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Electronics Section -->
-        <div class="accordion-item">
-          <h2 class="accordion-header">
-            <a href="/src/Pages/products/products.html?category=electronics">
-              <button class="accordion-button" type="button" data-bs-toggle="collapse"
-                data-bs-target="#collapseElectronics" aria-expanded="true" aria-controls="collapseElectronics">
-                View all Electronics
-              </button>
-            </a>
-          </h2>
-          <div id="collapseElectronics" class="accordion-collapse collapse show">
-            <div class="accordion-body">
-              <div
-                class="row electronics row-cols-1 row-cols-md-2 row-cols-lg-3 g-4 d-flex justify-content-center flex-wrap">
-                <!-- Card content will be dynamically generated here -->
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Phones Section -->
-        <div class="accordion-item">
-          <h2 class="accordion-header">
-            <a href="/src/Pages/products/products.html?category=phones">
-
-              <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapsePhones"
-                aria-expanded="true" aria-controls="collapsePhones">
-                View all Phones
-              </button>
-            </a>
-          </h2>
-          <div id="collapsePhones" class="accordion-collapse collapse show">
-            <div class="accordion-body">
-              <div
-                class="row mobile row-cols-1 row-cols-md-2 row-cols-lg-3 g-4 d-flex justify-content-center flex-wrap">
-                <!-- Card content will be dynamically generated here -->
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Audio Section -->
-        <div class="accordion-item">
-          <h2 class="accordion-header">
-            <a href="/src/Pages/products/products.html?category=audio">
-
-              <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseAudio"
-                aria-expanded="true" aria-controls="collapseAudio">
-                View all Audio
-              </button>
-            </a>
-          </h2>
-          <div id="collapseAudio" class="accordion-collapse collapse show">
-            <div class="accordion-body">
-              <div class="row audio row-cols-1 row-cols-md-2 row-cols-lg-3 g-4 d-flex justify-content-center flex-wrap">
-                <!-- Card content will be dynamically generated here -->
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Gaming Section -->
-        <div class="accordion-item">
-          <h2 class="accordion-header">
-            <a href="/src/Pages/products/products.html?category=gaming">
-
-              <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseGaming"
-                aria-expanded="true" aria-controls="collapseGaming">
-                View all Gaming
-              </button>
-            </a>
-          </h2>
-          <div id="collapseGaming" class="accordion-collapse collapse show">
-            <div class="accordion-body">
-              <div
-                class="row gaming row-cols-1 row-cols-md-2 row-cols-lg-3 g-4 d-flex justify-content-center flex-wrap">
-                <!-- Card content will be dynamically generated here -->
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- TV Section -->
-        <div class="accordion-item">
-          <h2 class="accordion-header">
-            <a href="/src/Pages/products/products.html?category=tv">
-
-              <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTV"
-                aria-expanded="true" aria-controls="collapseTV">
-                View all TV
-              </button>
-            </a>
-          </h2>
-          <div id="collapseTV" class="accordion-collapse collapse show">
-            <div class="accordion-body">
-              <div class="row tv row-cols-1 row-cols-md-2 row-cols-lg-3 g-4 d-flex justify-content-center flex-wrap">
-                <!-- Card content will be dynamically generated here -->
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-  </div>
-  <footer class="footer bg-primary text-white py-4">
-
-  </footer>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-  <script type="module" src="./src/main.js"></script>
-</body>
-
+      </section>
+    </div>
+    <footer class="footer bg-primary text-white py-4"></footer>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script type="module" src="./src/main.js"></script>
+  </body>
 </html>

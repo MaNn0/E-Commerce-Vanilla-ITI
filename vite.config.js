@@ -6,7 +6,7 @@ export default defineConfig({
     target: "esnext", // Correct location for the target option
     rollupOptions: {
       input: {
-        main: resolve(__dirname, "index.html"),
+        main: resolve(__dirname, "/"),
         profile: resolve(__dirname, "src/Pages/Profile/Profile.html"),
         cart: resolve(__dirname, "src/Pages/Cart/cart.html"),
         payment: resolve(__dirname, "src/Pages/Payment/Payment.html"),
@@ -14,8 +14,11 @@ export default defineConfig({
         product: resolve(__dirname, "src/Pages/products/products.html"),
         productdetails: resolve(
           __dirname,
-          "./src/Pages/products/productdetails/productdetails.html"
+          "/src/Pages/products/productdetails/productdetails.html"
         ),
+        fail: resolve(__dirname, "/src/Pages/Payment/fail.html"),
+        success: resolve(__dirname, "/src/Pages/Payment/success.html"),
+        myOrder: resolve(__dirname, "/src/Pages/Payment/myOrder.html"),
       },
     },
   },

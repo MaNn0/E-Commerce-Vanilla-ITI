@@ -1,55 +1,57 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
 
-<head>
-  <meta charset="UTF-8" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
 
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    <link rel="stylesheet" href="wishlist.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vite App</title>
+  </head>
 
-  <link rel="stylesheet" href="wishlist.css">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Vite App</title>
-</head>
+  <body>
+    <div class="sideBar"></div>
 
-<body>
-  <div class="sideBar">
- 
-  </div>
-  </nav>
-  <section class="main-content">
-  <div class="py-3 py-md-5 bg-light" style="width: 80%;">
-
-      <div class="row">
-        <div class="col-md-12">
-          <div class="shopping-cart">
-
-            <div class="cart-header d-none d-sm-none d-mb-block d-lg-block">
-              <div class="row">
-                <div class="col-md-6">
-                  <h4>Products</h4>
-                </div>
-                <div class="col-md-2">
-                  <h4>Price</h4>
-                </div>
-                <div class="col-md-2">
-                  <h4>Remove</h4>
+    <div class="py-3 py-md-5 bg-light content-Holder">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="shopping-cart">
+              <div class="cart-header d-none d-sm-none d-mb-block d-lg-block">
+                <div class="row">
+                  <div class="col-md-6">
+                    <h4>Products</h4>
+                  </div>
+                  <div class="col-md-2">
+                    <h4>Price</h4>
+                  </div>
+                  <div class="col-md-2">
+                    <h4>Remove</h4>
+                  </div>
                 </div>
               </div>
-            </div>
 
-            <div class="cart-item">
+              <div class="cart-item"></div>
             </div>
           </div>
         </div>
       </div>
-  </div>
-</section>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
-    integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
-    crossorigin="anonymous"></script>
+    </div>
 
-  <script type="module" src="./wishlist.js"></script>
-</body>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+      crossorigin="anonymous"
+    ></script>
 
+    <script type="module" src="./wishlist.js"></script>
+  </body>
 </html>
