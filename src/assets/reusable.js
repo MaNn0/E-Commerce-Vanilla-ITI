@@ -599,10 +599,8 @@ export const NavBar = (navName) => {
   isLoggedIn(authData, "/src/Pages/Register/register.html");
 };
 // Change Button
-
 export function changeBtn(parent, child, fetchData, targetKey) {
-  // debugger
-
+  // Define button text/icons based on the targetKey
   let btnName = "";
   let btnRmName = "";
 
@@ -614,31 +612,28 @@ export function changeBtn(parent, child, fetchData, targetKey) {
     btnRmName = `<i class="fa-solid fa-heart" style="color:#b10b0b"></i>`;
   }
 
-  // Get the product cart data from storage
-
+  // Get the product cart/wishlist data from storage
   const product = getCookie(targetKey);
   const productInCart = product ? JSON.parse(product.value) : [];
 
-  // Select the container
+  // Select the container for the specific section
   const container = document.querySelector(`.${parent}`);
   if (!container) return; // Exit if the container doesn't exist
 
-  // Function to update button text and class
+  // Function to update button text and class within the specific section
   function updateButtons() {
-    const btnToChangeNodes = document.querySelectorAll(`.${child}`);
+    const btnToChangeNodes = container.querySelectorAll(`.${child}`);
 
     btnToChangeNodes.forEach((element) => {
       const productData = element.getAttribute("productdata");
 
-      // Check if the product is in the cart
+      // Check if the product is in the cart/wishlist
       const productExists = productInCart.some(
         (product) => product.id == productData
       );
 
       // Update the button text and class
       if (productExists) {
-        console.log("🚀 ~ changeBtn ~ btnRmName:", btnRmName);
-        console.log("🚀 ~ changeBtn ~ BtnName:", btnName);
         element.innerHTML = `${btnRmName}`;
         element.classList.remove("addToCartIcon");
         element.classList.add("removeFromCart");
@@ -655,36 +650,36 @@ export function changeBtn(parent, child, fetchData, targetKey) {
 
   // Add event listener to the container for event delegation
   container.addEventListener("click", (event) => {
-    if (event.target.classList.contains(child.replace(".", ""))) {
-      //If you want to use it Pul Value
-      const productData = event.target.getAttribute("productdata");
+    const clickedButton = event.target.closest(`.${child}`);
+    if (clickedButton) {
+      const productData = clickedButton.getAttribute("productdata");
 
-      // Find the product in the cart
+      // Find the product in the cart/wishlist
       const productIndex = productInCart.findIndex(
         (product) => product.id == productData
       );
 
       if (productIndex === -1) {
-        // Product doesn't exist in the cart, so add it
+        // Product doesn't exist in the cart/wishlist, so add it
         const productToAdd = fetchData.find(
           (product) => product.id === productData
         );
         if (productToAdd) {
-          // Set initial quantity to 1
+          // Set initial quantity to 1 (if applicable)
           productToAdd.quantity = 1;
           productInCart.push(productToAdd);
-          console.log("Product added to cart:", productToAdd);
+          console.log("Product added to cart/wishlist:", productToAdd);
         }
       } else {
-        // Product exists in the cart, so remove it
+        // Product exists in the cart/wishlist, so remove it
         const removedProduct = productInCart.splice(productIndex, 1);
-        console.log("Product removed from cart:", removedProduct);
+        console.log("Product removed from cart/wishlist:", removedProduct);
       }
 
-      // Update the storage with the new cart data
+      // Update the storage with the new cart/wishlist data
       setCookie(targetKey, productInCart, 1, authType); // Set cookie with 1-day expiration
 
-      // Update the buttons to reflect the new cart state
+      // Update the buttons within the specific section
       updateButtons();
     }
   });
