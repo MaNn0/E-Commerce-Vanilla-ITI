@@ -569,6 +569,8 @@ export const NavBar = (navName) => {
             </li>
             <li class="nav-item">
               <a class="nav-link text-white" href="/src/Pages/Payment/Payment.html"><i class="fa-solid fa-credit-card"></i> Payment</a>
+            </li>  <li class="nav-item">
+              <a class="nav-link text-white" href="/src/Pages/Contact/contact.html"><i class="fa-solid fa-credit-card"></i> Contact Us</a>
             </li>
           </ul>
           <form class="d-flex">
