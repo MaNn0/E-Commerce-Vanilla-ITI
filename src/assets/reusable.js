@@ -137,11 +137,11 @@ export const isLoggedIn = (authData, href) => {
           </button>
           <ul class="dropdown-menu text-center" style="left: -100%;">
             <li class="py-2">Hello, ${userData.firstName} ${userData.lastName}</li>
-            <li><a class="dropdown-item border-top" href="/src/Pages/Profile/Profile.html"><i class="fa-regular fa-user"></i> Profile</a></li>
+            <li><a class="dropdown-item border-top" href="/src/Pages/Profile/Profile.html"><i class="fa-regular fa-user me-1"></i> Profile</a></li>
      
-            <li><a class="dropdown-item border-top" href="/src/Pages/Wishlist/wishlist.html"><i class="fa-regular fa-user"></i> Wishlist</a></li>
+            <li><a class="dropdown-item border-top" href="/src/Pages/Wishlist/wishlist.html"><i class="fa-regular fa-bookmark me-1"></i>Wishlist</a></li>
      
-            <li><a class="dropdown-item border-top" href="/src/Pages/Orders/orders.html"><i class="fa-regular fa-user"></i> Orders</a></li>
+            <li><a class="dropdown-item border-top" href="/src/Pages/Payment/myOrder.html"><i class="fa-solid fa-cart-shopping me-1"></i> Orders</a></li>
      
             <li><hr class="dropdown-divider"></li>
             <li><a class="dropdown-item logOutBtn" href="/"><i class="fa-solid fa-arrow-right-from-bracket"></i>LogOut</a></li>
