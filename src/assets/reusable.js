@@ -109,20 +109,14 @@ export const authData = authCookie ? authCookie.value : null;
 export const authType = authCookie ? authCookie.type : null;
 export const productsName = productCart ? productCart.name : null;
 export const productsData = productCart ? productCart.value : null;
+
 export const isLoggedIn = (authData, href) => {
   const userBtn = document.querySelector(".userBtn");
-
-  // Check if the user button exists
-  if (!userBtn) {
-    console.error("User button element not found.");
-    return false;
-  }
-
-  // If authData is not provided, show the signup button
+  // If authData is not provided, return early
   if (!authData) {
     console.error("No authentication data provided.");
-    renderSignupButton(userBtn, href);
-    return false;
+  } else {
+    console.error("Authentication data provided.");
   }
 
   // Parse user data from authData
@@ -131,7 +125,6 @@ export const isLoggedIn = (authData, href) => {
     userData = JSON.parse(authData);
   } catch (error) {
     console.error("Error parsing user data:", error);
-    renderSignupButton(userBtn, href);
     return false;
   }
 
@@ -144,11 +137,7 @@ export const isLoggedIn = (authData, href) => {
           </button>
           <ul class="dropdown-menu text-center" style="left: -100%;">
             <li class="py-2">Hello, ${userData.firstName} ${userData.lastName}</li>
-            <li><a class="dropdown-item border-top" href="/src/Pages/Profile/Profile.html"><i class="fa-regular fa-user me-1"></i> Profile</a></li>
-     
-            <li><a class="dropdown-item border-top" href="/src/Pages/Wishlist/wishlist.html"><i class="fa-regular fa-bookmark me-1"></i>Wishlist</a></li>
-     
-            <li><a class="dropdown-item border-top" href="/src/Pages/Payment/myOrder.html"><i class="fa-solid fa-cart-shopping me-1"></i> Orders</a></li>
+            <li><a class="dropdown-item border-top" href="/src/Pages/Profile/Profile.html"><i class="fa-regular fa-user"></i> Profile</a></li>
      
             <li><hr class="dropdown-divider"></li>
             <li><a class="dropdown-item logOutBtn" href="/"><i class="fa-solid fa-arrow-right-from-bracket"></i>LogOut</a></li>
@@ -639,11 +628,10 @@ export const NavBar = (navName) => {
 // Change Button
 
 export function changeBtn(parent, child, fetchData, targetKey) {
-  // debugger
-
   let btnName = "";
   let btnRmName = "";
 
+  // Define button text/icons based on the targetKey
   if (child === "addToCart") {
     btnName = "Add To Cart";
     btnRmName = "Remove From Cart";
@@ -653,17 +641,19 @@ export function changeBtn(parent, child, fetchData, targetKey) {
   }
 
   // Get the product cart data from storage
-
   const product = getCookie(targetKey);
   const productInCart = product ? JSON.parse(product.value) : [];
 
   // Select the container
   const container = document.querySelector(`.${parent}`);
-  if (!container) return; // Exit if the container doesn't exist
+  if (!container) {
+    console.error(`Container with class "${parent}" not found.`);
+    return; // Exit if the container doesn't exist
+  }
 
   // Function to update button text and class
   function updateButtons() {
-    const btnToChangeNodes = document.querySelectorAll(`.${child}`);
+    const btnToChangeNodes = container.querySelectorAll(`.${child}`);
 
     btnToChangeNodes.forEach((element) => {
       const productData = element.getAttribute("productdata");
@@ -675,13 +665,11 @@ export function changeBtn(parent, child, fetchData, targetKey) {
 
       // Update the button text and class
       if (productExists) {
-        console.log("🚀 ~ changeBtn ~ btnRmName:", btnRmName);
-        console.log("🚀 ~ changeBtn ~ BtnName:", btnName);
-        element.innerHTML = `${btnRmName}`;
+        element.innerHTML = btnRmName;
         element.classList.remove("addToCartIcon");
         element.classList.add("removeFromCart");
       } else {
-        element.innerHTML = `${btnName}`;
+        element.innerHTML = btnName;
         element.classList.add("addToCartIcon");
         element.classList.remove("removeFromCart");
       }
@@ -693,9 +681,9 @@ export function changeBtn(parent, child, fetchData, targetKey) {
 
   // Add event listener to the container for event delegation
   container.addEventListener("click", (event) => {
-    if (event.target.classList.contains(child.replace(".", ""))) {
-      //If you want to use it Pul Value
-      const productData = event.target.getAttribute("productdata");
+    const clickedElement = event.target.closest(`.${child.replace(".", "")}`);
+    if (clickedElement) {
+      const productData = clickedElement.getAttribute("productdata");
 
       // Find the product in the cart
       const productIndex = productInCart.findIndex(
@@ -720,7 +708,7 @@ export function changeBtn(parent, child, fetchData, targetKey) {
       }
 
       // Update the storage with the new cart data
-      setCookie(targetKey, productInCart, 1, authType); // Set cookie with 1-day expiration
+      setCookie(targetKey, productInCart, 1, "cookies"); // Replace "cookies" with the appropriate authType
 
       // Update the buttons to reflect the new cart state
       updateButtons();
