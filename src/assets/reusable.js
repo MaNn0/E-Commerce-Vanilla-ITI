@@ -1,7 +1,7 @@
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.min.js";
 import "@fortawesome/fontawesome-free/css/all.min.css";
-  import * as bootstrap from "bootstrap";
+import * as bootstrap from "bootstrap";
 // import { Button } from "bootstrap/dist/js/bootstrap.bundle.min.js";
 // DataFetching
 export const fetchData = async () => {
@@ -227,13 +227,14 @@ export async function postData(data = {}, userId) {
 
     // Provide user feedback
     alert("Success: Data updated successfully!");
+    location.replace("/src/Pages/Profile/Profile.html");
     return result; // Return the parsed result
   } catch (error) {
     // Handle errors
     console.error("Error in postData:", error);
-
     // Provide user feedback
     alert(`Failed: ${error.message}`);
+    location.replace("/src/Pages/Profile/Profile.html");
   }
 }
 // Erorr AND declaration Handling

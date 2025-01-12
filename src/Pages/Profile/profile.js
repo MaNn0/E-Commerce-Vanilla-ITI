@@ -2,7 +2,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.min.js";
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import "./profile.css";
-import {  authData, authType } from "../../assets/reusable";
+import { authData, authType } from "../../assets/reusable";
 import { formSubmit } from "../../assets/reusable";
 import { sideBarInjection } from "../../assets/sideBar";
 // Initialize the app
@@ -15,7 +15,7 @@ const initializeApp = () => {
   //     sideBar.classList.toggle("active");
   //   };
   // }
-  sideBarInjection("sideBar")
+  sideBarInjection("sideBar");
   // Populate user name
   let UserData;
   try {
@@ -59,11 +59,17 @@ const HandleForm = (authData) => {
     const inputFirstName = profileForm.querySelector('input[name="firstName"]');
     const inputLastName = profileForm.querySelector('input[name="lastName"]');
     const inputEmail = profileForm.querySelector('input[name="email"]');
-    const inputMainAddress = profileForm.querySelector('input[name="mainAddress"]');
-    const inputSecondaryAddress = profileForm.querySelector('input[name="secondaryAddress"]');
+    const inputMainAddress = profileForm.querySelector(
+      'input[name="mainAddress"]'
+    );
+    const inputSecondaryAddress = profileForm.querySelector(
+      'input[name="secondaryAddress"]'
+    );
     const inputCity = profileForm.querySelector('input[name="city"]');
     const inputPassword = profileForm.querySelector('input[name="password"]');
-    const inputRePassword = profileForm.querySelector('input[name="repassword"]');
+    const inputRePassword = profileForm.querySelector(
+      'input[name="repassword"]'
+    );
 
     if (inputUserId) inputUserId.value = UserData.id || "";
     if (inputFirstName) inputFirstName.value = UserData.firstName || "";
@@ -72,7 +78,8 @@ const HandleForm = (authData) => {
     if (inputRePassword) inputRePassword.value = UserData.repassword || "";
     if (inputEmail) inputEmail.value = UserData.email || "";
     if (inputMainAddress) inputMainAddress.value = UserData.mainAddress || "";
-    if (inputSecondaryAddress) inputSecondaryAddress.value = UserData.secondaryAddress || "";
+    if (inputSecondaryAddress)
+      inputSecondaryAddress.value = UserData.secondaryAddress || "";
     if (inputCity) inputCity.value = UserData.city || "";
 
     profileForm.addEventListener("submit", (e) => {
@@ -104,7 +111,7 @@ const HandleForm = (authData) => {
       );
 
       // Refresh the page after form submission
-      window.location.href = window.location.href;
+      // window.location.href = window.location.href;
     });
   }
 };

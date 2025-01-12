@@ -1,4 +1,4 @@
-import "./sideBar.css";   
+import "./sideBar.css";
 
 export function sideBarInjection(sideName) {
   const navElement = document.querySelector(`.${sideName}`);
@@ -33,21 +33,21 @@ export function sideBarInjection(sideName) {
           <span class="toolTip">Home</span>
         </li>
         <li>
-          <a href="#">
+          <a href="/src/Pages/Profile/Profile.html">
             <i class="fas fa-info-circle"></i>
             <span class="navItem">Account Setting</span>
           </a>
           <span class="toolTip">Account Setting</span>
         </li>
         <li>
-          <a href="../Wishlist/wishlist.html">
+          <a href="/src/Pages/Wishlist/wishlist.html">
             <i class="fa-solid fa-star"></i>
             <span class="navItem">Wishlist</span>
           </a>
           <span class="toolTip">Wishlist</span>
         </li>
         <li>
-          <a href="../Payment/myOrder.html">
+          <a href="/src/Pages/Payment/myOrder.html">
             <i class="fa-solid fa-box-archive"></i>
             <span class="navItem">Orders</span>
           </a>

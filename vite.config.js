@@ -7,11 +7,11 @@ export default defineConfig({
     rollupOptions: {
       input: {
         main: resolve(__dirname, "/"),
-        profile: resolve(__dirname, "src/Pages/Profile/Profile.html"),
-        cart: resolve(__dirname, "src/Pages/Cart/cart.html"),
-        payment: resolve(__dirname, "src/Pages/Payment/Payment.html"),
-        register: resolve(__dirname, "src/Pages/Register/register.html"),
-        product: resolve(__dirname, "src/Pages/products/products.html"),
+        profile: resolve(__dirname, "/src/Pages/Profile/Profile.html"),
+        cart: resolve(__dirname, "/src/Pages/Cart/cart.html"),
+        payment: resolve(__dirname, "/src/Pages/Payment/Payment.html"),
+        register: resolve(__dirname, "/src/Pages/Register/register.html"),
+        product: resolve(__dirname, "/src/Pages/products/products.html"),
         productdetails: resolve(
           __dirname,
           "/src/Pages/products/productdetails/productdetails.html"
