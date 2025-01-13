@@ -37,6 +37,17 @@ console.log("🚀 ~ products:", products);
 
 // Function to update the cart UI and calculations
 const updateQuantity = () => {
+  if (products.length == 0) {
+    document
+      .querySelector(".orderSummary")
+      .replaceWith(
+        document
+          .createRange()
+          .createContextualFragment(
+            `<a href="/src/Pages/products/products.html"><button type="button" class="btn btn-info">Go To Store</button>`
+          )
+      );
+  }
   // Calculate total price, discount, and quantity
   let totalPrice = 0;
   let discount = 0;
