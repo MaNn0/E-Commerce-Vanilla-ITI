@@ -29,14 +29,14 @@ const currentPath = window.location.pathname;
 const initializeApp = async () => {
   //Lexical Declaration Variables
   // searchButton()
-  if (authCookie) {
-    const userData = await fetchUserData();
-    const userFromDB = userData.find(
-      (data) => data.email === JSON.parse(authData).email
-    );
-    console.log(userFromDB);
-    setCookie("orders", userFromDB.orders, 1, authType);
-  }
+  // if (authCookie) {
+  //   const userData = await fetchUserData();
+  //   const userFromDB = userData.find(
+  //     (data) => data.email === JSON.parse(authData).email
+  //   );
+  //   console.log(userFromDB);
+  //   setCookie("orders", userFromDB.orders, 1, authType);
+  // }
   const btnCart = document.querySelectorAll(".btnCart");
   //DataFetched To Allocate to Function
 

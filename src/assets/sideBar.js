@@ -1,8 +1,15 @@
 import "./sideBar.css";
-
+import { getCookie } from "./reusable";
+const authCookie = getCookie("Auth");
+export const authData = authCookie ? JSON.parse(authCookie.value) : null;
 export function sideBarInjection(sideName) {
   const navElement = document.querySelector(`.${sideName}`);
-
+  let userName;
+  if (authData) {
+    userName = authData.firstName + " " + authData.lastName;
+  } else {
+    userName = "guest";
+  }
   // Check if the element exists
   if (!navElement) {
     console.error(`Element with class "${sideName}" not found.`);
@@ -21,7 +28,7 @@ export function sideBarInjection(sideName) {
       <!-- Sidebar User (Image) -->
       <div class="user">
         <img src="../../../public/Images/icons8-user-52.png" alt="User" class="userImg" />
-        <p class="userName bold navItem">No User</p>
+        <p class="userName bold navItem">${userName}</p>
       </div>
       <!-- Sidebar List -->
       <ul>

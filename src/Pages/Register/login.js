@@ -110,29 +110,31 @@ const userLogin = async (userCredentials) => {
 
 // Trigger the login process
 const loginForm = document.querySelector(".loginForm");
+const currentPath = window.location.pathname;
+if (currentPath == "/src/Pages/Register/register.html") {
+  if (loginForm) {
+    loginForm.addEventListener("submit", (e) => {
+      e.preventDefault(); // Prevent the default form submission
 
-if (loginForm) {
-  loginForm.addEventListener("submit", (e) => {
-    e.preventDefault(); // Prevent the default form submission
+      // Extract form data into an object
+      const formData = new FormData(e.target); // Create a FormData object from the form
+      const formValues = Object.fromEntries(formData.entries()); // Convert FormData to a plain object
 
-    // Extract form data into an object
-    const formData = new FormData(e.target); // Create a FormData object from the form
-    const formValues = Object.fromEntries(formData.entries()); // Convert FormData to a plain object
+      // Log the form data
+      console.log("Form Data:", formValues);
 
-    // Log the form data
-    console.log("Form Data:", formValues);
-
-    // Example: Validate or process the form data
-    if (formValues.loginEmail && formValues.loginPassword) {
-      console.log("Email:", formValues.loginEmail);
-      console.log("Password:", formValues.loginPassword);
-      console.log("Remember Me:", formValues.rememberMe === "on"); // Checkbox value
-      userLogin(formValues);
-      // Add your login logic here (e.g., call a login API)
-    } else {
-      console.error("Email and password are required.");
-    }
-  });
-} else {
-  console.error("Login form not found!");
+      // Example: Validate or process the form data
+      if (formValues.loginEmail && formValues.loginPassword) {
+        console.log("Email:", formValues.loginEmail);
+        console.log("Password:", formValues.loginPassword);
+        console.log("Remember Me:", formValues.rememberMe === "on"); // Checkbox value
+        userLogin(formValues);
+        // Add your login logic here (e.g., call a login API)
+      } else {
+        console.error("Email and password are required.");
+      }
+    });
+  } else {
+    console.error("Login form not found!");
+  }
 }

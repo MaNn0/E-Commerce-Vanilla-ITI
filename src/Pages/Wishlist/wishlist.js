@@ -8,8 +8,9 @@ import {
 } from "../../assets/reusable";
 import { sideBarInjection } from "../../assets/sideBar";
 import "./wishlist.css";
+
 let wishlist = getCookie("wishlist");
-const wishlistData = wishlist ? wishlist.value : null;
+const wishlistData = wishlist ? wishlist.value : [];
 let wishlistProducts = JSON.parse(wishlistData);
 
 // Render wishlist items

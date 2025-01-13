@@ -1,0 +1,465 @@
+body {
+    background-image: url('imgs/3409297.jpg');
+    /* Replace with your image path */
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    /* Keeps the background fixed while scrolling */
+    background-position: center;
+    /* Center the image */
+    color: #fff;
+    /* Optional: Adjust text color for readability */
+    margin: 0;
+    /* Remove default body margin */
+    height: 100vh;
+    /* Ensure it covers the full viewport height */
+}
+
+/* Add a white-blue blurred overlay */
+body::before {
+    content: '';
+    position: fixed;
+    /* Make it cover the entire viewport */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.3);
+    /* Semi-transparent white */
+    backdrop-filter: blur(10px);
+    /* Applies the blur effect */
+    z-index: -1;
+    /* Ensures the overlay stays behind content */
+}
+
+
+#paymentModals .modal-header {
+    background-color: #1344cc;
+    /* Vibrant background color */
+    color: #fff;
+    /* White text for contrast */
+    border-bottom: 2px solid #d2cece;
+    /* Subtle divider */
+    padding: 15px 20px;
+    /* Additional padding */
+}
+
+#paymentModals .modal-content {
+    max-width: 90%;
+    /* Ensure the modal expands for larger content */
+    margin: 0 auto;
+}
+
+#paymentModals .modal-body {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: space-between;
+
+}
+
+#paymentModals .card-info {
+    background: #d2cece;
+    border-radius: 15px;
+    padding: 20px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    width: 300px;
+    /* Adjusted for better spacing */
+    height: 300px;
+}
+
+#paymentModals .card-input {
+    border: none;
+    border-bottom: 1px solid #ccc;
+    border-radius: 0;
+    padding: 10px;
+    font-size: 16px;
+}
+
+#paymentModals .card-info h5 {
+    font-weight: bold;
+    font-size: 18px;
+}
+
+#paymentModals .card-info p {
+    font-size: 14px;
+
+    margin-bottom: 20px;
+
+}
+
+#paymentModals .card-info .d-flex img {
+    width: 40px;
+    height: auto;
+}
+
+#paymentModals .form-container {
+    width: 50%;
+    min-width: 300px;
+    background-image: url("imgs/bg_payment.avif");
+
+}
+
+#paymentModals .form-control,
+#paymentModals .form-select {
+    border-radius: 50px;
+    padding: 10px 20px;
+    border-bottom: 1px solid #1344cc;
+}
+
+#paymentModals .row .form-control {
+    margin-bottom: 10px;
+}
+
+
+
+#paymentModals .modal-footer .btn-primary {
+    background-color: #1344cc;
+    /* Vibrant primary button color */
+    border: none;
+    padding: 10px 20px;
+    border-radius: 50px;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+#paymentModals .modal-footer .btn-primary:hover {
+    background-color: #082277;
+    /* Darker shade on hover */
+    transform: scale(1.05);
+    /* Slight zoom effect */
+}
+
+/* Add transition for input fields on focus */
+#paymentModals .form-control:focus,
+#paymentModals .form-select:focus,
+#paymentModals .card-input:focus {
+    transform: scale(1.05);
+    /* Slight zoom effect */
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+    /* Smooth scaling */
+    box-shadow: 0 0 8px rgba(19, 68, 204, 0.3);
+    /* Optional glow effect */
+    outline: none;
+    /* Remove default focus outline */
+}
+
+/* Ensure the scaling applies only when typing */
+#paymentModals .form-control,
+#paymentModals .form-select,
+#paymentModals .card-input {
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+    /* Prepare for scaling */
+}
+
+
+/* Blur the background when the modal is open */
+.modal-backdrop {
+    backdrop-filter: blur(5px);
+    /* Adjust blur intensity */
+    background-color: rgba(0, 0, 0, 0.3);
+    /* Slightly darken the background */
+}
+
+/* Ensure the blur applies smoothly */
+.modal.fade.show {
+    backdrop-filter: blur(5px);
+    transition: backdrop-filter 0.3s ease-in-out;
+}
+
+/* Add custom styles for error message */
+.container .modal-body #errorMessage {
+    font-size: 16px;
+    color: red;
+    font-weight: bold;
+}
+
+
+
+
+
+
+/* Container Styling */
+.container {
+    background-color: #f9f9f9;
+    /* Light gray background for the whole container */
+    border-radius: 10px;
+    /* Rounded corners for a smooth look */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    /* Light shadow for depth */
+    padding: 30px;
+    /* Increase padding inside the container */
+    background-image: url("imgs/main bg.png");
+    /* Updated file path */
+    background-size: cover;
+    /* Ensures the image covers the container */
+    background-position: center;
+    /* Centers the image */
+    background-repeat: no-repeat;
+    /* Prevents the image from repeating */
+}
+
+/* Header Styling */
+.container .card-title {
+    font-weight: bold;
+    font-size: 24px;
+    color: #0df0f8;
+    /* Vibrant blue color for headers */
+    margin-bottom: 15px;
+    /* Additional margin for separation */
+}
+
+/* Row Spacing for Shipping Address and Order Summary */
+.container .row {
+    margin-bottom: 20px;
+    /* Space between sections */
+}
+
+/* Style the Card Border */
+.container .card {
+    border-radius: 15px;
+    /* Rounded corners for the cards */
+    border: 3px solid #0df0f8 !important;
+    /* Light border around cards */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    /* Soft shadow effect */
+    background-color: rgb(129, 169, 177);
+}
+
+/* Form Input Styling */
+.container .form-control,
+.container .form-select {
+    border-radius: 50px;
+    /* Rounded inputs */
+    padding: 12px 20px;
+    /* Comfortable padding */
+    border: 1px solid #ccc;
+    /* Border color for inputs */
+    transition: border-color 0.3s ease-in-out;
+    /* Smooth transition on focus */
+}
+
+.container .form-control:focus,
+.container .form-select:focus {
+    border-color: #1344cc;
+    /* Highlight with blue on focus */
+    box-shadow: 0 0 6px rgba(19, 68, 204, 0.3);
+    /* Subtle glow effect */
+}
+
+/* Form Check (Radio Buttons) */
+.container .form-check-label {
+    font-size: 16px;
+    /* Slightly larger text for readability */
+}
+
+.container .form-check-input {
+    margin-right: 10px;
+    /* Extra space between radio button and label */
+}
+
+
+
+/* Add hover effect for buttons inside container */
+.container .btn:hover {
+    transform: scale(1.05);
+    /* Slight zoom effect */
+    background-color: #082277;
+    /* Darker shade for buttons */
+}
+
+/* Style the "Place Order" button */
+.container .btn-primary {
+    font-size: 13px;
+    padding: 3px 8px;
+    background-color: #007bff;
+    color: #000000;
+    border: 1px solid #007bff;
+    border-radius: 7px;
+    transition: all 0.3s ease;
+}
+
+.container .btn-primary:hover {
+    background-color: #000000;
+    color: #ffffff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transform: scale(1.05);
+}
+
+
+/* Spacing between items in "Your Order" section */
+.container .your-order .col-md-4 {
+    margin-bottom: 15px;
+}
+
+/* Style for Estimated Time in Your Order section */
+.container .text-success {
+    font-weight: bold;
+    color: green;
+}
+
+
+/* add address button  */
+.input-group {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    /* Adjust spacing between input and button */
+}
+
+.input-group .form-control {
+    flex-grow: 1;
+    /* Make input field take available width */
+}
+
+h3.card-title {
+    color: black !important;
+}
+
+
+
+/* view cart button */
+.your-order-section .btn-custom {
+    font-size: 12px;
+    padding: 3px 8px;
+    background-color: #007bff;
+    color: #ffffff;
+    border: 1px solid #007bff;
+    border-radius: 50px;
+    transition: all 0.3s ease;
+}
+
+.your-order-section .btn-custom:hover {
+    background-color: #0056b3;
+    color: #000000;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transform: scale(1.05);
+}
+
+
+/* General Button Styles */
+button {
+    padding: 10px 20px;
+    font-size: 16px;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+/* Checkout Button Specific Styles */
+#checkout-button {
+    background-color: #28a745;
+    /* Green color */
+    color: white;
+    font-weight: bold;
+    display: block;
+    margin: 20px auto;
+    /* Center horizontally */
+    width: 200px;
+    text-align: center;
+}
+
+#checkout-button:hover {
+    background-color: #218838;
+    /* Darker green for hover effect */
+}
+
+#checkout-button:active {
+    transform: scale(0.98);
+    /* Slight press effect */
+}
+
+/* Payment Form Container Styles */
+#card-element {
+    border: 1px solid #ced4da;
+    border-radius: 5px;
+    padding: 10px;
+    font-size: 16px;
+    background-color: #f8f9fa;
+    /* Light gray */
+    margin: 20px auto;
+    width: 300px;
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+/* Card Errors Styling */
+#card-errors {
+    color: #dc3545;
+    /* Red color */
+    font-size: 14px;
+    margin-top: 10px;
+    text-align: center;
+}
+
+/* Payment Form General Styling */
+#payment-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#add-address-btn {
+    background-color: #007bff;
+    color: black;
+}
+
+/* #add-address-btn:hover{
+    scale: 1.05;
+    transition: .3s ease-in-out;
+    background-color: green;
+  } */
+#place-order-button:hover {
+    color: black;
+    background-color: white;
+}
+
+/* From Uiverse.io by cssbuttons-io */
+/* button {
+    --color: yellow;
+    font-family: inherit;
+    display: inline-block;
+    width: 8em;
+    height: 2.6em;
+    line-height: 2.5em;
+    margin: 20px;
+    position: relative;
+    cursor: pointer;
+    overflow: hidden;
+    border: 2px solid var(--color);
+    transition: color 0.5s;
+    z-index: 1;
+    font-size: 17px;
+    border-radius: 6px;
+    font-weight: 500;
+    color: var(--color);
+  } */
+
+button:before {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    background: var(--color);
+    height: 150px;
+    width: 200px;
+    border-radius: 50%;
+}
+
+button:hover {
+    color: #fff;
+}
+
+button:before {
+    top: 100%;
+    left: 100%;
+    transition: all 0.7s;
+}
+
+button:hover:before {
+    top: -30px;
+    left: -30px;
+}
+
+/* button:active:before {
+    background: #0df0f8;
+    transition: background 0s;
+} */

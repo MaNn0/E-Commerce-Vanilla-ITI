@@ -60,10 +60,4 @@
   transition: all 0.5s ease;
   width: calc(100% - 80px);
   padding: 1rem;
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  display: flex;
-  justify-content: center; /* Center horizontally */
-  align-items: center; /* Center vertically */
 }

@@ -29,6 +29,26 @@
       "repassword": "Mano2001!",
       "mainAddress": "giza",
       "city": "haram"
+    },
+    {
+      "id": "63da",
+      "firstName": "Mahmoud",
+      "lastName": "Zalabany",
+      "email": "Mahmoudn.zalabany256@gmail.com",
+      "password": "Fightsong@6",
+      "repassword": "Fightsong@6",
+      "mainAddress": "4-hussain al marsfi Safir",
+      "city": "Cairo"
+    },
+    {
+      "id": "98a4",
+      "firstName": "Mahmoud",
+      "lastName": "Nasr",
+      "email": "Mahmoudn.zalabany256@gmail.com",
+      "password": "Fightsong@6",
+      "repassword": "Fightsong@6",
+      "mainAddress": "4-hussain al marsfi Safir",
+      "city": "Cairo"
     }
   ],
   "orders": [],
