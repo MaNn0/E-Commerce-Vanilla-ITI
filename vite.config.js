@@ -2,6 +2,7 @@ import { defineConfig } from "vite";
 import { resolve } from "path";
 
 export default defineConfig({
+  base: "./",
   build: {
     target: "esnext", // Correct location for the target option
     rollupOptions: {
@@ -19,6 +20,7 @@ export default defineConfig({
         fail: resolve(__dirname, "/src/Pages/Payment/fail.html"),
         success: resolve(__dirname, "/src/Pages/Payment/success.html"),
         myOrder: resolve(__dirname, "/src/Pages/Payment/myOrder.html"),
+        outDir: "dist",
       },
     },
   },
